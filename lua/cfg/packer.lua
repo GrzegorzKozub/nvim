@@ -14,7 +14,8 @@ function M.init()
   return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
-    -- themes
+    -- theme
+    use("itchyny/lightline.vim")
     use("lifepillar/vim-gruvbox8")
     use("lifepillar/vim-solarized8")
 
