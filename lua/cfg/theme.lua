@@ -19,34 +19,43 @@ local function theme()
   return normalize_color_scheme(color_scheme), normalize_background(background)
 end
 
-local function options(color_scheme, background)
+local function hide_tilde_on_empty_lines()
+  vim.cmd([[ highlight EndOfBuffer guifg=BG ]])
+end
+
+local function patch_color_scheme(color_scheme)
+  pcall(vim.cmd, "source " .. vim.fn.stdpath("config") .. "/theme/" .. color_scheme .. ".vim")
+end
+
+local function auto_commands(color_scheme)
   vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",
     callback = function()
-      -- hide tilde on empty lines
-      vim.cmd([[ highlight EndOfBuffer guifg=BG ]])
-      -- apply color scheme patch
-      pcall(vim.cmd, "source " .. vim.fn.stdpath("config") .. "/theme/" .. color_scheme .. ".vim")
+      hide_tilde_on_empty_lines()
+      patch_color_scheme(color_scheme)
     end,
   })
+end
+
+local function options(color_scheme, background)
   vim.opt.background = background
   vim.cmd.colorscheme(color_scheme)
+
+  -- lightline.vim
+  vim.g.lightline = { colorscheme = color_scheme }
+
   -- vim-gruvbox8
   vim.g.gruvbox_italics = 0
   vim.g.gruvbox_italicize_strings = 0
+
   -- vim-solarized8
   vim.g.solarized_italics = 0
 end
 
-local function lightline(color_scheme)
-  -- lightline.vim
-  vim.g.lightline = { colorscheme = color_scheme }
-end
-
 function M.init()
   local color_scheme, background = theme()
+  auto_commands(color_scheme)
   options(color_scheme, background)
-  lightline(color_scheme)
 end
 
 return M

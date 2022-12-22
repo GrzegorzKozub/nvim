@@ -1,7 +1,7 @@
 local M = {}
 
-function M.init()
-  local options = {
+local function options()
+  local opts = {
     backup = true,
     cursorline = true, -- can break per https://github.com/neovim/neovim/issues/9019
     expandtab = true,
@@ -33,17 +33,21 @@ function M.init()
     wrap = false,
   }
 
-  for k, v in pairs(options) do
+  for k, v in pairs(opts) do
     vim.opt[k] = v
   end
 
-  vim.opt.backupdir:remove(".");
+  vim.opt.backupdir:remove(".")
   vim.opt.diffopt:append({ "algorithm:histogram", "indent-heuristic", "context:3" })
   vim.opt.fillchars:append({ vert = " " })
   vim.opt.shortmess:append("I")
   vim.opt.whichwrap:append("<,>,[,]")
 
   vim.cmd.language(vim.fn.has("win32") == 1 and "English_US" or "en_US.utf8")
+end
+
+function M.init()
+  options()
 end
 
 return M
