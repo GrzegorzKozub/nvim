@@ -10,8 +10,18 @@ local function bootstrap()
   return false
 end
 
-function M.init()
-  local first_run = bootstrap()
+local function auto_commands()
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = "packer.lua",
+    callback = function()
+      package.loaded["cfg.packer"] = nil
+      require("cfg.packer").plugins(false)
+      vim.cmd.PackerSync()
+    end,
+  })
+end
+
+function M.plugins(first_run)
   return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
@@ -24,6 +34,12 @@ function M.init()
       require("packer").sync()
     end
   end)
+end
+
+function M.init()
+  local first_run = bootstrap()
+  auto_commands()
+  M.plugins(first_run)
 end
 
 return M
