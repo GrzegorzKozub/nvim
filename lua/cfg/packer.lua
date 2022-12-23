@@ -26,9 +26,11 @@ function M.plugins(first_run)
     use("wbthomason/packer.nvim")
 
     -- theme
-    use("itchyny/lightline.vim")
     use("lifepillar/vim-gruvbox8")
     use("lifepillar/vim-solarized8")
+
+    -- lightline
+    use("itchyny/lightline.vim")
 
     if first_run then
       require("packer").sync()
