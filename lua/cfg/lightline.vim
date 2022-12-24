@@ -1,8 +1,6 @@
-" vim: set foldmarker={,} foldmethod=marker :
-
 scriptencoding 'utf-8'
 
-" options {
+" options
 
 let g:lightline = {
   \ 'active': {
@@ -45,8 +43,7 @@ let g:lightline = {
   \ 'enable': { 'tabline': 0 },
 \ }
 
-" }
-" component functions {
+" component functions
 
 function! g:LightLineBuffer() abort
   if &filetype =~? 'help\|netrw\|qf' | return '' | endif
@@ -88,8 +85,7 @@ function! g:LightLineALEWarning() abort
   return s:lightline_format_ale_icon(s:get_ale_counts().warning, '▲')
 endfunction
 
-" }
-" ALE integration {
+" ALE integration
 
 augroup UpdateLightLineWhenALELints
   autocmd!
@@ -98,8 +94,7 @@ augroup UpdateLightLineWhenALELints
   autocmd User ALELintPost call lightline#update()
 augroup END
 
-" }
-" reload on color scheme change {
+" reload on color scheme change
 
 function! s:reload_lightline() abort
   if !exists('g:loaded_lightline') | return | endif
@@ -112,4 +107,3 @@ augroup ReloadLightLineWhenColorSchemeChanges
   autocmd ColorScheme * call s:reload_lightline()
 augroup END
 
-" }

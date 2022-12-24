@@ -4,10 +4,10 @@ local function auto_commands()
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "elixir,eelixir",
     callback = function()
-      local opts = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap("n", "<Leader>f", ":ALEFix<CR>", opts)
-      vim.api.nvim_set_keymap("n", "<C-]>", ":ALEGoToDefinition<CR>", opts)
-      vim.api.nvim_set_keymap("n", "<C-\\>", ":ALEFindReferences<CR>", opts)
+      local options = { noremap = true, silent = true }
+      vim.api.nvim_set_keymap("n", "<Leader>f", ":ALEFix<CR>", options)
+      vim.api.nvim_set_keymap("n", "<C-]>", ":ALEGoToDefinition<CR>", options)
+      vim.api.nvim_set_keymap("n", "<C-\\>", ":ALEFindReferences<CR>", options)
     end,
   })
 end

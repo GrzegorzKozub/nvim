@@ -1,5 +1,7 @@
 require("cfg.options").init()
+require("cfg.keys").init()
 require("cfg.packer").init()
 require("cfg.theme").init()
 require("cfg.lightline").init()
+require("cfg.fzf").init()
 require("cfg.ale").init()

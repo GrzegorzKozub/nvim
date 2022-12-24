@@ -1,7 +1,7 @@
 local M = {}
 
-local function options()
-  local opts = {
+local function neovim()
+  local options = {
     backup = true,
     cursorline = true, -- can break per https://github.com/neovim/neovim/issues/9019
     expandtab = true,
@@ -33,7 +33,7 @@ local function options()
     wrap = false,
   }
 
-  for k, v in pairs(opts) do
+  for k, v in pairs(options) do
     vim.opt[k] = v
   end
 
@@ -46,8 +46,15 @@ local function options()
   vim.cmd.language(vim.fn.has("win32") == 1 and "English_US" or "en_US.utf8")
 end
 
+local function netrw()
+  vim.g.netrw_banner = 0
+  vim.g.netrw_home = vim.fn.stdpath("data") .. "/state/netrw"
+  vim.g.netrw_localcopycmd = "copy"
+end
+
 function M.init()
-  options()
+  neovim()
+  netrw()
 end
 
 return M

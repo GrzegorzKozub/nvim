@@ -25,15 +25,24 @@ function M.plugins(first_run)
   return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
-    -- theme
     use("lifepillar/vim-gruvbox8")
     use("lifepillar/vim-solarized8")
 
-    -- lightline
     use("itchyny/lightline.vim")
 
-    -- ale
+    use("junegunn/fzf")
+    use("junegunn/fzf.vim")
+
+    use({ "sbdchd/neoformat", cmd = "Neoformat" })
     use("w0rp/ale")
+
+    use({
+      "iamcco/markdown-preview.nvim",
+      run = function()
+        vim.fn["mkdp#util#install_sync"]()
+      end,
+    })
+    use({ "leafgarland/typescript-vim", ft = { "typescript" } })
 
     if first_run then
       require("packer").sync()
