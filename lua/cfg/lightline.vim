@@ -26,8 +26,8 @@ let g:lightline = {
     \ 'fileposition': 'g:LightLineFilePosition'
   \ },
   \ 'component_expand': {
-    \ 'aleerror': 'LightLineAleError',
-    \ 'alewarning': 'LightLineAleWarning'
+    \ 'aleerror': 'LightLineALEError',
+    \ 'alewarning': 'LightLineALEWarning'
   \ },
   \ 'component_type': { 'aleerror': 'error', 'alewarning': 'warning' },
   \ 'colorscheme': g:colors_name,
@@ -80,11 +80,11 @@ function! s:get_ale_counts() abort
   return ale#statusline#Count(bufnr('%'))
 endfunction
 
-function! g:LightLineAleError() abort
+function! g:LightLineALEError() abort
   return s:lightline_format_ale_icon(s:get_ale_counts().error, '●')
 endfunction
 
-function! g:LightLineAleWarning() abort
+function! g:LightLineALEWarning() abort
   return s:lightline_format_ale_icon(s:get_ale_counts().warning, '▲')
 endfunction
 

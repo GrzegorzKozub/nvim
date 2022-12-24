@@ -32,6 +32,9 @@ function M.plugins(first_run)
     -- lightline
     use("itchyny/lightline.vim")
 
+    -- ale
+    use("w0rp/ale")
+
     if first_run then
       require("packer").sync()
     end
