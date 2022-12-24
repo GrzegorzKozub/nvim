@@ -33,6 +33,8 @@ function M.plugins(first_run)
     use("junegunn/fzf")
     use("junegunn/fzf.vim")
 
+    use({ "rrethy/vim-hexokinase", run = "make hexokinase" })
+
     use({ "sbdchd/neoformat", cmd = "Neoformat" })
     use("w0rp/ale")
 
@@ -42,7 +44,10 @@ function M.plugins(first_run)
         vim.fn["mkdp#util#install_sync"]()
       end,
     })
+
+    use({ "pangloss/vim-javascript", ft = { "javascript", "javascript.jsx", "typescript" } })
     use({ "leafgarland/typescript-vim", ft = { "typescript" } })
+    use({ "MaxMEllon/vim-jsx-pretty", ft = { "javascript", "javascript.jsx", "typescript" } })
 
     if first_run then
       require("packer").sync()

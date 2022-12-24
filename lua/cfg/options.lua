@@ -46,15 +46,23 @@ local function neovim()
   vim.cmd.language(vim.fn.has("win32") == 1 and "English_US" or "en_US.utf8")
 end
 
-local function netrw()
+local function plugins()
+  -- netrw
   vim.g.netrw_banner = 0
   vim.g.netrw_home = vim.fn.stdpath("data") .. "/state/netrw"
   vim.g.netrw_localcopycmd = "copy"
+
+  -- vim-hexokinase
+  vim.g.Hexokinase_optInPatterns = "full_hex,tripple_hex,rgb,rgba,hsl,hsla"
+
+  -- vim-javascript
+  vim.g.javascript_plugin_jsdoc = 1
+  vim.g.javascript_plugin_ngdoc = 1
 end
 
 function M.init()
   neovim()
-  netrw()
+  plugins()
 end
 
 return M
