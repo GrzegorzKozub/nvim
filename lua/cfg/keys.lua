@@ -6,9 +6,6 @@ local function neovim()
   -- delete with backspace in visual mode
   vim.keymap.set("v", "<BS>", "d", options)
 
-  -- visual block (not needed on linux)
-  -- vim.keymap.set("", "<C-Q>", "<C-V>", options)
-
   -- select all
   vim.keymap.set("n", "<C-A>", "ggVG", options)
 
