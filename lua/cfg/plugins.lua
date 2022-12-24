@@ -12,10 +12,10 @@ end
 
 local function auto_commands()
   vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = "packer.lua",
+    pattern = "plugins.lua",
     callback = function()
-      package.loaded["cfg.packer"] = nil
-      require("cfg.packer").plugins(false)
+      package.loaded["cfg.plugins"] = nil
+      require("cfg.plugins").plugins(false)
       vim.cmd.PackerSync()
     end,
   })
@@ -44,6 +44,8 @@ function M.plugins(first_run)
         vim.fn["mkdp#util#install_sync"]()
       end,
     })
+
+    use({ "elzr/vim-json", ft = { "json" } })
 
     use({ "pangloss/vim-javascript", ft = { "javascript", "javascript.jsx", "typescript" } })
     use({ "leafgarland/typescript-vim", ft = { "typescript" } })

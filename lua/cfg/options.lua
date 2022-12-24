@@ -55,6 +55,9 @@ local function plugins()
   -- vim-hexokinase
   vim.g.Hexokinase_optInPatterns = "full_hex,tripple_hex,rgb,rgba,hsl,hsla"
 
+  -- vim-json
+  vim.g.vim_json_syntax_conceal = 0
+
   -- vim-javascript
   vim.g.javascript_plugin_jsdoc = 1
   vim.g.javascript_plugin_ngdoc = 1

@@ -5,9 +5,9 @@ local function auto_commands()
     pattern = "elixir,eelixir",
     callback = function()
       local options = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap("n", "<Leader>f", ":ALEFix<CR>", options)
-      vim.api.nvim_set_keymap("n", "<C-]>", ":ALEGoToDefinition<CR>", options)
-      vim.api.nvim_set_keymap("n", "<C-\\>", ":ALEFindReferences<CR>", options)
+      vim.keymap.set("n", "<Leader>f", ":ALEFix<CR>", options)
+      vim.keymap.set("n", "<C-]>", ":ALEGoToDefinition<CR>", options)
+      vim.keymap.set("n", "<C-\\>", ":ALEFindReferences<CR>", options)
     end,
   })
 end
