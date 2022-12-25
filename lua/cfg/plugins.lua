@@ -38,6 +38,8 @@ function M.plugins(first_run)
     use("tpope/vim-surround")
     use("tpope/vim-unimpaired")
 
+    use("jiangmiao/auto-pairs")
+
     use("scrooloose/nerdcommenter")
     use("editorconfig/editorconfig-vim")
     use({ "sbdchd/neoformat", cmd = "Neoformat" })
