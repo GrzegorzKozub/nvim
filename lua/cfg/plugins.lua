@@ -50,6 +50,7 @@ function M.plugins(first_run)
 
     use({
       "iamcco/markdown-preview.nvim",
+      ft = { "markdown" },
       run = function()
         vim.fn["mkdp#util#install_sync"]()
       end,
@@ -62,7 +63,7 @@ function M.plugins(first_run)
     use({ "ekalinin/Dockerfile.vim", ft = "Dockerfile" })
     use({ "chr4/nginx.vim", ft = { "nginx" } })
 
-    use("moll/vim-node")
+    use({ "moll/vim-node", ft = { "javascript", "typescript" } })
 
     use({ "pangloss/vim-javascript", ft = { "javascript", "javascript.jsx", "typescript" } })
     use({ "leafgarland/typescript-vim", ft = { "typescript" } })
@@ -70,14 +71,18 @@ function M.plugins(first_run)
 
     use({ "hail2u/vim-css3-syntax", ft = { "css", "less", "scss" } })
 
-    use("fatih/vim-go")
+    use({ "fatih/vim-go", ft = { "go" } })
 
     use({ "vim-ruby/vim-ruby", ft = "ruby" })
     use({ "tpope/vim-rails", ft = "ruby" })
     use({ "tpope/vim-endwise", ft = { "elixir", "eelixir", "ruby" } })
 
     use({ "elixir-editors/vim-elixir", ft = { "elixir", "eelixir" } })
-    use({ "GrzegorzKozub/vim-elixirls", run = ":ElixirLsCompileSync" })
+    use({
+      "GrzegorzKozub/vim-elixirls",
+      ft = { "elixir", "eelixir" },
+      run = ":ElixirLsCompileSync",
+    })
 
     use({ "octol/vim-cpp-enhanced-highlight", ft = { "cpp" } })
 

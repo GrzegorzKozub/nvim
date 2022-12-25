@@ -97,8 +97,9 @@ local function plugins()
 
   -- vimwiki
 
+  vim.g.vimwiki_global_ext = 0
   vim.g.vimwiki_hl_cb_checked = 2
-  vim.g.vimwiki_list = { { path = "~/code/apsis/", path_html = "~/Downloads/apsis_html/" } }
+  vim.g.vimwiki_list = { { path = "~/code/apsis/", path_html = "~/Downloads/apsis_html/", ext = ".wiki" } }
   vim.g.vimwiki_listsym_rejected = "✗"
   vim.g.vimwiki_listsyms = " ✓"
 
