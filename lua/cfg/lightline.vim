@@ -46,12 +46,12 @@ let g:lightline = {
 " component functions
 
 function! g:LightLineBuffer() abort
-  if &filetype =~? 'help\|netrw\|qf' | return '' | endif
+  if &filetype =~? 'help\|netrw\|qf\|packer' | return '' | endif
   return bufnr('%')
 endfunction
 
 function! g:LightLineFileName() abort
-  if &filetype =~? 'qf' | return '' | endif
+  if &filetype =~? 'qf\|packer' | return '' | endif
   let l:filename = expand('%:t') ==# '' ? 'untitled' : expand('%:t')
   return l:filename . (&modified ? ' ●' : '')
 endfunction
@@ -61,7 +61,7 @@ function! g:LightLineFileType() abort
 endfunction
 
 function! g:LightLineFileEncodingAndFormat() abort
-  if &filetype =~? 'help\|netrw\|qf' | return '' | endif
+  if &filetype =~? 'help\|netrw\|qf\|packer' | return '' | endif
   return &fileencoding . (strlen(&fileencoding) > 0 ? ' ' : '') . (&fileformat ==# 'unix' ? 'lf' : 'crlf')
 endfunction
 
