@@ -20,7 +20,7 @@ local function theme()
 end
 
 local function hide_tilde_on_empty_lines()
-  vim.cmd([[ highlight EndOfBuffer guifg=BG ]])
+  vim.cmd.highlight({ "EndOfBuffer", "guifg=BG" })
 end
 
 local function patch_color_scheme(color_scheme)

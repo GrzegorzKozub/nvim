@@ -1,5 +1,45 @@
 local M = {}
 
+local function file_types()
+  vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.config",
+    callback = function()
+      vim.cmd.set("filetype=xml")
+    end,
+  })
+  vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.cshtml",
+    callback = function()
+      vim.cmd.set("filetype=html")
+    end,
+  })
+  vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.csx",
+    callback = function()
+      vim.cmd.set("filetype=cs")
+    end,
+  })
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "vim",
+    callback = function()
+      vim.cmd.setlocal("textwidth=0")
+    end,
+  })
+end
+
+local function scroll_to_last_seen_location()
+  vim.api.nvim_create_autocmd("BufReadPost", {
+    pattern = "*",
+    callback = function()
+      vim.cmd([[
+        if line("'\"") >= 1 && line("'\"") <= line("$") && &filetype !~# 'commit'
+          exe "normal! g`\""
+        endif
+      ]])
+    end,
+  })
+end
+
 local function neovim()
   local options = {
     backup = true,
@@ -55,6 +95,20 @@ local function plugins()
   -- vim-hexokinase
   vim.g.Hexokinase_optInPatterns = "full_hex,tripple_hex,rgb,rgba,hsl,hsla"
 
+  -- vimwiki
+
+  vim.g.vimwiki_hl_cb_checked = 2
+  vim.g.vimwiki_list = { { path = "~/code/apsis/", path_html = "~/Downloads/apsis_html/" } }
+  vim.g.vimwiki_listsym_rejected = "✗"
+  vim.g.vimwiki_listsyms = " ✓"
+
+  vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*.wiki",
+    callback = function()
+      vim.cmd.syntax({ "sync", "fromstart" })
+    end,
+  })
+
   -- vim-json
   vim.g.vim_json_syntax_conceal = 0
 
@@ -66,6 +120,8 @@ end
 function M.init()
   neovim()
   plugins()
+  file_types()
+  scroll_to_last_seen_location()
 end
 
 return M
