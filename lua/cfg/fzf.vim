@@ -16,6 +16,8 @@ if has('win32')
     let $FZF_DEFAULT_OPTS = '--color bg:' . l:normal_bg . ',bg+:' . l:normal_bg . ',border:' . l:comment_fg . ',fg:' . l:comment_fg . ',fg+:' . l:normal_fg . ',header:' . l:string_fg . ',hl:' . l:inc_search_fg . ',hl+:' . l:inc_search_fg . ',info:' . l:comment_fg . ',marker:' . l:normal_fg . ',pointer:' . l:normal_fg . ',prompt:' . l:underlined_fg
   endfunction
 
+  call s:set_fzf_defaults()
+
   augroup SetFZFDefaultsWhenColorSchemeChanges
     autocmd!
     autocmd ColorScheme * call s:set_fzf_defaults()
