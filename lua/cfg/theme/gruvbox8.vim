@@ -75,7 +75,8 @@ else
 
 endif
 
-exec 'hi ALEWarningSign guifg=' . s:yellow
+exec 'hi ALEErrorSign guifg=' . s:red . ' guibg=NONE'
+exec 'hi ALEWarningSign guifg=' . s:yellow . ' guibg=NONE'
 exec 'hi CursorLineNr guifg=' . s:bg4
 exec 'hi ErrorMsg guifg=' . s:red . ' guibg=' . s:bg0 . ' gui=NONE cterm=NONE'
 exec 'hi Folded guifg=' . s:bg4 . ' guibg=' . s:bg0
@@ -89,8 +90,6 @@ exec 'hi Todo guifg=' . s:neutral_gray . ' gui=NONE cterm=NONE'
 exec 'hi Visual guifg=NONE guibg=' . s:bg1 . ' gui=NONE cterm=NONE'
 exec 'hi WildMenu guifg=' . s:fg2 . ' guibg=' . s:bg0 . ' gui=NONE cterm=NONE'
 
-hi ALEErrorSign guibg=NONE
-hi ALEWarningSign guibg=NONE
 hi Directory gui=NONE cterm=NONE
 hi Error gui=NONE cterm=NONE
 hi Function gui=NONE cterm=NONE
