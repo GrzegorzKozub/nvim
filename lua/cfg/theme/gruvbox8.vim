@@ -89,6 +89,8 @@ exec 'hi Todo guifg=' . s:neutral_gray . ' gui=NONE cterm=NONE'
 exec 'hi Visual guifg=NONE guibg=' . s:bg1 . ' gui=NONE cterm=NONE'
 exec 'hi WildMenu guifg=' . s:fg2 . ' guibg=' . s:bg0 . ' gui=NONE cterm=NONE'
 
+hi ALEErrorSign guibg=NONE
+hi ALEWarningSign guibg=NONE
 hi Directory gui=NONE cterm=NONE
 hi Error gui=NONE cterm=NONE
 hi Function gui=NONE cterm=NONE
