@@ -11,6 +11,7 @@ local function bootstrap()
 end
 
 local function auto_update()
+  local group = vim.api.nvim_create_augroup('PluginsAutoUpdate', { clear = true })
   vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = 'plugins.lua',
     callback = function()
@@ -18,6 +19,7 @@ local function auto_update()
       require('cfg.plugins').plugins(false)
       vim.cmd.PackerSync()
     end,
+    group = group,
   })
 end
 
