@@ -12,6 +12,7 @@ function M.setup()
     lazyredraw = true,
     listchars = { tab = '→ ', eol = '¬', trail = '·' },
     mouse = 'a',
+    mousemodel = 'extend',
     number = true,
     scrolloff = 3,
     shiftwidth = 2,
