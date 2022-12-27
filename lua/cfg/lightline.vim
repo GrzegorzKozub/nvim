@@ -98,6 +98,7 @@ augroup END
 
 function! s:reload_lightline() abort
   if !exists('g:loaded_lightline') | return | endif
+  exe 'source ' . stdpath('config') . '/plugin/lightline/colorscheme/' . substitute(g:colors_name, '_.*', '', '') . '.vim'
   let g:lightline.colorscheme = g:colors_name
   call lightline#enable()
 endfunction
@@ -105,5 +106,6 @@ endfunction
 augroup ReloadLightLineWhenColorSchemeChanges
   autocmd!
   autocmd ColorScheme * call s:reload_lightline()
+  autocmd OptionSet background call s:reload_lightline()
 augroup END
 

@@ -21,6 +21,7 @@ if has('win32')
   augroup SetFZFDefaultsWhenColorSchemeChanges
     autocmd!
     autocmd ColorScheme * call s:set_fzf_defaults()
+    autocmd OptionSet background call s:set_fzf_defaults()
   augroup END
 
   let s:marker = '>'

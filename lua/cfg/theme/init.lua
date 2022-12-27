@@ -29,6 +29,15 @@ local function auto_fix()
     end,
     group = group,
   })
+  vim.api.nvim_create_autocmd('OptionSet', {
+    pattern = 'background',
+    callback = function()
+      hide_tilde_on_empty_lines()
+      patch_color_scheme(vim.g.colors_name)
+      refresh_screen()
+    end,
+    group = group,
+  })
 end
 
 local function normalize_color_scheme(wanted)
