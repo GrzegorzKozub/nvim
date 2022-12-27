@@ -72,7 +72,11 @@ function M.plugins(first_run)
 
     use { 'hail2u/vim-css3-syntax', ft = { 'css', 'less', 'scss' } }
 
-    use { 'fatih/vim-go', ft = { 'go' } }
+    use {
+      'fatih/vim-go',
+      cmd = { 'GoInstallBinaries', 'GoUpdateBinaries' },
+      ft = { 'go' },
+    }
 
     use { 'vim-ruby/vim-ruby', ft = 'ruby' }
     use { 'tpope/vim-rails', ft = 'ruby' }
