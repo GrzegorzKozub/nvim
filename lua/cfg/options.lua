@@ -5,6 +5,7 @@ function M.setup()
     backup = true,
     cursorline = true, -- can break per https://github.com/neovim/neovim/issues/9019
     expandtab = true,
+    foldenable = false,
     foldlevelstart = 99,
     foldmethod = 'syntax',
     ignorecase = true,

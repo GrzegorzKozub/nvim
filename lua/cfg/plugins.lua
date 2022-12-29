@@ -27,6 +27,7 @@ function M.plugins(first_run)
   return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
+    use 'sainnhe/gruvbox-material'
     use 'lifepillar/vim-gruvbox8'
     use 'lifepillar/vim-solarized8'
 
@@ -43,7 +44,7 @@ function M.plugins(first_run)
     use 'numToStr/Comment.nvim'
 
     use 'editorconfig/editorconfig-vim'
-    use { 'sbdchd/neoformat', cmd = 'Neoformat' }
+    use 'sbdchd/neoformat'
 
     use 'w0rp/ale'
 
@@ -92,6 +93,13 @@ function M.plugins(first_run)
     use { 'octol/vim-cpp-enhanced-highlight', ft = { 'cpp' } }
 
     use { 'PProvost/vim-ps1', ft = { 'ps1' } }
+
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = function()
+        require('nvim-treesitter.install').update { with_sync = true }()
+      end,
+    }
 
     if first_run then
       require('packer').sync()
