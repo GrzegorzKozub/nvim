@@ -26,8 +26,6 @@ if &background ==# 'light'
   let [ s:base00, s:base0 ] = [ s:base0, s:base00 ]
 endif
 
-exec 'hi ALEErrorSign guifg=' . s:red . ' guibg=NONE'
-exec 'hi ALEWarningSign guifg=' . s:yellow . ' guibg=NONE'
 exec 'hi Cursor guifg=' . s:base03 . ' guibg=' . s:orange
 exec 'hi CursorLineNr guifg=' . s:base0 . ' guibg=' . s:base02 . ' gui=NONE cterm=NONE'
 exec 'hi Folded guifg=' . s:base00 . ' guibg=' . s:base03 . ' gui=NONE cterm=NONE'
@@ -42,12 +40,19 @@ exec 'hi VertSplit guifg=' . s:base03 . ' guibg=' . s:base03
 exec 'hi Visual guifg=NONE guibg=' . s:base02 . ' gui=NONE cterm=NONE'
 exec 'hi WildMenu guifg=' . s:base0 . ' guibg=' . s:base03 . ' gui=NONE cterm=NONE'
 
+exec 'hi ALEErrorSign guifg=' . s:red . ' guibg=NONE'
+exec 'hi ALEWarningSign guifg=' . s:yellow . ' guibg=NONE'
+exec 'hi ALEVirtualTextError guifg=' . s:base02
+exec 'hi ALEVirtualTextWarning guifg=' . s:base02
+exec 'hi ALEVirtualTextInfo guifg=' . s:base02
+exec 'hi ALEVirtualTextStyleError guifg=' . s:base02
+exec 'hi ALEVirtualTextStypeWarning guifg=' . s:base02
+
 hi Error gui=NONE cterm=NONE guibg=NONE
 hi ErrorMsg gui=NONE cterm=NONE guibg=NONE
 hi IncSearch gui=reverse cterm=reverse
 hi NonText gui=NONE cterm=NONE
 hi Question gui=NONE cterm=NONE
 hi WarningMsg gui=NONE cterm=NONE
-"hi Title gui=NONE cterm=NONE
 hi Underlined gui=NONE cterm=NONE
 

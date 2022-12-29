@@ -75,8 +75,6 @@ else
 
 endif
 
-exec 'hi ALEErrorSign guifg=' . s:red . ' guibg=NONE'
-exec 'hi ALEWarningSign guifg=' . s:yellow . ' guibg=NONE'
 exec 'hi CursorLineNr guifg=' . s:bg4
 exec 'hi ErrorMsg guifg=' . s:red . ' guibg=' . s:bg0_h . ' gui=NONE cterm=NONE'
 exec 'hi Folded guifg=' . s:bg4 . ' guibg=' . s:bg0_h
@@ -89,6 +87,14 @@ exec 'hi Terminal guifg=' . s:fg2 . ' guibg=' . s:bg0_h . ' gui=NONE cterm=NONE'
 exec 'hi Todo guifg=' . s:neutral_gray . ' gui=NONE cterm=NONE'
 exec 'hi Visual guifg=NONE guibg=' . s:bg1 . ' gui=NONE cterm=NONE'
 exec 'hi WildMenu guifg=' . s:fg2 . ' guibg=' . s:bg0_h . ' gui=NONE cterm=NONE'
+
+exec 'hi ALEErrorSign guifg=' . s:red . ' guibg=NONE'
+exec 'hi ALEWarningSign guifg=' . s:yellow . ' guibg=NONE'
+exec 'hi ALEVirtualTextError guifg=' . s:bg2
+exec 'hi ALEVirtualTextWarning guifg=' . s:bg2
+exec 'hi ALEVirtualTextInfo guifg=' . s:bg2
+exec 'hi ALEVirtualTextStyleError guifg=' . s:bg2
+exec 'hi ALEVirtualTextStypeWarning guifg=' . s:bg2
 
 hi Directory gui=NONE cterm=NONE
 hi Error gui=NONE cterm=NONE

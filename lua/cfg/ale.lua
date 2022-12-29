@@ -6,7 +6,7 @@ function M.setup()
 
   vim.g.ale_set_loclist = 0
   vim.g.ale_set_quickfix = 1
-  vim.g.ale_virtualtext_cursor = 0
+  vim.g.ale_virtualtext_prefix = '%comment% '
 
   vim.g.ale_sign_error = '●'
   vim.g.ale_sign_warning = '▲'
