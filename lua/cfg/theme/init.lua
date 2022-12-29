@@ -1,13 +1,14 @@
 local M = {}
 
 local function options()
-  vim.g.gruvbox_italics = 0
-  vim.g.gruvbox_italicize_strings = 0
-  vim.g.solarized_italics = 0
-end
-
-local function hide_tilde_on_empty_lines()
-  vim.cmd.highlight { 'EndOfBuffer', 'guifg=BG' }
+  vim.g.gruvbox_material_background = 'soft'
+  vim.g.gruvbox_material_better_performance = 1
+  vim.g.gruvbox_material_disable_italic_comment = 1
+  vim.g.gruvbox_material_foreground = 'original' -- switch to material soon
+  vim.g.gruvbox_material_lightline_disable_bold = 1
+  vim.g.gruvbox_material_show_eob = 0
+  vim.g.gruvbox_material_statusline_style = 'original' -- switch to default soon
+  vim.g.gruvbox_material_transparent_background = 2
 end
 
 local function patch_color_scheme(color_scheme)
@@ -23,17 +24,7 @@ local function auto_fix()
   vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = '*',
     callback = function(args)
-      hide_tilde_on_empty_lines()
       patch_color_scheme(args.match)
-      refresh_screen()
-    end,
-    group = group,
-  })
-  vim.api.nvim_create_autocmd('OptionSet', {
-    pattern = 'background',
-    callback = function()
-      hide_tilde_on_empty_lines()
-      patch_color_scheme(vim.g.colors_name)
       refresh_screen()
     end,
     group = group,
@@ -41,8 +32,8 @@ local function auto_fix()
 end
 
 local function normalize_color_scheme(wanted)
-  local allowed = { solarized = 'solarized8', gruvbox = 'gruvbox8_soft' }
-  return allowed[wanted] ~= nil and allowed[wanted] or 'gruvbox8_soft'
+  local allowed = { gruvbox = 'gruvbox-material' }
+  return allowed[wanted] ~= nil and allowed[wanted] or 'gruvbox-material'
 end
 
 local function normalize_background(wanted)

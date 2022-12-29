@@ -28,7 +28,7 @@ let g:lightline = {
     \ 'alewarning': 'LightLineALEWarning'
   \ },
   \ 'component_type': { 'aleerror': 'error', 'alewarning': 'warning' },
-  \ 'colorscheme': g:colors_name,
+  \ 'colorscheme': 'gruvbox_material',
   \ 'mode_map': {
     \ 'n' : 'n',
     \ 'i' : 'i',

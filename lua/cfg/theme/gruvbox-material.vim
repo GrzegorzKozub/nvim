@@ -1,5 +1,3 @@
-" https://github.com/morhetz/gruvbox
-
 let s:neutral_red    = '#cc241d' " 01
 let s:neutral_green  = '#98971a' " 02
 let s:neutral_yellow = '#d79921' " 03
@@ -75,36 +73,15 @@ else
 
 endif
 
-exec 'hi CursorLineNr guifg=' . s:bg4
-exec 'hi ErrorMsg guifg=' . s:red . ' guibg=' . s:bg0_s . ' gui=NONE cterm=NONE'
-exec 'hi Folded guifg=' . s:bg4 . ' guibg=' . s:bg0_s
-exec 'hi Normal guifg=' . s:fg2 . ' guibg=' . s:bg0_s
-exec 'hi SignColumn guibg=' . s:bg0_s
-exec 'hi SpecialKey guifg=' . s:green . ' gui=NONE cterm=NONE'
-exec 'hi StatusLine guifg=' . s:bg4 . ' guibg=' . s:bg0_s . ' gui=NONE cterm=NONE'
+exec 'hi Folded guifg=' . s:bg3
+exec 'hi StatusLine guifg=' . s:bg4
 exec 'hi StatusLineNC guifg=' . s:bg0_s
-exec 'hi Terminal guifg=' . s:fg2 . ' guibg=' . s:bg0_s . ' gui=NONE cterm=NONE'
-exec 'hi Todo guifg=' . s:neutral_gray . ' gui=NONE cterm=NONE'
-exec 'hi Visual guifg=NONE guibg=' . s:bg1 . ' gui=NONE cterm=NONE'
-exec 'hi WildMenu guifg=' . s:fg2 . ' guibg=' . s:bg0_s . ' gui=NONE cterm=NONE'
+exec 'hi Todo guifg=' . s:neutral_gray
+exec 'hi WildMenu guifg=' . s:fg2 . ' guibg=' . s:bg0_s
 
-exec 'hi ALEErrorSign guifg=' . s:red . ' guibg=NONE'
-exec 'hi ALEWarningSign guifg=' . s:yellow . ' guibg=NONE'
-exec 'hi ALEVirtualTextError guifg=' . s:bg2
-exec 'hi ALEVirtualTextWarning guifg=' . s:bg2
-exec 'hi ALEVirtualTextInfo guifg=' . s:bg2
-exec 'hi ALEVirtualTextStyleError guifg=' . s:bg2
-exec 'hi ALEVirtualTextStypeWarning guifg=' . s:bg2
-
-hi Directory gui=NONE cterm=NONE
-hi Error gui=NONE cterm=NONE
-hi Function gui=NONE cterm=NONE
-hi MarkdownLinkText gui=NONE cterm=NONE
-hi MatchParen gui=NONE cterm=NONE
+hi ErrorMsg gui=NONE cterm=NONE
 hi ModeMsg gui=NONE cterm=NONE
 hi MoreMsg gui=NONE cterm=NONE
-hi NonText gui=NONE cterm=NONE
-hi Question gui=NONE cterm=NONE
 hi WarningMsg gui=NONE cterm=NONE
 hi Title gui=NONE cterm=NONE
 hi Underlined gui=NONE cterm=NONE

@@ -28,8 +28,6 @@ function M.plugins(first_run)
     use 'wbthomason/packer.nvim'
 
     use 'sainnhe/gruvbox-material'
-    use 'lifepillar/vim-gruvbox8'
-    use 'lifepillar/vim-solarized8'
 
     use 'itchyny/lightline.vim'
     use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
