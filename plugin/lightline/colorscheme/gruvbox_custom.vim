@@ -1,5 +1,3 @@
-" https://github.com/morhetz/gruvbox
-
 let s:neutral_red    = '#cc241d' " 01
 let s:neutral_green  = '#98971a' " 02
 let s:neutral_yellow = '#d79921' " 03
@@ -97,7 +95,5 @@ function! s:create_palette(bg) abort
   return l:p
 endfunction
 
-let g:lightline#colorscheme#gruvbox8_hard#palette = lightline#colorscheme#fill(s:create_palette(s:bg0_h))
-let g:lightline#colorscheme#gruvbox8#palette      = lightline#colorscheme#fill(s:create_palette(s:bg0))
-let g:lightline#colorscheme#gruvbox8_soft#palette = lightline#colorscheme#fill(s:create_palette(s:bg0_s))
+let g:lightline#colorscheme#gruvbox_custom#palette = lightline#colorscheme#fill(s:create_palette(s:bg0_s))
 

@@ -4,12 +4,12 @@ require('cfg.keys').setup()
 
 require('cfg.plugins').setup()
 
-require('cfg.theme').setup()
-
+require('cfg.gruvbox-material').setup()
 require('cfg.lightline').setup()
-require('cfg.vim-hexokinase').setup()
 
 require('cfg.fzf').setup()
+
+require('cfg.vim-hexokinase').setup()
 
 require('cfg.comment').setup()
 

@@ -28,12 +28,12 @@ function M.plugins(first_run)
     use 'wbthomason/packer.nvim'
 
     use 'sainnhe/gruvbox-material'
-
     use 'itchyny/lightline.vim'
-    use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
 
     use 'junegunn/fzf'
     use 'junegunn/fzf.vim'
+
+    use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
 
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'

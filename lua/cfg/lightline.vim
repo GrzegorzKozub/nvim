@@ -1,7 +1,5 @@
 scriptencoding 'utf-8'
 
-" options
-
 let g:lightline = {
   \ 'active': {
     \ 'left': [
@@ -28,7 +26,7 @@ let g:lightline = {
     \ 'alewarning': 'LightLineALEWarning'
   \ },
   \ 'component_type': { 'aleerror': 'error', 'alewarning': 'warning' },
-  \ 'colorscheme': 'gruvbox_material',
+  \ 'colorscheme': g:lightline_color_scheme,
   \ 'mode_map': {
     \ 'n' : 'n',
     \ 'i' : 'i',
@@ -42,8 +40,6 @@ let g:lightline = {
   \ 'subseparator': { 'left': '|', 'right': '|' },
   \ 'enable': { 'tabline': 0 },
 \ }
-
-" component functions
 
 function! g:LightLineBuffer() abort
   if &filetype =~? 'help\|netrw\|qf\|packer' | return '' | endif
@@ -85,27 +81,10 @@ function! g:LightLineALEWarning() abort
   return s:lightline_format_ale_icon(s:get_ale_counts().warning, '▲')
 endfunction
 
-" ALE integration
-
 augroup UpdateLightLineWhenALELints
   autocmd!
   autocmd User ALEFixPost call lightline#update()
   autocmd User ALEJobStarted call lightline#update()
   autocmd User ALELintPost call lightline#update()
-augroup END
-
-" reload on color scheme change
-
-function! s:reload_lightline() abort
-  if !exists('g:loaded_lightline') | return | endif
-  exe 'source ' . stdpath('config') . '/plugin/lightline/colorscheme/' . substitute(g:colors_name, '_.*', '', '') . '.vim'
-  let g:lightline.colorscheme = g:colors_name
-  call lightline#enable()
-endfunction
-
-augroup ReloadLightLineWhenColorSchemeChanges
-  autocmd!
-  autocmd ColorScheme * call s:reload_lightline()
-  autocmd OptionSet background call s:reload_lightline()
 augroup END
 
