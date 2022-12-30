@@ -33,16 +33,16 @@ else
   let g:fzf_colors = {
     \ 'bg':      [ 'bg', 'Normal' ],
     \ 'bg+':     [ 'bg', 'Normal' ],
-    \ 'border':  [ 'fg', 'Comment' ],
+    \ 'border':  [ 'fg', 'LineNr' ],
     \ 'fg':      [ 'fg', 'Comment' ],
     \ 'fg+':     [ 'fg', 'Normal' ],
-    \ 'header':  [ 'fg', 'Keyword' ],
-    \ 'hl':      [ 'fg', 'IncSearch' ],
-    \ 'hl+':     [ 'fg', 'IncSearch' ],
+    \ 'header':  [ 'fg', 'Identifier' ],
+    \ 'hl':      [ 'bg', 'Search' ],
+    \ 'hl+':     [ 'bg', 'IncSearch' ],
     \ 'info':    [ 'fg', 'Comment' ],
     \ 'marker':  [ 'fg', 'Normal' ],
     \ 'pointer': [ 'fg', 'Normal' ],
-    \ 'prompt':  [ 'fg', 'Underlined' ]
+    \ 'prompt':  [ 'fg', 'Number' ]
   \ }
 
   let s:marker = '•'
