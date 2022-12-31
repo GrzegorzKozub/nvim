@@ -1,28 +1,42 @@
 scriptencoding 'utf-8'
 
+let s:options = [
+  \ '--no-bold', '--no-info', '--no-mouse', '--no-separator',
+  \ '--info', 'hidden'
+\ ]
+
 if has('win32')
 
   function! s:get_hi(group, key) abort
     return matchstr(execute('hi ' . a:group), a:key . '=\zs\S*')
   endfunction
 
-  function! s:set_fzf_defaults() abort
-    let l:comment_fg = s:get_hi('Comment', 'guifg')
-    let l:inc_search_fg = s:get_hi('IncSearch', 'guifg')
-    let l:string_fg = s:get_hi('String', 'guifg')
-    let l:normal_fg = s:get_hi('Normal', 'guifg')
-    let l:normal_bg = s:get_hi('Normal', 'guibg')
-    let l:underlined_fg = s:get_hi('Underlined', 'guifg')
-    let $FZF_DEFAULT_OPTS = '--color bg:' . l:normal_bg . ',bg+:' . l:normal_bg . ',border:' . l:comment_fg . ',fg:' . l:comment_fg . ',fg+:' . l:normal_fg . ',header:' . l:string_fg . ',hl:' . l:inc_search_fg . ',hl+:' . l:inc_search_fg . ',info:' . l:comment_fg . ',marker:' . l:normal_fg . ',pointer:' . l:normal_fg . ',prompt:' . l:underlined_fg
-  endfunction
+  let s:comment_fg = s:get_hi('Comment', 'guifg')
+  let s:identifier_fg = s:get_hi('Identifier', 'guifg')
+  let s:inc_search_bg = s:get_hi('IncSearch', 'guibg')
+  let s:line_nr_fg = s:get_hi('LineNr', 'guifg')
+  let s:normal_bg = s:get_hi('Normal', 'guibg')
+  let s:normal_fg = s:get_hi('Normal', 'guifg')
+  let s:number_fg = s:get_hi('Number', 'guifg')
+  let s:search_bg = s:get_hi('Search', 'guibg')
 
-  call s:set_fzf_defaults()
+  let s:color = [
+    \ '--color=',
+    \ 'bg:' . s:normal_bg,
+    \ ',bg+:' . s:normal_bg,
+    \ ',border:' . s:line_nr_fg,
+    \ ',fg:' . s:comment_fg,
+    \ ',fg+:' . s:normal_fg,
+    \ ',header:' . s:identifier_fg,
+    \ ',hl:' . s:search_bg,
+    \ ',hl+:' . s:inc_search_bg,
+    \ ',info:' . s:comment_fg,
+    \ ',marker:' . s:normal_fg,
+    \ ',pointer:' . s:normal_fg,
+    \ ',prompt:' . s:number_fg
+  \ ]
 
-  augroup SetFZFDefaultsWhenColorSchemeChanges
-    autocmd!
-    autocmd ColorScheme * call s:set_fzf_defaults()
-    autocmd OptionSet background call s:set_fzf_defaults()
-  augroup END
+  call add(s:options, join(s:color, ''))
 
   let s:marker = '>'
   let s:pointer = '>'
@@ -51,7 +65,11 @@ else
 
 endif
 
-let s:options = [ '--marker', s:marker, '--no-bold', '--no-info', '--pointer', s:pointer, '--prompt' ]
+call extend(s:options, [
+  \ '--pointer', s:pointer,
+  \ '--marker', s:marker,
+  \ '--prompt'
+\ ])
 
 command! -bang -nargs=? -complete=dir Buffers
   \ call fzf#vim#buffers(<q-args>, { 'options': s:options + [ 'buffers' . s:prompt ] }, <bang>0)

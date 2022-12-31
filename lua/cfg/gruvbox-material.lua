@@ -7,7 +7,6 @@ local function options()
   vim.g.gruvbox_material_foreground = 'original' -- switch to material soon
   vim.g.gruvbox_material_lightline_disable_bold = 1
   vim.g.gruvbox_material_show_eob = 0
-  vim.g.gruvbox_material_transparent_background = 2
 
   if vim.g.gruvbox_material_foreground == 'original' then
     local fg0 = vim.o.background == 'dark' and { '#d5c4a1', '250' } or { '#504945', '239' }
