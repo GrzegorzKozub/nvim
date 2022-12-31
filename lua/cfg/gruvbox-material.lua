@@ -48,16 +48,12 @@ local function custom_colors()
   })
 end
 
-local function apply()
-  local theme = require('cfg.theme').get()
-  vim.opt.background = theme.background
-  vim.cmd.colorscheme(theme.vim)
-end
-
 function M.setup()
+  local theme = require('cfg.my-theme').get()
+  vim.opt.background = theme.background
   options()
   custom_colors()
-  apply()
+  vim.cmd.colorscheme(theme.vim)
 end
 
 return M
