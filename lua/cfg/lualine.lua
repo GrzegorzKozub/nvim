@@ -46,7 +46,7 @@ function M.setup()
   lualine.setup {
     options = {
       icons_enabled = false,
-      theme = 'gruvbox-material',
+      theme = require('cfg.my-theme').get().lualine,
       section_separators = '',
       component_separators = '',
     },

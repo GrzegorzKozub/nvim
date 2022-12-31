@@ -2,7 +2,7 @@ local M = {}
 
 local function map_color_scheme(key)
   local known = {
-    gruvbox = { vim = 'gruvbox-material', lightline = 'gruvbox_custom' }, -- switch to lualine and gruvbox_material soon
+    gruvbox = { vim = 'gruvbox-material', lualine = 'gruvbox-material' },
   }
   return known[key] ~= nil and known[key] or known.gruvbox
 end
