@@ -5,7 +5,7 @@ require('cfg.keys').setup()
 require('cfg.plugins').setup()
 
 require('cfg.gruvbox-material').setup()
-require('cfg.lightline').setup()
+require('cfg.lualine').setup()
 
 require('cfg.fzf').setup()
 

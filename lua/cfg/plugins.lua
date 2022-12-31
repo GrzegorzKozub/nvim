@@ -29,6 +29,7 @@ function M.plugins(first_run)
 
     use 'sainnhe/gruvbox-material'
     use 'itchyny/lightline.vim'
+    use 'nvim-lualine/lualine.nvim'
 
     use 'junegunn/fzf'
     use 'junegunn/fzf.vim'

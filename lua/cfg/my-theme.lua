@@ -8,8 +8,8 @@ local function map_color_scheme(key)
 end
 
 local function normalize_background(wanted)
-  for _, value in ipairs { 'dark', 'light' } do
-    if wanted == value then
+  for _, known in ipairs { 'dark', 'light' } do
+    if wanted == known then
       return wanted
     end
   end
