@@ -46,9 +46,10 @@ function M.setup()
   lualine.setup {
     options = {
       icons_enabled = false,
-      theme = require('cfg.my-theme').get().lualine,
+      theme = require(require('cfg.my-theme').get().cfg).lualine_theme(),
       section_separators = '',
       component_separators = '',
+      refresh = { statusline = 5000 },
     },
     sections = {
       lualine_a = { { 'mode', fmt = mode_fmt } },

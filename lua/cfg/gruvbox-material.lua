@@ -4,13 +4,16 @@ local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
   vim.g.gruvbox_material_disable_italic_comment = 1
-  vim.g.gruvbox_material_foreground = 'original' -- switch to material soon
-  vim.g.gruvbox_material_lightline_disable_bold = 1
+  vim.g.gruvbox_material_foreground = 'original' -- switch to 'material' soon (remove this option)
   vim.g.gruvbox_material_show_eob = 0
+  vim.g.gruvbox_material_statusline_style = 'original' -- switch to 'default' soon (remove this option)
 
   if vim.g.gruvbox_material_foreground == 'original' then
     local fg0 = vim.o.background == 'dark' and { '#d5c4a1', '250' } or { '#504945', '239' }
-    vim.g.gruvbox_material_colors_override = { fg0 = fg0 }
+    vim.g.gruvbox_material_colors_override = {
+      fg0 = fg0,
+      bg_statusline3 = { '#514945', '239' }, -- continue and introduce versions for light background
+    }
   else
     vim.g.gruvbox_material_colors_override = vim.empty_dict()
   end
@@ -22,7 +25,10 @@ local function custom_colors()
     pattern = 'gruvbox-material',
     callback = function(args)
       local prefix = args.match:gsub('-', '_')
+
+      -- switch 'original' to 'default' soon
       local palette = vim.fn[prefix .. '#get_palette']('soft', 'original', vim.g.gruvbox_material_colors_override)
+
       local hi = prefix .. '#highlight'
 
       vim.fn[hi]('Folded', palette.bg5, palette.none)
@@ -54,6 +60,19 @@ function M.setup()
   options()
   custom_colors()
   vim.cmd.colorscheme(theme.vim)
+end
+
+function M.lualine_theme()
+  local theme = require('lualine.themes.' .. require('cfg.my-theme').get().lualine)
+  for _, mode in pairs { 'normal', 'insert', 'visual', 'replace', 'command', 'terminal', 'inactive' } do
+    theme[mode].c.bg = 'NONE'
+  end
+
+  -- get these from palette or use the global override variable
+  theme.normal.a.bg = '#7c6f64'
+  -- theme.normal.b.bg = '#514945'
+
+  return theme
 end
 
 return M
