@@ -65,7 +65,8 @@ function M.setup()
           'diagnostics',
           sources = { 'nvim_diagnostic', 'ale' },
           sections = { 'error', 'warn' },
-          symbols = { error = '● ', warn = '▲ ' },
+          -- symbols = { error = '● ', warn = '▲ ' },
+          symbols = { error = '', warn = '' },
         },
         { 'diff', symbols = { added = '', modified = '', removed = '' } },
         'filetype',
@@ -76,6 +77,14 @@ function M.setup()
       lualine_z = {
         { progress_and_location },
       },
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = { 'filename' },
+      lualine_x = { 'filetype' },
+      lualine_y = {},
+      lualine_z = {},
     },
   }
 end
