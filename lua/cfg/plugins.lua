@@ -28,7 +28,6 @@ function M.plugins(first_run)
     use 'wbthomason/packer.nvim'
 
     use 'sainnhe/gruvbox-material'
-    use 'itchyny/lightline.vim'
     use 'nvim-lualine/lualine.nvim'
 
     use 'junegunn/fzf'

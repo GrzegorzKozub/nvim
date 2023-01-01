@@ -12,24 +12,24 @@ local function options()
     local fg0 = vim.o.background == 'dark' and { '#d5c4a1', '250' } or { '#504945', '239' }
     vim.g.gruvbox_material_colors_override = {
       fg0 = fg0,
-      bg_statusline3 = { '#514945', '239' }, -- continue and introduce versions for light background
     }
   else
     vim.g.gruvbox_material_colors_override = vim.empty_dict()
   end
 end
 
+local function get_palette()
+  -- switch 'original' to 'default' soon
+  return vim.fn['gruvbox_material#get_palette']('soft', 'original', vim.g.gruvbox_material_colors_override)
+end
+
 local function custom_colors()
   local group = vim.api.nvim_create_augroup('GruvboxMaterialCustomColors', { clear = true })
   vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'gruvbox-material',
-    callback = function(args)
-      local prefix = args.match:gsub('-', '_')
-
-      -- switch 'original' to 'default' soon
-      local palette = vim.fn[prefix .. '#get_palette']('soft', 'original', vim.g.gruvbox_material_colors_override)
-
-      local hi = prefix .. '#highlight'
+    callback = function()
+      local hi = 'gruvbox_material#highlight'
+      local palette = get_palette()
 
       vim.fn[hi]('Folded', palette.bg5, palette.none)
       vim.fn[hi]('IncSearch', palette.bg0, palette.orange)
@@ -64,13 +64,38 @@ end
 
 function M.lualine_theme()
   local theme = require('lualine.themes.' .. require('cfg.my-theme').get().lualine)
+
+  if vim.g.gruvbox_material_foreground == 'original' then
+    if vim.o.background == 'dark' then
+      theme.normal.a.bg = '#7c6f64' -- was #a89984
+      theme.normal.b.bg = '#514945' -- was #46413e
+      theme.normal.b.fg = '#32302f' -- was #a89984
+      theme.normal.c.fg = '#7c6f64' -- was #a89984
+      theme.inactive.c.fg = '#665c54' -- was #a89984
+    else
+      theme.normal.a.bg = '#a89984' -- was #7c6f64
+      theme.normal.b.bg = '#d5c4a1' -- was #dac9a5
+      theme.normal.b.fg = '#f2e5bc' -- was #7c6f64
+      theme.normal.c.fg = '#a89984' -- was #7c6f64
+      theme.inactive.c.fg = '#d5c4a1' -- was #7c6f64
+    end
+  end
+
+  local palette = get_palette()
+
+  theme.visual.a.bg = palette.green[1]
+  theme.replace.a.bg = palette.orange[1]
+  theme.command.a.bg = palette.aqua[1]
+
+  for _, mode in pairs { 'insert', 'visual', 'replace', 'command', 'terminal' } do
+    theme[mode].b = theme.normal.b
+    theme[mode].c = theme.normal.c
+    theme[mode].z = theme.normal.a
+  end
+
   for _, mode in pairs { 'normal', 'insert', 'visual', 'replace', 'command', 'terminal', 'inactive' } do
     theme[mode].c.bg = 'NONE'
   end
-
-  -- get these from palette or use the global override variable
-  theme.normal.a.bg = '#7c6f64'
-  -- theme.normal.b.bg = '#514945'
 
   return theme
 end

@@ -43,6 +43,12 @@ function M.setup()
     return
   end
 
+  local filename = {
+    'filename',
+    symbols = { modified = '●', readonly = '■', unnamed = 'untitled' },
+    cond = filename_cond,
+  }
+
   lualine.setup {
     options = {
       icons_enabled = false,
@@ -54,13 +60,7 @@ function M.setup()
     sections = {
       lualine_a = { { 'mode', fmt = mode_fmt } },
       lualine_b = { { buffer, cond = buffer_cond } },
-      lualine_c = {
-        {
-          'filename',
-          symbols = { modified = '●', readonly = '', unnamed = 'untitled' },
-          cond = filename_cond,
-        },
-      },
+      lualine_c = { filename },
       lualine_x = {
         {
           'diagnostics',
@@ -82,7 +82,7 @@ function M.setup()
     inactive_sections = {
       lualine_a = {},
       lualine_b = {},
-      lualine_c = { 'filename' },
+      lualine_c = { filename },
       lualine_x = { 'filetype' },
       lualine_y = {},
       lualine_z = {},
