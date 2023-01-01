@@ -4,9 +4,8 @@ local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
   vim.g.gruvbox_material_disable_italic_comment = 1
-  vim.g.gruvbox_material_foreground = 'original' -- switch to 'material' soon (remove this option)
+  vim.g.gruvbox_material_foreground = 'material'
   vim.g.gruvbox_material_show_eob = 0
-  vim.g.gruvbox_material_statusline_style = 'original' -- switch to 'default' soon (remove this option)
 
   if vim.g.gruvbox_material_foreground == 'original' then
     local fg0 = vim.o.background == 'dark' and { '#d5c4a1', '250' } or { '#504945', '239' }
@@ -19,8 +18,7 @@ local function options()
 end
 
 local function get_palette()
-  -- switch 'original' to 'default' soon
-  return vim.fn['gruvbox_material#get_palette']('soft', 'original', vim.g.gruvbox_material_colors_override)
+  return vim.fn['gruvbox_material#get_palette']('soft', 'material', vim.g.gruvbox_material_colors_override)
 end
 
 local function custom_colors()
@@ -65,24 +63,23 @@ end
 function M.lualine_theme()
   local theme = require('lualine.themes.' .. require('cfg.my-theme').get().lualine)
 
-  if vim.g.gruvbox_material_foreground == 'original' then
-    if vim.o.background == 'dark' then
-      theme.normal.a.bg = '#7c6f64' -- was #a89984
-      theme.normal.b.bg = '#514945' -- was #46413e
-      theme.normal.b.fg = '#32302f' -- was #a89984
-      theme.normal.c.fg = '#7c6f64' -- was #a89984
-      theme.inactive.c.fg = '#665c54' -- was #a89984
-    else
-      theme.normal.a.bg = '#a89984' -- was #7c6f64
-      theme.normal.b.bg = '#d5c4a1' -- was #dac9a5
-      theme.normal.b.fg = '#f2e5bc' -- was #7c6f64
-      theme.normal.c.fg = '#a89984' -- was #7c6f64
-      theme.inactive.c.fg = '#d5c4a1' -- was #7c6f64
-    end
+  if vim.o.background == 'dark' then
+    theme.normal.a.bg = '#7c6f64' -- was #a89984
+    theme.normal.b.bg = '#514945' -- was #5b534d
+    theme.normal.b.fg = '#32302f' -- was #ddc7a1 in material and #a89984 in original
+    theme.normal.c.fg = '#7c6f64' -- was #ddc7a1 in material and #a89984 in original
+    theme.inactive.c.fg = '#665c54' -- was #a89984
+  else
+    theme.normal.a.bg = '#a89984' -- was #7c6f64
+    theme.normal.b.bg = '#d5c4a1' -- was #dac9a5
+    theme.normal.b.fg = '#f2e5bc' -- was #4f3829 in material and #7c6f64 in original
+    theme.normal.c.fg = '#a89984' -- was #4f3829 in material and #7c6f64 in original
+    theme.inactive.c.fg = '#d5c4a1' -- was #7c6f64
   end
 
   local palette = get_palette()
 
+  theme.insert.a.bg = palette.blue[1]
   theme.visual.a.bg = palette.green[1]
   theme.replace.a.bg = palette.orange[1]
   theme.command.a.bg = palette.aqua[1]
