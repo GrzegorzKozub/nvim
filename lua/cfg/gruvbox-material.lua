@@ -93,6 +93,7 @@ function M.lualine_theme()
   end
 
   for _, mode in pairs { 'normal', 'insert', 'visual', 'replace', 'command', 'terminal', 'inactive' } do
+    theme[mode].a.gui = 'NONE'
     theme[mode].c.bg = 'NONE'
   end
 
