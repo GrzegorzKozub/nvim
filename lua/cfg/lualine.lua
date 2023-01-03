@@ -55,7 +55,7 @@ function M.setup()
       theme = require(require('cfg.my-theme').get().cfg).lualine_theme(),
       section_separators = '',
       component_separators = '',
-      refresh = { statusline = 5000 },
+      refresh = { statusline = 10000 },
     },
     sections = {
       lualine_a = { { 'mode', fmt = mode_fmt } },

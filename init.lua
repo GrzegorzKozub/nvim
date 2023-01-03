@@ -6,6 +6,7 @@ require('cfg.plugins').setup()
 
 require('cfg.gruvbox-material').setup()
 require('cfg.lualine').setup()
+require('cfg.gitsigns').setup()
 
 require('cfg.fzf').setup()
 

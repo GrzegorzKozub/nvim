@@ -30,6 +30,7 @@ function M.plugins(first_run)
 
       use 'sainnhe/gruvbox-material'
       use 'nvim-lualine/lualine.nvim'
+      use 'lewis6991/gitsigns.nvim'
 
       use 'junegunn/fzf'
       use 'junegunn/fzf.vim'
