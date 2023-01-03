@@ -23,6 +23,13 @@ local function file_types()
     end,
     group = group,
   })
+  vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+    pattern = 'config',
+    callback = function()
+      vim.cmd.set 'filetype=confini'
+    end,
+    group = group,
+  })
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'vim',
     callback = function()
