@@ -1,12 +1,12 @@
 local M = {}
 
 function M.setup()
-  local loaded, treesitter = pcall(require, 'nvim-treesitter.configs')
+  local loaded, plugin = pcall(require, 'nvim-treesitter.configs')
   if not loaded then
     return
   end
 
-  treesitter.setup {
+  plugin.setup {
     ensure_installed = {
       'bash',
       'c_sharp',

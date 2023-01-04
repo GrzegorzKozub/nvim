@@ -1,12 +1,12 @@
 local M = {}
 
 function M.setup()
-  local loaded, comment = pcall(require, 'Comment')
+  local loaded, plugin = pcall(require, 'Comment')
   if not loaded then
     return
   end
 
-  comment.setup()
+  plugin.setup()
 end
 
 return M
