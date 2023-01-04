@@ -47,7 +47,6 @@ local function custom_colors()
       vim.cmd.hi('ModeMsg', 'gui=NONE cterm=NONE')
       vim.cmd.hi('MoreMsg', 'gui=NONE cterm=NONE')
       vim.cmd.hi('Title', 'gui=NONE cterm=NONE')
-      vim.cmd.hi('Underlined', 'gui=NONE cterm=NONE')
       vim.cmd.hi('WarningMsg', 'gui=NONE cterm=NONE')
     end,
     group = group,
