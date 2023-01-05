@@ -8,13 +8,12 @@ function M.setup()
 
   plugin.setup {
     signs = {
-      -- alternatives: ┃ ━ ┇
-      add = { text = '│' },
-      change = { text = '│' },
-      delete = { text = '─' },
+      add = { text = '┃' },
+      change = { text = '┃' },
+      delete = { text = '━' },
       topdelete = { text = '' },
-      changedelete = { text = '─' },
-      untracked = { text = '┆' },
+      changedelete = { text = '━' },
+      untracked = { text = '┇' },
     },
     attach_to_untracked = false,
     watch_gitdir = { interval = 10000 },
