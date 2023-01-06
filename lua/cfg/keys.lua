@@ -50,9 +50,6 @@ function M.setup()
   vim.api.nvim_create_user_command('WrapToggle ', 'set wrap! linebreak! nolist', {})
   vim.keymap.set('n', '<Leader>w', ':WrapToggle<CR>', options)
 
-  -- netrw
-  vim.keymap.set('n', '<Leader>e', ':Explore<CR>', options)
-
   -- neoformat
   vim.keymap.set('n', '<Leader>f', ':Neoformat<CR>', options)
 

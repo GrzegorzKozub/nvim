@@ -5,6 +5,8 @@ require('cfg.keys').setup()
 require('cfg.plugins').setup()
 
 require('cfg.gruvbox-material').setup()
+
+require('cfg.nvim-tree').setup()
 require('cfg.lualine').setup()
 require('cfg.gitsigns').setup()
 

@@ -29,6 +29,8 @@ function M.plugins(first_run)
       use 'wbthomason/packer.nvim'
 
       use 'sainnhe/gruvbox-material'
+
+      use 'nvim-tree/nvim-tree.lua'
       use 'nvim-lualine/lualine.nvim'
       use 'lewis6991/gitsigns.nvim'
 
