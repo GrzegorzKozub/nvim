@@ -17,6 +17,7 @@ function M.setup()
     },
     attach_to_untracked = false,
     watch_gitdir = { interval = 10000 },
+    preview_config = { border = 'rounded', row = -1, col = 2 },
     on_attach = function(bufnr)
       local gitsigns = package.loaded.gitsigns
 
