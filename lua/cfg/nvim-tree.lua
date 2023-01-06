@@ -14,8 +14,6 @@ function M.setup()
   plugin.setup {
     hijack_cursor = true,
     sync_root_with_cwd = true,
-    update_focused_file = { enable = true },
-    -- diagnostics = { },
     git = { show_on_dirs = false },
     modified = { enable = true, show_on_dirs = false },
     on_attach = function()
@@ -23,37 +21,21 @@ function M.setup()
         hi! link NvimTreeNormal Normal
         hi! link NvimTreeEndOfBuffer EndOfBuffer
         hi! link NvimTreeRootFolder Aqua
-        hi! link NvimTreeFolderIcon Blue
         hi! link NvimTreeFolderName Blue
-        hi! link NvimTreeOpenedFolderIcon Blue
         hi! link NvimTreeOpenedFolderName Blue
         hi! link NvimTreeEmptyFolderName Blue
-        hi! link NvimTreeModifiedFile Comment
         hi! link NvimTreeLiveFilterPrefix Orange
       ]]
     end,
     view = { adaptive_size = true, signcolumn = 'auto' },
     renderer = {
       group_empty = true,
-      highlight_git = true,
       root_folder_label = function(cwd)
         return vim.fn.fnamemodify(cwd, ':t')
       end,
       icons = {
-        webdev_colors = false,
-        git_placement = 'after',
-        show = { file = false, folder_arrow = false },
-        glyphs = {
-          modified = '●',
-          folder = {
-            default = '▶',
-            open = '▼',
-            empty = '▶',
-            empty_open = '▼',
-            symlink = '▶',
-            symlink_open = '▼',
-          },
-        },
+        show = { file = false, folder = false, folder_arrow = false, git = false, modified = false },
+        glyphs = { symlink = '' },
       },
       special_files = {},
       symlink_destination = false,
