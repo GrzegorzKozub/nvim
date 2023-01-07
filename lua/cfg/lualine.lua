@@ -22,30 +22,19 @@ local function contains(table, value)
 end
 
 local function buffer_cond()
-  return not contains({ 'help', 'netrw', 'NvimTree', 'packer', 'qf' }, vim.o.filetype)
+  return not contains({ 'help', 'netrw', 'packer', 'qf' }, vim.o.filetype)
 end
 
 local function filename_cond()
-  return not contains({ 'netrw', 'NvimTree', 'packer', 'qf' }, vim.o.filetype)
+  return not contains({ 'netrw', 'packer', 'qf' }, vim.o.filetype)
 end
 
 local function encoding_and_fileformat_cond()
-  return not contains({ 'help', 'netrw', 'NvimTree', 'packer', 'qf' }, vim.o.filetype)
-end
-
-local function progress_and_location_cond()
-  return not contains({ 'netrw', 'NvimTree' }, vim.o.filetype)
+  return not contains({ 'help', 'netrw', 'packer', 'qf' }, vim.o.filetype)
 end
 
 local function mode_fmt(mode)
   return mode:sub(1, 1):lower()
-end
-
-local function filetype_fmt(filetype)
-  if filetype == 'NvimTree' then
-    return 'tree'
-  end
-  return filetype:lower()
 end
 
 function M.setup()
@@ -81,20 +70,18 @@ function M.setup()
           symbols = { error = '', warn = '' },
         },
         { 'diff', symbols = { added = '', modified = '', removed = '' } },
-        { 'filetype', fmt = filetype_fmt },
+        'filetype',
       },
       lualine_y = {
         { encoding_and_fileformat, cond = encoding_and_fileformat_cond },
       },
-      lualine_z = {
-        { progress_and_location, cond = progress_and_location_cond },
-      },
+      lualine_z = { progress_and_location },
     },
     inactive_sections = {
       lualine_a = {},
       lualine_b = {},
       lualine_c = { filename },
-      lualine_x = { { 'filetype', fmt = filetype_fmt } },
+      lualine_x = { 'filetype' },
       lualine_y = {},
       lualine_z = {},
     },

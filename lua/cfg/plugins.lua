@@ -30,7 +30,6 @@ function M.plugins(first_run)
 
       use 'sainnhe/gruvbox-material'
 
-      use 'nvim-tree/nvim-tree.lua'
       use 'nvim-lualine/lualine.nvim'
       use 'lewis6991/gitsigns.nvim'
 
@@ -109,6 +108,11 @@ function M.plugins(first_run)
     end,
     config = {
       display = {
+        working_sym = '↺',
+        error_sym = '✕',
+        done_sym = '✓',
+        remved_sym = '✕',
+        moved_sym = '→',
         header_sym = '',
         prompt_border = 'rounded',
         open_fn = function()
