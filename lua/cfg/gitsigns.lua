@@ -34,9 +34,9 @@ function M.setup()
       navigation(']c', gitsigns.next_hunk)
       navigation('[c', gitsigns.prev_hunk)
 
-      vim.keymap.set('n', '<Leader>g', gitsigns.toggle_signs, { buffer = bufnr })
-      vim.keymap.set('n', '<Leader>h', gitsigns.preview_hunk, { buffer = bufnr })
-      vim.keymap.set('n', '<Leader>b', function()
+      vim.keymap.set('n', '<leader>gt', gitsigns.toggle_signs, { buffer = bufnr })
+      vim.keymap.set('n', '<leader>gh', gitsigns.preview_hunk, { buffer = bufnr })
+      vim.keymap.set('n', '<leader>gb', function()
         gitsigns.blame_line { full = true }
       end, { buffer = bufnr })
     end,

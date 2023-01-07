@@ -9,7 +9,8 @@ require('cfg.gruvbox-material').setup()
 require('cfg.lualine').setup()
 require('cfg.gitsigns').setup()
 
-require('cfg.fzf').setup()
+-- require('cfg.fzf').setup()
+require('cfg.telescope').setup()
 
 require('cfg.vim-hexokinase').setup()
 

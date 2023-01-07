@@ -33,8 +33,9 @@ function M.plugins(first_run)
       use 'nvim-lualine/lualine.nvim'
       use 'lewis6991/gitsigns.nvim'
 
-      use 'junegunn/fzf'
-      use 'junegunn/fzf.vim'
+      -- use 'junegunn/fzf'
+      -- use 'junegunn/fzf.vim'
+      use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
 
       use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
 
@@ -74,22 +75,14 @@ function M.plugins(first_run)
 
       use { 'hail2u/vim-css3-syntax', ft = { 'css', 'less', 'scss' } }
 
-      use {
-        'fatih/vim-go',
-        cmd = { 'GoInstallBinaries', 'GoUpdateBinaries' },
-        ft = { 'go' },
-      }
+      use { 'fatih/vim-go', cmd = { 'GoInstallBinaries', 'GoUpdateBinaries' }, ft = { 'go' } }
 
       use { 'vim-ruby/vim-ruby', ft = 'ruby' }
       use { 'tpope/vim-rails', ft = 'ruby' }
       use { 'tpope/vim-endwise', ft = { 'elixir', 'eelixir', 'ruby' } }
 
       use { 'elixir-editors/vim-elixir', ft = { 'elixir', 'eelixir' } }
-      use {
-        'GrzegorzKozub/vim-elixirls',
-        ft = { 'elixir', 'eelixir' },
-        run = ':ElixirLsCompileSync',
-      }
+      use { 'GrzegorzKozub/vim-elixirls', ft = { 'elixir', 'eelixir' }, run = ':ElixirLsCompileSync' }
 
       use { 'octol/vim-cpp-enhanced-highlight', ft = { 'cpp' } }
 
