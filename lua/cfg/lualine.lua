@@ -26,11 +26,11 @@ local function buffer_cond()
 end
 
 local function filename_cond()
-  return not contains({ 'netrw', 'packer', 'qf' }, vim.o.filetype)
+  return not contains({ 'netrw', 'packer', 'qf', 'checkhealth' }, vim.o.filetype)
 end
 
 local function encoding_and_fileformat_cond()
-  return not contains({ 'help', 'netrw', 'packer', 'qf' }, vim.o.filetype)
+  return not contains({ 'help', 'netrw', 'packer', 'qf', 'checkhealth' }, vim.o.filetype)
 end
 
 local function mode_fmt(mode)

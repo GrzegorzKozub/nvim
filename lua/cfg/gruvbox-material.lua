@@ -28,7 +28,7 @@ local function custom_colors()
     callback = function()
       local hi = 'gruvbox_material#highlight'
       local palette = get_palette()
-
+-- qwe qw q
       vim.fn[hi]('FloatBorder', palette.bg5, palette.bg0)
       vim.fn[hi]('Folded', palette.bg5, palette.none)
       vim.fn[hi]('IncSearch', palette.bg0, palette.orange)
@@ -36,6 +36,9 @@ local function custom_colors()
       vim.fn[hi]('Search', palette.bg0, palette.yellow)
       vim.fn[hi]('StatusLine', palette.grey0, palette.none)
       vim.fn[hi]('StatusLineNC', palette.bg0, palette.none)
+      vim.fn[hi]('Tabline', palette.bg5, palette.bg0)
+      vim.fn[hi]('TablineFill', palette.bg5, palette.bg0)
+      vim.fn[hi]('TablineSel', palette.grey1, palette.bg0)
       vim.fn[hi]('Todo', palette.grey1, palette.none)
       vim.fn[hi]('VirtualTextError', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextHint', palette.bg5, palette.none)
