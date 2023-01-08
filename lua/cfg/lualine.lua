@@ -64,10 +64,10 @@ function M.setup()
       lualine_x = {
         {
           'diagnostics',
-          sources = { 'nvim_diagnostic', 'ale' },
-          sections = { 'error', 'warn' },
-          -- symbols = { error = '● ', warn = '▲ ' },
-          symbols = { error = '', warn = '' },
+          sources = { 'nvim_lsp', 'nvim_diagnostic', 'ale' },
+          sections = { 'error', 'warn', 'info', 'hint' },
+          -- symbols = { error = '● ', warn = '▲ ', info = '◆ ', hint = '◆ ' },
+          symbols = { error = '', warn = '', info = '', hint = '' },
         },
         { 'diff', symbols = { added = '', modified = '', removed = '' } },
         'filetype',
