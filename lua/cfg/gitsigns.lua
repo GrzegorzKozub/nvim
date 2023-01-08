@@ -1,5 +1,9 @@
 local M = {}
 
+local function map(keys, action, bufnr)
+  vim.keymap.set('n', keys, action, { noremap = true, silent = true, buffer = bufnr })
+end
+
 function M.setup()
   local loaded, plugin = pcall(require, 'gitsigns')
   if not loaded then
@@ -34,11 +38,11 @@ function M.setup()
       navigation(']c', gitsigns.next_hunk)
       navigation('[c', gitsigns.prev_hunk)
 
-      vim.keymap.set('n', '<leader>gt', gitsigns.toggle_signs, { buffer = bufnr })
-      vim.keymap.set('n', '<leader>gh', gitsigns.preview_hunk, { buffer = bufnr })
-      vim.keymap.set('n', '<leader>gb', function()
+      map('<leader>gt', gitsigns.toggle_signs, bufnr)
+      map('<leader>gh', gitsigns.preview_hunk, bufnr)
+      map('<leader>gb', function()
         gitsigns.blame_line { full = true }
-      end, { buffer = bufnr })
+      end, bufnr)
     end,
   }
 end

@@ -95,6 +95,12 @@ function M.plugins(first_run)
         end,
       }
 
+      use {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+      }
+
       if first_run then
         require('packer').sync()
       end

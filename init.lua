@@ -25,3 +25,5 @@ require('cfg.vim-json').setup()
 require('cfg.vim-javascript').setup()
 
 require('cfg.treesitter').setup()
+
+require 'cfg.lsp'

@@ -24,8 +24,8 @@ function M.setup()
   vim.g.ale_fixers.elixir = { 'mix_format' }
   vim.g.ale_linters.elixir = { 'elixir-ls' }
 
-  vim.keymap.set('n', ']d', ':ALENext<CR>', options)
-  vim.keymap.set('n', '[d', ':ALEPrevious<CR>', options)
+  vim.keymap.set('n', ']d', ':ALENext<cr>', options)
+  vim.keymap.set('n', '[d', ':ALEPrevious<cr>', options)
 end
 
 return M

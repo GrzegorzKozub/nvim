@@ -73,24 +73,24 @@ call extend(s:options, [
 
 command! -bang -nargs=? -complete=dir Buffers
   \ call fzf#vim#buffers(<q-args>, { 'options': s:options + [ 'buffers' . s:prompt ] }, <bang>0)
-nnoremap <silent> <leader>fb :Buffers<CR>
-nnoremap <silent> <c-b> :Buffers<CR>
+nnoremap <silent> <leader>fb :Buffers<cr>
+nnoremap <silent> <c-b> :Buffers<cr>
 
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, { 'options': s:options + [ 'files' . s:prompt ] }, <bang>0)
-nnoremap <silent> <leader>ff :Files<CR>
-nnoremap <silent> <c-p> :Files<CR>
+nnoremap <silent> <leader>ff :Files<cr>
+nnoremap <silent> <c-p> :Files<cr>
 
 command! -bang -nargs=? -complete=dir History
   \ call fzf#vim#history({ 'options': s:options + [ 'history' . s:prompt ] }, <bang>0)
-nnoremap <silent> <leader>fh :History<CR>
-nnoremap <silent> <c-k> :History<CR>
+nnoremap <silent> <leader>fh :History<cr>
+nnoremap <silent> <c-k> :History<cr>
 
 command! -bang -nargs=? -complete=dir Commands
   \ call fzf#vim#command_history({ 'options': s:options + [ 'commands' . s:prompt ] }, <bang>0)
-nnoremap <silent> <leader>fc :Commands<CR>
+nnoremap <silent> <leader>fc :Commands<cr>
 
 command! -bang -nargs=? -complete=dir Searches
   \ call fzf#vim#search_history({ 'options': s:options + [ 'searches' . s:prompt ] }, <bang>0)
-nnoremap <silent> <leader>fs :Searches<CR>
+nnoremap <silent> <leader>fs :Searches<cr>
 

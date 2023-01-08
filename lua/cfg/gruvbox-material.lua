@@ -28,7 +28,13 @@ local function custom_colors()
     callback = function()
       local hi = 'gruvbox_material#highlight'
       local palette = get_palette()
--- qwe qw q
+
+      vim.cmd.hi('ErrorMsg', 'gui=NONE cterm=NONE')
+      vim.cmd.hi('ModeMsg', 'gui=NONE cterm=NONE')
+      vim.cmd.hi('MoreMsg', 'gui=NONE cterm=NONE')
+      vim.cmd.hi('Title', 'gui=NONE cterm=NONE')
+      vim.cmd.hi('WarningMsg', 'gui=NONE cterm=NONE')
+
       vim.fn[hi]('FloatBorder', palette.bg5, palette.bg0)
       vim.fn[hi]('Folded', palette.bg5, palette.none)
       vim.fn[hi]('IncSearch', palette.bg0, palette.orange)
@@ -46,6 +52,7 @@ local function custom_colors()
       vim.fn[hi]('VirtualTextWarning', palette.bg5, palette.none)
       vim.fn[hi]('WildMenu', palette.fg0, palette.none)
 
+      -- telescope.nvim
       vim.fn[hi]('TelescopeBorder', palette.bg5, palette.none)
       vim.fn[hi]('TelescopeMatching', palette.yellow, palette.none)
       vim.fn[hi]('TelescopeMultiIcon', palette.fg0, palette.none)
@@ -57,11 +64,8 @@ local function custom_colors()
       vim.fn[hi]('TelescopeResultsNormal', palette.grey1, palette.none)
       vim.fn[hi]('TelescopeSelection', palette.fg1, palette.bg1)
 
-      vim.cmd.hi('ErrorMsg', 'gui=NONE cterm=NONE')
-      vim.cmd.hi('ModeMsg', 'gui=NONE cterm=NONE')
-      vim.cmd.hi('MoreMsg', 'gui=NONE cterm=NONE')
-      vim.cmd.hi('Title', 'gui=NONE cterm=NONE')
-      vim.cmd.hi('WarningMsg', 'gui=NONE cterm=NONE')
+      -- nvim-lspconfig
+      vim.fn[hi]('LspInfoBorder', palette.bg5, palette.none)
     end,
     group = group,
   })
