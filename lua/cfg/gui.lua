@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.config()
   local options = { noremap = true, silent = true }
 
   vim.keymap.set('n', '<F10>', function()

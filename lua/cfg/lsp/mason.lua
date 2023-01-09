@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.config()
   local loaded, plugin = pcall(require, 'mason')
   if not loaded then
     return

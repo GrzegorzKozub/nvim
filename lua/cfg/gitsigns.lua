@@ -4,7 +4,7 @@ local function map(keys, action, bufnr)
   vim.keymap.set('n', keys, action, { noremap = true, silent = true, buffer = bufnr })
 end
 
-function M.setup()
+function M.config()
   local loaded, plugin = pcall(require, 'gitsigns')
   if not loaded then
     return

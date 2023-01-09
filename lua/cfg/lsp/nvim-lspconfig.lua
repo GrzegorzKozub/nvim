@@ -13,7 +13,7 @@ local function on_attach(_, bufnr)
   keys(bufnr)
 end
 
-function M.setup()
+function M.config()
   local loaded, plugin = pcall(require, 'lspconfig')
   if not loaded then
     return

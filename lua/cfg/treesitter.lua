@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.config()
   local loaded, plugin = pcall(require, 'nvim-treesitter.configs')
   if not loaded then
     return

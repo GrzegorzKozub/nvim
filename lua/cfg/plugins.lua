@@ -122,7 +122,7 @@ function M.plugins(first_run)
   }
 end
 
-function M.setup()
+function M.config()
   local first_run = bootstrap()
   auto_update()
   M.plugins(first_run)

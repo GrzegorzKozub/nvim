@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.config()
   vim.g.Hexokinase_optInPatterns = 'full_hex,tripple_hex,rgb,rgba,hsl,hsla'
 end
 

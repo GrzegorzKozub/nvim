@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.config()
   for name, value in pairs {
     backup = true,
     cursorline = true, -- can break per https://github.com/neovim/neovim/issues/9019
@@ -61,6 +61,7 @@ function M.setup()
   vim.diagnostic.config {
     underline = false,
     virtual_text = {
+      spacing = 0,
       prefix = '',
       -- format = function(diagnostic)
       --   return string.format(vim.o.commentstring, diagnostic.message)

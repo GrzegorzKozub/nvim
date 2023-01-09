@@ -13,7 +13,7 @@ local function map(keys, action)
   vim.keymap.set('n', keys, action, { noremap = true, silent = true })
 end
 
-function M.setup()
+function M.config()
   local loaded, plugin = pcall(require, 'telescope')
   if not loaded then
     return

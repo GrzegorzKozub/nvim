@@ -71,7 +71,7 @@ local function custom_colors()
   })
 end
 
-function M.setup()
+function M.config()
   local theme = require('cfg.my-theme').get()
   vim.opt.background = theme.background
   options()

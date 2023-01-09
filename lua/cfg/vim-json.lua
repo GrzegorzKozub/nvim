@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.config()
   vim.g.vim_json_syntax_conceal = 0
 end
 

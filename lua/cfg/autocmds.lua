@@ -65,7 +65,7 @@ local function yank_highlight()
   })
 end
 
-function M.setup()
+function M.config()
   file_types()
   last_seen_location()
   yank_highlight()

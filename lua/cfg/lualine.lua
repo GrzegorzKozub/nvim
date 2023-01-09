@@ -37,7 +37,7 @@ local function mode_fmt(mode)
   return mode:sub(1, 1):lower()
 end
 
-function M.setup()
+function M.config()
   local loaded, plugin = pcall(require, 'lualine')
   if not loaded then
     return

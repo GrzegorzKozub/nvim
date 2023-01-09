@@ -12,7 +12,7 @@ local function toggle(kind, open, close)
   pcall(vim.cmd, open)
 end
 
-function M.setup()
+function M.config()
   vim.keymap.set('v', '<bs>', 'd', options)
 
   vim.keymap.set('n', '<c-a>', 'ggVG', options)

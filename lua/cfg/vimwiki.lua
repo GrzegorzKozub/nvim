@@ -11,7 +11,7 @@ local function syntax_fix()
   })
 end
 
-function M.setup()
+function M.config()
   vim.g.vimwiki_global_ext = 0
   vim.g.vimwiki_hl_cb_checked = 2
   vim.g.vimwiki_list = { { path = '~/code/apsis/', path_html = '~/Downloads/apsis_html/', ext = '.wiki' } }
