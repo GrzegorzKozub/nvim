@@ -1,7 +1,5 @@
 local M = {}
 
-local options = { noremap = true, silent = true }
-
 local function toggle(kind, open, close)
   for _, win in pairs(vim.fn.getwininfo()) do
     if win[kind] == 1 then
@@ -13,6 +11,8 @@ local function toggle(kind, open, close)
 end
 
 function M.config()
+  local options = { noremap = true, silent = true }
+
   vim.keymap.set('v', '<bs>', 'd', options)
 
   vim.keymap.set('n', '<c-a>', 'ggVG', options)
