@@ -40,7 +40,7 @@ function M.config()
 
   for _, server in pairs(require('cfg.lsp.servers').get()) do
     local options = {
-      capabilities = vim.lsp.protocol.make_client_capabilities(),
+      capabilities = require('cfg.lsp.cmp-nvim-lsp').capabilities(),
       on_attach = on_attach,
     }
     local server_options_exist, server_options = pcall(require, 'cfg.lsp.' .. server)
