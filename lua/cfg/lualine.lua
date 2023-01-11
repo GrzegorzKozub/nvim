@@ -38,8 +38,8 @@ local function mode_fmt(mode)
 end
 
 function M.config()
-  local loaded, plugin = pcall(require, 'lualine')
-  if not loaded then
+  local lualine_loaded, lualine = pcall(require, 'lualine')
+  if not lualine_loaded then
     return
   end
 
@@ -49,7 +49,7 @@ function M.config()
     cond = filename_cond,
   }
 
-  plugin.setup {
+  lualine.setup {
     options = {
       icons_enabled = false,
       theme = require(require('cfg.my-theme').get().cfg).lualine_theme(),

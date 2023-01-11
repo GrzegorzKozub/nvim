@@ -33,8 +33,8 @@ local function on_attach(_, bufnr)
 end
 
 function M.config()
-  local loaded, plugin = pcall(require, 'lspconfig')
-  if not loaded then
+  local lspconfig_loaded, lspconfig = pcall(require, 'lspconfig')
+  if not lspconfig_loaded then
     return
   end
 
@@ -43,11 +43,11 @@ function M.config()
       capabilities = require('cfg.lsp.cmp-nvim-lsp').capabilities(),
       on_attach = on_attach,
     }
-    local server_options_exist, server_options = pcall(require, 'cfg.lsp.' .. server)
-    if server_options_exist then
+    local server_options_loaded, server_options = pcall(require, 'cfg.lsp.' .. server)
+    if server_options_loaded then
       options = vim.tbl_deep_extend('force', server_options, options)
     end
-    plugin[server].setup(options)
+    lspconfig[server].setup(options)
   end
 
   require('lspconfig.ui.windows').default_options.border = 'rounded'

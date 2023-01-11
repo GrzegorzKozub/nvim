@@ -10,7 +10,7 @@ function M.get()
   }
   if vim.fn.has 'win32' == 1 then
     for _, lsp in ipairs {
-      'powershell_es',
+      -- 'powershell_es',
     } do
       table.insert(servers, lsp)
     end

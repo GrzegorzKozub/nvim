@@ -10,12 +10,15 @@ function M.config()
     return
   end
 
+  local function window_config()
+    return cmp.config.window.bordered {
+      scrollbar = false,
+      winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
+    }
+  end
+
   cmp.setup {
-    snippet = {
-      expand = function(args)
-        require('luasnip').lsp_expand(args.body)
-      end,
-    },
+    formatting = { expandable_indicator = false },
     mapping = cmp.mapping.preset.insert {
       ['<c-space>'] = cmp.mapping.complete(),
       ['<cr>'] = cmp.mapping.confirm { select = true },
@@ -41,6 +44,11 @@ function M.config()
         end
       end, { 'i', 's' }),
     },
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end,
+    },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
@@ -49,27 +57,21 @@ function M.config()
       { name = 'buffer' },
       { name = 'path' },
     }),
-    formatting = { expandable_indicator = false },
     window = {
-      completion = cmp.config.window.bordered { scrollbar = false,  winhighlight = 'FloatBorder:FloatBorder' },
-      documentation = cmp.config.window.bordered { scrollbar = false, winhighlight = 'FloatBorder:FloatBorder' },
+      completion = window_config(),
+      documentation = window_config(),
+      -- documentation = cmp.config.disable,
     },
   }
 
   cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'path' },
-    }, {
-      { name = 'cmdline' },
-    }),
+    sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
   })
 
   cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-      { name = 'buffer' },
-    },
+    sources = { { name = 'buffer' } },
   })
 end
 

@@ -1,12 +1,12 @@
 local M = {}
 
 function M.config()
-  local loaded, plugin = pcall(require, 'mason')
-  if not loaded then
+  local mason_loaded, mason = pcall(require, 'mason')
+  if not mason_loaded then
     return
   end
 
-  plugin.setup {
+  mason.setup {
     ui = {
       border = 'rounded',
       icons = {
