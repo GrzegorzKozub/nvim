@@ -10,15 +10,49 @@ function M.config()
     return
   end
 
+  local kinds = {
+    Text = 'text',
+    Method = 'method',
+    Function = 'function',
+    Constructor = 'constructor',
+    Field = 'field',
+    Variable = 'variable',
+    Class = 'class',
+    Interface = 'interface',
+    Module = 'module',
+    Property = 'property',
+    Unit = 'unit',
+    Value = 'value',
+    Enum = 'enum',
+    Keyword = 'keyword',
+    Snippet = 'snippet',
+    Color = 'color',
+    File = 'file',
+    Reference = 'reference',
+    Folder = 'folder',
+    EnumMember = 'enum member',
+    Constant = 'constant',
+    Struct = 'struct',
+    Event = 'event',
+    Operator = 'operator',
+    TypeParameter = 'type parameter',
+  }
+
   local function window_config()
     return cmp.config.window.bordered {
       scrollbar = false,
-      winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
+      winhighlight = 'Normal:CustomCmpNormal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None',
     }
   end
 
   cmp.setup {
-    formatting = { expandable_indicator = false },
+    formatting = {
+      expandable_indicator = false,
+      format = function(_, vim_item)
+        vim_item.kind = kinds[vim_item.kind]
+        return vim_item
+      end,
+    },
     mapping = cmp.mapping.preset.insert {
       ['<c-space>'] = cmp.mapping.complete(),
       ['<cr>'] = cmp.mapping.confirm { select = true },

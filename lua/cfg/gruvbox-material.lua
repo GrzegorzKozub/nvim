@@ -70,6 +70,15 @@ local function custom_colors()
 
       -- nvim-lspconfig
       vim.fn[hi]('LspInfoBorder', palette.bg5, palette.none)
+
+      -- nvim-cmp
+      vim.fn[hi]('CmpItemAbbr', palette.grey2, palette.none)
+      vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
+      vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.yellow, palette.none)
+      for _, kind in ipairs { 'Function', 'Method', 'Text' } do
+        vim.fn[hi]('CmpItemKind' .. kind, palette.grey0, palette.none)
+      end
+      vim.fn[hi]('CustomCmpNormal', palette.grey2, palette.none)
     end,
     group = group,
   })
