@@ -32,23 +32,47 @@ function M.plugins(first_run)
 
       use 'nvim-lualine/lualine.nvim'
       use 'lewis6991/gitsigns.nvim'
+      use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
 
+      use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
       -- use 'junegunn/fzf'
       -- use 'junegunn/fzf.vim'
-      use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
 
-      use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
+      use {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+      }
+      use {
+        'folke/neodev.nvim',
+        'neovim/nvim-lspconfig',
+      }
+      use {
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
+      }
+      use {
+        'L3MON4D3/LuaSnip',
+        'saadparwaiz1/cmp_luasnip',
+      }
+      -- use 'w0rp/ale'
+
+      use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+          require('nvim-treesitter.install').update { with_sync = true }()
+        end,
+      }
+      use 'sbdchd/neoformat'
 
       use 'tpope/vim-repeat'
       use 'tpope/vim-surround'
       use 'tpope/vim-unimpaired'
 
       use 'numToStr/Comment.nvim'
-
-      use 'editorconfig/editorconfig-vim'
-      use 'sbdchd/neoformat'
-
-      use 'w0rp/ale'
 
       use 'vimwiki/vimwiki'
 
@@ -59,6 +83,8 @@ function M.plugins(first_run)
           vim.fn['mkdp#util#install_sync']()
         end,
       }
+
+      use 'editorconfig/editorconfig-vim'
 
       use 'tpope/vim-git'
 
@@ -87,28 +113,6 @@ function M.plugins(first_run)
       use { 'octol/vim-cpp-enhanced-highlight', ft = { 'cpp' } }
 
       use { 'PProvost/vim-ps1', ft = { 'ps1' } }
-
-      use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function()
-          require('nvim-treesitter.install').update { with_sync = true }()
-        end,
-      }
-
-      use {
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig',
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-nvim-lua',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-        'saadparwaiz1/cmp_luasnip',
-        'L3MON4D3/LuaSnip',
-        'folke/neodev.nvim',
-      }
 
       if first_run then
         require('packer').sync()

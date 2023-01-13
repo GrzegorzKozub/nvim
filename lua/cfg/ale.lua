@@ -1,8 +1,8 @@
 local M = {}
 
--- local function map(keys, action)
---   vim.keymap.set('n', keys, action, { noremap = true, silent = true })
--- end
+local function map(keys, action)
+  vim.keymap.set('n', keys, action, { noremap = true, silent = true })
+end
 
 function M.config()
   vim.g.ale_completion_enabled = 0
@@ -27,8 +27,8 @@ function M.config()
   vim.g.ale_fixers.elixir = { 'mix_format' }
   vim.g.ale_linters.elixir = { 'elixir-ls' }
 
-  -- map(']d', ':ALENext<cr>')
-  -- map('[d', ':ALEPrevious<cr>')
+  map(']d', ':ALENext<cr>')
+  map('[d', ':ALEPrevious<cr>')
 end
 
 return M
