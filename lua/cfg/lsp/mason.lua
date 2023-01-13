@@ -20,6 +20,7 @@ function M.config()
   local servers = {
     'bash-language-server',
     'lua-language-server',
+    'typescript-language-server',
   }
 
   vim.api.nvim_create_user_command('MasonUpdate', 'MasonInstall ' .. table.concat(servers, ' '), {})

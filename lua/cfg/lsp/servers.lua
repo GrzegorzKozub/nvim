@@ -23,7 +23,7 @@ function M.get()
       -- 'eslint',
       -- 'gopls',
       -- 'pyright',
-      -- 'tsserver',
+      'tsserver',
     } do
       table.insert(servers, lsp)
     end
