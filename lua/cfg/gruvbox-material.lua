@@ -89,7 +89,7 @@ function M.config()
   vim.opt.background = theme.background
   options()
   custom_colors()
-  vim.cmd.colorscheme(theme.vim)
+  pcall(vim.cmd.colorscheme, theme.vim)
 end
 
 function M.lualine_theme()
