@@ -10,6 +10,7 @@ function M.config()
     ensure_installed = {
       'bash',
       'c_sharp',
+      'css',
       'dockerfile',
       'elixir',
       'gitattributes',
@@ -24,6 +25,7 @@ function M.config()
       'lua',
       'markdown',
       'python',
+      'scss',
       'sql',
       'toml',
       'typescript',

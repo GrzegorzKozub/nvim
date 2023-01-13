@@ -83,18 +83,6 @@ function M.plugins(first_run)
         end,
       }
 
-      use 'editorconfig/editorconfig-vim'
-
-      use 'tpope/vim-git'
-
-      use { 'stephpy/vim-yaml', ft = { 'yaml', 'yaml.docker-compose' } }
-      use { 'ekalinin/Dockerfile.vim', ft = 'Dockerfile' }
-      use { 'chr4/nginx.vim', ft = { 'nginx' } }
-
-      use { 'moll/vim-node', ft = { 'javascript', 'typescript' } }
-
-      use { 'hail2u/vim-css3-syntax', ft = { 'css', 'less', 'scss' } }
-
       use { 'fatih/vim-go', cmd = { 'GoInstallBinaries', 'GoUpdateBinaries' }, ft = { 'go' } }
 
       use { 'vim-ruby/vim-ruby', ft = 'ruby' }
@@ -103,8 +91,6 @@ function M.plugins(first_run)
 
       use { 'elixir-editors/vim-elixir', ft = { 'elixir', 'eelixir' } }
       use { 'GrzegorzKozub/vim-elixirls', ft = { 'elixir', 'eelixir' }, run = ':ElixirLsCompileSync' }
-
-      use { 'octol/vim-cpp-enhanced-highlight', ft = { 'cpp' } }
 
       use { 'PProvost/vim-ps1', ft = { 'ps1' } }
 
