@@ -1,16 +1,7 @@
 local M = {}
 
-function M.config()
-  local cmp_loaded, cmp = pcall(require, 'cmp')
-  if not cmp_loaded then
-    return
-  end
-  local luasnip_loaded, luasnip = pcall(require, 'luasnip')
-  if not luasnip_loaded then
-    return
-  end
-
-  local kinds = {
+function M.kinds()
+  return {
     Text = 'text',
     Method = 'method',
     Function = 'function',
@@ -37,6 +28,17 @@ function M.config()
     Operator = 'operator',
     TypeParameter = 'type parameter',
   }
+end
+
+function M.config()
+  local cmp_loaded, cmp = pcall(require, 'cmp')
+  if not cmp_loaded then
+    return
+  end
+  local luasnip_loaded, luasnip = pcall(require, 'luasnip')
+  if not luasnip_loaded then
+    return
+  end
 
   local function window_config()
     return cmp.config.window.bordered {
@@ -49,7 +51,7 @@ function M.config()
     formatting = {
       expandable_indicator = false,
       format = function(_, vim_item)
-        vim_item.kind = kinds[vim_item.kind]
+        vim_item.kind = M.kinds()[vim_item.kind]
         return vim_item
       end,
     },

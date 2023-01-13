@@ -20,7 +20,8 @@ function M.config()
   vim.keymap.set('v', '<c-c>', '"+y', options)
   vim.keymap.set('v', '<c-x>', '"+x', options) -- conflicts with tmux
   vim.keymap.set({ 'n', 'v', 'x' }, '<C-V>', '"+gP', options)
-  vim.keymap.set({ 'c', 'i' }, '<C-V>', '<C-R>+', { noremap = true })
+  vim.keymap.set('i', '<C-V>', '<esc>:set paste<cr>i<c-r>+<esc>:set nopaste<cr>i', { noremap = true })
+  vim.keymap.set('c', '<C-V>', '<c-r>+', { noremap = true })
 
   vim.api.nvim_create_user_command('Q', 'q', {})
   vim.api.nvim_create_user_command('W', 'w', {})
