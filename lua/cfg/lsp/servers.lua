@@ -3,7 +3,6 @@ local M = {}
 function M.get()
   local servers = {
     -- 'jsonls',
-    -- 'marksman',
     'sumneko_lua',
     -- 'vimls',
     -- 'yamlls',

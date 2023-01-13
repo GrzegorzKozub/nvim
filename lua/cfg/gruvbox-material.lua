@@ -56,17 +56,8 @@ local function custom_colors()
       vim.fn[hi]('VirtualTextWarning', palette.bg5, palette.none)
       vim.fn[hi]('WildMenu', palette.fg0, palette.none)
 
-      -- telescope.nvim
-      vim.fn[hi]('TelescopeBorder', palette.bg5, palette.none)
-      vim.fn[hi]('TelescopeMatching', palette.yellow, palette.none)
-      vim.fn[hi]('TelescopeMultiIcon', palette.fg0, palette.none)
-      vim.fn[hi]('TelescopeMultiSelection', palette.fg1, palette.none)
-      vim.fn[hi]('TelescopePromptPrefix', palette.orange, palette.none)
-      vim.fn[hi]('TelescopeResultsDiffAdd', palette.green, palette.none)
-      vim.fn[hi]('TelescopeResultsDiffChange', palette.blue, palette.none)
-      vim.fn[hi]('TelescopeResultsDiffDelete', palette.red, palette.none)
-      vim.fn[hi]('TelescopeResultsNormal', palette.grey1, palette.none)
-      vim.fn[hi]('TelescopeSelection', palette.fg1, palette.bg1)
+      -- null-ls
+      vim.fn[hi]('NullLsInfoBorder', palette.bg5, palette.none)
 
       -- nvim-lspconfig
       vim.fn[hi]('LspInfoBorder', palette.bg5, palette.none)
@@ -79,6 +70,18 @@ local function custom_colors()
         vim.fn[hi]('CmpItemKind' .. kind, palette.grey0, palette.none)
       end
       vim.fn[hi]('CustomCmpNormal', palette.grey2, palette.none)
+
+      -- telescope.nvim
+      vim.fn[hi]('TelescopeBorder', palette.bg5, palette.none)
+      vim.fn[hi]('TelescopeMatching', palette.yellow, palette.none)
+      vim.fn[hi]('TelescopeMultiIcon', palette.fg0, palette.none)
+      vim.fn[hi]('TelescopeMultiSelection', palette.fg1, palette.none)
+      vim.fn[hi]('TelescopePromptPrefix', palette.orange, palette.none)
+      vim.fn[hi]('TelescopeResultsDiffAdd', palette.green, palette.none)
+      vim.fn[hi]('TelescopeResultsDiffChange', palette.blue, palette.none)
+      vim.fn[hi]('TelescopeResultsDiffDelete', palette.red, palette.none)
+      vim.fn[hi]('TelescopeResultsNormal', palette.grey1, palette.none)
+      vim.fn[hi]('TelescopeSelection', palette.fg1, palette.bg1)
     end,
     group = group,
   })

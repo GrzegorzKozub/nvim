@@ -3,10 +3,12 @@ local M = {}
 local function toggle(kind, open, close)
   for _, win in pairs(vim.fn.getwininfo()) do
     if win[kind] == 1 then
+      ---@diagnostic disable-next-line: param-type-mismatch
       pcall(vim.cmd, close)
       return
     end
   end
+  ---@diagnostic disable-next-line: param-type-mismatch
   pcall(vim.cmd, open)
 end
 
@@ -20,7 +22,7 @@ function M.config()
   vim.keymap.set('v', '<c-c>', '"+y', options)
   vim.keymap.set('v', '<c-x>', '"+x', options) -- conflicts with tmux
   vim.keymap.set({ 'n', 'v', 'x' }, '<C-V>', '"+gP', options)
-  vim.keymap.set('i', '<C-V>', '<esc>:set paste<cr>i<c-r>+<esc>:set nopaste<cr>i', { noremap = true })
+  vim.keymap.set('i', '<C-V>', '<esc>:set paste<cr>a<c-r>+<esc>:set nopaste<cr>a', { noremap = true })
   vim.keymap.set('c', '<C-V>', '<c-r>+', { noremap = true })
 
   vim.api.nvim_create_user_command('Q', 'q', {})
@@ -53,9 +55,6 @@ function M.config()
 
   -- netrw
   vim.keymap.set('n', '<leader>e', ':Explore<cr>', options)
-
-  -- neoformat
-  vim.keymap.set('n', '<leader>f', ':Neoformat<cr>', options)
 
   -- markdown-preview.nvim
   vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<cr>', options)

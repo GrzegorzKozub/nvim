@@ -5,6 +5,10 @@ function M.config()
   if not mason_loaded then
     return
   end
+  local mason_update_all_loaded, mason_update_all = pcall(require, 'mason-update-all')
+  if not mason_update_all_loaded then
+    return
+  end
 
   mason.setup {
     ui = {
@@ -17,13 +21,7 @@ function M.config()
     },
   }
 
-  local servers = {
-    'bash-language-server',
-    'lua-language-server',
-    'typescript-language-server',
-  }
-
-  vim.api.nvim_create_user_command('MasonUpdate', 'MasonInstall ' .. table.concat(servers, ' '), {})
+  mason_update_all.setup()
 end
 
 return M

@@ -35,12 +35,12 @@ function M.plugins(first_run)
       use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
 
       use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
-      -- use 'junegunn/fzf'
-      -- use 'junegunn/fzf.vim'
 
       use {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
+        'jayp0521/mason-null-ls.nvim',
+        'RubixDev/mason-update-all',
       }
       use {
         'folke/neodev.nvim',
@@ -58,7 +58,7 @@ function M.plugins(first_run)
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
       }
-      -- use 'w0rp/ale'
+      use { 'jose-elias-alvarez/null-ls.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
 
       use {
         'nvim-treesitter/nvim-treesitter',
@@ -66,7 +66,6 @@ function M.plugins(first_run)
           require('nvim-treesitter.install').update { with_sync = true }()
         end,
       }
-      use 'sbdchd/neoformat'
 
       use 'tpope/vim-repeat'
       use 'tpope/vim-surround'
@@ -88,16 +87,11 @@ function M.plugins(first_run)
 
       use 'tpope/vim-git'
 
-      use { 'elzr/vim-json', ft = { 'json' } }
       use { 'stephpy/vim-yaml', ft = { 'yaml', 'yaml.docker-compose' } }
       use { 'ekalinin/Dockerfile.vim', ft = 'Dockerfile' }
       use { 'chr4/nginx.vim', ft = { 'nginx' } }
 
       use { 'moll/vim-node', ft = { 'javascript', 'typescript' } }
-
-      use { 'pangloss/vim-javascript', ft = { 'javascript', 'javascript.jsx', 'typescript' } }
-      use { 'leafgarland/typescript-vim', ft = { 'typescript' } }
-      use { 'MaxMEllon/vim-jsx-pretty', ft = { 'javascript', 'javascript.jsx', 'typescript' } }
 
       use { 'hail2u/vim-css3-syntax', ft = { 'css', 'less', 'scss' } }
 
