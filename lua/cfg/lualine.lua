@@ -64,7 +64,7 @@ function M.config()
       lualine_x = {
         {
           'diagnostics',
-          sources = { 'nvim_lsp', 'nvim_diagnostic', 'ale' },
+          sources = { 'nvim_diagnostic' },
           sections = { 'error', 'warn', 'info', 'hint' },
           symbols = { error = '● ', warn = '▲ ', info = '◆ ', hint = '◆ ' },
         },
