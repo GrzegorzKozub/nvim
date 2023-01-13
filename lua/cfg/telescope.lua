@@ -14,12 +14,12 @@ local function map(keys, action)
 end
 
 function M.config()
-  local loaded, plugin = pcall(require, 'telescope')
-  if not loaded then
+  local telescope_loaded, telescope = pcall(require, 'telescope')
+  if not telescope_loaded then
     return
   end
 
-  plugin.setup {
+  telescope.setup {
     defaults = {
       prompt_prefix = ' ●• ',
       selection_caret = ' ● ',

@@ -5,12 +5,12 @@ local function map(keys, action, bufnr)
 end
 
 function M.config()
-  local loaded, plugin = pcall(require, 'gitsigns')
-  if not loaded then
+  local gitsigns_loaded, gitsigns = pcall(require, 'gitsigns')
+  if not gitsigns_loaded then
     return
   end
 
-  plugin.setup {
+  gitsigns.setup {
     signs = {
       add = { text = '┃' },
       change = { text = '┃' },
