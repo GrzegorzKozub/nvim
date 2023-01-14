@@ -22,6 +22,7 @@ local function sources(null_ls)
     for _, source in ipairs {
       null_ls.builtins.code_actions.eslint_d,
       null_ls.builtins.diagnostics.cfn_lint,
+      null_ls.builtins.diagnostics.credo, -- test
       null_ls.builtins.diagnostics.editorconfig_checker,
       null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.diagnostics.golangci_lint,
