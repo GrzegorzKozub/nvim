@@ -10,9 +10,9 @@ function M.get()
   if vim.fn.has 'win32' == 0 then
     for _, server in ipairs {
       'bashls',
-      -- 'csharp_ls',
+      'csharp_ls', -- test, find formatter and linter
       'dockerls',
-      -- 'elixirls',
+      'elixirls', -- test, find formatter and linter
       'gopls',
       'pyright',
       'tsserver',
