@@ -21,8 +21,20 @@ local function sources(null_ls)
   if vim.fn.has 'win32' == 0 then
     for _, source in ipairs {
       null_ls.builtins.code_actions.eslint_d,
+      null_ls.builtins.diagnostics.cfn_lint,
+      null_ls.builtins.diagnostics.editorconfig_checker,
       null_ls.builtins.diagnostics.eslint_d,
+      null_ls.builtins.diagnostics.golangci_lint,
+      null_ls.builtins.diagnostics.hadolint,
+      null_ls.builtins.diagnostics.jsonlint,
       null_ls.builtins.diagnostics.luacheck,
+      null_ls.builtins.diagnostics.pylint,
+      null_ls.builtins.diagnostics.vint,
+      null_ls.builtins.diagnostics.yamllint,
+      null_ls.builtins.formatting.autopep8,
+      null_ls.builtins.formatting.gofmt,
+      null_ls.builtins.formatting.mix, -- test
+      null_ls.builtins.formatting.xmllint,
     } do
       table.insert(sources, source)
     end

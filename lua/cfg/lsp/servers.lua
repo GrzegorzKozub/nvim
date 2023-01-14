@@ -2,20 +2,19 @@ local M = {}
 
 function M.get()
   local servers = {
-    -- 'jsonls',
+    'jsonls',
     'sumneko_lua',
-    -- 'vimls',
-    -- 'yamlls',
+    'vimls',
+    'yamlls',
   }
   if vim.fn.has 'win32' == 0 then
     for _, server in ipairs {
       'bashls',
       -- 'csharp_ls',
-      -- 'dockerls',
+      'dockerls',
       -- 'elixirls',
-      -- 'eslint',
-      -- 'gopls',
-      -- 'pyright',
+      'gopls',
+      'pyright',
       'tsserver',
     } do
       table.insert(servers, server)
