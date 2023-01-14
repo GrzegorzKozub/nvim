@@ -8,13 +8,13 @@ function M.get()
     -- 'yamlls',
   }
   if vim.fn.has 'win32' == 1 then
-    for _, lsp in ipairs {
+    for _, server in ipairs {
       -- 'powershell_es',
     } do
-      table.insert(servers, lsp)
+      table.insert(servers, server)
     end
   else
-    for _, lsp in ipairs {
+    for _, server in ipairs {
       'bashls',
       -- 'csharp_ls',
       -- 'dockerls',
@@ -24,7 +24,7 @@ function M.get()
       -- 'pyright',
       'tsserver',
     } do
-      table.insert(servers, lsp)
+      table.insert(servers, server)
     end
   end
   return servers

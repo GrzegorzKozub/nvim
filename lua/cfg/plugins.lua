@@ -92,8 +92,6 @@ function M.plugins(first_run)
       use { 'elixir-editors/vim-elixir', ft = { 'elixir', 'eelixir' } }
       use { 'GrzegorzKozub/vim-elixirls', ft = { 'elixir', 'eelixir' }, run = ':ElixirLsCompileSync' }
 
-      use { 'PProvost/vim-ps1', ft = { 'ps1' } }
-
       if first_run then
         require('packer').sync()
       end

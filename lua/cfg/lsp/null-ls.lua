@@ -21,6 +21,30 @@ local function on_attach()
   keys()
 end
 
+local function get_sources(null_ls)
+  local sources = {
+    null_ls.builtins.formatting.prettier.with {
+      extra_args = { '--single-quote' },
+    },
+    null_ls.builtins.formatting.stylua,
+  }
+  if vim.fn.has 'win32' == 1 then
+    for _, source in ipairs {} do
+      table.insert(sources, source)
+    end
+  else
+    for _, lsp in ipairs {
+      null_ls.builtins.diagnostics.tsc,
+      null_ls.builtins.code_actions.eslint_d,
+      null_ls.builtins.diagnostics.eslint_d,
+      null_ls.builtins.diagnostics.luacheck,
+    } do
+      table.insert(sources, lsp)
+    end
+  end
+  return sources
+end
+
 function M.config()
   local null_ls_loaded, null_ls = pcall(require, 'null-ls')
   if not null_ls_loaded then
@@ -30,16 +54,7 @@ function M.config()
   null_ls.setup {
     border = 'rounded',
     on_attach = on_attach,
-    sources = {
-      null_ls.builtins.code_actions.eslint_d,
-      null_ls.builtins.diagnostics.eslint_d,
-      null_ls.builtins.diagnostics.luacheck,
-      null_ls.builtins.diagnostics.tsc,
-      null_ls.builtins.formatting.prettier.with {
-        extra_args = { '--single-quote' },
-      },
-      null_ls.builtins.formatting.stylua,
-    },
+    sources = get_sources(null_ls),
   }
 end
 
