@@ -9,10 +9,6 @@ local function picker(title, preview)
   }
 end
 
-local function map(keys, action)
-  vim.keymap.set('n', keys, action, { noremap = true, silent = true })
-end
-
 function M.config()
   local telescope_loaded, telescope = pcall(require, 'telescope')
   if not telescope_loaded then
@@ -61,29 +57,30 @@ function M.config()
     },
   }
 
+  local nmap = require('cfg.util').nmap
   local builtin = require 'telescope.builtin'
 
-  map('<leader>fb', builtin.buffers)
-  map('<c-b>', builtin.buffers)
+  nmap('<leader>fb', builtin.buffers)
+  nmap('<c-b>', builtin.buffers)
 
-  map('<leader>ff', builtin.find_files)
-  map('<c-p>', builtin.find_files)
+  nmap('<leader>ff', builtin.find_files)
+  nmap('<c-p>', builtin.find_files)
 
-  map('<leader>fr', builtin.oldfiles)
-  map('<c-k>', builtin.oldfiles)
+  nmap('<leader>fr', builtin.oldfiles)
+  nmap('<c-k>', builtin.oldfiles)
 
-  map('<leader>fg', builtin.live_grep)
+  nmap('<leader>fg', builtin.live_grep)
 
-  map('<leader>fs', builtin.search_history)
-  map('<leader>fc', builtin.command_history)
+  nmap('<leader>fs', builtin.search_history)
+  nmap('<leader>fc', builtin.command_history)
 
-  map('<leader>fq', builtin.quickfix)
+  nmap('<leader>fq', builtin.quickfix)
 
-  map('<leader>fh', builtin.help_tags)
+  nmap('<leader>fh', builtin.help_tags)
 
-  map('<leader>gs', builtin.git_status)
-  map('<leader>gf', builtin.git_bcommits)
-  map('<leader>gl', builtin.git_commits)
+  nmap('<leader>gs', builtin.git_status)
+  nmap('<leader>gf', builtin.git_bcommits)
+  nmap('<leader>gl', builtin.git_commits)
 end
 
 return M

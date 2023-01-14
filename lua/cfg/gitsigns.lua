@@ -1,9 +1,5 @@
 local M = {}
 
-local function map(keys, action, bufnr)
-  vim.keymap.set('n', keys, action, { noremap = true, silent = true, buffer = bufnr })
-end
-
 function M.config()
   local gitsigns_loaded, gitsigns = pcall(require, 'gitsigns')
   if not gitsigns_loaded then
@@ -25,22 +21,24 @@ function M.config()
     on_attach = function(bufnr)
       local gitsigns = package.loaded.gitsigns
 
-      local function navigation(keys, action)
+      local function navigate(keys, action)
         vim.keymap.set('n', keys, function()
           if vim.wo.diff then
             return keys
           end
           vim.schedule(action)
-          return '<Ignore>'
+          return '<ignore>'
         end, { buffer = bufnr, expr = true })
       end
 
-      navigation(']c', gitsigns.next_hunk)
-      navigation('[c', gitsigns.prev_hunk)
+      navigate(']h', gitsigns.next_hunk)
+      navigate('[h', gitsigns.prev_hunk)
 
-      map('<leader>gt', gitsigns.toggle_signs, bufnr)
-      map('<leader>gh', gitsigns.preview_hunk, bufnr)
-      map('<leader>gb', function()
+      local nmap = require('cfg.util').nmap
+
+      nmap('<leader>gt', gitsigns.toggle_signs, bufnr)
+      nmap('<leader>gh', gitsigns.preview_hunk, bufnr)
+      nmap('<leader>gb', function()
         gitsigns.blame_line { full = true }
       end, bufnr)
     end,

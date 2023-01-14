@@ -1,42 +1,24 @@
 local M = {}
 
-local function map(keys, action, bufnr)
-  vim.keymap.set('n', keys, action, { noremap = true, silent = true, buffer = bufnr })
-end
-
-local lsp_formatting = function(bufnr) end
-
-local function keys(bufnr)
-  map('gd', vim.lsp.buf.definition, bufnr)
-  map('gD', vim.lsp.buf.declaration, bufnr)
-  map('gi', vim.lsp.buf.implementation, bufnr)
-  map('gr', vim.lsp.buf.references, bufnr)
-
-  map('<leader>lh', vim.lsp.buf.hover, bufnr)
-  map('<leader>ls', vim.lsp.buf.signature_help, bufnr)
-  map('<leader>lr', vim.lsp.buf.rename, bufnr)
-  map('<leader>la', vim.lsp.buf.code_action, bufnr)
-
-  map('<leader>dh', vim.diagnostic.open_float, bufnr)
-  map('<leader>dl', vim.diagnostic.setloclist, bufnr)
-  map('<leader>dq', vim.diagnostic.setqflist, bufnr)
-
-  map(']d', vim.diagnostic.goto_next, bufnr)
-  map('[d', vim.diagnostic.goto_prev, bufnr)
-
-  map('<leader>f', function()
-    vim.lsp.buf.format {
-      async = true,
-      bufnr = bufnr,
-      filter = function(client)
-        return client.name == 'null-ls'
-      end,
-    }
-  end, bufnr)
-end
-
 local function on_attach(_, bufnr)
-  keys(bufnr)
+  local nmap = require('cfg.util').nmap
+
+  nmap('gd', vim.lsp.buf.definition, bufnr)
+  nmap('gD', vim.lsp.buf.declaration, bufnr)
+  nmap('gi', vim.lsp.buf.implementation, bufnr)
+  nmap('gr', vim.lsp.buf.references, bufnr)
+
+  nmap('<leader>lh', vim.lsp.buf.hover, bufnr)
+  nmap('<leader>ls', vim.lsp.buf.signature_help, bufnr)
+  nmap('<leader>lr', vim.lsp.buf.rename, bufnr)
+  nmap('<leader>la', vim.lsp.buf.code_action, bufnr)
+
+  nmap('<leader>dh', vim.diagnostic.open_float, bufnr)
+  nmap('<leader>dl', vim.diagnostic.setloclist, bufnr)
+  nmap('<leader>dq', vim.diagnostic.setqflist, bufnr)
+
+  nmap(']d', vim.diagnostic.goto_next, bufnr)
+  nmap('[d', vim.diagnostic.goto_prev, bufnr)
 end
 
 function M.config()

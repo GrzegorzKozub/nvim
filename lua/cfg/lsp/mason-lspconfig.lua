@@ -7,8 +7,8 @@ function M.config()
   end
 
   mason_lspconfig.setup {
-    ensure_installed = require('cfg.lsp.servers').get(),
     automatic_installation = true,
+    ensure_installed = require('cfg.lsp.servers').get(),
   }
 end
 

@@ -7,6 +7,7 @@ function M.config()
   end
 
   treesitter.setup {
+    auto_install = true,
     ensure_installed = {
       'bash',
       'c_sharp',
@@ -32,7 +33,6 @@ function M.config()
       'vim',
       'yaml',
     },
-    auto_install = true,
     highlight = { enable = true },
     incremental_selection = { enable = true },
   }

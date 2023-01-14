@@ -1,12 +1,8 @@
 local M = {}
 
-local function map(keys, action, bufnr)
-  vim.keymap.set('n', keys, action, { noremap = true, silent = true, buffer = bufnr })
-end
-
-local function keys()
+local function on_attach()
   local bufnr = vim.fn.bufnr '%'
-  map('<leader>f', function()
+  require('cfg.util').nmap('<leader>f', function()
     vim.lsp.buf.format {
       async = true,
       bufnr = bufnr,
@@ -17,29 +13,18 @@ local function keys()
   end, bufnr)
 end
 
-local function on_attach()
-  keys()
-end
-
-local function get_sources(null_ls)
+local function sources(null_ls)
   local sources = {
-    null_ls.builtins.formatting.prettier.with {
-      extra_args = { '--single-quote' },
-    },
+    null_ls.builtins.formatting.prettier.with { extra_args = { '--single-quote' } },
     null_ls.builtins.formatting.stylua,
   }
-  if vim.fn.has 'win32' == 1 then
-    for _, source in ipairs {} do
-      table.insert(sources, source)
-    end
-  else
-    for _, lsp in ipairs {
-      null_ls.builtins.diagnostics.tsc,
+  if vim.fn.has 'win32' == 0 then
+    for _, source in ipairs {
       null_ls.builtins.code_actions.eslint_d,
       null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.diagnostics.luacheck,
     } do
-      table.insert(sources, lsp)
+      table.insert(sources, source)
     end
   end
   return sources
@@ -54,7 +39,7 @@ function M.config()
   null_ls.setup {
     border = 'rounded',
     on_attach = on_attach,
-    sources = get_sources(null_ls),
+    sources = sources(null_ls),
   }
 end
 

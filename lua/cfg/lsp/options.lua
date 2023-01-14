@@ -11,16 +11,19 @@ function M.config()
   end
 
   vim.diagnostic.config {
+    float = { header = '', prefix = '', border = 'rounded' },
+    severity_sort = true,
     underline = false,
     virtual_text = {
       spacing = 0,
       prefix = '',
-      -- format = function(diagnostic)
-      --   return string.format(vim.o.commentstring, diagnostic.message)
-      -- end,
+      format = function(diagnostic)
+        local sign = diagnostic.severity == vim.diagnostic.severity.ERROR and '●'
+          or diagnostic.severity == vim.diagnostic.severity.WARN and '▲'
+          or '◆'
+        return string.format('%s %s', sign, diagnostic.message)
+      end,
     },
-    float = { header = '', prefix = '', border = 'rounded' },
-    severity_sort = true,
   }
 
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
