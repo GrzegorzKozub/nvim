@@ -20,6 +20,7 @@ function M.config()
       'go',
       'gomod',
       'help',
+      'html',
       'http',
       'javascript',
       'jq',

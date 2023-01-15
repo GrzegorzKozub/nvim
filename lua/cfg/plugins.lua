@@ -89,9 +89,6 @@ function M.plugins(first_run)
       use { 'tpope/vim-rails', ft = 'ruby' }
       use { 'tpope/vim-endwise', ft = { 'elixir', 'eelixir', 'ruby' } }
 
-      use { 'elixir-editors/vim-elixir', ft = { 'elixir', 'eelixir' } }
-      use { 'GrzegorzKozub/vim-elixirls', ft = { 'elixir', 'eelixir' }, run = ':ElixirLsCompileSync' }
-
       if first_run then
         require('packer').sync()
       end

@@ -1,40 +1,35 @@
 local M = {}
 
 local function on_attach()
+  ---@diagnostic disable-next-line: param-type-mismatch
   local bufnr = vim.fn.bufnr '%'
   require('cfg.util').nmap('<leader>f', function()
-    vim.lsp.buf.format {
-      async = true,
-      bufnr = bufnr,
-      filter = function(client)
-        return client.name == 'null-ls'
-      end,
-    }
+    vim.lsp.buf.format { async = true, bufnr = bufnr }
   end, bufnr)
 end
 
 local function sources(null_ls)
   local sources = {
-    null_ls.builtins.formatting.prettier.with { extra_args = { '--single-quote' } },
     null_ls.builtins.formatting.stylua,
   }
   if vim.fn.has 'win32' == 0 then
     for _, source in ipairs {
       null_ls.builtins.code_actions.eslint_d,
       null_ls.builtins.diagnostics.cfn_lint,
-      null_ls.builtins.diagnostics.credo, -- test
+      null_ls.builtins.diagnostics.credo,
       null_ls.builtins.diagnostics.editorconfig_checker,
-      null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.diagnostics.golangci_lint,
       null_ls.builtins.diagnostics.hadolint,
       null_ls.builtins.diagnostics.jsonlint,
       null_ls.builtins.diagnostics.luacheck,
+      null_ls.builtins.formatting.prettier.with {
+        disabled_filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        extra_args = { '--single-quote' },
+      },
       null_ls.builtins.diagnostics.pylint,
       null_ls.builtins.diagnostics.vint,
       null_ls.builtins.diagnostics.yamllint,
       null_ls.builtins.formatting.autopep8,
-      null_ls.builtins.formatting.gofmt,
-      null_ls.builtins.formatting.mix, -- test
       null_ls.builtins.formatting.xmllint,
     } do
       table.insert(sources, source)

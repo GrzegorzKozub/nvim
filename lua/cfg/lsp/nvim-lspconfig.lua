@@ -7,6 +7,7 @@ local function on_attach(_, bufnr)
   nmap('gD', vim.lsp.buf.declaration, bufnr)
   nmap('gi', vim.lsp.buf.implementation, bufnr)
   nmap('gr', vim.lsp.buf.references, bufnr)
+  nmap('gt', vim.lsp.buf.type_definition, bufnr)
 
   nmap('<leader>lh', vim.lsp.buf.hover, bufnr)
   nmap('<leader>ls', vim.lsp.buf.signature_help, bufnr)
