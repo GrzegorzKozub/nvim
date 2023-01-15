@@ -55,9 +55,6 @@ function M.config()
 
   -- netrw
   vim.keymap.set('n', '<leader>e', ':Explore<cr>', options)
-
-  -- markdown-preview.nvim
-  vim.keymap.set('n', '<leader>mp', ':MarkdownPreviewToggle<cr>', options)
 end
 
 return M

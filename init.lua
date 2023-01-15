@@ -19,3 +19,5 @@ require('cfg.treesitter').config()
 require('cfg.comment').config()
 
 require('cfg.vimwiki').config()
+
+require('cfg.markdown-preview').config()

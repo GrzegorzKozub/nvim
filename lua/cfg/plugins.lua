@@ -83,12 +83,6 @@ function M.plugins(first_run)
         end,
       }
 
-      use { 'fatih/vim-go', cmd = { 'GoInstallBinaries', 'GoUpdateBinaries' }, ft = { 'go' } }
-
-      use { 'vim-ruby/vim-ruby', ft = 'ruby' }
-      use { 'tpope/vim-rails', ft = 'ruby' }
-      use { 'tpope/vim-endwise', ft = { 'elixir', 'eelixir', 'ruby' } }
-
       if first_run then
         require('packer').sync()
       end
