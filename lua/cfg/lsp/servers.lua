@@ -21,12 +21,6 @@ function M.get()
     } do
       table.insert(servers, server)
     end
-  else
-    for _, server in ipairs {
-      -- 'powershell_es',
-    } do
-      table.insert(servers, server)
-    end
   end
   return servers
 end
