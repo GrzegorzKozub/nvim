@@ -69,6 +69,7 @@ local function custom_colors()
       for kind, _ in pairs(require('cfg.lsp.nvim-cmp').kinds()) do
         vim.fn[hi]('CmpItemKind' .. kind, palette.grey0, palette.none)
       end
+      vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
       vim.fn[hi]('CustomCmpNormal', palette.grey2, palette.none)
 
       -- telescope.nvim
