@@ -7,16 +7,16 @@ function M.get()
   if vim.fn.has 'win32' == 0 then
     for _, server in ipairs {
       'bashls',
-      'csharp_ls',
+      -- 'csharp_ls',
       'dockerls',
-      'elixirls',
+      -- 'elixirls',
       'eslint',
-      'gopls',
-      'html',
+      -- 'gopls',
+      -- 'html',
       'jsonls',
       'pyright',
       'tsserver',
-      'vimls',
+      -- 'vimls',
       'yamlls',
     } do
       table.insert(servers, server)

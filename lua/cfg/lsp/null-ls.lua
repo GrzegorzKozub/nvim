@@ -1,11 +1,11 @@
 local M = {}
 
-local function on_attach()
-  ---@diagnostic disable-next-line: param-type-mismatch
-  local bufnr = vim.fn.bufnr '%'
-  require('cfg.util').nmap('<leader>f', function()
-    vim.lsp.buf.format { async = true, bufnr = bufnr }
-  end, bufnr)
+local function on_attach(client, bufnr)
+  if client.name == 'null-ls' and vim.o.filetype == 'xml' then
+    require('cfg.util').nmap('<leader>f', function()
+      vim.lsp.buf.format { async = true, bufnr = bufnr }
+    end, bufnr)
+  end
 end
 
 local function sources(null_ls)
@@ -14,11 +14,9 @@ local function sources(null_ls)
   }
   if vim.fn.has 'win32' == 0 then
     for _, source in ipairs {
-      null_ls.builtins.code_actions.eslint_d,
-      null_ls.builtins.diagnostics.cfn_lint,
-      null_ls.builtins.diagnostics.credo,
-      null_ls.builtins.diagnostics.editorconfig_checker,
-      null_ls.builtins.diagnostics.golangci_lint,
+      -- null_ls.builtins.diagnostics.cfn_lint,
+      -- null_ls.builtins.diagnostics.credo,
+      -- null_ls.builtins.diagnostics.golangci_lint,
       null_ls.builtins.diagnostics.hadolint,
       null_ls.builtins.diagnostics.jsonlint,
       null_ls.builtins.diagnostics.luacheck,
@@ -27,7 +25,7 @@ local function sources(null_ls)
         extra_args = { '--single-quote' },
       },
       null_ls.builtins.diagnostics.pylint,
-      null_ls.builtins.diagnostics.vint,
+      -- null_ls.builtins.diagnostics.vint,
       null_ls.builtins.diagnostics.yamllint,
       null_ls.builtins.formatting.autopep8,
       null_ls.builtins.formatting.xmllint,
