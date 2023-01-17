@@ -12,7 +12,17 @@ require('cfg.vim-hexokinase').config()
 
 require('cfg.telescope').config()
 
-require 'cfg.lsp'
+require('cfg.mason').config()
+require('cfg.mason-lspconfig').config()
+require('cfg.mason-update-all').config()
+
+require('cfg.neodev').config() -- before nvim-lspconfig
+require('cfg.nvim-lspconfig').config()
+
+require('cfg.nvim-cmp').config()
+
+require('cfg.null-ls').config()
+require('cfg.mason-null-ls').config() -- after mason and null-ls
 
 require('cfg.treesitter').config()
 

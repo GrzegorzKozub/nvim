@@ -32,12 +32,12 @@ function M.config()
     return
   end
 
-  for _, server in pairs(require('cfg.lsp.servers').get()) do
+  for _, server in pairs(require('cfg.servers').get()) do
     local options = {
-      capabilities = require('cfg.lsp.cmp-nvim-lsp').capabilities(),
+      capabilities = require('cfg.cmp-nvim-lsp').capabilities(),
       on_attach = on_attach,
     }
-    local server_options_loaded, server_options = pcall(require, 'cfg.lsp.' .. server)
+    local server_options_loaded, server_options = pcall(require, 'cfg.' .. server)
     if server_options_loaded then
       options = vim.tbl_deep_extend('force', server_options, options)
     end

@@ -66,7 +66,7 @@ local function custom_colors()
       vim.fn[hi]('CmpItemAbbr', palette.grey2, palette.none)
       vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
       vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.yellow, palette.none)
-      for kind, _ in pairs(require('cfg.lsp.nvim-cmp').kinds()) do
+      for kind, _ in pairs(require('cfg.nvim-cmp').kinds()) do
         vim.fn[hi]('CmpItemKind' .. kind, palette.grey0, palette.none)
       end
       vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
