@@ -67,6 +67,8 @@ function M.plugins(first_run)
         end,
       }
 
+      use 'RRethy/vim-illuminate'
+
       use 'tpope/vim-repeat'
       use 'tpope/vim-surround'
       use 'tpope/vim-unimpaired'

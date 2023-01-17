@@ -8,7 +8,7 @@ require('cfg.gruvbox-material').config()
 
 require('cfg.lualine').config()
 require('cfg.gitsigns').config()
-require('cfg.vim-hexokinase').config()
+require('cfg.hexokinase').config()
 
 require('cfg.telescope').config()
 
@@ -25,6 +25,8 @@ require('cfg.null-ls').config()
 require('cfg.mason-null-ls').config() -- after mason and null-ls
 
 require('cfg.treesitter').config()
+
+require('cfg.illuminate').config()
 
 require('cfg.comment').config()
 
