@@ -56,13 +56,7 @@ local function custom_colors()
       vim.fn[hi]('VirtualTextWarning', palette.bg5, palette.none)
       vim.fn[hi]('WildMenu', palette.fg0, palette.none)
 
-      -- null-ls
-      vim.fn[hi]('NullLsInfoBorder', palette.bg5, palette.none)
-
-      -- nvim-lspconfig
-      vim.fn[hi]('LspInfoBorder', palette.bg5, palette.none)
-
-      -- nvim-cmp
+      -- cmp
       vim.fn[hi]('CmpItemAbbr', palette.grey2, palette.none)
       vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
       vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.yellow, palette.none)
@@ -72,7 +66,16 @@ local function custom_colors()
       vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
       vim.fn[hi]('CustomCmpNormal', palette.grey2, palette.none)
 
-      -- telescope.nvim
+      -- illuminate
+      vim.fn[hi]('CurrentWord', palette.none, palette.bg3)
+
+      -- null-ls
+      vim.fn[hi]('NullLsInfoBorder', palette.bg5, palette.none)
+
+      -- nvim-lspconfig
+      vim.fn[hi]('LspInfoBorder', palette.bg5, palette.none)
+
+      -- telescope
       vim.fn[hi]('TelescopeBorder', palette.bg5, palette.none)
       vim.fn[hi]('TelescopeMatching', palette.yellow, palette.none)
       vim.fn[hi]('TelescopeMultiIcon', palette.fg0, palette.none)

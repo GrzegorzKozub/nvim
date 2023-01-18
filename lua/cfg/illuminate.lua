@@ -6,7 +6,10 @@ function M.config()
     return
   end
 
-  illuminate.configure { delay = 500 }
+  illuminate.configure {
+    delay = 500,
+    providers = { 'lsp', 'treesitter' },
+  }
 end
 
 return M
