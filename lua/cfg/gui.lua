@@ -1,18 +1,27 @@
 local M = {}
 
 function M.config()
-  local options = { noremap = true, silent = true }
+  vim.api.nvim_create_autocmd('UIEnter', {
+    once = true,
+    callback = function()
+      if vim.g.GuiLoaded == nil then
+        return
+      end
 
-  vim.keymap.set('n', '<F10>', function()
-    vim.fn.GuiWindowMaximized(vim.g.GuiWindowMaximized == 0)
-  end, options)
+      vim.cmd.Guifont 'Fira Code Retina:h12'
+      vim.cmd.GuiRenderLigatures(1)
 
-  vim.keymap.set('n', '<F11>', function()
-    vim.fn.GuiWindowFullScreen(vim.g.GuiWindowFullScreen == 0)
-  end, options)
+      local nmap = require('cfg.util').nmap
 
-  vim.cmd.Guifont 'Fira Code Retina:h12'
-  vim.cmd.GuiRenderLigatures(1)
+      nmap('<f10>', function()
+        vim.fn.GuiWindowMaximized(vim.g.GuiWindowMaximized == 0)
+      end)
+      nmap('<f11>', function()
+        vim.fn.GuiWindowFullScreen(vim.g.GuiWindowFullScreen == 0)
+      end)
+    end,
+    group = vim.api.nvim_create_augroup('GUI', { clear = true }),
+  })
 end
 
 return M

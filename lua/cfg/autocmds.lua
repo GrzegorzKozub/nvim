@@ -40,7 +40,6 @@ local function file_types()
 end
 
 local function last_seen_location()
-  local group = vim.api.nvim_create_augroup('LastSeenLocation', { clear = true })
   vim.api.nvim_create_autocmd('BufReadPost', {
     pattern = '*',
     callback = function()
@@ -50,18 +49,17 @@ local function last_seen_location()
         endif
       ]]
     end,
-    group = group,
+    group = vim.api.nvim_create_augroup('LastSeenLocation', { clear = true }),
   })
 end
 
 local function yank_highlight()
-  local group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
   vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
     callback = function()
       vim.highlight.on_yank()
     end,
-    group = group,
+    group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
   })
 end
 
