@@ -17,6 +17,7 @@ local function on_attach(_, bufnr)
   nmap('<leader>dh', vim.diagnostic.open_float, bufnr)
   nmap('<leader>dl', vim.diagnostic.setloclist, bufnr)
   nmap('<leader>dq', vim.diagnostic.setqflist, bufnr)
+  nmap('<leader>dt', '<cmd>TroubleToggle<cr>')
 
   nmap(']d', vim.diagnostic.goto_next, bufnr)
   nmap('[d', vim.diagnostic.goto_prev, bufnr)

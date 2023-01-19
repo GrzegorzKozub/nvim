@@ -28,6 +28,8 @@ require('cfg.treesitter').config()
 
 require('cfg.illuminate').config()
 
+require('cfg.trouble').config()
+
 require('cfg.comment').config()
 
 require('cfg.vimwiki').config()

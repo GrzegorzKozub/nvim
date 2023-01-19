@@ -69,6 +69,8 @@ function M.plugins(first_run)
 
       use 'RRethy/vim-illuminate'
 
+      use 'folke/trouble.nvim'
+
       use 'tpope/vim-repeat'
       use 'tpope/vim-surround'
       use 'tpope/vim-unimpaired'
