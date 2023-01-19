@@ -3,7 +3,7 @@ local M = {}
 local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
-  vim.g.gruvbox_material_disable_italic_comment = 1
+  -- vim.g.gruvbox_material_disable_italic_comment = 1
   vim.g.gruvbox_material_foreground = 'material'
   vim.g.gruvbox_material_show_eob = 0
 
