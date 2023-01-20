@@ -10,6 +10,7 @@ function M.config()
 
       vim.cmd.Guifont 'Cascadia Code:h13'
       -- vim.cmd.Guifont 'Fira Code Retina:h12'
+
       vim.cmd.GuiRenderLigatures(1)
 
       local nmap = require('cfg.util').nmap
