@@ -1,6 +1,7 @@
 local M = {}
 
 local function buffer()
+  ---@diagnostic disable-next-line: param-type-mismatch
   return vim.fn.bufnr '%'
 end
 
@@ -22,19 +23,23 @@ local function contains(table, value)
 end
 
 local function buffer_cond()
-  return not contains({ 'help', 'netrw', 'packer', 'qf' }, vim.o.filetype)
+  return not contains({ 'help', 'netrw', 'packer', 'qf', 'Trouble' }, vim.o.filetype)
 end
 
 local function filename_cond()
-  return not contains({ 'netrw', 'packer', 'qf', 'checkhealth' }, vim.o.filetype)
+  return not contains({ 'netrw', 'packer', 'qf', 'checkhealth', 'Trouble' }, vim.o.filetype)
 end
 
 local function encoding_and_fileformat_cond()
-  return not contains({ 'help', 'netrw', 'packer', 'qf', 'checkhealth' }, vim.o.filetype)
+  return not contains({ 'checkhealth', 'help', 'netrw', 'packer', 'qf', 'Trouble' }, vim.o.filetype)
 end
 
 local function mode_fmt(mode)
   return mode:sub(1, 1):lower()
+end
+
+local function filetype_fmt(filetype)
+  return filetype:lower()
 end
 
 function M.config()
@@ -69,7 +74,7 @@ function M.config()
           symbols = { error = '● ', warn = '▲ ', info = '◆ ', hint = '◆ ' },
         },
         { 'diff', symbols = { added = '', modified = '', removed = '' } },
-        'filetype',
+        { 'filetype', fmt = filetype_fmt },
       },
       lualine_y = {
         { encoding_and_fileformat, cond = encoding_and_fileformat_cond },
@@ -80,7 +85,7 @@ function M.config()
       lualine_a = {},
       lualine_b = {},
       lualine_c = { filename },
-      lualine_x = { 'filetype' },
+      lualine_x = { { 'filetype', fmt = filetype_fmt } },
       lualine_y = {},
       lualine_z = {},
     },

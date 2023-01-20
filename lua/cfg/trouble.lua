@@ -8,8 +8,8 @@ function M.config()
 
   trouble.setup {
     action_keys = { hover = 'H' },
-    fold_closed = '>',
-    fold_open = 'v',
+    fold_closed = '▶',
+    fold_open = '▼',
     icons = false,
     indent_lines = false,
     padding = false,

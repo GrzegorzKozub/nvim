@@ -86,6 +86,12 @@ local function custom_colors()
       vim.fn[hi]('TelescopeResultsDiffDelete', palette.red, palette.none)
       vim.fn[hi]('TelescopeResultsNormal', palette.grey1, palette.none)
       vim.fn[hi]('TelescopeSelection', palette.fg1, palette.bg1)
+
+      -- trouble
+      vim.fn[hi]('TroubleCount', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleFile', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleFoldIcon', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleText', palette.grey2, palette.none)
     end,
     group = group,
   })
