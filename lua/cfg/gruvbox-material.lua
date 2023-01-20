@@ -35,7 +35,7 @@ local function custom_colors()
       vim.cmd.hi('InfoFloat', 'guibg=NONE ctermbg=NONE')
       vim.cmd.hi('ModeMsg', 'gui=NONE cterm=NONE')
       vim.cmd.hi('MoreMsg', 'gui=NONE cterm=NONE')
-      vim.cmd.hi('Title', 'gui=NONE cterm=NONE')
+      -- vim.cmd.hi('Title', 'gui=NONE cterm=NONE')
       vim.cmd.hi('WarningFloat', 'guibg=NONE ctermbg=NONE')
       vim.cmd.hi('WarningMsg', 'gui=NONE cterm=NONE')
 
