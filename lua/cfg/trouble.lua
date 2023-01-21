@@ -15,6 +15,8 @@ function M.config()
     padding = false,
     use_diagnostic_signs = true,
   }
+
+  require('cfg.util').nmap('<leader>t', '<cmd>TroubleToggle<cr>')
 end
 
 return M

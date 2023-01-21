@@ -38,7 +38,7 @@ local function custom_colors()
       vim.cmd.hi('WarningFloat', 'guibg=NONE ctermbg=NONE')
       vim.cmd.hi('WarningMsg', 'gui=NONE cterm=NONE')
 
-      vim.fn[hi]('FloatBorder', palette.bg5, palette.bg0)
+      vim.fn[hi]('FloatBorder', palette.fg0, palette.bg0)
       vim.fn[hi]('Folded', palette.bg5, palette.none)
       vim.fn[hi]('IncSearch', palette.bg0, palette.orange)
       vim.fn[hi]('NormalFloat', palette.fg0, palette.bg0)
@@ -63,16 +63,16 @@ local function custom_colors()
         vim.fn[hi]('CmpItemKind' .. kind, palette.grey0, palette.none)
       end
       vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
-      vim.fn[hi]('CustomCmpNormal', palette.grey2, palette.none)
+      vim.fn[hi]('CustomCmpFloatBorder', palette.bg5, palette.none)
 
       -- illuminate
       vim.fn[hi]('CurrentWord', palette.none, palette.bg3)
 
       -- null-ls
-      vim.fn[hi]('NullLsInfoBorder', palette.bg5, palette.none)
+      vim.fn[hi]('NullLsInfoBorder', palette.fg0, palette.none)
 
       -- nvim-lspconfig
-      vim.fn[hi]('LspInfoBorder', palette.bg5, palette.none)
+      vim.fn[hi]('LspInfoBorder', palette.fg0, palette.none)
 
       -- telescope
       vim.fn[hi]('TelescopeBorder', palette.bg5, palette.none)
@@ -88,9 +88,8 @@ local function custom_colors()
 
       -- trouble
       vim.fn[hi]('TroubleCount', palette.bg5, palette.none)
-      vim.fn[hi]('TroubleFile', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleFile', palette.grey1, palette.none)
       vim.fn[hi]('TroubleFoldIcon', palette.bg5, palette.none)
-      vim.fn[hi]('TroubleText', palette.grey2, palette.none)
     end,
     group = vim.api.nvim_create_augroup('GruvboxMaterialCustomColors', { clear = true }),
   })
