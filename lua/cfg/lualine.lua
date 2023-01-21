@@ -73,7 +73,7 @@ function M.config()
           sections = { 'error', 'warn', 'info', 'hint' },
           symbols = { error = '● ', warn = '▲ ', info = '◆ ', hint = '◆ ' },
         },
-        { 'diff', symbols = { added = '', modified = '', removed = '' } },
+        { 'diff', symbols = { added = '+ ', modified = '± ', removed = '- ' } },
         { 'filetype', fmt = filetype_fmt },
       },
       lualine_y = {
