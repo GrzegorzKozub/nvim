@@ -1,7 +1,6 @@
 require('cfg.options').config()
 require('cfg.autocmds').config()
 require('cfg.keys').config()
--- require('cfg.gui').config()
 
 require('cfg.plugins').config()
 
