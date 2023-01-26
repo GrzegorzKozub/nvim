@@ -79,8 +79,6 @@ function M.plugins(first_run)
 
       use 'vimwiki/vimwiki'
 
-      use 'fladson/vim-kitty'
-
       use {
         'iamcco/markdown-preview.nvim',
         ft = { 'markdown' },
