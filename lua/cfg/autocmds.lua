@@ -3,27 +3,6 @@ local M = {}
 local function file_types()
   local group = vim.api.nvim_create_augroup('FileTypes', { clear = true })
   vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
-    pattern = '*.config',
-    callback = function()
-      vim.cmd.set 'filetype=xml'
-    end,
-    group = group,
-  })
-  vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
-    pattern = '*.cshtml',
-    callback = function()
-      vim.cmd.set 'filetype=html'
-    end,
-    group = group,
-  })
-  vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
-    pattern = '*.csx',
-    callback = function()
-      vim.cmd.set 'filetype=cs'
-    end,
-    group = group,
-  })
-  vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     pattern = 'config',
     callback = function()
       vim.cmd.set 'filetype=confini'

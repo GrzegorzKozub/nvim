@@ -30,22 +30,30 @@ function M.plugins(first_run)
 
       use 'sainnhe/gruvbox-material'
 
-      use 'nvim-lualine/lualine.nvim'
-      use 'lewis6991/gitsigns.nvim'
-      use { 'rrethy/vim-hexokinase', run = 'make hexokinase' }
-
-      use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
+      use {
+        { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } },
+        'lewis6991/gitsigns.nvim',
+        'folke/trouble.nvim',
+        'nvim-lualine/lualine.nvim',
+      }
 
       use {
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        'jayp0521/mason-null-ls.nvim',
-        'RubixDev/mason-update-all',
+        {
+          'nvim-treesitter/nvim-treesitter',
+          run = function()
+            require('nvim-treesitter.install').update { with_sync = true }()
+          end,
+        },
+        'RRethy/vim-illuminate',
+        { 'rrethy/vim-hexokinase', run = 'make hexokinase' },
       }
+
       use {
         'folke/neodev.nvim',
         'neovim/nvim-lspconfig',
+        { 'jose-elias-alvarez/null-ls.nvim', requires = { 'nvim-lua/plenary.nvim' } },
       }
+
       use {
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
@@ -54,37 +62,35 @@ function M.plugins(first_run)
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-cmdline',
       }
+
       use {
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
       }
-      use { 'jose-elias-alvarez/null-ls.nvim', requires = { { 'nvim-lua/plenary.nvim' } } }
 
       use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function()
-          require('nvim-treesitter.install').update { with_sync = true }()
-        end,
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'jayp0521/mason-null-ls.nvim',
+        'RubixDev/mason-update-all',
       }
 
-      use 'RRethy/vim-illuminate'
-
-      use 'folke/trouble.nvim'
-
-      use 'tpope/vim-repeat'
-      use 'tpope/vim-surround'
-      use 'tpope/vim-unimpaired'
-
-      use 'numToStr/Comment.nvim'
-
-      use 'vimwiki/vimwiki'
+      use {
+        'numToStr/Comment.nvim',
+        'tpope/vim-repeat',
+        'tpope/vim-surround',
+        'tpope/vim-unimpaired',
+      }
 
       use {
-        'iamcco/markdown-preview.nvim',
-        ft = { 'markdown' },
-        run = function()
-          vim.fn['mkdp#util#install_sync']()
-        end,
+        'vimwiki/vimwiki',
+        {
+          'iamcco/markdown-preview.nvim',
+          ft = { 'markdown' },
+          run = function()
+            vim.fn['mkdp#util#install_sync']()
+          end,
+        },
       }
 
       if first_run then
