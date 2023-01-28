@@ -22,7 +22,6 @@ function M.config()
       'help',
       'html',
       'http',
-      'ini',
       'javascript',
       'jq',
       'json',
