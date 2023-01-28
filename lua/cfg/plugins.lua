@@ -77,7 +77,6 @@ function M.plugins(first_run)
 
       use {
         'numToStr/Comment.nvim',
-        'tpope/vim-repeat',
         'tpope/vim-surround',
         'tpope/vim-unimpaired',
       }
@@ -99,11 +98,11 @@ function M.plugins(first_run)
     end,
     config = {
       display = {
-        working_sym = '↺',
-        error_sym = '✕',
-        done_sym = '✓',
-        remved_sym = '✕',
-        moved_sym = '→',
+        working_sym = '🗘',
+        error_sym = '✗',
+        done_sym = '✔',
+        removed_sym = '✗',
+        moved_sym = '➔',
         header_sym = '',
         prompt_border = 'rounded',
         open_fn = function()

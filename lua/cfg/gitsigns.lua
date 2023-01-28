@@ -19,7 +19,7 @@ function M.config()
     watch_gitdir = { interval = 10000 },
     preview_config = { border = 'rounded', row = -1, col = 2 },
     on_attach = function(bufnr)
-      local gitsigns = package.loaded.gitsigns
+      local gs = package.loaded.gitsigns
 
       local function navigate(keys, action)
         vim.keymap.set('n', keys, function()
@@ -31,15 +31,15 @@ function M.config()
         end, { buffer = bufnr, expr = true })
       end
 
-      navigate(']h', gitsigns.next_hunk)
-      navigate('[h', gitsigns.prev_hunk)
+      navigate(']h', gs.next_hunk)
+      navigate('[h', gs.prev_hunk)
 
       local nmap = require('cfg.util').nmap
 
-      nmap('<leader>gt', gitsigns.toggle_signs, bufnr)
-      nmap('<leader>gh', gitsigns.preview_hunk, bufnr)
+      nmap('<leader>gt', gs.toggle_signs, bufnr)
+      nmap('<leader>gh', gs.preview_hunk, bufnr)
       nmap('<leader>gb', function()
-        gitsigns.blame_line { full = true }
+        gs.blame_line { full = true }
       end, bufnr)
     end,
   }
