@@ -19,7 +19,7 @@ require('cfg.neodev').config() -- before nvim-lspconfig
 require('cfg.nvim-lspconfig').config()
 require('cfg.null-ls').config()
 
-require('cfg.nvim-cmp').config()
+require('cfg.cmp').config()
 
 require('cfg.mason').config()
 require('cfg.mason-lspconfig').config()
