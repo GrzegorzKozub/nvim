@@ -2,7 +2,7 @@ local M = {}
 
 function M.get()
   local servers = {
-    'sumneko_lua',
+    'lua_ls',
   }
   if vim.fn.has 'win32' == 0 then
     for _, server in ipairs {
