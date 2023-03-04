@@ -6,7 +6,7 @@ function M.config()
     return
   end
 
-  mason_null_ls.setup { automatic_installation = true }
+  mason_null_ls.setup { automatic_installation = { exclude = { 'xmllint' } } }
 end
 
 return M
