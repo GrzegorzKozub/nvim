@@ -13,7 +13,7 @@ function M.config()
     icons = false,
     indent_lines = false,
     padding = false,
-    use_diagnostic_signs = true,
+    signs = { error = '●', warning = '▲', hint = '◆', information = '◆', other = '◆' },
   }
 
   require('cfg.util').nmap('<leader>t', '<cmd>TroubleToggle<cr>')
