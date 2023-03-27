@@ -28,6 +28,7 @@ local function sources(null_ls)
       -- null_ls.builtins.diagnostics.vint,
       null_ls.builtins.diagnostics.yamllint,
       null_ls.builtins.formatting.autopep8,
+      -- null_ls.builtins.formatting.taplo,
       null_ls.builtins.formatting.xmllint,
     } do
       table.insert(sources, source)

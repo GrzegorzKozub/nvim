@@ -15,6 +15,7 @@ function M.get()
       -- 'html',
       'jsonls',
       'pyright',
+      'taplo',
       'tsserver',
       -- 'vimls',
       'yamlls',
