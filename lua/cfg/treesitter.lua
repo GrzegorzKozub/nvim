@@ -19,7 +19,6 @@ function M.config()
       'gitignore',
       'go',
       'gomod',
-      'help',
       'html',
       'http',
       'javascript',
