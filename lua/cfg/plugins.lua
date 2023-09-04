@@ -76,9 +76,9 @@ function M.plugins(first_run)
       }
 
       use {
+        'kylechui/nvim-surround',
         'numToStr/Comment.nvim',
         'tpope/vim-repeat',
-        'tpope/vim-surround',
         'tpope/vim-unimpaired',
       }
 

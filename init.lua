@@ -27,6 +27,7 @@ require('cfg.mason-null-ls').config() -- after mason and null-ls
 require('cfg.mason-update-all').config()
 
 require('cfg.comment').config()
+require('cfg.surround').config()
 
 require('cfg.vimwiki').config()
 require('cfg.markdown-preview').config()
