@@ -1,0 +1,13 @@
+hyperfine 'nvim --headless +qa' --warmup 10
+
+clean@player
+
+Benchmark 1: nvim --clean --headless +qa
+  Time (mean ± σ):       5.2 ms ±   0.1 ms    [User: 2.6 ms, System: 2.9 ms]
+  Range (min … max):     4.9 ms …   5.8 ms    390 runs
+
+packer@player
+
+Benchmark 1: nvim --headless +qa
+  Time (mean ± σ):     101.0 ms ±   1.1 ms    [User: 65.4 ms, System: 34.2 ms]
+  Range (min … max):    99.7 ms … 104.4 ms    29 runs
