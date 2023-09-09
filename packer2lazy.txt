@@ -11,3 +11,9 @@ packer@player
 Benchmark 1: nvim --headless +qa
   Time (mean ± σ):     101.0 ms ±   1.1 ms    [User: 65.4 ms, System: 34.2 ms]
   Range (min … max):    99.7 ms … 104.4 ms    29 runs
+
+lazy@player without optimizations
+
+Benchmark 1: nvim --headless +qa
+  Time (mean ± σ):      79.2 ms ±   1.2 ms    [User: 55.3 ms, System: 23.4 ms]
+  Range (min … max):    76.9 ms …  82.4 ms    37 runs

@@ -9,7 +9,7 @@ require('cfg.gruvbox-material').config()
 require('cfg.telescope').config()
 require('cfg.gitsigns').config()
 require('cfg.trouble').config()
-require('cfg.lualine').config()
+require('cfg.lualine').config() -- after gruvbox-material
 
 require('cfg.treesitter').config()
 require('cfg.illuminate').config()
