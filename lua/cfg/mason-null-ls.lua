@@ -6,7 +6,19 @@ function M.config()
     return
   end
 
-  mason_null_ls.setup { automatic_installation = { exclude = { 'xmllint' } } }
+  mason_null_ls.setup {
+    automatic_installation = { exclude = { 'xmllint' } },
+    ensure_installed = { -- todo: base on null-ls.lua
+      'stylua',
+      'hadolint',
+      'jsonlint',
+      'luacheck',
+      'prettier',
+      'pylint',
+      'yamllint',
+      'autopep8',
+    },
+  }
 end
 
 return M

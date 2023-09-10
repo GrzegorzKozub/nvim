@@ -24,11 +24,7 @@ function M.plugins()
     'folke/trouble.nvim',
     { 'nvim-lualine/lualine.nvim', priority = 52 },
 
-    {
-      'nvim-treesitter/nvim-treesitter', build = function()
-        require('nvim-treesitter.install').update { with_sync = true }()
-      end
-    },
+    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     'RRethy/vim-illuminate',
     { 'rrethy/vim-hexokinase', build = 'make hexokinase' },
 
@@ -48,7 +44,7 @@ function M.plugins()
 
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
-    'jayp0521/mason-null-ls.nvim',
+    'jay-babu/mason-null-ls.nvim',
     'RubixDev/mason-update-all',
 
     'kylechui/nvim-surround',

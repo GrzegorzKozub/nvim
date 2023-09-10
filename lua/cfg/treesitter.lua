@@ -32,10 +32,12 @@ function M.config()
       'toml',
       'typescript',
       'vim',
+      'vimdoc',
       'yaml',
     },
     highlight = { enable = true },
     incremental_selection = { enable = true },
+    sync_install = #vim.api.nvim_list_uis() == 0, -- headless
   }
 
   vim.opt.foldmethod = 'expr'
