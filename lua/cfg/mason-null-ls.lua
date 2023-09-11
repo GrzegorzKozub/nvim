@@ -6,18 +6,27 @@ function M.config()
     return
   end
 
-  mason_null_ls.setup {
-    automatic_installation = { exclude = { 'xmllint' } },
-    ensure_installed = { -- todo: base on null-ls.lua
-      'stylua',
+  local sources = { 'stylua' }
+  if vim.fn.has 'win32' == 0 then
+    for _, source in ipairs {
+      -- 'cfn-lint',
       'hadolint',
       'jsonlint',
       'luacheck',
       'prettier',
       'pylint',
+      -- 'vint',
       'yamllint',
       'autopep8',
-    },
+      -- 'taplo',
+    } do
+      table.insert(sources, source)
+    end
+  end
+
+  mason_null_ls.setup {
+    automatic_installation = { exclude = { 'xmllint' } },
+    ensure_installed = sources,
   }
 end
 
