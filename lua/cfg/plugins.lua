@@ -41,6 +41,7 @@ function M.plugins()
 
     {
       'hrsh7th/nvim-cmp',
+      event = 'InsertEnter',
       dependencies = {
         'L3MON4D3/LuaSnip',
         'hrsh7th/cmp-buffer',
@@ -50,6 +51,7 @@ function M.plugins()
         'hrsh7th/cmp-path',
         'saadparwaiz1/cmp_luasnip',
       },
+      config = require('cfg.cmp').config
     },
 
     { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },

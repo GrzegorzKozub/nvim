@@ -12,8 +12,16 @@ Benchmark 1: nvim --headless +qa
   Time (mean ± σ):     101.0 ms ±   1.1 ms    [User: 65.4 ms, System: 34.2 ms]
   Range (min … max):    99.7 ms … 104.4 ms    29 runs
 
-lazy@player without optimizations
+lazy@player
+
+migrate
 
 Benchmark 1: nvim --headless +qa
   Time (mean ± σ):      82.7 ms ±   1.2 ms    [User: 59.2 ms, System: 23.2 ms]
   Range (min … max):    80.5 ms …  85.9 ms    36 runs
+
+lazy load nvim-cmp
+
+Benchmark 1: nvim --headless +qa
+  Time (mean ± σ):      72.9 ms ±   1.0 ms    [User: 51.2 ms, System: 21.4 ms]
+  Range (min … max):    71.8 ms …  76.9 ms    39 runs
