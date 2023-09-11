@@ -7,7 +7,7 @@ local function bootstrap()
       'git',
       'clone',
       '--filter=blob:none',
-      '--branch=stable',
+      -- '--branch=stable',
       'https://github.com/folke/lazy.nvim.git',
       path,
     }
