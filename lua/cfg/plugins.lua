@@ -1,56 +1,60 @@
 local M = {}
 
 local function bootstrap()
-  local path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+  local path = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
   if not vim.loop.fs_stat(path) then
-    vim.fn.system({
+    vim.fn.system {
       'git',
       'clone',
       '--filter=blob:none',
       '--branch=stable',
       'https://github.com/folke/lazy.nvim.git',
       path,
-    })
+    }
   end
   vim.opt.runtimepath:prepend(path)
 end
 
 function M.plugins()
-  return require('lazy').setup({
+  return require('lazy').setup {
     { 'sainnhe/gruvbox-material', priority = 51 },
-
     { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
     'lewis6991/gitsigns.nvim',
     'folke/trouble.nvim',
     { 'nvim-lualine/lualine.nvim', priority = 52 },
 
+    'numToStr/Comment.nvim',
+    'kylechui/nvim-surround',
+    'tpope/vim-repeat',
+    'tpope/vim-unimpaired',
+
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     'RRethy/vim-illuminate',
     { 'rrethy/vim-hexokinase', build = 'make hexokinase' },
 
-    'folke/neodev.nvim',
-    'neovim/nvim-lspconfig',
-    { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-nvim-lua',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-
-    'L3MON4D3/LuaSnip',
-    'saadparwaiz1/cmp_luasnip',
-
     'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-    'jay-babu/mason-null-ls.nvim',
     'RubixDev/mason-update-all',
 
-    'kylechui/nvim-surround',
-    'numToStr/Comment.nvim',
-    'tpope/vim-repeat',
-    'tpope/vim-unimpaired',
+    'folke/neodev.nvim',
+
+    'neovim/nvim-lspconfig',
+
+    {
+      'hrsh7th/nvim-cmp',
+      dependencies = {
+        'L3MON4D3/LuaSnip',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-path',
+        'saadparwaiz1/cmp_luasnip',
+      },
+    },
+
+    { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+    'williamboman/mason-lspconfig.nvim',
+    'jay-babu/mason-null-ls.nvim',
 
     'vimwiki/vimwiki',
     {
@@ -60,7 +64,7 @@ function M.plugins()
         vim.fn['mkdp#util#install_sync']()
       end,
     },
-  })
+  }
 
   --       working_sym = '▷',
   --       error_sym = '!',

@@ -5,10 +5,6 @@ function M.config()
   if not mason_loaded then
     return
   end
-  local mason_update_all_loaded, mason_update_all = pcall(require, 'mason-update-all')
-  if not mason_update_all_loaded then
-    return
-  end
 
   mason.setup {
     ui = {
@@ -20,8 +16,6 @@ function M.config()
       },
     },
   }
-
-  mason_update_all.setup()
 end
 
 return M
