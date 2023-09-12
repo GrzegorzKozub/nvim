@@ -16,32 +16,93 @@ local function bootstrap()
 end
 
 function M.plugins()
-  return require('lazy').setup {
+  return require('lazy').setup({
     { 'sainnhe/gruvbox-material', priority = 51 },
-    { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-    'lewis6991/gitsigns.nvim',
-    'folke/trouble.nvim',
+
+    {
+      'nvim-telescope/telescope.nvim',
+      config = require('cfg.telescope').config,
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      keys = { '<c-b>', '<c-k>', '<c-p>' },
+    },
+
+    {
+      'lewis6991/gitsigns.nvim',
+      config = require('cfg.gitsigns').config,
+      event = { 'BufNewFile', 'BufReadPre' },
+    },
+
+    {
+      'folke/trouble.nvim',
+      config = require('cfg.trouble').config,
+      keys = '<leader>t',
+    },
+
     { 'nvim-lualine/lualine.nvim', priority = 52 },
 
-    'numToStr/Comment.nvim',
-    'kylechui/nvim-surround',
-    'tpope/vim-repeat',
-    'tpope/vim-unimpaired',
+    {
+      'numToStr/Comment.nvim',
+      config = require('cfg.comment').config,
+      keys = { { 'gbc' }, { 'gcc' }, { 'gb', mode = 'v' }, { 'gc', mode = 'v' } },
+    },
 
-    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-    'RRethy/vim-illuminate',
-    { 'rrethy/vim-hexokinase', build = 'make hexokinase' },
+    {
+      'kylechui/nvim-surround',
+      config = require('cfg.surround').config,
+      keys = { 'cs', 'ds', 'ys' },
+    },
 
-    'williamboman/mason.nvim',
-    'RubixDev/mason-update-all',
+    { 'tpope/vim-repeat', keys = '.' },
+    { 'tpope/vim-unimpaired', keys = { '[', ']' } },
 
-    'folke/neodev.nvim',
+    {
+      'nvim-treesitter/nvim-treesitter',
+      build = ':TSUpdate',
+      cmd = 'TSUpdateSync',
+      config = require('cfg.treesitter').config,
+      event = { 'BufNewFile', 'BufReadPre' },
+    },
 
-    'neovim/nvim-lspconfig',
+    {
+      'RRethy/vim-illuminate',
+      config = require('cfg.illuminate').config,
+      event = { 'BufNewFile', 'BufReadPre' },
+    },
+
+    {
+      'rrethy/vim-hexokinase',
+      build = 'make hexokinase',
+      config = require('cfg.hexokinase').config,
+      event = { 'BufNewFile', 'BufReadPre' },
+    },
+
+    {
+      'williamboman/mason.nvim',
+      cmd = 'Mason',
+      config = require('cfg.mason').config,
+    },
+
+    {
+      'RubixDev/mason-update-all',
+      cmd = 'MasonUpdateAll',
+      config = require('cfg.mason-update-all').config,
+    },
+
+    {
+      'folke/neodev.nvim',
+      config = require('cfg.neodev').config,
+      ft = 'lua',
+    },
+
+    {
+      'neovim/nvim-lspconfig',
+      config = require('cfg.nvim-lspconfig').config,
+      event = { 'BufNewFile', 'BufReadPre' },
+    },
 
     {
       'hrsh7th/nvim-cmp',
-      event = 'InsertEnter',
+      event = { 'CmdlineEnter', 'InsertEnter' },
       dependencies = {
         'L3MON4D3/LuaSnip',
         'hrsh7th/cmp-buffer',
@@ -51,33 +112,65 @@ function M.plugins()
         'hrsh7th/cmp-path',
         'saadparwaiz1/cmp_luasnip',
       },
-      config = require('cfg.cmp').config
+      config = require('cfg.cmp').config,
     },
 
-    { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-    'williamboman/mason-lspconfig.nvim',
-    'jay-babu/mason-null-ls.nvim',
+    {
+      'jose-elias-alvarez/null-ls.nvim',
+      config = require('cfg.null-ls').config,
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      event = { 'BufNewFile', 'BufReadPre' },
+    },
 
-    'vimwiki/vimwiki',
+    {
+      'williamboman/mason-lspconfig.nvim',
+      config = require('cfg.mason-lspconfig').config,
+      event = { 'BufNewFile', 'BufReadPre' },
+    },
+
+    {
+      'jay-babu/mason-null-ls.nvim',
+      config = require('cfg.mason-null-ls').config,
+      event = { 'BufNewFile', 'BufReadPre' },
+    },
+
+    {
+      'vimwiki/vimwiki',
+      config = require('cfg.vimwiki').config,
+      event = { 'BufNewFile', 'BufReadPre' },
+    },
+
     {
       'iamcco/markdown-preview.nvim',
-      ft = { 'markdown' },
       build = function()
         vim.fn['mkdp#util#install_sync']()
       end,
+      config = require('cfg.markdown-preview').config,
+      ft = 'markdown',
     },
-  }
-
-  --       working_sym = '▷',
-  --       error_sym = '!',
-  --       done_sym = '✓',
-  --       removed_sym = '×',
-  --       moved_sym = '→',
-  --       header_sym = '',
-  --       prompt_border = 'rounded',
-  --       open_fn = function()
-  --         return require('packer.util').float { border = 'rounded' }
-  --       end,
+  }, {
+    ui = {
+      border = 'rounded',
+      icons = {
+        cmd = ' ',
+        config = ' ',
+        event = '',
+        ft = ' ',
+        init = ' ',
+        import = ' ',
+        keys = ' ',
+        lazy = '󰒲 ',
+        loaded = '●',
+        not_loaded = '○',
+        plugin = ' ',
+        runtime = ' ',
+        source = ' ',
+        start = '',
+        task = ' ',
+        list = { '● ', '➜ ', '★ ', '- ' },
+      },
+    },
+  })
 end
 
 function M.config()
