@@ -104,7 +104,7 @@ function M.config()
 end
 
 function M.lualine_theme()
-  local theme = require('lualine.themes.' .. require('cfg.my-theme').get().lualine)
+  local theme = require('lualine.themes.gruvbox-material')
 
   if vim.o.background == 'dark' then
     theme.normal.a.bg = '#7c6f64' -- was #a89984
