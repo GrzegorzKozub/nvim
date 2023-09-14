@@ -43,7 +43,7 @@ end
 
 function M.config()
   bootstrap()
-  require('lazy').setup('cfg.plugins', options())
+  require('lazy').setup('plg', options())
 end
 
 return M
