@@ -1,5 +1,6 @@
 return {
   'vimwiki/vimwiki',
-  config = require('cfg.vimwiki').config,
-  event = { 'BufNewFile', 'BufReadPre' },
+  init = require('cfg.vimwiki').config,
+  -- ft = 'markdown',
+  keys = '<leader>ww',
 }
