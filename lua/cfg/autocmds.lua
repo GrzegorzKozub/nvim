@@ -10,6 +10,13 @@ local function file_types()
     group = group,
   })
   vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'markdown',
+    callback = function()
+      vim.cmd.setlocal 'conceallevel=2'
+    end,
+    group = group,
+  })
+  vim.api.nvim_create_autocmd('FileType', {
     pattern = 'vim',
     callback = function()
       vim.cmd.setlocal 'textwidth=0'

@@ -25,6 +25,7 @@ function M.config()
       'jq',
       'json',
       'lua',
+      'markdown',
       'markdown_inline',
       'python',
       'scss',
