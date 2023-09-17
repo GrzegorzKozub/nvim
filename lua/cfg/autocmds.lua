@@ -5,21 +5,21 @@ local function file_types()
   vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     pattern = 'config',
     callback = function()
-      vim.cmd.set 'filetype=confini'
+      vim.opt.filetype = 'confini'
     end,
     group = group,
   })
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'markdown',
     callback = function()
-      vim.cmd.setlocal 'conceallevel=2'
+      vim.opt_local.conceallevel = 1
     end,
     group = group,
   })
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'vim',
     callback = function()
-      vim.cmd.setlocal 'textwidth=0'
+      vim.opt_local.textwidth = 0
     end,
     group = group,
   })
@@ -40,7 +40,9 @@ local function last_seen_location()
 end
 
 local function wt_cursor()
-  if vim.fn.has 'win32' == 0 then return end
+  if vim.fn.has 'win32' == 0 then
+    return
+  end
   vim.api.nvim_create_autocmd('VimLeave', {
     pattern = '*',
     callback = function()
