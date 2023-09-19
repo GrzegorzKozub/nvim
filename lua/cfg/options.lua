@@ -1,6 +1,8 @@
 local M = {}
 
 function M.config()
+  local icons = require('cfg.icons').get()
+
   for name, value in pairs {
     backup = true,
     cursorline = true, -- can break per https://github.com/neovim/neovim/issues/9019
@@ -11,7 +13,11 @@ function M.config()
     ignorecase = true,
     infercase = true,
     lazyredraw = true,
-    listchars = { tab = '→ ', eol = '¬', trail = '·' },
+    listchars = {
+      eol = icons.listchars.eol,
+      tab = icons.listchars.tab,
+      trail = icons.listchars.trail,
+    },
     mouse = 'a',
     mousemodel = 'extend',
     number = true,
@@ -46,10 +52,10 @@ function M.config()
   vim.cmd.language(vim.fn.has 'win32' == 1 and 'English_US' or 'en_US.utf8')
 
   for _, sign in ipairs {
-    { name = 'DiagnosticSignError', text = '●' },
-    { name = 'DiagnosticSignWarn', text = '▲' },
-    { name = 'DiagnosticSignHint', text = '◆' },
-    { name = 'DiagnosticSignInfo', text = '◆' },
+    { name = 'DiagnosticSignError', text = icons.diag.error },
+    { name = 'DiagnosticSignWarn', text = icons.diag.warning },
+    { name = 'DiagnosticSignHint', text = icons.diag.info },
+    { name = 'DiagnosticSignInfo', text = icons.diag.hint },
   } do
     vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name, numhl = '' })
   end
@@ -62,9 +68,9 @@ function M.config()
       spacing = 0,
       prefix = '',
       format = function(diagnostic)
-        local sign = diagnostic.severity == vim.diagnostic.severity.ERROR and '●'
-          or diagnostic.severity == vim.diagnostic.severity.WARN and '▲'
-          or '◆'
+        local sign = diagnostic.severity == vim.diagnostic.severity.ERROR and icons.diag.error
+          or diagnostic.severity == vim.diagnostic.severity.WARN and icons.diag.warning
+          or icons.diag.info
         return string.format('%s %s', sign, diagnostic.message)
       end,
     },

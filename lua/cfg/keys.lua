@@ -3,12 +3,10 @@ local M = {}
 local function toggle(kind, open, close)
   for _, win in pairs(vim.fn.getwininfo()) do
     if win[kind] == 1 then
-      ---@diagnostic disable-next-line: param-type-mismatch
       pcall(vim.cmd, close)
       return
     end
   end
-  ---@diagnostic disable-next-line: param-type-mismatch
   pcall(vim.cmd, open)
 end
 

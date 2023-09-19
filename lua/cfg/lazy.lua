@@ -16,26 +16,18 @@ local function bootstrap()
 end
 
 local function options()
+  local icons = require('cfg.icons').get()
   return {
     ui = {
       border = 'rounded',
       icons = {
-        cmd = ' ',
-        config = ' ',
-        event = '',
-        ft = ' ',
-        init = ' ',
-        import = ' ',
-        keys = ' ',
-        lazy = '󰒲 ',
-        loaded = '●',
-        not_loaded = '○',
-        plugin = ' ',
-        runtime = ' ',
-        source = ' ',
-        start = '',
-        task = ' ',
-        list = { '● ', '➜ ', '★ ', '- ' },
+        cmd = icons.lazy.cmd,
+        config = icons.lazy.config,
+        loaded = icons.package.enabled,
+        not_loaded = icons.package.disabled,
+        runtime = icons.lazy.vim,
+        task = icons.package.pending,
+        list = { '', '', '', '' },
       },
     },
   }

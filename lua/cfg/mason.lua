@@ -6,13 +6,15 @@ function M.config()
     return
   end
 
+  local icons = require('cfg.icons').get()
+
   mason.setup {
     ui = {
       border = 'rounded',
       icons = {
-        package_installed = '✓',
-        package_pending = '▶',
-        package_uninstalled = '×',
+        package_installed = icons.package.enabled,
+        package_pending = icons.package.pending,
+        package_uninstalled = icons.package.disabled,
       },
     },
   }

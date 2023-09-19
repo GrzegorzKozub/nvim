@@ -15,12 +15,14 @@ function M.config()
     return
   end
 
+  local icons = require('cfg.icons').get()
+
   telescope.setup {
     defaults = {
-      prompt_prefix = ' ●• ',
-      selection_caret = ' ● ',
+      prompt_prefix = icons.telescope.prompt,
+      selection_caret = icons.telescope.pointer,
       entry_prefix = '   ',
-      multi_icon = '•',
+      multi_icon = icons.telescope.marker,
       get_status_text = function()
         return ''
       end,

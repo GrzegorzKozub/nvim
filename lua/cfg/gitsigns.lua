@@ -6,14 +6,16 @@ function M.config()
     return
   end
 
+  local sign = '│'
+
   gitsigns.setup {
     signs = {
-      add = { text = '┃' },
-      change = { text = '┃' },
-      delete = { text = '━' },
-      topdelete = { text = '' },
-      changedelete = { text = '━' },
-      untracked = { text = '┇' },
+      add = { text = sign },
+      change = { text = sign },
+      delete = { text = sign },
+      topdelete = { text = sign },
+      changedelete = { text = sign },
+      untracked = { text = '' },
     },
     attach_to_untracked = false,
     watch_gitdir = { interval = 10000 },

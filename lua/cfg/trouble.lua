@@ -6,14 +6,22 @@ function M.config()
     return
   end
 
+  local icons = require('cfg.icons').get()
+
   trouble.setup {
     action_keys = { hover = 'H' },
-    fold_closed = '▶',
-    fold_open = '▼',
+    fold_closed = icons.fold.closed,
+    fold_open = icons.fold.open,
     icons = false,
     indent_lines = false,
     padding = false,
-    signs = { error = '●', warning = '▲', hint = '◆', information = '◆', other = '◆' },
+    signs = {
+      error = icons.diag.error,
+      warning = icons.diag.warning,
+      hint = icons.diag.hint,
+      information = icons.diag.info,
+      other = icons.diag.info,
+    },
   }
 
   require('cfg.util').nmap('<leader>t', '<cmd>TroubleToggle<cr>')

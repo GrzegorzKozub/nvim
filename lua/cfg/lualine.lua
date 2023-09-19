@@ -1,7 +1,6 @@
 local M = {}
 
 local function buffer()
-  ---@diagnostic disable-next-line: param-type-mismatch
   return vim.fn.bufnr '%'
 end
 
@@ -48,9 +47,15 @@ function M.config()
     return
   end
 
+  local icons = require('cfg.icons').get()
+
   local filename = {
     'filename',
-    symbols = { modified = '●', readonly = '■', unnamed = 'untitled' },
+    symbols = {
+      modified = icons.file.modified,
+      readonly = icons.file.readonly,
+      unnamed = 'untitled',
+    },
     cond = filename_cond,
   }
 
@@ -71,9 +76,21 @@ function M.config()
           'diagnostics',
           sources = { 'nvim_diagnostic' },
           sections = { 'error', 'warn', 'info', 'hint' },
-          symbols = { error = '● ', warn = '▲ ', info = '◆ ', hint = '◆ ' },
+          symbols = {
+            error = icons.diag.error,
+            warn = icons.diag.warning,
+            info = icons.diag.info,
+            hint = icons.diag.hint,
+          },
         },
-        { 'diff', symbols = { added = '+ ', modified = '~ ', removed = '- ' } },
+        {
+          'diff',
+          symbols = {
+            added = icons.diff.added,
+            modified = icons.diff.modified,
+            removed = icons.diff.removed,
+          },
+        },
         { 'filetype', fmt = filetype_fmt },
       },
       lualine_y = {
