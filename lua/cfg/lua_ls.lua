@@ -1,3 +1,15 @@
 return {
-  settings = { Lua = { workspace = { checkThirdParty = false } } },
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        checkThirdParty = false,
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
 }
