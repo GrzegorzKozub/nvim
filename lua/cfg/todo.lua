@@ -1,7 +1,6 @@
 local ts = require('nvim-treesitter.ts_utils')
 
 local M = {}
-
 local U = {}
 
 U.find_parent_node = function(node, type)
@@ -33,7 +32,7 @@ local get_node_text = function(node, bufnr)
   return text
 end
 
-M.toggle = function()
+function M.toggle()
   local node = ts.get_node_at_cursor(nil, true)
   local item = U.find_parent_node(node, 'list_item')
   if (not item) then
@@ -63,7 +62,7 @@ M.toggle = function()
   set_node_text(content, text)
 end
 
-M.setup = function()
+function M.config()
   require('cfg.util').nmap('<leader>x', M.toggle)
 end
 

@@ -76,8 +76,6 @@ function M.config()
   vim.g.netrw_banner = 0
   vim.g.netrw_home = vim.fn.stdpath 'data' .. '/state/netrw'
   vim.g.netrw_localcopycmd = 'copy'
-
-  vim.g.markdown_recommended_style = 0
 end
 
 return M

@@ -27,6 +27,7 @@ function M.config()
       'lua',
       'markdown',
       'markdown_inline',
+      'query',
       'python',
       'scss',
       'sql',
