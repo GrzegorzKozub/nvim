@@ -8,11 +8,7 @@ function M.get()
       info = '󰋼 ', -- ◆
       warning = ' ', -- ▲
     },
-    diff = {
-      added = '󰐕 ', -- +
-      modified = '󰜥 ', -- ~
-      removed = '󰍴 ', -- -
-    },
+    diff = { added = '+', modified = '~', removed = '-' },
     file = {
       modified = '●',
       readonly = '', -- ■
