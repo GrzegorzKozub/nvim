@@ -10,6 +10,12 @@ local function on_attach(_, bufnr)
   nmap('gr', '<cmd>Trouble lsp_references<cr>')
   nmap('gt', vim.lsp.buf.type_definition, bufnr)
 
+  if vim.lsp.inlay_hint then
+    nmap('<leader>li', function()
+      vim.lsp.inlay_hint(bufnr, nil)
+    end, bufnr)
+  end
+
   nmap('<leader>lh', vim.lsp.buf.hover, bufnr)
   nmap('<leader>ls', vim.lsp.buf.signature_help, bufnr)
   nmap('<leader>lr', vim.lsp.buf.rename, bufnr)
