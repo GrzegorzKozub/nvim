@@ -7,6 +7,7 @@ function M.config()
     backup = true,
     cursorline = true, -- can break per https://github.com/neovim/neovim/issues/9019
     expandtab = true,
+    fillchars = { eob = ' ', vert = ' ' },
     foldenable = false,
     foldlevelstart = 99,
     foldmethod = 'syntax',
@@ -45,7 +46,6 @@ function M.config()
 
   vim.opt.backupdir:remove '.'
   vim.opt.diffopt:append { 'algorithm:histogram', 'indent-heuristic', 'context:3' }
-  vim.opt.fillchars:append { vert = ' ' }
   vim.opt.shortmess:append 'I'
   vim.opt.whichwrap:append '<,>,[,]'
 

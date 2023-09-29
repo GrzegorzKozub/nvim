@@ -3,9 +3,9 @@ local M = {}
 local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
-  -- vim.g.gruvbox_material_disable_italic_comment = 1
   vim.g.gruvbox_material_foreground = 'material'
   vim.g.gruvbox_material_show_eob = 0
+  vim.g.gruvbox_material_transparent_background = 1
 
   if vim.g.gruvbox_material_foreground == 'original' then
     local fg0 = vim.o.background == 'dark' and { '#d5c4a1', '250' } or { '#504945', '239' }
