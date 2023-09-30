@@ -3,7 +3,9 @@ local M = {}
 local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
+  vim.g.gruvbox_material_current_word = 'grey background' -- illuminate
   vim.g.gruvbox_material_foreground = 'material'
+  vim.g.gruvbox_material_lightline_disable_bold = 1
   vim.g.gruvbox_material_show_eob = 0
   vim.g.gruvbox_material_transparent_background = 1
 
@@ -105,7 +107,7 @@ function M.config()
 end
 
 function M.lualine_theme()
-  local theme = require('lualine.themes.gruvbox-material')
+  local theme = require 'lualine.themes.gruvbox-material'
 
   if vim.o.background == 'dark' then
     theme.normal.a.bg = '#7c6f64' -- was #a89984
