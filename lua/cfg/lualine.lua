@@ -62,7 +62,7 @@ function M.config()
   lualine.setup {
     options = {
       icons_enabled = false,
-      theme = require(require('cfg.my-theme').get().cfg).lualine_theme(),
+      theme = require('cfg.' .. require('cfg.theme').get().vim).lualine_theme(),
       section_separators = '',
       component_separators = '',
       refresh = { statusline = 10000 },
