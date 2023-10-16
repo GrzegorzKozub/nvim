@@ -40,7 +40,10 @@ function M.config()
       file_ignore_patterns = { 'node_modules' },
       preview = { hide_on_startup = true },
       mappings = {
-        i = { ['<c-p>'] = require('telescope.actions.layout').toggle_preview },
+        i = {
+          ['<c-p>'] = require('telescope.actions.layout').toggle_preview,
+          ['<esc>'] = require('telescope.actions').close,
+        },
         n = { ['<c-p>'] = require('telescope.actions.layout').toggle_preview },
       },
     },
