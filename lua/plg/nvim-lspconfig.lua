@@ -1,7 +1,7 @@
 return {
   'neovim/nvim-lspconfig',
   config = require('cfg.nvim-lspconfig').config,
-  event = require('cfg.need_lsp').events,
-  ft = require('cfg.need_lsp').file_types,
+  event = { 'BufNewFile', 'BufReadPre' },
+  ft = 'json',
   priority = 61,
 }
