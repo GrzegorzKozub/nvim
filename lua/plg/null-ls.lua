@@ -4,5 +4,6 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
-  event = { 'BufNewFile', 'BufReadPre' },
+  event = require('cfg.need_lsp').events,
+  ft = require('cfg.need_lsp').file_types,
 }

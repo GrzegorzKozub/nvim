@@ -5,5 +5,6 @@ return {
     'williamboman/mason.nvim',
     'jose-elias-alvarez/null-ls.nvim',
   },
-  event = { 'BufNewFile', 'BufReadPre' },
+  event = require('cfg.need_lsp').events,
+  ft = require('cfg.need_lsp').file_types,
 }
