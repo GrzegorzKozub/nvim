@@ -62,37 +62,6 @@ function M.config()
   last_seen_location()
   wt_cursor()
   yank_highlight()
-
-  vim.api.nvim_create_autocmd('User', {
-    pattern = 'LazyUpdate',
-    callback = function()
-      local path = '/home/greg/.local/share/nvim/lazy/lualine.nvim/lua/lualine/themes/'
-        .. require('cfg.theme').get().lualine
-        .. '.lua'
-      if vim.loop.fs_stat(path) then
-        -- vim.loop.fs_unlink(path)
-        vim.loop.fs_rename(path, path .. '1')
-      end
-    end,
-    group = vim.api.nvim_create_augroup('Dupa1', { clear = true }),
-  })
-
-  vim.api.nvim_create_autocmd('User', {
-    pattern = 'LazyUpdatePre',
-    callback = function()
-      -- local path = '/home/greg/.local/share/nvim/lazy/lualine.nvim'
-      -- local f = assert(io.popen('cd ' .. path .. ' && git reset --hard'))
-      -- f:close()
-      local path = '/home/greg/.local/share/nvim/lazy/lualine.nvim/lua/lualine/themes/'
-        .. require('cfg.theme').get().lualine
-        .. '.lua'
-      if vim.loop.fs_stat(path .. '1') then
-        -- vim.loop.fs_unlink(path)
-        vim.loop.fs_rename(path .. '1', path)
-      end
-    end,
-    group = vim.api.nvim_create_augroup('Dupa', { clear = true }),
-  })
 end
 
 return M

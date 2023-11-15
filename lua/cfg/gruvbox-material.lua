@@ -107,19 +107,20 @@ function M.config()
 end
 
 function M.lualine_theme()
-  local theme = require 'lualine.themes.gruvbox-material'
+  -- https://github.com/nvim-lualine/lualine.nvim/issues/423
+  local theme = require('lualine.utils.loader').load_theme 'gruvbox-material'
 
   if vim.o.background == 'dark' then
-    theme.normal.a.bg = '#7c6f64' -- was #a89984
-    theme.normal.b.bg = '#514945' -- was #5b534d
-    theme.normal.b.fg = '#32302f' -- was #ddc7a1 in material and #a89984 in original
-    theme.normal.c.fg = '#7c6f64' -- was #ddc7a1 in material and #a89984 in original
+    theme.normal.a.bg = '#7c6f64'   -- was #a89984
+    theme.normal.b.bg = '#514945'   -- was #5b534d
+    theme.normal.b.fg = '#32302f'   -- was #ddc7a1 in material and #a89984 in original
+    theme.normal.c.fg = '#7c6f64'   -- was #ddc7a1 in material and #a89984 in original
     theme.inactive.c.fg = '#665c54' -- was #a89984
   else
-    theme.normal.a.bg = '#a89984' -- was #7c6f64
-    theme.normal.b.bg = '#d5c4a1' -- was #dac9a5
-    theme.normal.b.fg = '#f2e5bc' -- was #4f3829 in material and #7c6f64 in original
-    theme.normal.c.fg = '#a89984' -- was #4f3829 in material and #7c6f64 in original
+    theme.normal.a.bg = '#a89984'   -- was #7c6f64
+    theme.normal.b.bg = '#d5c4a1'   -- was #dac9a5
+    theme.normal.b.fg = '#f2e5bc'   -- was #4f3829 in material and #7c6f64 in original
+    theme.normal.c.fg = '#a89984'   -- was #4f3829 in material and #7c6f64 in original
     theme.inactive.c.fg = '#d5c4a1' -- was #7c6f64
   end
 
