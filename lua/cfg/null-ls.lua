@@ -10,7 +10,10 @@ end
 
 local function sources(null_ls)
   local sources = {
+    null_ls.builtins.diagnostics.pylint,
     null_ls.builtins.formatting.stylua,
+    null_ls.builtins.formatting.isort,
+    null_ls.builtins.formatting.black,
   }
   if vim.fn.has 'win32' == 0 then
     for _, source in ipairs {
@@ -24,10 +27,8 @@ local function sources(null_ls)
         disabled_filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
         extra_args = { '--single-quote' },
       },
-      null_ls.builtins.diagnostics.pylint,
       -- null_ls.builtins.diagnostics.vint,
       null_ls.builtins.diagnostics.yamllint,
-      null_ls.builtins.formatting.black,
       -- null_ls.builtins.formatting.taplo,
       null_ls.builtins.formatting.xmllint,
     } do

@@ -6,7 +6,12 @@ function M.config()
     return
   end
 
-  local sources = { 'stylua' }
+  local sources = {
+    'stylua',
+    'isort',
+    'black',
+    'pylint',
+  }
   if vim.fn.has 'win32' == 0 then
     for _, source in ipairs {
       -- 'cfn-lint',
@@ -14,10 +19,8 @@ function M.config()
       'jsonlint',
       'luacheck',
       'prettier',
-      'pylint',
       -- 'vint',
       'yamllint',
-      'black',
       -- 'taplo',
     } do
       table.insert(sources, source)

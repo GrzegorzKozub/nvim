@@ -3,6 +3,7 @@ local M = {}
 function M.get()
   local servers = {
     'lua_ls',
+    'pyright',
   }
   if vim.fn.has 'win32' == 0 then
     for _, server in ipairs {
@@ -14,7 +15,6 @@ function M.get()
       -- 'gopls',
       -- 'html',
       'jsonls',
-      'pyright',
       'taplo',
       'tsserver',
       -- 'vimls',
