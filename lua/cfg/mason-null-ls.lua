@@ -17,7 +17,7 @@ function M.config()
       'pylint',
       -- 'vint',
       'yamllint',
-      'autopep8',
+      'black',
       -- 'taplo',
     } do
       table.insert(sources, source)
