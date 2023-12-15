@@ -51,18 +51,17 @@ function M.config()
 
   vim.cmd.language(vim.fn.has 'win32' == 1 and 'English_US' or 'en_US.utf8')
 
-  for _, sign in ipairs {
-    { name = 'DiagnosticSignError', text = icons.diag.error },
-    { name = 'DiagnosticSignWarn', text = icons.diag.warning },
-    { name = 'DiagnosticSignHint', text = icons.diag.info },
-    { name = 'DiagnosticSignInfo', text = icons.diag.hint },
-  } do
-    vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name, numhl = '' })
-  end
-
   vim.diagnostic.config {
     float = { header = '', prefix = '', border = 'rounded' },
     severity_sort = true,
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = icons.diag.error,
+        [vim.diagnostic.severity.WARN] = icons.diag.warning,
+        [vim.diagnostic.severity.INFO] = icons.diag.info,
+        [vim.diagnostic.severity.HINT] = icons.diag.hint,
+      },
+    },
     underline = false,
     virtual_text = {
       spacing = 0,
