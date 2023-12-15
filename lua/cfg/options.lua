@@ -78,6 +78,8 @@ function M.config()
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
   vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
+  vim.g.loaded_perl_provider = 0
+
   vim.g.netrw_banner = 0
   vim.g.netrw_home = vim.fn.stdpath 'data' .. '/state/netrw'
   vim.g.netrw_localcopycmd = 'copy'
