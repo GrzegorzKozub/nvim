@@ -3,7 +3,6 @@ return {
   config = require('cfg.mason-lspconfig').config,
   dependencies = {
     'williamboman/mason.nvim',
-    'neovim/nvim-lspconfig',
   },
   event = { 'BufNewFile', 'BufReadPre' },
   ft = 'json',
