@@ -25,7 +25,7 @@ local function last_seen_location()
 end
 
 local function wt_cursor()
-  if vim.fn.has 'win32' == 0 then
+  if vim.fn.has 'win32' == 0 or not os.getenv 'WT_SESSION' then
     return
   end
   vim.api.nvim_create_autocmd('VimLeave', {
