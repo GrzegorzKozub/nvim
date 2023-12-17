@@ -27,8 +27,13 @@ function M.config()
     end
   end
 
+  local exclude = { 'xmllint' }
+  if vim.fn.has 'win32' == 1 then
+    table.insert(exclude, 'luacheck')
+  end
+
   mason_null_ls.setup {
-    automatic_installation = { exclude = { 'xmllint' } },
+    automatic_installation = { exclude = exclude },
     ensure_installed = sources,
   }
 end

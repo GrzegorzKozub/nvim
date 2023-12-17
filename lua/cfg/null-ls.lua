@@ -12,6 +12,7 @@ local function sources(null_ls)
   local sources = {
     null_ls.builtins.diagnostics.pylint,
     null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.luacheck,
     null_ls.builtins.formatting.isort,
     null_ls.builtins.formatting.black,
   }
@@ -22,7 +23,6 @@ local function sources(null_ls)
       -- null_ls.builtins.diagnostics.golangci_lint,
       null_ls.builtins.diagnostics.hadolint,
       null_ls.builtins.diagnostics.jsonlint,
-      null_ls.builtins.diagnostics.luacheck,
       null_ls.builtins.formatting.prettier.with {
         disabled_filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
         extra_args = { '--single-quote' },
