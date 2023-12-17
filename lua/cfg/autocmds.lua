@@ -1,20 +1,12 @@
 local M = {}
 
 local function file_types()
-  local group = vim.api.nvim_create_augroup('FileTypes', { clear = true })
   vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     pattern = 'config',
     callback = function()
       vim.opt.filetype = 'confini'
     end,
-    group = group,
-  })
-  vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'vim',
-    callback = function()
-      vim.opt_local.textwidth = 0
-    end,
-    group = group,
+    group = vim.api.nvim_create_augroup('FileTypes', { clear = true }),
   })
 end
 
