@@ -12,7 +12,7 @@ local function on_attach(_, bufnr)
 
   if vim.lsp.inlay_hint then
     nmap('<leader>li', function()
-      vim.lsp.inlay_hint(bufnr, nil)
+      vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
     end, bufnr)
   end
 
