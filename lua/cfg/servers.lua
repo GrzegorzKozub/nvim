@@ -9,6 +9,7 @@ function M.get()
     for _, server in ipairs {
       'bashls',
       -- 'csharp_ls',
+      -- 'cssls',
       'dockerls',
       -- 'elixirls',
       'eslint',
