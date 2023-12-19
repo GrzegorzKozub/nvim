@@ -1,6 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
-  config = require('cfg.nvim-lspconfig').config,
+  config = require('cfg.lspconfig').config,
   dependencies = {
     'williamboman/mason-lspconfig.nvim',
   },
