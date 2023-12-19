@@ -11,7 +11,7 @@ local linters = vim.fn.has 'win32' == 0 and {
   -- 'vint',
   'yamllint',
 } or {
-  'luacheck',
+  -- 'luacheck',
   'pylint',
 }
 
