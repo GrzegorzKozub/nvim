@@ -3,7 +3,7 @@ return {
   config = require('cfg.mason-null-ls').config,
   dependencies = {
     'williamboman/mason.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
   },
   event = { 'BufNewFile', 'BufReadPre' },
   ft = 'json',

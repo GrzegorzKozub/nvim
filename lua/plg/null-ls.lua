@@ -1,5 +1,5 @@
 return {
-  'jose-elias-alvarez/null-ls.nvim',
+  'nvimtools/none-ls.nvim',
   config = require('cfg.null-ls').config,
   dependencies = {
     'nvim-lua/plenary.nvim',
