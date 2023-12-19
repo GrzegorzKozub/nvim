@@ -30,7 +30,12 @@ local function on_attach(_, bufnr)
   nmap('[d', vim.diagnostic.goto_prev, bufnr)
 
   nmap('<leader>f', function()
-    vim.lsp.buf.format { async = true, bufnr = bufnr }
+    local conform_loaded, conform = pcall(require, 'conform')
+    if conform_loaded then
+      conform.format({ async = true, bufnr = bufnr, lsp_fallback = true })
+    else
+      vim.lsp.buf.format { async = true, bufnr = bufnr }
+    end
   end, bufnr)
 end
 
