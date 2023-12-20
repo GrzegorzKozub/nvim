@@ -13,7 +13,7 @@ function M.config()
     foldmethod = 'syntax',
     ignorecase = true,
     infercase = true,
-    lazyredraw = true,
+    -- lazyredraw = true,
     listchars = {
       eol = icons.listchars.eol,
       tab = icons.listchars.tab,
