@@ -9,11 +9,19 @@ local formatters = vim.fn.has 'win32' == 0
       lua = { 'stylua' },
       python = { 'isort', 'black' },
       toml = { 'taplo' },
+      xml = { 'xmlformat' },
       yaml = { 'prettier' },
     }
   or {
+    css = { 'prettier' },
+    html = { 'prettier' },
+    json = { 'prettier' },
+    jsonc = { 'prettier' },
     lua = { 'stylua' },
     python = { 'isort', 'black' },
+    toml = { 'taplo' },
+    xml = { 'xmlformat' },
+    yaml = { 'prettier' },
   }
 
 function M.config()

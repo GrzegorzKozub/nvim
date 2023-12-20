@@ -12,8 +12,10 @@ local linters = vim.fn.has 'win32' == 0 and {
   -- vim = { 'vint' },
   yaml = { 'yamllint' },
 } or {
+  json = { 'jsonlint' },
   lua = { 'luacheck' },
   python = { 'pylint' },
+  yaml = { 'yamllint' },
 }
 
 function M.config()

@@ -2,24 +2,31 @@ local M = {}
 
 function M.get()
   local servers = {
+    -- 'cssls',
+    -- 'html',
+    'jsonls',
     'lua_ls',
     'pyright',
+    'taplo',
+    -- 'vimls',
+    'yamlls',
   }
   if vim.fn.has 'win32' == 0 then
     for _, server in ipairs {
       'bashls',
       -- 'csharp_ls',
-      -- 'cssls',
       'dockerls',
       -- 'elixirls',
       'eslint',
       -- 'gopls',
-      -- 'html',
-      'jsonls',
-      'taplo',
       'tsserver',
-      -- 'vimls',
-      'yamlls',
+    } do
+      table.insert(servers, server)
+    end
+  end
+  if vim.fn.has 'win32' == 1 then
+    for _, server in ipairs {
+      'powershell_es',
     } do
       table.insert(servers, server)
     end

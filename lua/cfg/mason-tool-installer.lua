@@ -40,24 +40,33 @@ local tools = vim.fn.has 'win32' == 0
       'prettier',
       'stylua',
       'taplo',
+      'xmlformatter',
     }
   or {
 
     -- servers
 
+    'json-lsp',
     'lua-language-server',
     'pyright',
+    'yaml-language-server',
+    require('mason-lspconfig.mappings.server').lspconfig_to_package['powershell_es'],
 
     -- linters
 
+    'jsonlint',
     -- 'luacheck',
     'pylint',
+    'yamllint',
 
     -- formatters
 
     'black',
     'isort',
+    'prettier',
     'stylua',
+    'taplo',
+    'xmlformatter',
   }
 
 function M.config()
