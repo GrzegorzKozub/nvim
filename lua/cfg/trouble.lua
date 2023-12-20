@@ -23,8 +23,6 @@ function M.config()
       other = icons.diag.info,
     },
   }
-
-  require('cfg.util').nmap('<leader>t', '<cmd>TroubleToggle<cr>')
 end
 
 return M

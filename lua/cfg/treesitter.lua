@@ -21,6 +21,7 @@ function M.config()
       'gomod',
       'html',
       'http',
+      'ini',
       'javascript',
       'jq',
       'json',

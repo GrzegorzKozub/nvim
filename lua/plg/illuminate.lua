@@ -6,4 +6,5 @@ return {
     'nvim-treesitter/nvim-treesitter',
   },
   event = { 'BufNewFile', 'BufReadPre' },
+  ft = 'json',
 }

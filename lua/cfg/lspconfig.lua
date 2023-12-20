@@ -29,14 +29,10 @@ local function on_attach(_, bufnr)
   nmap(']d', vim.diagnostic.goto_next, bufnr)
   nmap('[d', vim.diagnostic.goto_prev, bufnr)
 
-  nmap('<leader>f', function()
-    local conform_loaded, conform = pcall(require, 'conform')
-    if conform_loaded then
-      conform.format({ async = true, bufnr = bufnr, lsp_fallback = true })
-    else
-      vim.lsp.buf.format { async = true, bufnr = bufnr }
-    end
-  end, bufnr)
+  nmap('<leader>t', '<cmd>TroubleToggle<cr>')
+  -- nmap('<leader>f', function()
+  --   vim.lsp.buf.format { async = true, bufnr = bufnr }
+  -- end, bufnr)
 end
 
 function M.config()
