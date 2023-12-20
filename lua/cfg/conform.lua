@@ -35,26 +35,15 @@ function M.config()
     formatters = { prettier = { prepend_args = { '--single-quote' } } },
   }
 
-  local group = vim.api.nvim_create_augroup('Conform', { clear = true })
-  local nmap = require('cfg.util').nmap
-
-  vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
-    callback = function()
-      nmap('<leader>f', function()
-        conform.format { async = true, bufnr = 0, lsp_fallback = true }
-      end, 0)
-    end,
-    group = group,
-  })
+  require('cfg.util').nmap('<leader>f', function()
+    conform.format { async = true, lsp_fallback = true }
+  end)
 
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
-      nmap('<leader>f', function()
-        conform.format { async = true, bufnr = args.buf, lsp_fallback = true }
-      end, args.buf)
       vim.bo[args.buf].formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
-    group = group,
+    group = vim.api.nvim_create_augroup('Conform', { clear = true }),
   })
 end
 

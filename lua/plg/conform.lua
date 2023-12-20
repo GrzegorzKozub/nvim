@@ -5,6 +5,5 @@ return {
   dependencies = {
     'williamboman/mason.nvim',
   },
-  event = { 'BufNewFile', 'BufReadPre' },
-  ft = 'json',
+  keys = { '<leader>f' },
 }
