@@ -36,6 +36,7 @@ function M.config()
       'typescript',
       'vim',
       'vimdoc',
+      'xml',
       'yaml',
     },
     highlight = { enable = true },

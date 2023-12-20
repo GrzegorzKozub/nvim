@@ -15,6 +15,7 @@ function M.get()
     for _, server in ipairs {
       'bashls',
       -- 'csharp_ls',
+      'docker_compose_language_service',
       'dockerls',
       -- 'elixirls',
       'eslint',

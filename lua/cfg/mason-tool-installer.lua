@@ -8,6 +8,7 @@ local tools = vim.fn.has 'win32' == 0
       'bash-language-server',
       -- 'csharp-language-server',
       -- 'css-lsp',
+      'docker-compose-language-service',
       'dockerfile-language-server',
       -- 'elixir-ls',
       'eslint-lsp',
