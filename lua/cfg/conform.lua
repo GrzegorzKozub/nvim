@@ -38,13 +38,6 @@ function M.config()
   require('cfg.util').nmap('<leader>f', function()
     conform.format { async = true, lsp_fallback = true }
   end)
-
-  vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-      vim.bo[args.buf].formatexpr = "v:lua.require'conform'.formatexpr()"
-    end,
-    group = vim.api.nvim_create_augroup('Conform', { clear = true }),
-  })
 end
 
 return M

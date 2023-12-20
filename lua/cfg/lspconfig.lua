@@ -34,6 +34,8 @@ local function on_attach(_, bufnr)
   -- nmap('<leader>f', function()
   --   vim.lsp.buf.format { async = true, bufnr = bufnr }
   -- end, bufnr)
+
+  vim.bo[bufnr].formatexpr = "v:lua.require'conform'.formatexpr()"
 end
 
 function M.config()

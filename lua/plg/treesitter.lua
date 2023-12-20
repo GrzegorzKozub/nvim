@@ -4,5 +4,4 @@ return {
   cmd = 'TSUpdateSync',
   config = require('cfg.treesitter').config,
   event = { 'BufNewFile', 'BufReadPre' },
-  ft = 'json',
 }

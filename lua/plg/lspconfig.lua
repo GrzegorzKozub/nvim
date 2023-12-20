@@ -6,5 +6,4 @@ return {
     'williamboman/mason-lspconfig.nvim',
   },
   event = { 'BufNewFile', 'BufReadPre' },
-  ft = 'json',
 }

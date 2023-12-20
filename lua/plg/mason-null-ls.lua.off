@@ -6,5 +6,4 @@ return {
     'nvimtools/none-ls.nvim',
   },
   event = { 'BufNewFile', 'BufReadPre' },
-  ft = 'json',
 }

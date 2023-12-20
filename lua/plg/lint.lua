@@ -5,5 +5,4 @@ return {
     'williamboman/mason.nvim',
   },
   event = { 'BufNewFile', 'BufReadPre' },
-  ft = 'json',
 }
