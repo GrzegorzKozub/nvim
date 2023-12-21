@@ -1,28 +1,16 @@
 local M = {}
 
-local formatters = vim.fn.has 'win32' == 0
-    and {
-      css = { 'prettier' },
-      html = { 'prettier' },
-      json = { 'prettier' },
-      jsonc = { 'prettier' },
-      lua = { 'stylua' },
-      python = { 'isort', 'black' },
-      toml = { 'taplo' },
-      xml = { 'xmlformat' },
-      yaml = { 'prettier' },
-    }
-  or {
-    css = { 'prettier' },
-    html = { 'prettier' },
-    json = { 'prettier' },
-    jsonc = { 'prettier' },
-    lua = { 'stylua' },
-    python = { 'isort', 'black' },
-    toml = { 'taplo' },
-    xml = { 'xmlformat' },
-    yaml = { 'prettier' },
-  }
+local formatters = {
+  css = { 'prettier' },
+  html = { 'prettier' },
+  json = { 'prettier' },
+  jsonc = { 'prettier' },
+  lua = { 'stylua' },
+  python = { 'isort', 'black' },
+  toml = { 'taplo' },
+  xml = { 'xmlformat' },
+  yaml = { 'prettier' },
+}
 
 function M.config()
   local conform_loaded, conform = pcall(require, 'conform')

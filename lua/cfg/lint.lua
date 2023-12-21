@@ -1,22 +1,24 @@
 local M = {}
 
-local linters = vim.fn.has 'win32' == 0 and {
-  dockerfile = { 'hadolint' },
-  -- go = { 'golangcilint' },
-  -- javascript = { 'eslint_d' },
-  json = { 'jsonlint' },
-  lua = { 'luacheck' },
-  -- markdown = { 'markdownlint' },
-  python = { 'pylint' },
-  -- typescript = { 'eslint_d' },
-  -- vim = { 'vint' },
-  yaml = { 'yamllint' },
-} or {
+local linters = {
   json = { 'jsonlint' },
   lua = { 'luacheck' },
   python = { 'pylint' },
   yaml = { 'yamllint' },
 }
+
+if vim.fn.has 'win32' == 0 then
+  for key, value in pairs {
+    dockerfile = { 'hadolint' },
+    -- go = { 'golangcilint' },
+    -- javascript = { 'eslint_d' },
+    -- markdown = { 'markdownlint' },
+    -- typescript = { 'eslint_d' },
+    -- vim = { 'vint' },
+  } do
+    linters[key] = value
+  end
+end
 
 function M.config()
   local lint_loaded, lint = pcall(require, 'lint')
@@ -28,7 +30,9 @@ function M.config()
 
   vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave', 'TextChanged' }, {
     pattern = '*',
-    callback = function() lint.try_lint() end,
+    callback = function()
+      lint.try_lint()
+    end,
     group = vim.api.nvim_create_augroup('Lint', { clear = true }),
   })
 end

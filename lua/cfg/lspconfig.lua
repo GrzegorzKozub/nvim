@@ -44,7 +44,7 @@ function M.config()
     return
   end
 
-  for _, server in pairs(require('cfg.servers').get()) do
+  for _, server in pairs(require('cfg.servers')) do
     local options = {
       capabilities = require('cfg.cmp-nvim-lsp').capabilities(),
       on_attach = on_attach,
