@@ -75,7 +75,7 @@ local function custom_colors()
       vim.fn[hi]('NullLsInfoBorder', palette.fg0, palette.none)
 
       -- nvim-lspconfig
-      vim.fn[hi]('LspInfoBorder', palette.fg0, palette.none)
+      -- vim.fn[hi]('LspInfoBorder', palette.fg0, palette.none)
 
       -- telescope
       vim.fn[hi]('TelescopeBorder', palette.bg5, palette.none)
