@@ -85,6 +85,9 @@ function M.config()
     }, {
       { name = 'buffer' },
       { name = 'path' },
+    }, {
+      { name = 'nerdfont' },
+      { name = 'emoji' },
     }),
     window = {
       completion = cmp.config.window.bordered {
