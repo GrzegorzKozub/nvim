@@ -12,9 +12,9 @@ local function progress_and_location()
   return string.format('%.f%s %d %d', 100 * vim.fn.line '.' / vim.fn.line '$', '%%', vim.fn.line '.', vim.fn.col '.')
 end
 
-local function contains(table, value)
-  for _, v in ipairs(table) do
-    if value == v then
+local function contains(table, item)
+  for _, value in ipairs(table) do
+    if item == value then
       return true
     end
   end

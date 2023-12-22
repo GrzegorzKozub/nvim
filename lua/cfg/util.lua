@@ -8,4 +8,10 @@ function M.nmap(keys, action, buffer)
   vim.keymap.set('n', keys, action, options)
 end
 
+function M.add(target, source)
+  for _, value in ipairs(source) do
+    table.insert(target, value)
+  end
+end
+
 return M

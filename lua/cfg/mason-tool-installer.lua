@@ -1,74 +1,62 @@
 local M = {}
 
-local tools = vim.fn.has 'win32' == 0
-    and {
+local add = require('cfg.util').add
 
-      -- servers
+local servers = {
+  'json-lsp',
+  'lua-language-server',
+  'pyright',
+  'taplo', -- also a formatter
+  'yaml-language-server',
+}
 
-      'bash-language-server',
-      -- 'csharp-language-server',
-      -- 'css-lsp',
-      'docker-compose-language-service',
-      'dockerfile-language-server',
-      -- 'elixir-ls',
-      'eslint-lsp',
-      -- 'gopls',
-      -- 'html-lsp',
-      'json-lsp',
-      'lua-language-server',
-      'pyright',
-      'taplo',
-      'typescript-language-server',
-      -- 'vim-language-server',
-      'yaml-language-server',
+if vim.fn.has 'win32' == 0 then
+  add(servers, {
+    'bash-language-server',
+    -- 'csharp-language-server',
+    -- 'css-lsp',
+    'docker-compose-language-service',
+    'dockerfile-language-server',
+    -- 'elixir-ls',
+    'eslint-lsp',
+    -- 'gopls',
+    -- 'html-lsp',
+    'typescript-language-server',
+    -- 'vim-language-server',
+  })
+else
+  add(servers, { 'powershell-editor-services' })
+end
 
-      -- linters
+local linters = {
+  'jsonlint',
+  'pylint',
+  'yamllint',
+}
 
-      'hadolint',
-      -- 'eslint_d',
-      -- 'golangcilint',
-      'jsonlint',
-      'luacheck',
-      -- 'markdownlint',
-      'pylint',
-      -- 'vint',
-      'yamllint',
+if vim.fn.has 'win32' == 0 then
+  add(linters, {
+    -- 'eslint_d',
+    -- 'golangcilint',
+    'hadolint',
+    'luacheck', -- installed manually on Windows
+    -- 'markdownlint',
+    -- 'vint',
+  })
+end
 
-      -- formatters
+local formatters = {
+  'black',
+  'isort',
+  'prettier',
+  'stylua',
+  'xmlformatter',
+}
 
-      'black',
-      'isort',
-      'prettier',
-      'stylua',
-      'taplo',
-      'xmlformatter',
-    }
-  or {
-
-    -- servers
-
-    'json-lsp',
-    'lua-language-server',
-    'pyright',
-    'yaml-language-server',
-    require('mason-lspconfig.mappings.server').lspconfig_to_package['powershell_es'],
-
-    -- linters
-
-    'jsonlint',
-    -- 'luacheck',
-    'pylint',
-    'yamllint',
-
-    -- formatters
-
-    'black',
-    'isort',
-    'prettier',
-    'stylua',
-    'taplo',
-    'xmlformatter',
-  }
+local tools = {}
+add(tools, servers)
+add(tools, linters)
+add(tools, formatters)
 
 function M.config()
   local mason_tool_installer_loaded, mason_tool_installer = pcall(require, 'mason-tool-installer')
