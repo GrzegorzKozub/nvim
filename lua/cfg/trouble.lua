@@ -9,7 +9,6 @@ function M.config()
   local icons = require('cfg.icons').get()
 
   trouble.setup {
-    action_keys = { hover = 'H' },
     fold_closed = icons.fold.closed,
     fold_open = icons.fold.open,
     icons = false,
@@ -22,6 +21,7 @@ function M.config()
       information = icons.diag.info,
       other = icons.diag.info,
     },
+    win_config = { border = 'rounded' },
   }
 end
 
