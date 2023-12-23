@@ -4,7 +4,6 @@ return {
   config = require('cfg.cmp').config,
   dependencies = {
     'L3MON4D3/LuaSnip',
-    -- 'amarakon/nvim-cmp-fonts',
     'chrisgrieser/cmp-nerdfont',
     'dmitmel/cmp-cmdline-history',
     'hrsh7th/cmp-buffer',

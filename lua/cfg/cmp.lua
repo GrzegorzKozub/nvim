@@ -91,8 +91,6 @@ function M.config()
     }, {
       { name = 'emoji' },
       { name = 'nerdfont' },
-      -- }, {
-      --   { name = 'fonts', option = { space_filter = '-' } },
     }),
     window = {
       completion = cmp.config.window.bordered {
