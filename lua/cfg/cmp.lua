@@ -80,11 +80,19 @@ function M.config()
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'nvim_lua' },
       { name = 'luasnip' },
     }, {
+      { name = 'nvim_lua' },
+      { name = 'zsh' },
+    }, {
       { name = 'buffer' },
+    }, {
       { name = 'path' },
+    }, {
+      { name = 'emoji' },
+      { name = 'nerdfont' },
+      -- }, {
+      --   { name = 'fonts', option = { space_filter = '-' } },
     }),
     window = {
       completion = cmp.config.window.bordered {
@@ -97,12 +105,22 @@ function M.config()
 
   cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
+    sources = cmp.config.sources({
+      { name = 'cmdline_history' },
+    }, {
+      { name = 'cmdline' },
+    }, {
+      { name = 'path' },
+    }),
   })
 
   cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = { { name = 'buffer' } },
+    sources = cmp.config.sources({
+      { name = 'cmdline_history' },
+    }, {
+      { name = 'buffer' },
+    }),
   })
 end
 
