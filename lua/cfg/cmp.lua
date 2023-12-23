@@ -2,31 +2,31 @@ local M = {}
 
 function M.kinds()
   return {
-    Text = 'text',
-    Method = 'method',
-    Function = 'function',
-    Constructor = 'constructor',
-    Field = 'field',
-    Variable = 'variable',
     Class = 'class',
+    Color = 'color',
+    Constant = 'constant',
+    Constructor = '󰙴',
+    Enum = 'enum',
+    EnumMember = 'enum member',
+    Event = 'event',
+    Field = '󰌖',
+    File = '󰈤',
+    Folder = '󰉖',
+    Function = '󰊕',
     Interface = 'interface',
+    Keyword = '󰌆',
+    Method = '󰊕',
     Module = 'module',
+    Operator = 'operator',
     Property = 'property',
+    Reference = 'reference',
+    Snippet = '󰑷',
+    Struct = 'struct',
+    Text = '󰦨',
+    TypeParameter = 'type parameter',
     Unit = 'unit',
     Value = 'value',
-    Enum = 'enum',
-    Keyword = 'keyword',
-    Snippet = 'snippet',
-    Color = 'color',
-    File = 'file',
-    Reference = 'reference',
-    Folder = 'folder',
-    EnumMember = 'enum member',
-    Constant = 'constant',
-    Struct = 'struct',
-    Event = 'event',
-    Operator = 'operator',
-    TypeParameter = 'type parameter',
+    Variable = '󰫧',
   }
 end
 
@@ -42,7 +42,7 @@ function M.config()
 
   cmp.setup {
     formatting = {
-      expandable_indicator = false,
+      expandable_indicator = true,
       format = function(_, vim_item)
         vim_item.kind = M.kinds()[vim_item.kind]
         return vim_item
