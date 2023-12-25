@@ -19,6 +19,7 @@ local function options()
   local icons = require('cfg.icons').get()
   return {
     ui = {
+      size = { width = 0.8, height = 0.8 },
       border = 'rounded',
       icons = {
         cmd = icons.lazy.cmd,

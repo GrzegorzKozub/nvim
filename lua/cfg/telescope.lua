@@ -19,6 +19,7 @@ function M.config()
 
   telescope.setup {
     defaults = {
+      layout_config = { height = 0.8, width = 0.8 },
       prompt_prefix = icons.telescope.prompt,
       selection_caret = icons.telescope.pointer,
       entry_prefix = '   ',
@@ -39,10 +40,6 @@ function M.config()
       color_devicons = false,
       file_ignore_patterns = { 'node_modules' },
       preview = { hide_on_startup = true },
-      layout_config = {
-        height = 0.5,
-        width = 0.9,
-      },
       mappings = {
         i = {
           ['<c-p>'] = require('telescope.actions.layout').toggle_preview,
