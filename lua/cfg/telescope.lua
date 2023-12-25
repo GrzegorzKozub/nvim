@@ -39,6 +39,10 @@ function M.config()
       color_devicons = false,
       file_ignore_patterns = { 'node_modules' },
       preview = { hide_on_startup = true },
+      layout_config = {
+        height = 0.5,
+        width = 0.9,
+      },
       mappings = {
         i = {
           ['<c-p>'] = require('telescope.actions.layout').toggle_preview,
