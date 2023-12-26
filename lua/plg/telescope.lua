@@ -4,5 +4,5 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
-  keys = { '<c-b>', '<c-k>', '<c-p>', '<leader>fg' },
+  keys = { '<c-b>', '<c-p>', '<c-k>', '<c-g>' },
 }

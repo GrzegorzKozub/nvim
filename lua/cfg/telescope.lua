@@ -66,27 +66,10 @@ function M.config()
   local nmap = require('cfg.util').nmap
   local builtin = require 'telescope.builtin'
 
-  nmap('<leader>fb', builtin.buffers)
   nmap('<c-b>', builtin.buffers)
-
-  nmap('<leader>ff', builtin.find_files)
   nmap('<c-p>', builtin.find_files)
-
-  nmap('<leader>fr', builtin.oldfiles)
   nmap('<c-k>', builtin.oldfiles)
-
-  nmap('<leader>fg', builtin.live_grep)
-
-  nmap('<leader>fs', builtin.search_history)
-  nmap('<leader>fc', builtin.command_history)
-
-  nmap('<leader>fq', builtin.quickfix)
-
-  nmap('<leader>fh', builtin.help_tags)
-
-  nmap('<leader>gs', builtin.git_status)
-  nmap('<leader>gf', builtin.git_bcommits)
-  nmap('<leader>gl', builtin.git_commits)
+  nmap('<c-g>', builtin.live_grep)
 end
 
 return M
