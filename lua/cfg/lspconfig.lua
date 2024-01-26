@@ -38,13 +38,39 @@ local function on_attach(_, bufnr)
   vim.bo[bufnr].formatexpr = "v:lua.require'conform'.formatexpr()"
 end
 
+local function ahk2(lspconfig)
+  -- https://github.com/thqby/vscode-autohotkey2-lsp/
+  local ahk2_configs = {
+    autostart = true,
+    cmd = {
+      'node',
+      vim.fn.expand '$HOME/Downloads/ahk/server/dist/server.js',
+      '--stdio',
+    },
+    filetypes = { 'autohotkey' },
+    init_options = {
+      locale = 'en-us',
+      InterpreterPath = 'D:/Apps/AutoHotkey/AutoHotkey64.exe',
+      FormatOptions = {
+      },
+    },
+    single_file_support = true,
+    flags = { debounce_text_changes = 500 },
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
+  local configs = require 'lspconfig.configs'
+  configs['ahk2'] = { default_config = ahk2_configs }
+  lspconfig.ahk2.setup {}
+end
+
 function M.config()
   local lspconfig_loaded, lspconfig = pcall(require, 'lspconfig')
   if not lspconfig_loaded then
     return
   end
 
-  for _, server in pairs(require('cfg.servers')) do
+  for _, server in pairs(require 'cfg.servers') do
     local options = {
       capabilities = require('cfg.cmp-nvim-lsp').capabilities(),
       on_attach = on_attach,
@@ -57,6 +83,8 @@ function M.config()
   end
 
   require('lspconfig.ui.windows').default_options.border = 'rounded'
+
+  ahk2(lspconfig)
 end
 
 return M
