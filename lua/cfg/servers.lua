@@ -1,7 +1,6 @@
 local add = require('cfg.util').add
 
 local servers = {
-  'ahk',
   'jsonls',
   'lua_ls',
   'pyright',
@@ -24,7 +23,10 @@ if vim.fn.has 'win32' == 0 then
     -- 'vimls',
   })
 else
-  add(servers, { 'powershell_es' })
+  add(servers, {
+    'ahk',
+    'powershell_es',
+  })
 end
 
 return servers
