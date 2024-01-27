@@ -1,6 +1,7 @@
 local add = require('cfg.util').add
 
 local servers = {
+  'ahk',
   'jsonls',
   'lua_ls',
   'pyright',
