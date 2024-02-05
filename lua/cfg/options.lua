@@ -79,6 +79,7 @@ function M.config()
   vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
   vim.g.loaded_perl_provider = 0
+  vim.g.loaded_ruby_provider = 0
 
   vim.g.netrw_banner = 0
   vim.g.netrw_home = vim.fn.stdpath 'data' .. '/state/netrw'
