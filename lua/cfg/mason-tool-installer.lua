@@ -6,6 +6,7 @@ local servers = {
   'json-lsp',
   'lua-language-server',
   'pyright',
+  'rust-analyzer',
   'taplo', -- also a formatter
   'yaml-language-server',
 }

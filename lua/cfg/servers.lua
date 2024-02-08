@@ -4,6 +4,7 @@ local servers = {
   'jsonls',
   'lua_ls',
   'pyright',
+  'rust_analyzer',
   'taplo',
   'yamlls',
 }

@@ -23,6 +23,7 @@ local parsers = {
   'markdown_inline',
   'python',
   'query',
+  'rust',
   'scss',
   'sql',
   'toml',
