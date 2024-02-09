@@ -15,15 +15,12 @@ if vim.fn.has 'win32' == 0 then
   add(servers, {
     'bash-language-server',
     -- 'csharp-language-server',
-    -- 'css-lsp',
     'docker-compose-language-service',
     'dockerfile-language-server',
     -- 'elixir-ls',
     'eslint-lsp',
-    -- 'gopls',
-    -- 'html-lsp',
+    'gopls',
     'typescript-language-server',
-    -- 'vim-language-server',
   })
 else
   add(servers, { 'powershell-editor-services' })
@@ -37,12 +34,10 @@ local linters = {
 
 if vim.fn.has 'win32' == 0 then
   add(linters, {
-    -- 'eslint_d',
-    -- 'golangcilint',
+    'eslint_d',
+    'golangcilint',
     'hadolint',
     'luacheck', -- installed manually on Windows
-    -- 'markdownlint',
-    -- 'vint',
   })
 end
 

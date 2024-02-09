@@ -12,16 +12,13 @@ local servers = {
 if vim.fn.has 'win32' == 0 then
   add(servers, {
     'bashls',
-    -- 'cssls',
     -- 'csharp_ls',
     'docker_compose_language_service',
     'dockerls',
     -- 'elixirls',
     'eslint',
-    -- 'gopls',
-    -- 'html',
+    'gopls',
     'tsserver',
-    -- 'vimls',
   })
 else
   add(servers, {

@@ -10,11 +10,9 @@ local linters = {
 if vim.fn.has 'win32' == 0 then
   for key, value in pairs {
     dockerfile = { 'hadolint' },
-    -- go = { 'golangcilint' },
-    -- javascript = { 'eslint_d' },
-    -- markdown = { 'markdownlint' },
-    -- typescript = { 'eslint_d' },
-    -- vim = { 'vint' },
+    go = { 'golangcilint' },
+    javascript = { 'eslint_d' },
+    typescript = { 'eslint_d' },
   } do
     linters[key] = value
   end
