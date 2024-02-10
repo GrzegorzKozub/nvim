@@ -35,7 +35,7 @@ local linters = {
 if vim.fn.has 'win32' == 0 then
   add(linters, {
     'eslint_d',
-    'golangcilint',
+    'golangci-lint',
     'hadolint',
     'luacheck', -- installed manually on Windows
   })
