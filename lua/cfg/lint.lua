@@ -18,6 +18,17 @@ if vim.fn.has 'win32' == 0 then
   end
 end
 
+local function pylint(lint)
+  local packages = vim.fn.has 'win32' == 0 and '~/.local/lib/python311/site-packages'
+    or os.getenv('APPDATA'):gsub('\\', '/') .. '/Python/Python312/site-packages'
+  lint.linters.pylint.args = {
+    '--init-hook',
+    'import sys; sys.path.append("' .. packages .. '")',
+    '--output-format',
+    'json',
+  }
+end
+
 function M.config()
   local lint_loaded, lint = pcall(require, 'lint')
   if not lint_loaded then
@@ -34,9 +45,7 @@ function M.config()
     group = vim.api.nvim_create_augroup('Lint', { clear = true }),
   })
 
-  lint.linters.pylint.args = {
-    '--init-hook = import sys; sys.path.append("~/.local/lib")',
-  }
+  pylint(lint)
 end
 
 return M
