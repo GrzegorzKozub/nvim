@@ -1,6 +1,7 @@
 return {
   settings = {
     ['rust-analyzer'] = {
+      check = { command = 'clippy' },
       inlayHints = {
         bindingModeHints = { enable = true },
         closureCaptureHints = { enable = true },
