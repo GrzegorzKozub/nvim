@@ -33,6 +33,10 @@ function M.config()
     end,
     group = vim.api.nvim_create_augroup('Lint', { clear = true }),
   })
+
+  lint.linters.pylint.args = {
+    '--init-hook = import sys; sys.path.append("~/.local/lib")',
+  }
 end
 
 return M
