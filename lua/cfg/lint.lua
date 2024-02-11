@@ -1,22 +1,15 @@
 local M = {}
 
 local linters = {
+  dockerfile = { 'hadolint' },
+  go = { 'golangcilint' },
+  javascript = { 'eslint_d' },
   json = { 'jsonlint' },
   lua = { 'luacheck' },
   python = { 'pylint' },
+  typescript = { 'eslint_d' },
   yaml = { 'yamllint' },
 }
-
-if vim.fn.has 'win32' == 0 then
-  for key, value in pairs {
-    dockerfile = { 'hadolint' },
-    go = { 'golangcilint' },
-    javascript = { 'eslint_d' },
-    typescript = { 'eslint_d' },
-  } do
-    linters[key] = value
-  end
-end
 
 local function pylint(lint)
   local packages = vim.fn.has 'win32' == 0 and os.getenv 'HOME' .. '/.local/lib/python3.11/site-packages'

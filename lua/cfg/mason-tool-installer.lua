@@ -3,30 +3,31 @@ local M = {}
 local add = require('cfg.util').add
 
 local servers = {
+  -- 'csharp-language-server',
+  'docker-compose-language-service',
+  'dockerfile-language-server',
+  -- 'elixir-ls',
+  'eslint-lsp',
+  'gopls',
   'json-lsp',
   'lua-language-server',
   'pyright',
   'rust-analyzer',
   'taplo', -- also a formatter
+  'typescript-language-server',
   'yaml-language-server',
 }
 
 if vim.fn.has 'win32' == 0 then
-  add(servers, {
-    'bash-language-server',
-    -- 'csharp-language-server',
-    'docker-compose-language-service',
-    'dockerfile-language-server',
-    -- 'elixir-ls',
-    'eslint-lsp',
-    'gopls',
-    'typescript-language-server',
-  })
+  add(servers, { 'bash-language-server' })
 else
   add(servers, { 'powershell-editor-services' })
 end
 
 local linters = {
+  'eslint_d',
+  'golangci-lint',
+  'hadolint',
   'jsonlint',
   'pylint',
   'yamllint',
@@ -34,9 +35,6 @@ local linters = {
 
 if vim.fn.has 'win32' == 0 then
   add(linters, {
-    'eslint_d',
-    'golangci-lint',
-    'hadolint',
     'luacheck', -- installed manually on Windows
   })
 end
