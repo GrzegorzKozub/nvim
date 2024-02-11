@@ -19,7 +19,7 @@ if vim.fn.has 'win32' == 0 then
 end
 
 local function pylint(lint)
-  local packages = vim.fn.has 'win32' == 0 and '~/.local/lib/python311/site-packages'
+  local packages = vim.fn.has 'win32' == 0 and os.getenv 'HOME' .. '/.local/lib/python3.11/site-packages'
     or os.getenv('APPDATA'):gsub('\\', '/') .. '/Python/Python312/site-packages'
   lint.linters.pylint.args = {
     '--init-hook',
