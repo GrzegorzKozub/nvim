@@ -34,9 +34,7 @@ local linters = {
 }
 
 if vim.fn.has 'win32' == 0 then
-  add(linters, {
-    'luacheck', -- installed manually on Windows
-  })
+  add(linters, { 'luacheck' }) -- installed manually on windows
 end
 
 local formatters = {
