@@ -26,6 +26,7 @@ local parsers = {
   'rust',
   'scss',
   'sql',
+  'ssh_config',
   'toml',
   'typescript',
   'vim',
