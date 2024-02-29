@@ -11,18 +11,23 @@ local linters = {
   yaml = { 'yamllint' },
 }
 
-local function packages()
-  if vim.fn.has 'win32' == 1 then
-    return os.getenv('APPDATA'):gsub('\\', '/') .. '/Python/Python312/site-packages'
+local function site_packages()
+  if vim.fn.has 'win32' == 0 then
+    return {
+      '/usr/lib/python3.11/site-packages',
+      os.getenv 'HOME' .. '/.local/lib/python3.11/site-packages',
+    }
+  else
+    return {
+      os.getenv('APPDATA'):gsub('\\', '/') .. '/Python/Python312/site-packages',
+    }
   end
-  return os.getenv 'HOME' .. '/.local/lib/python3.11/site-packages'
-  -- add /usr/lib/python3.11/site-packages and only do this when the ft=python
 end
 
 local function pylint(lint)
   lint.linters.pylint.args = {
     '--init-hook',
-    'import sys; sys.path.append("' .. packages() .. '")',
+    'import sys; sys.path += ["' .. table.concat(site_packages(), '","') .. '"]',
     '--output-format',
     'json',
   }
