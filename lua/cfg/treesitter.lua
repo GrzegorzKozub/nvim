@@ -27,6 +27,7 @@ local parsers = {
   'scss',
   'sql',
   'ssh_config',
+  'tmux',
   'toml',
   'typescript',
   'vim',
