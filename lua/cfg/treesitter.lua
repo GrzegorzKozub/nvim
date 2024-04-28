@@ -4,6 +4,7 @@ local parsers = {
   'bash',
   'c_sharp',
   'css',
+  'csv',
   'dockerfile',
   'elixir',
   'gitattributes',
