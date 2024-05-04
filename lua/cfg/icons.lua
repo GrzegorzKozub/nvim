@@ -30,10 +30,10 @@ function M.get()
       variable = '󰀫',
     },
     diag = {
-      error = '󰅙 ', -- ●
-      hint = '󰋼 ', -- ◆
-      info = '󰋼 ', -- ◆
-      warning = ' ', -- ▲
+      error = '󰅙', -- ●
+      hint = '󰋼', -- ◆
+      info = '󰋼', -- ◆
+      warning = '', -- ▲
     },
     diff = { added = '+', modified = '~', removed = '-' },
     file = {
@@ -44,7 +44,7 @@ function M.get()
       closed = '', -- ▶
       open = '', -- ▼
     },
-    lazy = { cmd = ' ', config = ' ', vim = ' ' },
+    lazy = { cmd = '', config = '', vim = '' },
     listchars = {
       eol = '󰌑', -- ¬
       tab = '󰌒 ', -- →
