@@ -48,7 +48,7 @@ function M.get()
     listchars = {
       eol = '󰌑', -- ¬
       tab = '󰌒 ', -- →
-      trail = '󰧟', -- ·
+      trail = '•', -- ·
     },
     package = { disabled = '○', enabled = '●', pending = '▶' },
     telescope = { marker = '•', pointer = ' ● ', prompt = ' ●• ' },
