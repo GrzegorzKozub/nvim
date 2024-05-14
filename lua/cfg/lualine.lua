@@ -77,10 +77,10 @@ function M.config()
           sources = { 'nvim_diagnostic' },
           sections = { 'error', 'warn', 'info', 'hint' },
           symbols = {
-            error = icons.diag.error,
-            warn = icons.diag.warning,
-            info = icons.diag.info,
-            hint = icons.diag.hint,
+            error = icons.diag.error .. ' ',
+            warn = icons.diag.warning .. ' ',
+            info = icons.diag.info .. ' ',
+            hint = icons.diag.hint .. ' ',
           },
         },
         {
