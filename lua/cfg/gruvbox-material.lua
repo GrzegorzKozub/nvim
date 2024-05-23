@@ -68,6 +68,9 @@ local function custom_colors()
       vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
       vim.fn[hi]('CustomCmpFloatBorder', palette.bg5, palette.none)
 
+      -- gitsigns
+      vim.fn[hi]('GitSignsCurrentLineBlame', palette.bg5, palette.none)
+
       -- illuminate
       vim.fn[hi]('CurrentWord', palette.none, palette.bg3)
 

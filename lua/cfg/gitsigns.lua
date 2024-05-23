@@ -6,6 +6,7 @@ function M.config()
     return
   end
 
+  local git = '󰊢'
   local sign = '│'
 
   gitsigns.setup {
@@ -18,6 +19,8 @@ function M.config()
       untracked = { text = '' },
     },
     attach_to_untracked = false,
+    current_line_blame_formatter = ' ' .. git .. ' <summary>, <author>, <author_time:%R>, <abbrev_sha>',
+    current_line_blame_formatter_nc = ' ' .. git .. ' not committed',
     watch_gitdir = { interval = 10000 },
     preview_config = { border = 'rounded', row = -1, col = 2 },
     on_attach = function(bufnr)
@@ -39,6 +42,9 @@ function M.config()
       local nmap = require('cfg.util').nmap
 
       nmap('<leader>gt', gs.toggle_signs, bufnr)
+      nmap('<leader>gn', gs.toggle_numhl, bufnr)
+      nmap('<leader>gl', gs.toggle_current_line_blame, bufnr)
+
       nmap('<leader>gh', gs.preview_hunk, bufnr)
       nmap('<leader>gb', function()
         gs.blame_line { full = true }
