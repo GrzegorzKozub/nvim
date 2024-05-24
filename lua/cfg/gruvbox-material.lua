@@ -40,7 +40,7 @@ local function custom_colors()
       vim.cmd.hi('WarningFloat', 'guibg=NONE ctermbg=NONE')
       vim.cmd.hi('WarningMsg', 'gui=NONE cterm=NONE')
 
-      vim.fn[hi]('FloatBorder', palette.bg5, palette.none) -- fg0 looks better with lsp docs
+      vim.fn[hi]('FloatBorder', palette.fg0, palette.none)
       vim.fn[hi]('Folded', palette.bg5, palette.none)
       vim.fn[hi]('IncSearch', palette.bg0, palette.orange)
       vim.fn[hi]('LspInlayHint', palette.bg5, palette.none)
