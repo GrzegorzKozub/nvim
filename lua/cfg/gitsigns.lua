@@ -36,16 +36,22 @@ function M.config()
         end, { buffer = bufnr, expr = true })
       end
 
-      navigate(']h', gs.next_hunk)
-      navigate('[h', gs.prev_hunk)
+      navigate('[h', function()
+        gs.nav_hunk('prev', { preview = true })
+      end)
+
+      navigate(']h', function()
+        gs.nav_hunk('next', { preview = true })
+      end)
 
       local nmap = require('cfg.util').nmap
+
+      nmap('<leader>gh', gs.preview_hunk, bufnr)
 
       nmap('<leader>gt', gs.toggle_signs, bufnr)
       nmap('<leader>gn', gs.toggle_numhl, bufnr)
       nmap('<leader>gl', gs.toggle_current_line_blame, bufnr)
 
-      nmap('<leader>gh', gs.preview_hunk, bufnr)
       nmap('<leader>gb', function()
         gs.blame_line { full = true }
       end, bufnr)
