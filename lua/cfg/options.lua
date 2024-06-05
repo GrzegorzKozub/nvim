@@ -7,7 +7,14 @@ function M.config()
     backup = true,
     cursorline = true, -- can break per https://github.com/neovim/neovim/issues/9019
     expandtab = true,
-    fillchars = { eob = ' ', vert = ' ' },
+    fillchars = {
+      diff = ' ',
+      eob = ' ',
+      fold = ' ',
+      foldclose = icons.fold.closed,
+      foldopen = icons.fold.open,
+      vert = ' ',
+    },
     foldenable = false,
     foldlevelstart = 99,
     foldmethod = 'syntax',
