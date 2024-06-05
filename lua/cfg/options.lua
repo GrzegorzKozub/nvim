@@ -44,6 +44,11 @@ function M.config()
     vim.opt[name] = value
   end
 
+  -- https://github.com/neovim/neovim/issues/9800
+  if vim.opt.diff:get() then
+    vim.opt.cursorline = false
+  end
+
   vim.opt.backupdir:remove '.'
   vim.opt.diffopt:append { 'algorithm:histogram', 'indent-heuristic', 'context:3' }
   vim.opt.shortmess:append 'I'
