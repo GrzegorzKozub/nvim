@@ -8,20 +8,32 @@ function M.config()
 
   local icons = require('cfg.icons').get()
 
+
   trouble.setup {
-    fold_closed = icons.fold.closed,
-    fold_open = icons.fold.open,
-    icons = false,
-    indent_lines = false,
-    padding = false,
-    signs = {
-      error = icons.diag.error,
-      warning = icons.diag.warning,
-      hint = icons.diag.hint,
-      information = icons.diag.info,
-      other = icons.diag.info,
+    indent_guides = false,
+    icons = {
+      indent = {
+        fold_closed = icons.fold.closed,
+        fold_open = icons.fold.open,
+      },
     },
-    win_config = { border = 'rounded' },
+    -- modes = {
+    --   diagnostics = {
+    --     groups = {
+    --       { 'filename', format = '{file_icon} {basename:Title} {count}' },
+    --     },
+    --   },
+    -- },
+    -- icons = false,
+    -- padding = false,
+    -- signs = {
+    --   error = icons.diag.error,
+    --   warning = icons.diag.warning,
+    --   hint = icons.diag.hint,
+    --   information = icons.diag.info,
+    --   other = icons.diag.info,
+    -- },
+    -- win_config = { border = 'rounded' },
   }
 end
 
