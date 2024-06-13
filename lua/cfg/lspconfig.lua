@@ -7,7 +7,6 @@ local function on_attach(_, bufnr)
   nmap('gD', vim.lsp.buf.declaration, bufnr)
   nmap('gi', vim.lsp.buf.implementation, bufnr)
   -- nmap('gr', vim.lsp.buf.references, bufnr)
-  nmap('gr', '<cmd>Trouble lsp_references<cr>')
   nmap('gt', vim.lsp.buf.type_definition, bufnr)
 
   if vim.lsp.inlay_hint then
@@ -24,12 +23,13 @@ local function on_attach(_, bufnr)
   nmap('<leader>dh', vim.diagnostic.open_float, bufnr)
   nmap('<leader>dl', vim.diagnostic.setloclist, bufnr)
   nmap('<leader>dq', vim.diagnostic.setqflist, bufnr)
-  nmap('<leader>dt', '<cmd>Trouble workspace_diagnostics<cr>')
 
   nmap(']d', vim.diagnostic.goto_next, bufnr)
   nmap('[d', vim.diagnostic.goto_prev, bufnr)
 
-  nmap('<leader>t', '<cmd>TroubleToggle<cr>')
+  nmap('<leader>tl', '<cmd>Trouble lsp toggle<cr>')
+  nmap('<leader>ts', '<cmd>Trouble symbols toggle<cr>')
+  nmap('<leader>td', '<cmd>Trouble diagnostics toggle<cr>')
 
   -- nmap('<leader>f', function()
   --   vim.lsp.buf.format { async = true, bufnr = bufnr }

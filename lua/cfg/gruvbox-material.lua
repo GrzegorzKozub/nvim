@@ -94,8 +94,9 @@ local function custom_colors()
 
       -- trouble
       vim.fn[hi]('TroubleCount', palette.bg5, palette.none)
-      vim.fn[hi]('TroubleFile', palette.grey1, palette.none)
-      vim.fn[hi]('TroubleFoldIcon', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleDirectory', palette.grey0, palette.none)
+      vim.fn[hi]('TroubleFileName', palette.grey1, palette.none)
+      vim.fn[hi]('TroubleIconDirectory', palette.grey0, palette.none)
     end,
     group = vim.api.nvim_create_augroup('GruvboxMaterialCustomColors', { clear = true }),
   })
@@ -146,6 +147,11 @@ function M.lualine_theme()
   end
 
   return theme
+end
+
+function M.default_icon_color()
+  -- nvim-web-devicons
+  return get_palette().grey1
 end
 
 return M

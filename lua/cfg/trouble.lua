@@ -8,7 +8,6 @@ function M.config()
 
   local icons = require('cfg.icons').get()
 
-
   trouble.setup {
     indent_guides = false,
     icons = {
@@ -17,24 +16,9 @@ function M.config()
         fold_open = icons.fold.open,
       },
     },
-    -- modes = {
-    --   diagnostics = {
-    --     groups = {
-    --       { 'filename', format = '{file_icon} {basename:Title} {count}' },
-    --     },
-    --   },
-    -- },
-    -- icons = false,
-    -- padding = false,
-    -- signs = {
-    --   error = icons.diag.error,
-    --   warning = icons.diag.warning,
-    --   hint = icons.diag.hint,
-    --   information = icons.diag.info,
-    --   other = icons.diag.info,
-    -- },
-    -- win_config = { border = 'rounded' },
   }
+
+  -- todo: icons, dir/file colors
 end
 
 return M

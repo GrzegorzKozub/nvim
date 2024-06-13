@@ -22,15 +22,15 @@ local function contains(table, item)
 end
 
 local function buffer_cond()
-  return not contains({ 'help', 'netrw', 'qf', 'Trouble' }, vim.o.filetype)
+  return not contains({ 'help', 'netrw', 'qf', 'trouble' }, vim.o.filetype)
 end
 
 local function filename_cond()
-  return not contains({ 'netrw', 'qf', 'checkhealth', 'Trouble' }, vim.o.filetype)
+  return not contains({ 'netrw', 'qf', 'checkhealth', 'trouble' }, vim.o.filetype)
 end
 
 local function encoding_and_fileformat_cond()
-  return not contains({ 'checkhealth', 'help', 'netrw', 'qf', 'Trouble' }, vim.o.filetype)
+  return not contains({ 'checkhealth', 'help', 'netrw', 'qf', 'trouble' }, vim.o.filetype)
 end
 
 local function mode_fmt(mode)
