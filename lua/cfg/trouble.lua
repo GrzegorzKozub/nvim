@@ -23,7 +23,7 @@ function M.config()
           .. '{hl:TroubleSource}({hl}{code}{hl:TroubleSource}){hl} {pos}',
       },
       lsp_document_symbols = {
-        title = " {hl:Title}Document Symbols{hl} {count}",
+        title = " {hl:Title}Symbols{hl} {count}",
         groups = {
           { 'filename', format = '{hl:TroubleIconFile}{file_icon}{hl}{filename} {count}' },
         },
