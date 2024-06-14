@@ -92,11 +92,15 @@ local function custom_colors()
       vim.fn[hi]('TelescopeResultsNormal', palette.grey1, palette.none)
       vim.fn[hi]('TelescopeSelection', palette.fg1, palette.bg1)
 
-      -- trouble
+      -- trouble.nvim
       vim.fn[hi]('TroubleCount', palette.bg5, palette.none)
       vim.fn[hi]('TroubleDirectory', palette.grey0, palette.none)
-      vim.fn[hi]('TroubleFileName', palette.grey1, palette.none)
+      vim.fn[hi]('TroubleFileName', palette.grey0, palette.none)
       vim.fn[hi]('TroubleIconDirectory', palette.grey0, palette.none)
+      vim.fn[hi]('TroubleIconFile', palette.grey0, palette.none)
+      vim.fn[hi]('TroubleIndent', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleIndentFoldClosed', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleIndentFoldOpen', palette.bg5, palette.none)
     end,
     group = vim.api.nvim_create_augroup('GruvboxMaterialCustomColors', { clear = true }),
   })
@@ -151,7 +155,7 @@ end
 
 function M.default_icon_color()
   -- nvim-web-devicons
-  return get_palette().grey1
+  return get_palette().fg0
 end
 
 return M

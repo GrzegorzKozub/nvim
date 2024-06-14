@@ -37,11 +37,13 @@ function M.get()
     },
     diff = { added = '+', modified = '~', removed = '-' },
     file = {
+      default = '󰈤',
       modified = '●',
       readonly = '', -- ■
     },
     fold = {
       closed = '', -- ▶
+      guides = { last = '╰╴' },
       open = '', -- ▼
     },
     lazy = { cmd = '', config = '', vim = '' },

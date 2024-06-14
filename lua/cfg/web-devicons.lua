@@ -8,8 +8,9 @@ function M.config()
 
   web_devicons.setup { color_icons = false }
 
+  local icon = require('cfg.icons').get().file.default
   local color = require('cfg.gruvbox-material').default_icon_color()
-  web_devicons.set_default_icon('', color[1], color[2])
+  web_devicons.set_default_icon(icon, color[1], color[2])
 end
 
 return M
