@@ -34,7 +34,6 @@ function M.config()
         '--context=0',
         '--glob=!.git/*',
         '--glob=!node_modules/*',
-        '--hidden',
         '--line-number',
         '--no-heading',
         '--smart-case',
