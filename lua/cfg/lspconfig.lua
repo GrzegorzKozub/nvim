@@ -7,6 +7,7 @@ local function on_attach(_, bufnr)
   nmap('gD', vim.lsp.buf.declaration, bufnr)
   nmap('gi', vim.lsp.buf.implementation, bufnr)
   -- nmap('gr', vim.lsp.buf.references, bufnr)
+  nmap('gr', '<cmd>Trouble lsp<cr>')
   nmap('gt', vim.lsp.buf.type_definition, bufnr)
 
   if vim.lsp.inlay_hint then

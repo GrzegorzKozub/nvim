@@ -101,6 +101,7 @@ local function custom_colors()
       vim.fn[hi]('TroubleIndent', palette.bg5, palette.none)
       vim.fn[hi]('TroubleIndentFoldClosed', palette.bg5, palette.none)
       vim.fn[hi]('TroubleIndentFoldOpen', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleTitle', palette.grey1, palette.none)
     end,
     group = vim.api.nvim_create_augroup('GruvboxMaterialCustomColors', { clear = true }),
   })

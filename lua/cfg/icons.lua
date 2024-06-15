@@ -2,7 +2,9 @@ local M = {}
 
 function M.get()
   return {
-    cmp = {
+    dev = {
+      array = '󰅪',
+      boolean = '󰨙',
       class = '󰠱',
       color = '',
       constant = '󰏿',
@@ -11,22 +13,25 @@ function M.get()
       enum_member = '󱍶',
       event = '󰛕',
       field = '󰌖',
-      file = '󰈤',
-      folder = '󰉖',
       func = '󰊕',
       interface = '',
       keyword = '󰌆',
       method = '󰅲',
-      module = '󰅩',
+      module = '󰅴',
+      namespace = '󰦮',
+      null = '',
+      number = '󰎠',
+      object = '󰅩',
       operator = '󰆕',
+      package = '',
       property = '󰓼',
       reference = '󰌷',
       snippet = '󰑷',
+      string = '',
       struct = '󰙅',
       text = '󰦨',
       type_parameter = '󰅴',
       unit = '󰑭',
-      value = '󰎠',
       variable = '󰀫',
     },
     diag = {
@@ -37,7 +42,8 @@ function M.get()
     },
     diff = { added = '+', modified = '~', removed = '-' },
     file = {
-      default = '󰈤',
+      dir = '󰉖',
+      file = '󰈤',
       modified = '●',
       readonly = '', -- ■
     },
