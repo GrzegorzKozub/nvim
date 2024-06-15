@@ -5,7 +5,8 @@ local function buffer()
 end
 
 local function encoding_and_fileformat()
-  return vim.o.fileencoding .. ' ' .. (vim.o.fileformat == 'unix' and 'lf' or 'crlf')
+  return (vim.o.fileencoding == '' and '' or vim.o.fileencoding .. ' ')
+    .. (vim.o.fileformat == 'unix' and 'lf' or 'crlf')
 end
 
 local function progress_and_location()
@@ -38,7 +39,14 @@ local function mode_fmt(mode)
 end
 
 local function filetype_fmt(filetype)
-  return filetype:lower()
+  if filetype == '' then
+    return ''
+  end
+  local buff = vim.api.nvim_buf_get_name(0)
+  local name = vim.fn.fnamemodify(buff, ':t')
+  local ext = vim.fn.fnamemodify(buff, ':e')
+  local icon = require('nvim-web-devicons').get_icon(name, ext, { default = true })
+  return icon .. ' ' .. filetype:lower()
 end
 
 function M.config()
