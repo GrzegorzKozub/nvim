@@ -42,11 +42,7 @@ local function filetype_fmt(filetype)
   if filetype == '' then
     return ''
   end
-  local buff = vim.api.nvim_buf_get_name(0)
-  local name = vim.fn.fnamemodify(buff, ':t')
-  local ext = vim.fn.fnamemodify(buff, ':e')
-  local icon = require('nvim-web-devicons').get_icon(name, ext, { default = true })
-  return icon .. ' ' .. filetype:lower()
+  return require('cfg.web-devicons').file_icon(filetype) .. ' ' .. filetype:lower()
 end
 
 function M.config()
