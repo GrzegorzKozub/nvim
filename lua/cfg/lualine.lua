@@ -42,7 +42,8 @@ local function filetype_fmt(filetype)
   if filetype == '' then
     return ''
   end
-  return require('cfg.web-devicons').file_icon(filetype) .. ' ' .. filetype:lower()
+  local icon = require('cfg.web-devicons').file_icon(filetype)
+  return (icon == nil and '' or icon .. ' ') .. filetype:lower()
 end
 
 function M.config()

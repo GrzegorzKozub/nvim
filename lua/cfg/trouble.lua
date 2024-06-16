@@ -55,7 +55,7 @@ function M.config()
         win = { size = { height = 16 } },
       },
       lsp_document_symbols = {
-        title = ' {hl:TroubleTitle}symbols{hl}{count}',
+        title = ' {hl:TroubleTitle}document symbols{hl}{count}',
         groups = { { 'filename', format = file_icon .. '{filename}{count}' } },
         win = { size = 32 },
       },
