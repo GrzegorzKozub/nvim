@@ -25,8 +25,9 @@ local function on_attach(_, bufnr)
   nmap('<leader>dl', vim.diagnostic.setloclist, bufnr)
   nmap('<leader>dq', vim.diagnostic.setqflist, bufnr)
 
-  nmap(']d', vim.diagnostic.goto_next, bufnr)
-  nmap('[d', vim.diagnostic.goto_prev, bufnr)
+  -- defaults since https://neovim.io/doc/user/news-0.10.html
+  -- nmap(']d', vim.diagnostic.goto_next, bufnr)
+  -- nmap('[d', vim.diagnostic.goto_prev, bufnr)
 
   nmap('<leader>tl', '<cmd>Trouble lsp toggle<cr>')
   nmap('<leader>ts', '<cmd>Trouble symbols toggle<cr>')
