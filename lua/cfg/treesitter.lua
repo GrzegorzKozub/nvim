@@ -22,6 +22,7 @@ local parsers = {
   'lua',
   'markdown',
   'markdown_inline',
+  'nu',
   'python',
   'query',
   'rust',

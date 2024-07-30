@@ -9,6 +9,7 @@ local servers = {
   'gopls',
   'jsonls',
   'lua_ls',
+  'nushell',
   'pyright',
   'rust_analyzer',
   'taplo',
