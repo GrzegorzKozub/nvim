@@ -16,6 +16,7 @@ end
 return {
   'hrsh7th/nvim-cmp',
   event = { 'CmdlineEnter', 'InsertEnter' },
+  cond = not vim.g.vscode,
   config = require('cfg.cmp').config,
   dependencies = deps,
 }
