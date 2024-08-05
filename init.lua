@@ -1,7 +1,10 @@
 require('cfg.options').config()
-require('cfg.autocmds').config()
 require('cfg.keys').config()
 
-require('cfg.markdown').config()
+if not vim.g.vscode then
 
-require('cfg.lazy').config()
+  require('cfg.autocmds').config()
+  require('cfg.markdown').config()
+  require('cfg.lazy').config()
+
+end
