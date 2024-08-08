@@ -10,24 +10,34 @@ local function toggle(kind, open, close)
   pcall(vim.cmd, open)
 end
 
-function M.config()
-  local options = { noremap = true, silent = true }
+local function selection(options)
+  vim.keymap.set('n', '<c-a>', 'ggVG', options) -- select all
+end
 
-  vim.keymap.set('n', '<c-a>', 'ggVG', options)
+local function clipboard(options)
+  local copy = '"+y'
+  local cut = '"+x'
+  local whole_line = 'V'
 
-  vim.keymap.set('n', '<c-c>', 'V"+y', options) -- whole line
-  vim.keymap.set('v', '<c-c>', '"+y', options)
+  vim.keymap.set('x', '<c-c>', copy, options)
+  vim.keymap.set('n', '<c-c>', whole_line .. copy, options)
 
-  vim.keymap.set('n', '<c-x>', 'V"+x', options) -- conflicts with tmux; hit <c-x> twice
-  vim.keymap.set('v', '<c-x>', '"+x', options)
+  vim.keymap.set('x', '<c-x>', cut, options) -- hit <c-x> twice in tmux
+  vim.keymap.set('n', '<c-x>', whole_line .. cut, options)
 
-  vim.keymap.set({ 'n', 'v', 'x' }, '<C-V>', '"+gP', options)
-  vim.keymap.set('i', '<c-v>', '<esc>:set paste<cr>a<c-r>+<esc>:set nopaste<cr>a', { noremap = true })
+  vim.keymap.set('x', 'p', 'P', options) -- P doesn't replace register content
+
+  vim.keymap.set({ 'x', 'n' }, '<c-v>', '"+gP', options)
+  vim.keymap.set(
+    'i',
+    '<c-v>',
+    '<esc>:set paste<cr>a<c-r>+<esc>:set nopaste<cr>a',
+    { noremap = true }
+  )
   vim.keymap.set('c', '<c-v>', '<c-r>+', { noremap = true })
+end
 
-  vim.api.nvim_create_user_command('Q', 'q', {})
-  vim.api.nvim_create_user_command('W', 'w', {})
-
+local function toggles(options)
   vim.api.nvim_create_user_command('HlsearchOff', 'nohlsearch', {})
   vim.keymap.set('n', '<leader>h', ':HlsearchOff<cr>', options)
 
@@ -52,6 +62,13 @@ function M.config()
 
   vim.api.nvim_create_user_command('WrapToggle ', 'set wrap! linebreak! nolist', {})
   vim.keymap.set('n', '<leader>w', ':WrapToggle<cr>', options)
+end
+
+function M.config()
+  local options = { noremap = true, silent = true }
+  selection(options)
+  clipboard(options)
+  toggles(options)
 end
 
 return M
