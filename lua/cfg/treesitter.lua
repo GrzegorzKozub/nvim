@@ -6,6 +6,7 @@ local parsers = {
   'css',
   'csv',
   'dockerfile',
+  'editorconfig',
   'elixir',
   'gitattributes',
   'gitcommit',
