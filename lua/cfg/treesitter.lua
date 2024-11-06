@@ -8,6 +8,7 @@ local parsers = {
   'dockerfile',
   'editorconfig',
   'elixir',
+  'git_config',
   'gitattributes',
   'gitcommit',
   'gitignore',
