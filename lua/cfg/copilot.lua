@@ -26,6 +26,7 @@ function M.config()
       sql = true,
       toml = true,
       typescript = true,
+      xml = true,
       yaml = true,
       zsh = true,
       ['*'] = false,
