@@ -70,7 +70,6 @@ function M.config()
       theme = require('cfg.' .. require('cfg.theme').get().vim).lualine_theme(),
       section_separators = '',
       component_separators = '',
-      refresh = { statusline = 10000 },
     },
     sections = {
       lualine_a = { { 'mode', fmt = mode_fmt } },
