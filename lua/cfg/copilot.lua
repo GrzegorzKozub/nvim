@@ -42,7 +42,10 @@ function M.config()
     },
   }
 
-  require('cfg.util').nmap('<leader>c', ':Copilot attach<cr>')
+  local nmap = require('cfg.util').nmap
+
+  nmap('<leader>ce', ':Copilot enable<cr>')
+  nmap('<leader>cd', ':Copilot disable<cr>')
 end
 
 return M

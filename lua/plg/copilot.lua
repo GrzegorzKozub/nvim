@@ -1,6 +1,6 @@
 return {
   'zbirenbaum/copilot.lua',
-  cmd = 'Copilot attach',
+  cmd = 'Copilot enable',
   config = require('cfg.copilot').config,
-  keys = { '<leader>c' },
+  keys = { '<leader>ce' },
 }
