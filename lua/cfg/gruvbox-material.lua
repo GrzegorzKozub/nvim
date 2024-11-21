@@ -58,6 +58,10 @@ local function custom_colors()
       vim.fn[hi]('VirtualTextWarning', palette.bg5, palette.none)
       vim.fn[hi]('WildMenu', palette.fg0, palette.none)
 
+      -- comments are grey0, punctuation is grey1
+      vim.fn[hi]('Comment', palette.grey0, palette.none)
+      vim.fn[hi]('LineNr', palette.bg6, palette.none)
+
       -- cmp
       vim.fn[hi]('CmpItemAbbr', palette.grey2, palette.none)
       vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
