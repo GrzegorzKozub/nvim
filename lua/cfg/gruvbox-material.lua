@@ -20,7 +20,11 @@ local function options()
 end
 
 local function get_palette()
-  return vim.fn['gruvbox_material#get_palette']('soft', 'material', vim.g.gruvbox_material_colors_override)
+  return vim.fn['gruvbox_material#get_palette'](
+    'soft',
+    'material',
+    vim.g.gruvbox_material_colors_override
+  )
 end
 
 local function custom_colors()
@@ -40,28 +44,41 @@ local function custom_colors()
       vim.cmd.hi('WarningFloat', 'guibg=NONE ctermbg=NONE')
       vim.cmd.hi('WarningMsg', 'gui=NONE cterm=NONE')
 
-      vim.fn[hi]('Comment', palette.grey0, palette.none)
+      vim.fn[hi]('Comment', palette.grey0, palette.none, 'italic')
+
       vim.fn[hi]('CursorLineNr', palette.bg5, palette.none)
-      vim.fn[hi]('FloatBorder', palette.fg0, palette.none)
-      vim.fn[hi]('Folded', palette.bg5, palette.none)
-      vim.fn[hi]('IncSearch', palette.bg0, palette.orange)
       vim.fn[hi]('LineNr', palette.bg3, palette.none)
-      vim.fn[hi]('LspInlayHint', palette.bg5, palette.none)
+
+      vim.fn[hi]('FloatBorder', palette.fg0, palette.none)
       vim.fn[hi]('NormalFloat', palette.fg0, palette.none)
+
+      vim.fn[hi]('Folded', palette.bg5, palette.none)
+
+      vim.fn[hi]('IncSearch', palette.bg0, palette.orange)
       vim.fn[hi]('Search', palette.bg0, palette.yellow)
+
+      vim.fn[hi]('LspInlayHint', palette.bg5, palette.none)
+
       vim.fn[hi]('StatusLine', palette.grey0, palette.none)
       vim.fn[hi]('StatusLineNC', palette.bg0, palette.none)
-      vim.fn[hi]('TSPunctBracket', palette.grey1, palette.none)
-      vim.fn[hi]('TSPunctSpecial', palette.grey1, palette.none)
+
       vim.fn[hi]('Tabline', palette.bg5, palette.bg0)
       vim.fn[hi]('TablineFill', palette.bg5, palette.bg0)
       vim.fn[hi]('TablineSel', palette.grey1, palette.bg0)
+
       vim.fn[hi]('Todo', palette.grey1, palette.none)
+
+      vim.cmd.hi('link', 'TSPunctBracket', 'Grey')
+      vim.cmd.hi('link', 'TSPunctDelimiter', 'Grey')
+      vim.cmd.hi('link', 'TSPunctSpecial', 'Grey')
+      vim.cmd.hi('link', 'TSTagDelimiter', 'Grey')
+
+      vim.fn[hi]('WildMenu', palette.fg0, palette.none)
+
       vim.fn[hi]('VirtualTextError', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextHint', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextInfo', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextWarning', palette.bg5, palette.none)
-      vim.fn[hi]('WildMenu', palette.fg0, palette.none)
 
       -- cmp
       vim.fn[hi]('CmpItemAbbr', palette.grey2, palette.none)
@@ -125,16 +142,16 @@ function M.lualine_theme()
   local theme = require('lualine.utils.loader').load_theme 'gruvbox-material'
 
   if vim.o.background == 'dark' then
-    theme.normal.a.bg = '#7c6f64'   -- was #a89984
-    theme.normal.b.bg = '#514945'   -- was #5b534d
-    theme.normal.b.fg = '#32302f'   -- was #ddc7a1 in material and #a89984 in original
-    theme.normal.c.fg = '#7c6f64'   -- was #ddc7a1 in material and #a89984 in original
+    theme.normal.a.bg = '#7c6f64' -- was #a89984
+    theme.normal.b.bg = '#514945' -- was #5b534d
+    theme.normal.b.fg = '#32302f' -- was #ddc7a1 in material and #a89984 in original
+    theme.normal.c.fg = '#7c6f64' -- was #ddc7a1 in material and #a89984 in original
     theme.inactive.c.fg = '#665c54' -- was #a89984
   else
-    theme.normal.a.bg = '#a89984'   -- was #7c6f64
-    theme.normal.b.bg = '#d5c4a1'   -- was #dac9a5
-    theme.normal.b.fg = '#f2e5bc'   -- was #4f3829 in material and #7c6f64 in original
-    theme.normal.c.fg = '#a89984'   -- was #4f3829 in material and #7c6f64 in original
+    theme.normal.a.bg = '#a89984' -- was #7c6f64
+    theme.normal.b.bg = '#d5c4a1' -- was #dac9a5
+    theme.normal.b.fg = '#f2e5bc' -- was #4f3829 in material and #7c6f64 in original
+    theme.normal.c.fg = '#a89984' -- was #4f3829 in material and #7c6f64 in original
     theme.inactive.c.fg = '#d5c4a1' -- was #7c6f64
   end
 
@@ -151,7 +168,15 @@ function M.lualine_theme()
     theme[mode].z = theme.normal.a
   end
 
-  for _, mode in pairs { 'normal', 'insert', 'visual', 'replace', 'command', 'terminal', 'inactive' } do
+  for _, mode in pairs {
+    'normal',
+    'insert',
+    'visual',
+    'replace',
+    'command',
+    'terminal',
+    'inactive',
+  } do
     theme[mode].a.gui = 'NONE'
     theme[mode].c.bg = 'NONE'
   end
