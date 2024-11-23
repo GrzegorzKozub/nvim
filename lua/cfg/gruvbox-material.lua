@@ -124,6 +124,10 @@ local function custom_colors()
       vim.fn[hi]('TroubleIndentFoldClosed', palette.bg5, palette.none)
       vim.fn[hi]('TroubleIndentFoldOpen', palette.bg5, palette.none)
       vim.fn[hi]('TroubleTitle', palette.bg5, palette.none)
+
+      -- zsh
+      vim.cmd.hi('link', 'zshOperator', 'Operator')
+      vim.cmd.hi('link', 'zshVariable', 'Blue')
     end,
     group = vim.api.nvim_create_augroup('GruvboxMaterialCustomColors', { clear = true }),
   })
