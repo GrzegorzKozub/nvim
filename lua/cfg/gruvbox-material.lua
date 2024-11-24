@@ -41,6 +41,7 @@ local function custom_colors()
       vim.cmd.hi('ModeMsg', 'gui=NONE cterm=NONE')
       vim.cmd.hi('MoreMsg', 'gui=NONE cterm=NONE')
       vim.cmd.hi('Title', 'gui=NONE cterm=NONE')
+      vim.cmd.hi('TSURI', 'gui=NONE cterm=NONE')
       vim.cmd.hi('WarningFloat', 'guibg=NONE ctermbg=NONE')
       vim.cmd.hi('WarningMsg', 'gui=NONE cterm=NONE')
 
@@ -48,6 +49,8 @@ local function custom_colors()
 
       vim.fn[hi]('CursorLineNr', palette.bg5, palette.none)
       vim.fn[hi]('LineNr', palette.bg3, palette.none)
+
+      vim.fn[hi]('Delimiter', palette.grey1, palette.none)
 
       vim.fn[hi]('FloatBorder', palette.fg0, palette.none)
       vim.fn[hi]('NormalFloat', palette.fg0, palette.none)
@@ -95,6 +98,12 @@ local function custom_colors()
 
       -- illuminate
       vim.fn[hi]('CurrentWord', palette.none, palette.bg3)
+
+      -- markdown
+      vim.cmd.hi('link', '@markup.link', 'Grey')
+      vim.cmd.hi('link', '@markup.link.label', 'Purple')
+      vim.cmd.hi('link', '@markup.link.text', 'Blue')
+      -- vim.cmd.hi('link', 'TSLabel', 'Grey')
 
       -- null-ls
       -- vim.fn[hi]('NullLsInfoBorder', palette.fg0, palette.none)
