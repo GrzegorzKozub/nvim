@@ -6,9 +6,8 @@ function M.config()
     callback = function()
       vim.opt_local.conceallevel = 1
       vim.g.markdown_recommended_style = 0
-      vim.cmd.hi('link', 'TSLabel', 'Grey')
-      -- vim.cmd.TSDisable('highlight')
       require('cfg.todo').config()
+      require('cfg.gruvbox-material').markdown()
     end,
     group = vim.api.nvim_create_augroup('Markdown', { clear = true }),
   })

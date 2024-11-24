@@ -96,6 +96,9 @@ local function custom_colors()
       -- gitsigns
       vim.fn[hi]('GitSignsCurrentLineBlame', palette.bg5, palette.none)
 
+      -- html
+      vim.cmd.hi('link', '@string.special.url', 'TSURI')
+
       -- illuminate
       vim.fn[hi]('CurrentWord', palette.none, palette.bg3)
 
@@ -200,6 +203,13 @@ end
 function M.default_icon_color()
   -- nvim-web-devicons
   return get_palette().fg0
+end
+
+function M.markdown()
+  -- override colors set by themes via $VIMRUNTIME/after/syntax
+  vim.cmd.hi('link', 'TSLabel', 'Grey')
+
+  -- vim.cmd.TSDisable('highlight') -- disable treesitter colors
 end
 
 return M
