@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  vim.api.nvim_create_autocmd('BufEnter', {
+  vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     pattern = '.env',
     callback = function(args)
       vim.diagnostic.enable(false, { bufnr = args.buf })
