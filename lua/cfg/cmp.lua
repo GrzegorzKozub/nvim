@@ -43,6 +43,11 @@ function M.config()
     return
   end
 
+  local window = cmp.config.window.bordered {
+    scrollbar = false,
+    -- winhighlight = 'Normal:Normal,FloatBorder:CustomCmpFloatBorder,CursorLine:Visual,Search:None',
+  }
+
   cmp.setup {
     formatting = {
       expandable_indicator = true,
@@ -92,13 +97,7 @@ function M.config()
     }, {
       { name = 'path' },
     }),
-    window = {
-      completion = cmp.config.window.bordered {
-        scrollbar = false,
-        winhighlight = 'Normal:Normal,FloatBorder:CustomCmpFloatBorder,CursorLine:Visual,Search:None',
-      },
-      documentation = cmp.config.window.bordered { scrollbar = false },
-    },
+    window = { completion = window, documentation = window },
   }
 
   cmp.setup.cmdline(':', {

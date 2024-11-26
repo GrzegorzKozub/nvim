@@ -52,7 +52,7 @@ local function custom_colors()
 
       vim.fn[hi]('Delimiter', palette.grey1, palette.none)
 
-      vim.fn[hi]('FloatBorder', palette.fg0, palette.none)
+      vim.fn[hi]('FloatBorder', palette.bg5, palette.none)
       vim.fn[hi]('NormalFloat', palette.fg0, palette.none)
 
       vim.fn[hi]('Folded', palette.bg5, palette.none)
@@ -91,7 +91,7 @@ local function custom_colors()
         vim.fn[hi]('CmpItemKind' .. kind, palette.grey0, palette.none)
       end
       vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
-      vim.fn[hi]('CustomCmpFloatBorder', palette.bg5, palette.none)
+      -- vim.fn[hi]('CustomCmpFloatBorder', palette.bg5, palette.none)
 
       -- gitsigns
       vim.fn[hi]('GitSignsCurrentLineBlame', palette.bg5, palette.none)
