@@ -1,5 +1,25 @@
 local M = {}
 
+local function floats()
+  -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
+
+  -- https://neovim.io/doc/user/lsp.html#vim.lsp.util.open_floating_preview()
+  local lsp = vim.lsp.util.open_floating_preview
+  function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or 'rounded'
+    return lsp(contents, syntax, opts, ...)
+  end
+
+  -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.open_float()
+  local diag = vim.diagnostic.open_float
+  function vim.diagnostic.open_float(opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or 'rounded'
+    return diag(opts, ...)
+  end
+end
+
 local function on_attach(_, bufnr)
   local nmap = require('cfg.util').nmap
 
@@ -49,6 +69,8 @@ function M.config()
     return
   end
 
+  floats()
+
   for _, server in pairs(require 'cfg.servers') do
     local options = {
       capabilities = require('cfg.cmp-nvim-lsp').capabilities(),
@@ -60,8 +82,6 @@ function M.config()
     end
     lspconfig[server].setup(options)
   end
-
-  require('lspconfig.ui.windows').default_options.border = 'rounded'
 end
 
 return M
