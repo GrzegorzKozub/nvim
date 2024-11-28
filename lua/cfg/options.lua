@@ -63,8 +63,15 @@ function M.config()
 
   vim.cmd.language(vim.fn.has 'win32' == 1 and 'English_US' or 'en_US.utf8')
 
+  local function format(diag)
+    local sign = diag.severity == vim.diagnostic.severity.ERROR and icons.diag.error
+      or diag.severity == vim.diagnostic.severity.WARN and icons.diag.warning
+      or icons.diag.info
+    return string.format('%s %s', sign, diag.message)
+  end
+
   vim.diagnostic.config {
-    float = { header = '', prefix = '', border = 'rounded' },
+    float = { border = 'rounded', format = format, header = '', prefix = '', suffix = '' },
     severity_sort = true,
     signs = {
       text = {
@@ -75,16 +82,7 @@ function M.config()
       },
     },
     underline = false,
-    virtual_text = {
-      spacing = 0,
-      prefix = '',
-      format = function(diagnostic)
-        local sign = diagnostic.severity == vim.diagnostic.severity.ERROR and icons.diag.error
-          or diagnostic.severity == vim.diagnostic.severity.WARN and icons.diag.warning
-          or icons.diag.info
-        return string.format('%s %s', sign, diagnostic.message)
-      end,
-    },
+    virtual_text = { format = format, prefix = '', spacing = 0 },
   }
 
   vim.g.loaded_perl_provider = 0
