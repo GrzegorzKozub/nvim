@@ -21,7 +21,7 @@ local function floats()
   end
 end
 
-local function on_attach(_, bufnr)
+local function keys(bufnr)
   local nmap = require('cfg.util').nmap
 
   nmap('gd', vim.lsp.buf.definition, bufnr)
@@ -60,54 +60,33 @@ local function on_attach(_, bufnr)
   -- nmap('<leader>f', function()
   --   vim.lsp.buf.format { async = true, bufnr = bufnr }
   -- end, bufnr)
+end
 
-  vim.bo[bufnr].formatexpr = "v:lua.require'conform'.formatexpr()"
+local function highlight(client, bufnr)
+  -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#highlight-symbol-under-cursor
 
+  if not client.server_capabilities.documentHighlightProvider then
+    return
+  end
 
-
-
-
--- vim.o.updatetime = 1000
---https://neovim.io/doc/user/lua.html#lua-loop
-local TIMEOUT = 500
-local n = 0
-local timer = vim.loop.new_timer()
-vim.on_key(function()
-  timer:start(TIMEOUT, 0, vim.schedule_wrap(function()
-    n = n + 1
-     vim.lsp.buf.document_highlight()
-    print(n)
-  end))
-end)
-
-
--- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#highlight-symbol-under-cursor
-if _.server_capabilities.documentHighlightProvider then
-  vim.cmd [[
-    hi! LspReferenceRead cterm=bold ctermbg=red guibg=Red
-    hi! LspReferenceText cterm=bold ctermbg=red guibg=Red
-    hi! LspReferenceWrite cterm=bold ctermbg=red guibg=Red
-  ]]
-  vim.api.nvim_create_augroup('lsp_document_highlight', {
-    clear = false
-  })
-  vim.api.nvim_clear_autocmds({
-    buffer = bufnr,
-    group = 'lsp_document_highlight',
-  })
-  -- vim.api.nvim_create_autocmd({ 'XXX' }, {
-  --   group = 'lsp_document_highlight',
-  --   buffer = bufnr,
-  --   callback = vim.lsp.buf.document_highlight,
-  -- })
+  vim.api.nvim_create_augroup('LspHighlight', { clear = false })
+  vim.api.nvim_clear_autocmds { buffer = bufnr, group = 'LspHighlight' }
   vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-    group = 'lsp_document_highlight',
+    group = 'LspHighlight',
     buffer = bufnr,
     callback = vim.lsp.buf.clear_references,
   })
+
+  local timer = vim.loop.new_timer()
+  vim.on_key(function()
+    timer:start(1000, 0, vim.schedule_wrap(vim.lsp.buf.document_highlight))
+  end)
 end
 
-
+local function on_attach(client, bufnr)
+  keys(bufnr)
+  highlight(client, bufnr)
+  vim.bo[bufnr].formatexpr = "v:lua.require'conform'.formatexpr()"
 end
 
 function M.config()
@@ -115,9 +94,6 @@ function M.config()
   if not lspconfig_loaded then
     return
   end
-
-
-
 
   floats()
 

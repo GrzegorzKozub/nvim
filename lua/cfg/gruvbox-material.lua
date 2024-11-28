@@ -3,7 +3,7 @@ local M = {}
 local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
-  vim.g.gruvbox_material_current_word = 'grey background' -- illuminate
+  vim.g.gruvbox_material_current_word = 'grey background' -- lsp highlight
   vim.g.gruvbox_material_foreground = 'material'
   vim.g.gruvbox_material_lightline_disable_bold = 1
   vim.g.gruvbox_material_show_eob = 0
@@ -99,8 +99,12 @@ local function custom_colors()
       -- html
       vim.cmd.hi('link', '@string.special.url', 'TSURI')
 
-      -- illuminate
+      -- lsp highlight
       vim.fn[hi]('CurrentWord', palette.none, palette.bg3)
+      -- vim.fn[hi]('LspReferenceRead', palette.none, palette.bg3)
+      -- vim.fn[hi]('LspReferenceTarget', palette.none, palette.bg3)
+      -- vim.fn[hi]('LspReferenceText', palette.none, palette.bg3)
+      vim.fn[hi]('LspReferenceWrite', palette.none, palette.bg5)
 
       -- markdown
       vim.cmd.hi('link', '@markup.link', 'Grey')
