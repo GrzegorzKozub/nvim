@@ -1,15 +1,28 @@
 local M = {}
 
+local function cleanup(contents)
+  -- https://github.com/fildo7525/pretty_hover
+  local result = {}
+  for _, chunk in pairs(contents) do
+    if chunk:find '^---' then
+      chunk = ''
+    end
+    vim.list_extend(result, { chunk })
+  end
+  return result
+end
+
 local function floats()
-  -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
+  -- https://github.com/neovim/nvim-lspconfig/wiki/ui-customization#borders
   -- in future use https://github.com/neovim/neovim/pull/31074
 
   -- https://neovim.io/doc/user/lsp.html#vim.lsp.util.open_floating_preview()
+  -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/util.lua
   local lsp = vim.lsp.util.open_floating_preview
   function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
     opts.border = opts.border or 'rounded'
-    return lsp(contents, syntax, opts, ...)
+    return lsp(cleanup(contents), syntax, opts, ...)
   end
 
   -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.open_float()
@@ -63,7 +76,7 @@ local function keys(bufnr)
 end
 
 local function highlight(client, bufnr)
-  -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#highlight-symbol-under-cursor
+  -- https://github.com/neovim/nvim-lspconfig/wiki/ui-customization#highlight-symbol-under-cursor
 
   if not client.server_capabilities.documentHighlightProvider then
     return
