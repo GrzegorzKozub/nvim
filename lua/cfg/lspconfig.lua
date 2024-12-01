@@ -1,7 +1,7 @@
 local M = {}
 
 local function cleanup(contents)
-  -- https://github.com/fildo7525/pretty_hover
+  -- in future use https://github.com/neovim/neovim/issues/25718
   local result = {}
   for _, chunk in pairs(contents) do
     if chunk:find '^---' then
@@ -22,6 +22,8 @@ local function floats()
   function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
     opts.border = opts.border or 'rounded'
+    opts.max_height = opts.max_height or 20
+    opts.max_width = opts.max_width or 80
     return lsp(cleanup(contents), syntax, opts, ...)
   end
 
