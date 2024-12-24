@@ -2,7 +2,6 @@ return {
   settings = {
     gopls = {
       analyses = {
-        fieldalignment = true,
         shadow = true,
         unusedvariable = true,
         unusedwrite = true,
