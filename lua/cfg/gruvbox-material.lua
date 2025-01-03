@@ -3,18 +3,10 @@ local M = {}
 local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
+  vim.g.gruvbox_material_colors_override = vim.empty_dict()
   vim.g.gruvbox_material_lightline_disable_bold = 1
   vim.g.gruvbox_material_show_eob = 0
   vim.g.gruvbox_material_transparent_background = 1
-
-  if vim.g.gruvbox_material_foreground == 'original' then
-    local fg0 = vim.o.background == 'dark' and { '#d5c4a1', '250' } or { '#504945', '239' }
-    vim.g.gruvbox_material_colors_override = {
-      fg0 = fg0,
-    }
-  else
-    vim.g.gruvbox_material_colors_override = vim.empty_dict()
-  end
 end
 
 local function get_palette()
@@ -161,14 +153,14 @@ function M.lualine_theme()
   if vim.o.background == 'dark' then
     theme.normal.a.bg = '#7c6f64' -- was #a89984
     theme.normal.b.bg = '#514945' -- was #5b534d
-    theme.normal.b.fg = '#32302f' -- was #ddc7a1 in material and #a89984 in original
-    theme.normal.c.fg = '#7c6f64' -- was #ddc7a1 in material and #a89984 in original
+    theme.normal.b.fg = '#32302f' -- was #ddc7a1 in material
+    theme.normal.c.fg = '#7c6f64' -- was #ddc7a1 in material
     theme.inactive.c.fg = '#665c54' -- was #a89984
   else
     theme.normal.a.bg = '#a89984' -- was #7c6f64
     theme.normal.b.bg = '#d5c4a1' -- was #dac9a5
-    theme.normal.b.fg = '#f2e5bc' -- was #4f3829 in material and #7c6f64 in original
-    theme.normal.c.fg = '#a89984' -- was #4f3829 in material and #7c6f64 in original
+    theme.normal.b.fg = '#f2e5bc' -- was #4f3829 in material
+    theme.normal.c.fg = '#a89984' -- was #4f3829 in material
     theme.inactive.c.fg = '#d5c4a1' -- was #7c6f64
   end
 
