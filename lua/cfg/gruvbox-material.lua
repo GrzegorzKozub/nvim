@@ -40,6 +40,8 @@ local function custom_colors()
       vim.fn[hi]('CursorLineNr', palette.bg5, palette.none)
       vim.fn[hi]('LineNr', palette.bg3, palette.none)
 
+      -- def fg #d4be98, current grey1 #928374, want grey2 #a89984
+      -- Delimiter, TSPunct*, TSTagDelimiter, @markup.link & TSLabel for markdown, @conceal for json
       vim.fn[hi]('Delimiter', palette.grey1, palette.none)
 
       vim.fn[hi]('FloatBorder', palette.bg5, palette.none)
