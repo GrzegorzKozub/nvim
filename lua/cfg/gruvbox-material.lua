@@ -3,8 +3,6 @@ local M = {}
 local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
-  vim.g.gruvbox_material_current_word = 'grey background' -- lsp highlight
-  vim.g.gruvbox_material_foreground = 'material'
   vim.g.gruvbox_material_lightline_disable_bold = 1
   vim.g.gruvbox_material_show_eob = 0
   vim.g.gruvbox_material_transparent_background = 1
@@ -158,7 +156,6 @@ function M.config()
 end
 
 function M.lualine_theme()
-  -- https://github.com/nvim-lualine/lualine.nvim/issues/423
   local theme = require('lualine.utils.loader').load_theme 'gruvbox-material'
 
   if vim.o.background == 'dark' then
@@ -197,8 +194,8 @@ function M.lualine_theme()
     'terminal',
     'inactive',
   } do
-    theme[mode].a.gui = 'NONE'
     theme[mode].c.bg = 'NONE'
+    theme[mode].a.gui = 'NONE'
   end
 
   return theme
