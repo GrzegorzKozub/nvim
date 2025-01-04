@@ -21,8 +21,7 @@ local function custom_colors()
   vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'gruvbox-material',
     callback = function()
-      local hi = 'gruvbox_material#highlight'
-      local palette = get_palette()
+      local hi, palette = 'gruvbox_material#highlight', get_palette()
 
       vim.cmd.hi('ErrorFloat', 'guibg=NONE ctermbg=NONE')
       vim.cmd.hi('ErrorMsg', 'gui=NONE cterm=NONE')
@@ -204,16 +203,14 @@ end
 -- override colors set by themes via $VIMRUNTIME/after/syntax
 
 function M.json()
-  local hi = 'gruvbox_material#highlight'
-  local palette = get_palette()
+  local hi, palette = 'gruvbox_material#highlight', get_palette()
 
   -- punctuation (quotes)
   vim.fn[hi]('@conceal', palette.grey2, palette.none)
 end
 
 function M.markdown()
-  local hi = 'gruvbox_material#highlight'
-  local palette = get_palette()
+  local hi, palette = 'gruvbox_material#highlight', get_palette()
 
   -- punctuation (code block languages)
   vim.fn[hi]('TSLabel', palette.grey2, palette.none)
