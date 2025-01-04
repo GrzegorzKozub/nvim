@@ -108,9 +108,6 @@ local function custom_colors()
       vim.cmd.hi('link', '@markup.link.label', 'Purple')
       vim.cmd.hi('link', '@markup.link.text', 'Blue')
 
-      -- null-ls
-      -- vim.fn[hi]('NullLsInfoBorder', palette.fg0, palette.none)
-
       -- nvim-lspconfig
       vim.fn[hi]('LspInfoBorder', palette.fg0, palette.none)
 
