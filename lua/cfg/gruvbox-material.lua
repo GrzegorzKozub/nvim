@@ -40,10 +40,6 @@ local function custom_colors()
       vim.fn[hi]('CursorLineNr', palette.bg5, palette.none)
       vim.fn[hi]('LineNr', palette.bg3, palette.none)
 
-      -- def fg #d4be98, current grey1 #928374, want grey2 #a89984
-      -- Delimiter, TSPunct*, TSTagDelimiter, @markup.link & TSLabel for markdown, @conceal for json
-      vim.fn[hi]('Delimiter', palette.grey1, palette.none)
-
       vim.fn[hi]('FloatBorder', palette.bg5, palette.none)
       vim.fn[hi]('NormalFloat', palette.fg0, palette.none)
 
@@ -51,8 +47,6 @@ local function custom_colors()
 
       vim.fn[hi]('IncSearch', palette.bg0, palette.orange)
       vim.fn[hi]('Search', palette.bg0, palette.yellow)
-
-      vim.fn[hi]('LspInlayHint', palette.bg5, palette.none)
 
       vim.fn[hi]('StatusLine', palette.grey0, palette.none)
       vim.fn[hi]('StatusLineNC', palette.bg0, palette.none)
@@ -63,27 +57,43 @@ local function custom_colors()
 
       vim.fn[hi]('Todo', palette.grey1, palette.none)
 
-      vim.cmd.hi('link', 'TSPunctBracket', 'Grey')
-      vim.cmd.hi('link', 'TSPunctDelimiter', 'Grey')
-      vim.cmd.hi('link', 'TSPunctSpecial', 'Grey')
-      vim.cmd.hi('link', 'TSTagDelimiter', 'Grey')
-
       vim.fn[hi]('WildMenu', palette.fg0, palette.none)
+
+      -- lsp
+
+      vim.fn[hi]('CurrentWord', palette.none, palette.bg3)
+      -- vim.fn[hi]('LspReferenceRead', palette.none, palette.bg3)
+      -- vim.fn[hi]('LspReferenceTarget', palette.none, palette.bg3)
+      -- vim.fn[hi]('LspReferenceText', palette.none, palette.bg3)
+
+      vim.fn[hi]('LspReferenceWrite', palette.none, palette.bg5)
+
+      vim.fn[hi]('LspInlayHint', palette.bg5, palette.none)
 
       vim.fn[hi]('VirtualTextError', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextHint', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextInfo', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextWarning', palette.bg5, palette.none)
 
+      -- punctuation
+
+      vim.fn[hi]('Delimiter', palette.grey2, palette.none)
+
+      vim.fn[hi]('TSPunctBracket', palette.grey2, palette.none)
+      vim.fn[hi]('TSPunctDelimiter', palette.grey2, palette.none)
+      vim.fn[hi]('TSPunctSpecial', palette.grey2, palette.none)
+      vim.fn[hi]('TSTagDelimiter', palette.grey2, palette.none)
+
       -- cmp
+
       vim.fn[hi]('CmpItemAbbr', palette.grey2, palette.none)
       vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
       vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.yellow, palette.none)
+      vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
+
       for kind, _ in pairs(require('cfg.cmp').kinds()) do
         vim.fn[hi]('CmpItemKind' .. kind, palette.grey0, palette.none)
       end
-      vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
-      -- vim.fn[hi]('CustomCmpFloatBorder', palette.bg5, palette.none)
 
       -- gitsigns
       vim.fn[hi]('GitSignsCurrentLineBlame', palette.bg5, palette.none)
@@ -91,18 +101,12 @@ local function custom_colors()
       -- html
       vim.cmd.hi('link', '@string.special.url', 'TSURI')
 
-      -- lsp highlight
-      vim.fn[hi]('CurrentWord', palette.none, palette.bg3)
-      -- vim.fn[hi]('LspReferenceRead', palette.none, palette.bg3)
-      -- vim.fn[hi]('LspReferenceTarget', palette.none, palette.bg3)
-      -- vim.fn[hi]('LspReferenceText', palette.none, palette.bg3)
-      vim.fn[hi]('LspReferenceWrite', palette.none, palette.bg5)
-
       -- markdown
-      vim.cmd.hi('link', '@markup.link', 'Grey')
+
+      vim.fn[hi]('@markup.link', palette.grey2, palette.none) -- punctuation
+
       vim.cmd.hi('link', '@markup.link.label', 'Purple')
       vim.cmd.hi('link', '@markup.link.text', 'Blue')
-      -- vim.cmd.hi('link', 'TSLabel', 'Grey')
 
       -- null-ls
       -- vim.fn[hi]('NullLsInfoBorder', palette.fg0, palette.none)
@@ -200,11 +204,22 @@ function M.default_icon_color()
   return get_palette().fg0
 end
 
-function M.markdown()
-  -- override colors set by themes via $VIMRUNTIME/after/syntax
-  vim.cmd.hi('link', 'TSLabel', 'Grey')
+-- override colors set by themes via $VIMRUNTIME/after/syntax
 
-  -- vim.cmd.TSDisable('highlight') -- disable treesitter colors
+function M.json()
+  local hi = 'gruvbox_material#highlight'
+  local palette = get_palette()
+
+  -- punctuation (quotes)
+  vim.fn[hi]('@conceal', palette.grey2, palette.none)
+end
+
+function M.markdown()
+  local hi = 'gruvbox_material#highlight'
+  local palette = get_palette()
+
+  -- punctuation (code block languages)
+  vim.fn[hi]('TSLabel', palette.grey2, palette.none)
 end
 
 return M

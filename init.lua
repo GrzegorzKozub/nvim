@@ -6,6 +6,7 @@ require('cfg.resume').config()
 
 require('cfg.env').config()
 require('cfg.file-types').config()
+require('cfg.json').config()
 require('cfg.markdown').config()
 
 require('cfg.wt').config()

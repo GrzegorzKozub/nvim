@@ -43,10 +43,7 @@ function M.config()
     return
   end
 
-  local window = cmp.config.window.bordered {
-    scrollbar = false,
-    -- winhighlight = 'Normal:Normal,FloatBorder:CustomCmpFloatBorder,CursorLine:Visual,Search:None',
-  }
+  local window = cmp.config.window.bordered { scrollbar = false }
 
   cmp.setup {
     formatting = {
