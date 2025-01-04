@@ -3,10 +3,18 @@ local M = {}
 local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
-  vim.g.gruvbox_material_colors_override = vim.empty_dict()
   vim.g.gruvbox_material_lightline_disable_bold = 1
   vim.g.gruvbox_material_show_eob = 0
   vim.g.gruvbox_material_transparent_background = 1
+
+  vim.g.gruvbox_material_colors_override = {
+    bg_diff_green = { '#494B38', '22' },
+    bg_diff_green_light = { '#636942', '22' },
+    bg_diff_blue = { '#3F4946', '17' },
+    bg_diff_blue_light = { '#546962', '17' },
+    bg_diff_red = { '#533A37', '52' },
+    bg_diff_red_light = { '#7A4541', '52' },
+  }
 end
 
 local function get_palette()
@@ -58,6 +66,9 @@ local function custom_colors()
 
       vim.fn[hi]('WildMenu', palette.fg0, palette.none)
 
+      -- diff
+      vim.fn[hi]('DiffText', palette.none, palette.bg_diff_blue_light)
+
       -- lsp
 
       vim.fn[hi]('CurrentWord', palette.none, palette.bg3)
@@ -95,7 +106,12 @@ local function custom_colors()
       end
 
       -- gitsigns
+
       vim.fn[hi]('GitSignsCurrentLineBlame', palette.bg5, palette.none)
+
+      vim.fn[hi]('GitSignsAddInline', palette.none, palette.bg_diff_green_light)
+      vim.fn[hi]('GitSignsChangeInline', palette.none, palette.bg_diff_blue_light)
+      vim.fn[hi]('GitSignsDeleteInline', palette.none, palette.bg_diff_red_light)
 
       -- html
       vim.cmd.hi('link', '@string.special.url', 'TSURI')

@@ -18,8 +18,9 @@ function M.config()
       changedelete = { text = sign },
       untracked = { text = '' },
     },
-    attach_to_untracked = false,
-    current_line_blame_formatter = ' ' .. git .. ' <summary>, <author>, <author_time:%R>, <abbrev_sha>',
+    current_line_blame_formatter = ' '
+      .. git
+      .. ' <summary>, <author>, <author_time:%R>, <abbrev_sha>',
     current_line_blame_formatter_nc = ' ' .. git .. ' not committed',
     watch_gitdir = { interval = 10000 },
     preview_config = { border = 'rounded', row = -1, col = 2 },
@@ -36,12 +37,14 @@ function M.config()
         end, { buffer = bufnr, expr = true })
       end
 
+      local nav_opts = { preview = true, target = 'all' }
+
       navigate('[h', function()
-        gs.nav_hunk('prev', { preview = true })
+        gs.nav_hunk('prev', nav_opts)
       end)
 
       navigate(']h', function()
-        gs.nav_hunk('next', { preview = true })
+        gs.nav_hunk('next', nav_opts)
       end)
 
       local nmap = require('cfg.util').nmap
