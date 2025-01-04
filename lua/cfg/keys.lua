@@ -37,6 +37,10 @@ local function clipboard(options)
   vim.keymap.set('c', '<c-v>', '<c-r>+', { noremap = true })
 end
 
+local function windows(options)
+  vim.keymap.set('n', '<esc>', ':fclose<cr>', options) -- close topmost floating window
+end
+
 local function toggles(options)
   vim.api.nvim_create_user_command('HlsearchOff', 'nohlsearch', {})
   vim.keymap.set('n', '<leader>h', ':HlsearchOff<cr>', options)
@@ -68,6 +72,7 @@ function M.config()
   local options = { noremap = true, silent = true }
   selection(options)
   clipboard(options)
+  windows(options)
   toggles(options)
 end
 

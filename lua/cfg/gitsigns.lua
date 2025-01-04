@@ -37,14 +37,14 @@ function M.config()
         end, { buffer = bufnr, expr = true })
       end
 
-      local nav_opts = { preview = true, target = 'all' }
+      local options = { preview = true, target = 'all' }
 
       navigate('[h', function()
-        gs.nav_hunk('prev', nav_opts)
+        gs.nav_hunk('prev', options)
       end)
 
       navigate(']h', function()
-        gs.nav_hunk('next', nav_opts)
+        gs.nav_hunk('next', options)
       end)
 
       local nmap = require('cfg.util').nmap
