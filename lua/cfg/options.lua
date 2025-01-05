@@ -53,7 +53,7 @@ function M.config()
 
   -- https://github.com/neovim/neovim/issues/9800
   if vim.opt.diff:get() then
-    vim.opt.cursorline = false
+    vim.opt.cursorlineopt = 'number'
   end
 
   vim.opt.backupdir:remove '.'

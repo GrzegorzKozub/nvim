@@ -42,6 +42,9 @@ local function custom_colors()
       vim.cmd.hi('WarningFloat', 'guibg=NONE ctermbg=NONE')
       vim.cmd.hi('WarningMsg', 'gui=NONE cterm=NONE')
 
+      -- https://github.com/neovim/neovim/issues/9800
+      vim.cmd.hi('CursorLine', 'ctermfg=White')
+
       vim.fn[hi]('Comment', palette.grey0, palette.none, 'italic')
 
       vim.fn[hi]('CursorLineNr', palette.bg5, palette.none)
