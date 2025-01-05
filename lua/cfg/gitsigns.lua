@@ -8,6 +8,7 @@ function M.config()
 
   local git = '󰊢'
   local sign = '│'
+  local sign_staged = '┃'
 
   gitsigns.setup {
     signs = {
@@ -16,6 +17,14 @@ function M.config()
       delete = { text = sign },
       topdelete = { text = sign },
       changedelete = { text = sign },
+      untracked = { text = '' },
+    },
+    signs_staged = {
+      add = { text = sign_staged },
+      change = { text = sign_staged },
+      delete = { text = sign_staged },
+      topdelete = { text = sign_staged },
+      changedelete = { text = sign_staged },
       untracked = { text = '' },
     },
     current_line_blame_formatter = ' '
@@ -37,7 +46,7 @@ function M.config()
         end, { buffer = bufnr, expr = true })
       end
 
-      local options = { preview = true, target = 'all' }
+      local options = { target = 'all' }
 
       navigate('[h', function()
         gs.nav_hunk('prev', options)
@@ -49,15 +58,22 @@ function M.config()
 
       local nmap = require('cfg.util').nmap
 
-      nmap('<leader>gh', gs.preview_hunk, bufnr)
+      nmap('<leader>hp', gs.preview_hunk_inline, bufnr)
+      nmap('<leader>hP', gs.preview_hunk, bufnr)
 
-      nmap('<leader>gt', gs.toggle_signs, bufnr)
-      nmap('<leader>gn', gs.toggle_numhl, bufnr)
+      nmap('<leader>hs', gs.stage_hunk, bufnr)
+      nmap('<leader>hu', gs.undo_stage_hunk, bufnr)
+
+      nmap('<leader>hr', gs.reset_hunk, bufnr)
+      nmap('<leader>gr', gs.reset_buffer_index, bufnr)
+
+      nmap('<leader>gd', gs.diffthis, bufnr)
+
       nmap('<leader>gl', gs.toggle_current_line_blame, bufnr)
-
       nmap('<leader>gb', function()
         gs.blame_line { full = true }
       end, bufnr)
+      nmap('<leader>gB', gs.blame, bufnr)
     end,
   }
 end

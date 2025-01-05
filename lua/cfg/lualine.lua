@@ -10,7 +10,13 @@ local function encoding_and_fileformat()
 end
 
 local function progress_and_location()
-  return string.format('%.f%s %d %d', 100 * vim.fn.line '.' / vim.fn.line '$', '%%', vim.fn.line '.', vim.fn.col '.')
+  return string.format(
+    '%.f%s %d %d',
+    100 * vim.fn.line '.' / vim.fn.line '$',
+    '%%',
+    vim.fn.line '.',
+    vim.fn.col '.'
+  )
 end
 
 local function contains(table, item)
@@ -23,15 +29,21 @@ local function contains(table, item)
 end
 
 local function buffer_cond()
-  return not contains({ 'help', 'netrw', 'qf', 'trouble' }, vim.o.filetype)
+  return not contains({ 'gitsigns-blame', 'help', 'netrw', 'qf', 'trouble' }, vim.o.filetype)
 end
 
 local function filename_cond()
-  return not contains({ 'netrw', 'qf', 'checkhealth', 'trouble' }, vim.o.filetype)
+  return not contains(
+    { 'gitsigns-blame', 'netrw', 'qf', 'checkhealth', 'trouble' },
+    vim.o.filetype
+  )
 end
 
 local function encoding_and_fileformat_cond()
-  return not contains({ 'checkhealth', 'help', 'netrw', 'qf', 'trouble' }, vim.o.filetype)
+  return not contains(
+    { 'checkhealth', 'gitsigns-blame', 'help', 'netrw', 'qf', 'trouble' },
+    vim.o.filetype
+  )
 end
 
 local function mode_fmt(mode)
@@ -41,6 +53,9 @@ end
 local function filetype_fmt(filetype)
   if filetype == '' then
     return ''
+  end
+  if filetype == 'gitsigns-blame' then
+    filetype = 'blame'
   end
   local icon = require('cfg.web-devicons').file_icon(filetype)
   return (icon == nil and '' or icon .. ' ') .. filetype:lower()

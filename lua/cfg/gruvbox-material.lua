@@ -113,6 +113,14 @@ local function custom_colors()
       vim.fn[hi]('GitSignsChangeInline', palette.none, palette.bg_diff_blue_light)
       vim.fn[hi]('GitSignsDeleteInline', palette.none, palette.bg_diff_red_light)
 
+      vim.fn[hi]('GitSignsUntracked', palette.grey2, palette.none)
+
+      vim.cmd.hi('link', 'GitSignsStagedAdd', 'GitSignsAdd')
+      vim.cmd.hi('link', 'GitSignsStagedChange', 'GitSignsChange')
+      vim.cmd.hi('link', 'GitSignsStagedChangedelete', 'GitSignsChangedelete')
+      vim.cmd.hi('link', 'GitSignsStagedDelete', 'GitSignsDelete')
+      vim.cmd.hi('link', 'GitSignsStagedTopdelete', 'GitSignsTopdelete')
+
       -- html
       vim.cmd.hi('link', '@string.special.url', 'TSURI')
 
