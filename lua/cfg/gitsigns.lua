@@ -31,6 +31,14 @@ function M.config()
       .. git
       .. ' <summary>, <author>, <author_time:%R>, <abbrev_sha>',
     current_line_blame_formatter_nc = ' ' .. git .. ' not committed',
+    file_blame_opts = {
+      auto_sha_colors = false,
+      lines = {
+        start = '╭',
+        continue = '│',
+        finish = '╰',
+      },
+    },
     watch_gitdir = { interval = 10000 },
     preview_config = { border = 'rounded', row = -1, col = 2 },
     on_attach = function(bufnr)
