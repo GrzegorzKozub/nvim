@@ -54,11 +54,11 @@ function M.config()
       end,
     },
     mapping = cmp.mapping.preset.insert {
-      ['<c-space>'] = cmp.mapping.complete {},
+      ['<c-space>'] = cmp.mapping.complete(),
       ['<cr>'] = cmp.mapping.confirm(),
       ['<c-e>'] = cmp.mapping.abort(),
-      ['<c-b>'] = cmp.mapping.scroll_docs(-3),
-      ['<c-f>'] = cmp.mapping.scroll_docs(3),
+      ['<c-u>'] = cmp.mapping.scroll_docs(-3),
+      ['<c-d>'] = cmp.mapping.scroll_docs(3),
       ['<tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
