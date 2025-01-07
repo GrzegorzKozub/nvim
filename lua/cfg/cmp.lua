@@ -55,7 +55,7 @@ function M.config()
     },
     mapping = cmp.mapping.preset.insert {
       ['<c-space>'] = cmp.mapping.complete {},
-      ['<cr>'] = cmp.mapping.confirm { select = true },
+      ['<cr>'] = cmp.mapping.confirm(),
       ['<c-e>'] = cmp.mapping.abort(),
       ['<c-b>'] = cmp.mapping.scroll_docs(-3),
       ['<c-f>'] = cmp.mapping.scroll_docs(3),
