@@ -124,22 +124,6 @@ local function custom_colors()
       vim.cmd.hi('link', 'GitSignsStagedDelete', 'GitSignsDelete')
       vim.cmd.hi('link', 'GitSignsStagedTopdelete', 'GitSignsTopdelete')
 
-      vim.fn[hi]('GitSignsFileBlameAuthor', palette.grey0, palette.none)
-      vim.fn[hi]('GitSignsFileBlameCursor', palette.none, palette.bg2)
-      vim.fn[hi]('GitSignsFileBlameDate', palette.bg5, palette.none)
-      vim.fn[hi]('GitSignsFileBlameSeparator', palette.bg3, palette.none)
-      vim.fn[hi]('GitSignsFileBlameSummary', palette.grey2, palette.none)
-
-      vim.cmd.hi('link', 'GitSignsFileBlameCurrent', 'TSStrong')
-
-      vim.cmd.hi('link', 'GitSignsFileBlameHash1', 'Orange')
-      vim.cmd.hi('link', 'GitSignsFileBlameHash2', 'Aqua')
-      vim.cmd.hi('link', 'GitSignsFileBlameHash3', 'Purple')
-      vim.cmd.hi('link', 'GitSignsFileBlameHash4', 'Blue')
-      vim.cmd.hi('link', 'GitSignsFileBlameHash5', 'Yellow')
-      vim.cmd.hi('link', 'GitSignsFileBlameHash6', 'Green')
-      vim.cmd.hi('link', 'GitSignsFileBlameHash7', 'Red')
-
       -- html
       vim.cmd.hi('link', '@string.special.url', 'TSURI')
 

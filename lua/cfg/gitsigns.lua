@@ -31,14 +31,6 @@ function M.config()
       .. git
       .. ' <summary>, <author>, <author_time:%R>, <abbrev_sha>',
     current_line_blame_formatter_nc = ' ' .. git .. ' not committed',
-    file_blame_opts = {
-      auto_sha_colors = false,
-      lines = {
-        start = '╭',
-        continue = '│',
-        finish = '╰',
-      },
-    },
     watch_gitdir = { interval = 10000 },
     preview_config = { border = 'rounded', row = -1, col = 2 },
     on_attach = function(bufnr)
@@ -67,21 +59,14 @@ function M.config()
       local nmap = require('cfg.util').nmap
 
       nmap('<leader>hp', gs.preview_hunk_inline, bufnr)
-      nmap('<leader>hP', gs.preview_hunk, bufnr)
 
       nmap('<leader>hs', gs.stage_hunk, bufnr)
       nmap('<leader>hu', gs.undo_stage_hunk, bufnr)
-
       nmap('<leader>hr', gs.reset_hunk, bufnr)
+
       nmap('<leader>gr', gs.reset_buffer_index, bufnr)
 
-      nmap('<leader>gd', gs.diffthis, bufnr)
-
-      nmap('<leader>gl', gs.toggle_current_line_blame, bufnr)
-      nmap('<leader>gb', function()
-        gs.blame_line { full = true }
-      end, bufnr)
-      nmap('<leader>gB', gs.blame, bufnr)
+      nmap('<leader>gb', gs.toggle_current_line_blame, bufnr)
     end,
   }
 end
