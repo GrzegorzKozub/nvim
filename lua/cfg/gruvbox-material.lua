@@ -63,7 +63,8 @@ local function custom_colors()
 
       vim.fn[hi]('ErrorMsg', palette.dim_red, palette.none)
       vim.fn[hi]('ModeMsg', palette.grey0, palette.none)
-      vim.fn[hi]('MoreMsg', palette.dim_yellow, palette.none)
+      vim.fn[hi]('MoreMsg', palette.dim_blue, palette.none)
+      vim.fn[hi]('Question', palette.dim_green, palette.none)
       vim.fn[hi]('WarningMsg', palette.dim_yellow, palette.none)
 
       vim.fn[hi]('FloatBorder', palette.bg5, palette.none)
@@ -88,8 +89,8 @@ local function custom_colors()
       -- cmp
 
       vim.fn[hi]('CmpItemAbbr', palette.grey2, palette.none)
-      vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
-      vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.yellow, palette.none)
+      vim.fn[hi]('CmpItemAbbrMatch', palette.dim_yellow, palette.none)
+      vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.dim_yellow, palette.none)
       vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
 
       for kind, _ in pairs(require('cfg.cmp').kinds()) do
@@ -189,13 +190,13 @@ local function custom_colors()
 
       -- telescope
       vim.fn[hi]('TelescopeBorder', palette.bg5, palette.none)
-      vim.fn[hi]('TelescopeMatching', palette.yellow, palette.none)
+      vim.fn[hi]('TelescopeMatching', palette.dim_yellow, palette.none)
       vim.fn[hi]('TelescopeMultiIcon', palette.fg0, palette.none)
       vim.fn[hi]('TelescopeMultiSelection', palette.fg1, palette.none)
-      vim.fn[hi]('TelescopePromptPrefix', palette.orange, palette.none)
-      vim.fn[hi]('TelescopeResultsDiffAdd', palette.green, palette.none)
-      vim.fn[hi]('TelescopeResultsDiffChange', palette.blue, palette.none)
-      vim.fn[hi]('TelescopeResultsDiffDelete', palette.red, palette.none)
+      vim.fn[hi]('TelescopePromptPrefix', palette.dim_orange, palette.none)
+      vim.fn[hi]('TelescopeResultsDiffAdd', palette.dim_green, palette.none)
+      vim.fn[hi]('TelescopeResultsDiffChange', palette.dim_blue, palette.none)
+      vim.fn[hi]('TelescopeResultsDiffDelete', palette.dim_red, palette.none)
       vim.fn[hi]('TelescopeResultsNormal', palette.grey1, palette.none)
       vim.fn[hi]('TelescopeSelection', palette.fg1, palette.bg1)
 
