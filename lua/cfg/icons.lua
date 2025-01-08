@@ -52,6 +52,7 @@ function M.get()
       guides = { last = '╰╴' },
       open = '', -- ▼
     },
+    gitsigns = { changed = '│', git = '󰊢', staged = '┃' },
     lazy = { cmd = '', config = '', vim = '' },
     listchars = {
       eol = '󰌑', -- ¬

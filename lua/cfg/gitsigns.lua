@@ -6,31 +6,29 @@ function M.config()
     return
   end
 
-  local git = '󰊢'
-  local sign = '│'
-  local sign_staged = '┃'
+  local icons = require('cfg.icons').get().gitsigns
 
   gitsigns.setup {
     signs = {
-      add = { text = sign },
-      change = { text = sign },
-      delete = { text = sign },
-      topdelete = { text = sign },
-      changedelete = { text = sign },
+      add = { text = icons.changed },
+      change = { text = icons.changed },
+      delete = { text = icons.changed },
+      topdelete = { text = icons.changed },
+      changedelete = { text = icons.changed },
       untracked = { text = '' },
     },
     signs_staged = {
-      add = { text = sign_staged },
-      change = { text = sign_staged },
-      delete = { text = sign_staged },
-      topdelete = { text = sign_staged },
-      changedelete = { text = sign_staged },
+      add = { text = icons.staged },
+      change = { text = icons.staged },
+      delete = { text = icons.staged },
+      topdelete = { text = icons.staged },
+      changedelete = { text = icons.staged },
       untracked = { text = '' },
     },
     current_line_blame_formatter = ' '
-      .. git
+      .. icons.git
       .. ' <summary>, <author>, <author_time:%R>, <abbrev_sha>',
-    current_line_blame_formatter_nc = ' ' .. git .. ' not committed',
+    current_line_blame_formatter_nc = ' ' .. icons.git .. ' not committed',
     watch_gitdir = { interval = 10000 },
     preview_config = { border = 'rounded', row = -1, col = 2 },
     on_attach = function(bufnr)
