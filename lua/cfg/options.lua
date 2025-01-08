@@ -81,7 +81,7 @@ function M.config()
         [vim.diagnostic.severity.HINT] = icons.diag.hint,
       },
     },
-    underline = false,
+    underline = true,
     virtual_text = { format = format, prefix = '', spacing = 0 },
   }
 
