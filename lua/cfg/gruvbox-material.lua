@@ -1,5 +1,19 @@
 local M = {}
 
+-- bg_dim #252423 233
+-- bg0 #32302f 236
+-- bg1 #3c3836 237
+-- bg2 #3c3836 237
+-- bg_statusline1 #3c3836 237
+-- bg_statusline2 #46413e 237
+-- bg3 #504945 239
+-- bg4 #504945 239
+-- bg_statusline3 #5b534d 241
+-- bg5 #665c54 241
+-- grey0 #7c6f64 243
+-- grey1 #928374 245
+-- grey2 #a89984 246
+
 local function options()
   vim.g.gruvbox_material_background = 'soft'
   vim.g.gruvbox_material_better_performance = 1
