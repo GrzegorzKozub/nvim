@@ -88,10 +88,10 @@ local function custom_colors()
 
       -- cmp
 
-      vim.fn[hi]('CmpItemAbbr', palette.grey2, palette.none)
-      vim.fn[hi]('CmpItemAbbrMatch', palette.dim_yellow, palette.none)
+      vim.fn[hi]('CmpItemAbbr', palette.grey1, palette.none)
+      vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
       vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.dim_yellow, palette.none)
-      vim.fn[hi]('CmpItemMenu', palette.grey2, palette.none)
+      vim.fn[hi]('CmpItemMenu', palette.grey1, palette.none)
 
       for kind, _ in pairs(require('cfg.cmp').kinds()) do
         vim.fn[hi]('CmpItemKind' .. kind, palette.grey0, palette.none)
@@ -190,13 +190,16 @@ local function custom_colors()
 
       -- telescope
       vim.fn[hi]('TelescopeBorder', palette.bg5, palette.none)
-      vim.fn[hi]('TelescopeMatching', palette.dim_yellow, palette.none)
+      vim.fn[hi]('TelescopeMatching', palette.yellow, palette.none)
       vim.fn[hi]('TelescopeMultiIcon', palette.fg0, palette.none)
+      vim.fn[hi]('TelescopeMultiIcon', palette.grey2, palette.none)
       vim.fn[hi]('TelescopeMultiSelection', palette.fg1, palette.none)
+      vim.fn[hi]('TelescopeMultiSelection', palette.grey2, palette.none)
       vim.fn[hi]('TelescopePromptPrefix', palette.dim_orange, palette.none)
       vim.fn[hi]('TelescopeResultsDiffAdd', palette.dim_green, palette.none)
       vim.fn[hi]('TelescopeResultsDiffChange', palette.dim_blue, palette.none)
       vim.fn[hi]('TelescopeResultsDiffDelete', palette.dim_red, palette.none)
+      vim.fn[hi]('TelescopeResultsDiffUntracked', palette.grey2, palette.none)
       vim.fn[hi]('TelescopeResultsNormal', palette.grey1, palette.none)
       vim.fn[hi]('TelescopeSelection', palette.fg1, palette.bg1)
 
@@ -229,27 +232,18 @@ end
 
 function M.lualine_theme()
   local theme = require('lualine.utils.loader').load_theme 'gruvbox-material'
-
-  if vim.o.background == 'dark' then
-    theme.normal.a.bg = '#7c6f64' -- was #a89984
-    theme.normal.b.bg = '#514945' -- was #5b534d
-    theme.normal.b.fg = '#32302f' -- was #ddc7a1 in material
-    theme.normal.c.fg = '#7c6f64' -- was #ddc7a1 in material
-    theme.inactive.c.fg = '#665c54' -- was #a89984
-  else
-    theme.normal.a.bg = '#a89984' -- was #7c6f64
-    theme.normal.b.bg = '#d5c4a1' -- was #dac9a5
-    theme.normal.b.fg = '#f2e5bc' -- was #4f3829 in material
-    theme.normal.c.fg = '#a89984' -- was #4f3829 in material
-    theme.inactive.c.fg = '#d5c4a1' -- was #7c6f64
-  end
-
   local palette = get_palette()
 
-  theme.insert.a.bg = palette.blue[1]
-  theme.visual.a.bg = palette.green[1]
-  theme.replace.a.bg = palette.orange[1]
-  theme.command.a.bg = palette.aqua[1]
+  theme.normal.a.bg = palette.grey0[1]
+  theme.normal.b.bg = '#514945' -- was bg_statusline3 #5b534d
+  theme.normal.b.fg = palette.bg0[1]
+  theme.normal.c.fg = palette.grey0[1]
+  theme.inactive.c.fg = palette.bg5[1]
+
+  theme.insert.a.bg = palette.dim_blue[1]
+  theme.visual.a.bg = palette.dim_green[1]
+  theme.replace.a.bg = palette.dim_red[1]
+  theme.command.a.bg = palette.dim_aqua[1]
 
   for _, mode in pairs { 'insert', 'visual', 'replace', 'command', 'terminal' } do
     theme[mode].b = theme.normal.b
