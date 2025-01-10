@@ -14,6 +14,7 @@ local parsers = {
   'gitignore',
   'go',
   'gomod',
+  'gosum',
   'html',
   'http',
   'ini',

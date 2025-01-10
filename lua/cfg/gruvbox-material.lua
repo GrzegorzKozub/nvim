@@ -101,7 +101,7 @@ local function custom_colors()
       vim.fn[hi]('Question', palette.dim_green, palette.none)
       vim.fn[hi]('WarningMsg', palette.dim_yellow, palette.none)
 
-      vim.fn[hi]('FloatBorder', palette.bg5, palette.none)
+      vim.fn[hi]('FloatBorder', palette.bg3, palette.none)
       vim.fn[hi]('NormalFloat', palette.fg0, palette.none)
 
       vim.fn[hi]('Folded', palette.bg5, palette.none)
@@ -123,12 +123,13 @@ local function custom_colors()
       -- cmp
 
       vim.fn[hi]('CmpItemAbbr', palette.grey1, palette.none)
+      vim.fn[hi]('CmpItemAbbrDeprecated', palette.grey0, palette.none, 'strikethrough')
       vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
       vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.dim_yellow, palette.none)
       vim.fn[hi]('CmpItemMenu', palette.grey1, palette.none)
 
       for kind, _ in pairs(require('cfg.cmp').kinds()) do
-        vim.fn[hi]('CmpItemKind' .. kind, palette.grey0, palette.none)
+        vim.fn[hi]('CmpItemKind' .. kind, palette.bg5, palette.none)
       end
 
       -- diagnostic
@@ -223,11 +224,9 @@ local function custom_colors()
       spell 'Rare'
 
       -- telescope
-      vim.fn[hi]('TelescopeBorder', palette.bg5, palette.none)
+      vim.fn[hi]('TelescopeBorder', palette.bg3, palette.none)
       vim.fn[hi]('TelescopeMatching', palette.yellow, palette.none)
-      vim.fn[hi]('TelescopeMultiIcon', palette.fg0, palette.none)
       vim.fn[hi]('TelescopeMultiIcon', palette.grey2, palette.none)
-      vim.fn[hi]('TelescopeMultiSelection', palette.fg1, palette.none)
       vim.fn[hi]('TelescopeMultiSelection', palette.grey2, palette.none)
       vim.fn[hi]('TelescopePromptPrefix', palette.dim_orange, palette.none)
       vim.fn[hi]('TelescopeResultsDiffAdd', palette.dim_green, palette.none)
@@ -238,15 +237,17 @@ local function custom_colors()
       vim.fn[hi]('TelescopeSelection', palette.fg1, palette.bg1)
 
       -- trouble.nvim
+      vim.fn[hi]('TroubleCode', palette.grey0, palette.none)
       vim.fn[hi]('TroubleCount', palette.bg5, palette.none)
       vim.fn[hi]('TroubleDirectory', palette.grey0, palette.none)
       vim.fn[hi]('TroubleFileName', palette.grey0, palette.none)
       vim.fn[hi]('TroubleIconDirectory', palette.grey0, palette.none)
       vim.fn[hi]('TroubleIconFile', palette.grey0, palette.none)
-      vim.fn[hi]('TroubleIndent', palette.bg5, palette.none)
-      vim.fn[hi]('TroubleIndentFoldClosed', palette.bg5, palette.none)
-      vim.fn[hi]('TroubleIndentFoldOpen', palette.bg5, palette.none)
-      vim.fn[hi]('TroubleTitle', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleIndent', palette.bg3, palette.none)
+      vim.fn[hi]('TroubleIndentFoldClosed', palette.bg3, palette.none)
+      vim.fn[hi]('TroubleIndentFoldOpen', palette.bg3, palette.none)
+      vim.fn[hi]('TroublePos', palette.bg5, palette.none)
+      vim.fn[hi]('TroubleSource', palette.grey0, palette.none)
 
       -- zsh
       vim.cmd.hi('link', 'zshOperator', 'Operator')
