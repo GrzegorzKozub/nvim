@@ -1,18 +1,34 @@
-local M = {}
+--[[
+default palette
 
--- bg_dim #252423 233
--- bg0 #32302f 236
--- bg1 #3c3836 237
--- bg2 #3c3836 237
--- bg_statusline1 #3c3836 237
--- bg_statusline2 #46413e 237
--- bg3 #504945 239
--- bg4 #504945 239
--- bg_statusline3 #5b534d 241
--- bg5 #665c54 241
--- grey0 #7c6f64 243
--- grey1 #928374 245
--- grey2 #a89984 246
+bg_dim          #252423 233
+bg0             #32302f 236
+bg1             #3c3836 237
+bg2             #3c3836 237
+bg_statusline1  #3c3836 237
+bg_statusline2  #46413e 237
+bg3             #504945 239
+bg4             #504945 239
+bg_statusline3  #5b534d 241
+bg5             #665c54 241
+
+grey0           #7c6f64 243
+grey1           #928374 245
+grey2           #a89984 246
+
+fg0             #d4be98 223
+fg1             #ddc7a1 223
+
+red             #ea6962 167
+green           #a9b665 142
+yellow          #d8a657 214
+blue            #7daea3 109
+purple          #d3869b 175
+aqua            #89b482 108
+orange          #e78a4e 208
+]]
+
+local M = {}
 
 local function options()
   vim.g.gruvbox_material_background = 'soft'
@@ -30,21 +46,25 @@ local function options()
     bg_diff_red = { '#533A37', '52' },
     bg_diff_red_light = { '#7A4541', '52' },
 
-    dim_aqua = { '#72966c', '165' },
-    dim_blue = { '#68948a', '24' },
-    dim_green = { '#8f9a52', '100' },
-    dim_orange = { '#bd6f3e', '130' },
-    dim_purple = { '#ab6c7d', '96' },
+    dim_black = { '#665c54', '241' }, -- bg5
     dim_red = { '#b85651', '88' },
+    dim_green = { '#8f9a52', '100' },
     dim_yellow = { '#c18f41', '136' },
+    dim_blue = { '#68948a', '24' },
+    dim_purple = { '#ab6c7d', '96' },
+    dim_aqua = { '#72966c', '165' },
+    dim_orange = { '#bd6f3e', '130' },
+    dim_white = { '#d4be98', '233' }, -- fg0
 
-    term_aqua = { '#4c7a5d', '165' },
-    term_blue = { '#45707a', '24' },
-    term_green = { '#6c782e', '100' },
-    term_orange = { '#c35e0a', '130' },
-    term_purple = { '#945e80', '96' },
+    term_black = { '#3c3836', '237' }, -- bg2
     term_red = { '#c14a4a', '88' },
+    term_green = { '#6c782e', '100' },
     term_yellow = { '#b47109', '136' },
+    term_blue = { '#45707a', '24' },
+    term_purple = { '#945e80', '96' },
+    term_aqua = { '#4c7a5d', '165' },
+    term_orange = { '#c35e0a', '130' },
+    term_white = { '#928374', '245' }, -- grey1
   }
 end
 
@@ -86,8 +106,8 @@ local function custom_colors()
 
       vim.fn[hi]('Folded', palette.bg5, palette.none)
 
-      vim.fn[hi]('IncSearch', palette.bg0, palette.orange)
-      vim.fn[hi]('Search', palette.bg0, palette.yellow)
+      vim.fn[hi]('IncSearch', palette.bg0, palette.dim_orange)
+      vim.fn[hi]('Search', palette.bg0, palette.dim_yellow)
 
       vim.fn[hi]('StatusLine', palette.grey0, palette.none)
       vim.fn[hi]('StatusLineNC', palette.bg0, palette.none)
