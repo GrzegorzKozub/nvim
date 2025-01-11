@@ -5,11 +5,8 @@ bg_dim          #252423 233
 bg0             #32302f 236
 bg1             #3c3836 237
 bg2             #3c3836 237
-bg_statusline1  #3c3836 237
-bg_statusline2  #46413e 237
 bg3             #504945 239
 bg4             #504945 239
-bg_statusline3  #5b534d 241
 bg5             #665c54 241
 
 grey0           #7c6f64 243
@@ -112,9 +109,9 @@ local function custom_colors()
       vim.fn[hi]('StatusLine', palette.grey0, palette.none)
       vim.fn[hi]('StatusLineNC', palette.bg0, palette.none)
 
-      vim.fn[hi]('Tabline', palette.bg5, palette.bg0)
-      vim.fn[hi]('TablineFill', palette.bg5, palette.bg0)
-      vim.fn[hi]('TablineSel', palette.grey1, palette.bg0)
+      vim.fn[hi]('Tabline', palette.bg3, palette.bg0)
+      vim.fn[hi]('TablineFill', palette.bg3, palette.bg0)
+      vim.fn[hi]('TablineSel', palette.bg5, palette.bg0)
 
       vim.fn[hi]('Todo', palette.grey1, palette.none)
 
@@ -270,7 +267,7 @@ function M.lualine_theme()
   local palette = get_palette()
 
   theme.normal.a.bg = palette.grey0[1]
-  theme.normal.b.bg = '#514945' -- was bg_statusline3 #5b534d
+  theme.normal.b.bg = palette.bg3[1]
   theme.normal.b.fg = palette.bg0[1]
   theme.normal.c.fg = palette.grey0[1]
   theme.inactive.c.fg = palette.bg5[1]
