@@ -6,7 +6,10 @@ function M.config()
     return
   end
 
-  colorizer.setup { user_default_options = { mode = 'virtualtext', names = false } }
+  colorizer.setup {
+    lazy_load = true,
+    user_default_options = { mode = 'virtualtext', names = false },
+  }
 end
 
 return M
