@@ -27,15 +27,8 @@ orange          #e78a4e 208
 
 local M = {}
 
-local function options()
-  vim.g.gruvbox_material_background = 'soft'
-  vim.g.gruvbox_material_better_performance = 1
-  vim.g.gruvbox_material_lightline_disable_bold = 1
-  vim.g.gruvbox_material_show_eob = 0
-  vim.g.gruvbox_material_transparent_background = 1
-
-  vim.g.gruvbox_material_colors_override = {
-
+local function colors_override()
+  return {
     bg_diff_blue = { '#3F4946', '17' },
     bg_diff_blue_light = { '#546962', '17' },
     bg_diff_green = { '#494B38', '22' },
@@ -63,6 +56,16 @@ local function options()
     term_orange = { '#c35e0a', '130' },
     term_white = { '#928374', '245' }, -- grey1
   }
+end
+
+local function options()
+  vim.g.gruvbox_material_background = 'soft'
+  vim.g.gruvbox_material_better_performance = 1
+  vim.g.gruvbox_material_colors_override = colors_override()
+  vim.g.gruvbox_material_disable_terminal_colors = 1
+  vim.g.gruvbox_material_lightline_disable_bold = 1
+  vim.g.gruvbox_material_show_eob = 0
+  vim.g.gruvbox_material_transparent_background = 1
 end
 
 local function get_palette()
@@ -254,11 +257,34 @@ local function custom_colors()
   })
 end
 
+local function terminal_colors()
+  local palette = get_palette()
+
+  vim.g.terminal_color_0 = palette.term_black
+  vim.g.terminal_color_1 = palette.term_red
+  vim.g.terminal_color_2 = palette.term_green
+  vim.g.terminal_color_3 = palette.term_yellow
+  vim.g.terminal_color_4 = palette.term_blue
+  vim.g.terminal_color_5 = palette.term_purple
+  vim.g.terminal_color_6 = palette.term_cyan
+  vim.g.terminal_color_7 = palette.term_white
+
+  vim.g.terminal_color_8 = palette.bg5
+  vim.g.terminal_color_9 = palette.red
+  vim.g.terminal_color_10 = palette.green
+  vim.g.terminal_color_11 = palette.yellow
+  vim.g.terminal_color_12 = palette.blue
+  vim.g.terminal_color_13 = palette.purple
+  vim.g.terminal_color_14 = palette.cyan
+  vim.g.terminal_color_15 = palette.fg0
+end
+
 function M.config()
   local theme = require('cfg.theme').get()
   vim.opt.background = theme.background
   options()
   custom_colors()
+  terminal_colors()
   pcall(vim.cmd.colorscheme, theme.vim)
 end
 
@@ -276,6 +302,7 @@ function M.lualine_theme()
   theme.visual.a.bg = palette.dim_green[1]
   theme.replace.a.bg = palette.dim_red[1]
   theme.command.a.bg = palette.dim_aqua[1]
+  theme.terminal.a.bg = palette.dim_purple[1]
 
   for _, mode in pairs { 'insert', 'visual', 'replace', 'command', 'terminal' } do
     theme[mode].b = theme.normal.b
