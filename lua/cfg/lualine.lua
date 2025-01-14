@@ -46,11 +46,18 @@ local function mode_fmt(mode)
 end
 
 local function filetype_fmt(filetype)
-  if filetype == '' then
+  if filetype == '' and vim.o.buftype ~= 'terminal' then
     return ''
   end
-  local icon = require('cfg.web-devicons').file_icon(filetype)
-  return (icon == nil and '' or icon .. ' ') .. filetype:lower()
+  local devicons = require 'cfg.web-devicons'
+  local icon, name
+  if vim.o.buftype == 'terminal' then
+    icon, name = devicons.file_icon 'zsh', 'term'
+  else
+    icon = devicons.file_icon(filetype)
+    name = filetype:lower()
+  end
+  return (icon == nil and '' or icon .. ' ') .. name
 end
 
 function M.config()
