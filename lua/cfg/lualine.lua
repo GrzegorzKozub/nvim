@@ -38,6 +38,7 @@ end
 
 local function encoding_and_fileformat_cond()
   return not contains({ 'checkhealth', 'help', 'netrw', 'qf', 'trouble' }, vim.o.filetype)
+    and not (vim.o.buftype ~= '' and vim.o.buftype == 'terminal')
 end
 
 local function mode_fmt(mode)

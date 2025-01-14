@@ -65,7 +65,7 @@ local function options()
   vim.g.gruvbox_material_disable_terminal_colors = 1
   vim.g.gruvbox_material_lightline_disable_bold = 1
   vim.g.gruvbox_material_show_eob = 0
-  vim.g.gruvbox_material_transparent_background = 1
+  vim.g.gruvbox_material_transparent_background = 2
 end
 
 local function get_palette()
@@ -260,23 +260,23 @@ end
 local function terminal_colors()
   local palette = get_palette()
 
-  vim.g.terminal_color_0 = palette.term_black
-  vim.g.terminal_color_1 = palette.term_red
-  vim.g.terminal_color_2 = palette.term_green
-  vim.g.terminal_color_3 = palette.term_yellow
-  vim.g.terminal_color_4 = palette.term_blue
-  vim.g.terminal_color_5 = palette.term_purple
-  vim.g.terminal_color_6 = palette.term_cyan
-  vim.g.terminal_color_7 = palette.term_white
+  vim.g.terminal_color_0 = palette.term_black[1]
+  vim.g.terminal_color_1 = palette.term_red[1]
+  vim.g.terminal_color_2 = palette.term_green[1]
+  vim.g.terminal_color_3 = palette.term_yellow[1]
+  vim.g.terminal_color_4 = palette.term_blue[1]
+  vim.g.terminal_color_5 = palette.term_purple[1]
+  vim.g.terminal_color_6 = palette.term_aqua[1]
+  vim.g.terminal_color_7 = palette.term_white[1]
 
-  vim.g.terminal_color_8 = palette.bg5
-  vim.g.terminal_color_9 = palette.red
-  vim.g.terminal_color_10 = palette.green
-  vim.g.terminal_color_11 = palette.yellow
-  vim.g.terminal_color_12 = palette.blue
-  vim.g.terminal_color_13 = palette.purple
-  vim.g.terminal_color_14 = palette.cyan
-  vim.g.terminal_color_15 = palette.fg0
+  vim.g.terminal_color_8 = palette.bg5[1]
+  vim.g.terminal_color_9 = palette.red[1]
+  vim.g.terminal_color_10 = palette.green[1]
+  vim.g.terminal_color_11 = palette.yellow[1]
+  vim.g.terminal_color_12 = palette.blue[1]
+  vim.g.terminal_color_13 = palette.purple[1]
+  vim.g.terminal_color_14 = palette.aqua[1]
+  vim.g.terminal_color_15 = palette.fg0[1]
 end
 
 function M.config()
