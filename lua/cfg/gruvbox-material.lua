@@ -120,6 +120,19 @@ local function custom_colors()
 
       vim.fn[hi]('WildMenu', palette.fg0, palette.none)
 
+      -- barbar
+
+      vim.fn[hi]('BufferInactive', palette.bg5, palette.none)
+      vim.fn[hi]('BufferCurrent', palette.grey0, palette.none)
+      vim.fn[hi]('BufferVisible', palette.bg5, palette.none)
+      -- vim.fn[hi]('BufferCurrentIcon', palette.red, palette.none)
+      -- vim.fn[hi]('BufferCurrentBtn', palette.green, palette.none)
+      -- vim.fn[hi]('BufferCurrentMod', palette.blue, palette.none)
+      -- vim.fn[hi]('BufferCurrentModBtn', palette.aqua, palette.none)
+
+      vim.fn[hi]('BufferScrollArrow', palette.bg3, palette.none)
+      vim.fn[hi]('BufferTabpageFill', palette.none, palette.none)
+
       -- cmp
 
       vim.fn[hi]('CmpItemAbbr', palette.grey1, palette.none)
