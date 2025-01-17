@@ -112,9 +112,8 @@ local function custom_colors()
       vim.fn[hi]('StatusLine', palette.grey0, palette.none)
       vim.fn[hi]('StatusLineNC', palette.bg0, palette.none)
 
-      vim.fn[hi]('Tabline', palette.bg3, palette.bg0)
-      vim.fn[hi]('TablineFill', palette.bg3, palette.bg0)
-      vim.fn[hi]('TablineSel', palette.bg5, palette.bg0)
+      vim.fn[hi]('Tabline', palette.bg5, palette.bg0)
+      vim.fn[hi]('TablineSel', palette.grey0, palette.bg0)
 
       vim.fn[hi]('Todo', palette.grey1, palette.none)
 

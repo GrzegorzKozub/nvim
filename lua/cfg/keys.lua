@@ -41,6 +41,11 @@ local function windows(options)
   vim.keymap.set('n', '<esc>', ':fclose<cr>', options) -- close topmost floating window
 end
 
+local function tabs(options)
+  vim.keymap.set('n', '[t', ':tabprevious<cr>', options)
+  vim.keymap.set('n', ']t', ':tabnext<cr>', options)
+end
+
 local function toggles(options)
   vim.api.nvim_create_user_command('HlsearchOff', 'nohlsearch', {})
   vim.keymap.set('n', '<leader>h', ':HlsearchOff<cr>', options)
@@ -73,6 +78,7 @@ function M.config()
   selection(options)
   clipboard(options)
   windows(options)
+  tabs(options)
   toggles(options)
 end
 
