@@ -78,12 +78,15 @@ function M.config()
     cond = filename_cond,
   }
 
+  local filetype = { 'filetype', fmt = filetype_fmt }
+
   lualine.setup {
     options = {
       icons_enabled = false,
       theme = require('cfg.' .. require('cfg.theme').get().vim).lualine_theme(),
-      section_separators = '',
       component_separators = '',
+      section_separators = '',
+      always_show_tabline = false,
     },
     sections = {
       lualine_a = { { 'mode', fmt = mode_fmt } },
@@ -109,7 +112,7 @@ function M.config()
             removed = icons.diff.removed,
           },
         },
-        { 'filetype', fmt = filetype_fmt },
+        filetype,
       },
       lualine_y = {
         { encoding_and_fileformat, cond = encoding_and_fileformat_cond },
@@ -120,9 +123,17 @@ function M.config()
       lualine_a = {},
       lualine_b = {},
       lualine_c = { filename },
-      lualine_x = { { 'filetype', fmt = filetype_fmt } },
+      lualine_x = { filetype },
       lualine_y = {},
       lualine_z = {},
+    },
+    tabline = {
+      lualine_a = { 'buffers' },
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = { 'tabs' },
     },
   }
 end
