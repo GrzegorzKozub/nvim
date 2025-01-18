@@ -1,5 +1,7 @@
 local M = {}
 
+local icons = require('cfg.icons').get()
+
 local function buffer()
   return vim.fn.bufnr '%'
 end
@@ -60,13 +62,17 @@ local function filetype_fmt(filetype)
   return (icon == nil and '' or icon .. ' ') .. name
 end
 
+local function tabs_fmt(name, context)
+  local bufnr = vim.fn.tabpagebuflist(context.tabnr)[vim.fn.tabpagewinnr(context.tabnr)]
+  local mod = vim.fn.getbufvar(bufnr, '&mod')
+  return name .. (mod == 1 and ' ' .. icons.file.modified or '')
+end
+
 function M.config()
   local lualine_loaded, lualine = pcall(require, 'lualine')
   if not lualine_loaded then
     return
   end
-
-  local icons = require('cfg.icons').get()
 
   local filename = {
     'filename',
@@ -128,12 +134,21 @@ function M.config()
       lualine_z = {},
     },
     tabline = {
-      lualine_a = { 'buffers' },
+      lualine_a = {},
       lualine_b = {},
-      lualine_c = {},
+      lualine_c = {
+        {
+          'tabs',
+          tab_max_length = 32,
+          max_length = vim.o.columns,
+          mode = 1,
+          show_modified_status = false,
+          fmt = tabs_fmt,
+        },
+      },
       lualine_x = {},
       lualine_y = {},
-      lualine_z = { 'tabs' },
+      lualine_z = {},
     },
   }
 end
