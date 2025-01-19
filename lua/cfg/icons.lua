@@ -59,8 +59,10 @@ function M.get()
       tab = '󰌒 ', -- →
       trail = '•', -- ·
     },
+    qf = { list = '󱖫' },
     package = { disabled = '○', enabled = '●', pending = '▶' },
-    telescope = { marker = '•', pointer = ' ● ', prompt = ' ●• ' },
+    telescope = { marker = '•', pointer = ' ● ', prompt = ' ●• ', search = '' },
+    trouble = { list = '󱖫' },
   }
 end
 
