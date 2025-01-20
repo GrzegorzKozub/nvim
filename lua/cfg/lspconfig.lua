@@ -92,6 +92,12 @@ local function highlight(client, bufnr)
     callback = vim.lsp.buf.clear_references,
   })
 
+  -- fix ideas
+  --https://neovim.io/doc/user/luvref.html#uv.timer_stop()
+  --https://github.com/tamton-aquib/keys.nvim/blob/main/lua/keys.lua
+  --https://neovim.io/doc/user/lua.html#vim.defer_fn()
+  --https://github.com/RRethy/vim-illuminate/blob/5eeb7951fc630682c322e88a9bbdae5c224ff0aa/lua/illuminate.lua#L56
+  -- https://neovim.io/doc/user/lua.html#vim.on_key()
   local timer = vim.loop.new_timer()
   vim.on_key(function()
     timer:start(1000, 0, vim.schedule_wrap(vim.lsp.buf.document_highlight))
