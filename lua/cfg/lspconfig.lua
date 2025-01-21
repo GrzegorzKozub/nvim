@@ -77,6 +77,32 @@ local function keys(bufnr)
   -- end, bufnr)
 end
 
+local highlight_timers = {}
+local highlight_on_key = false
+
+local function highlight_timer_start(bufnr)
+  return vim.defer_fn(function()
+    if bufnr ~= vim.api.nvim_get_current_buf() then
+      return
+    end
+    vim.lsp.buf.document_highlight()
+  end, 1000)
+end
+
+local function highlight_on_key_start()
+  if highlight_on_key then
+    return
+  end
+  vim.on_key(function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    if highlight_timers[bufnr] then
+      vim.loop.timer_stop(highlight_timers[bufnr])
+      highlight_timers[bufnr] = highlight_timer_start(bufnr)
+    end
+  end)
+  highlight_on_key = true
+end
+
 local function highlight(client, bufnr)
   -- https://github.com/neovim/nvim-lspconfig/wiki/ui-customization#highlight-symbol-under-cursor
 
@@ -86,22 +112,22 @@ local function highlight(client, bufnr)
 
   vim.api.nvim_create_augroup('LspHighlight', { clear = false })
   vim.api.nvim_clear_autocmds { buffer = bufnr, group = 'LspHighlight' }
+
+  -- CursorHold waits until updatetime passes
+  -- vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+  --   group = 'LspHighlight',
+  --   buffer = bufnr,
+  --   callback = vim.lsp.buf.document_highlight,
+  -- })
+
   vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
     group = 'LspHighlight',
     buffer = bufnr,
     callback = vim.lsp.buf.clear_references,
   })
 
-  -- fix ideas
-  --https://neovim.io/doc/user/luvref.html#uv.timer_stop()
-  --https://github.com/tamton-aquib/keys.nvim/blob/main/lua/keys.lua
-  --https://neovim.io/doc/user/lua.html#vim.defer_fn()
-  --https://github.com/RRethy/vim-illuminate/blob/5eeb7951fc630682c322e88a9bbdae5c224ff0aa/lua/illuminate.lua#L56
-  -- https://neovim.io/doc/user/lua.html#vim.on_key()
-  local timer = vim.loop.new_timer()
-  vim.on_key(function()
-    timer:start(1000, 0, vim.schedule_wrap(vim.lsp.buf.document_highlight))
-  end)
+  highlight_timers[bufnr] = highlight_timer_start(bufnr)
+  highlight_on_key_start()
 end
 
 local function on_attach(client, bufnr)

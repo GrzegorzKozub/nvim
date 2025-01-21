@@ -44,6 +44,7 @@ function M.config()
     tabstop = 2,
     termguicolors = true,
     undofile = true,
+    -- updatetime = 3000, -- speed up CursorHold
     wildmode = { 'longest:full', 'full' },
     wildoptions = 'tagfile',
     wrap = false,
