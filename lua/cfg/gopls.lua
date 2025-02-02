@@ -3,9 +3,6 @@ return {
     gopls = {
       analyses = {
         shadow = true,
-        unusedvariable = true,
-        unusedwrite = true,
-        useany = true,
       },
       hints = {
         assignVariableTypes = true,
