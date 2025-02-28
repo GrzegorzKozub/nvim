@@ -300,8 +300,8 @@ function M.lualine_theme()
   theme.insert.a.bg = palette.dim_blue[1]
   theme.visual.a.bg = palette.dim_green[1]
   theme.replace.a.bg = palette.dim_red[1]
-  theme.command.a.bg = palette.dim_aqua[1]
-  theme.terminal.a.bg = palette.dim_purple[1]
+  theme.command.a.bg = palette.dim_purple[1]
+  theme.terminal.a.bg = palette.dim_aqua[1]
 
   for _, mode in pairs { 'insert', 'visual', 'replace', 'command', 'terminal' } do
     theme[mode].b = theme.normal.b
