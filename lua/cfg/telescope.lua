@@ -3,8 +3,9 @@ local M = {}
 local function picker(title, preview)
   return {
     preview = { hide_on_startup = not preview },
-    preview_title = 'preview',
-    prompt_title = title,
+    preview_title = '',
+    prompt_title = '',
+    results_title = ''
   }
 end
 
@@ -30,7 +31,6 @@ function M.config()
       get_status_text = function()
         return ''
       end,
-      results_title = 'results',
       preview = { hide_on_startup = true },
       vimgrep_arguments = {
         'rg',
