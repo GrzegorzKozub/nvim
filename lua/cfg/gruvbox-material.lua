@@ -101,7 +101,7 @@ local function custom_colors()
       vim.fn[hi]('Question', palette.dim_green, palette.none)
       vim.fn[hi]('WarningMsg', palette.dim_yellow, palette.none)
 
-      vim.fn[hi]('FloatBorder', palette.bg3, palette.none)
+      vim.fn[hi]('FloatBorder', palette.bg3, palette.none) -- or bg5
       vim.fn[hi]('NormalFloat', palette.fg0, palette.none)
 
       vim.fn[hi]('Folded', palette.bg5, palette.none)
@@ -223,7 +223,7 @@ local function custom_colors()
       spell 'Rare'
 
       -- telescope
-      vim.fn[hi]('TelescopeBorder', palette.bg3, palette.none)
+      vim.fn[hi]('TelescopeBorder', palette.bg3, palette.none) -- or bg5
       vim.fn[hi]('TelescopeMatching', palette.yellow, palette.none)
       vim.fn[hi]('TelescopeMultiIcon', palette.grey2, palette.none)
       vim.fn[hi]('TelescopeMultiSelection', palette.grey2, palette.none)
