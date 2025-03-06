@@ -14,6 +14,11 @@ local function selection(options)
   vim.keymap.set('n', '<c-a>', 'ggVG', options) -- select all
 end
 
+local function backspace(options)
+  vim.keymap.set('n', '<bs>', 'X', options)
+  vim.keymap.set('v', '<bs>', 'd', options)
+end
+
 local function clipboard(options)
   local copy = '"+y'
   local cut = '"+x'
@@ -76,6 +81,7 @@ end
 function M.config()
   local options = { noremap = true, silent = true }
   selection(options)
+  backspace(options)
   clipboard(options)
   windows(options)
   tabs(options)
