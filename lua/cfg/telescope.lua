@@ -5,7 +5,7 @@ local function picker(title, preview)
     preview = { hide_on_startup = not preview },
     preview_title = '',
     prompt_title = '',
-    results_title = ''
+    results_title = '',
   }
 end
 
@@ -49,13 +49,13 @@ function M.config()
       file_ignore_patterns = { 'node_modules' },
       mappings = {
         i = {
+          ['<esc>'] = actions.close, -- not using normal mode
           ['<c-l>'] = actions_layout.cycle_layout_next,
           ['<c-p>'] = actions_layout.toggle_preview,
-          ['<esc>'] = actions.close,
-        },
-        n = {
-          ['<c-l>'] = actions_layout.cycle_layout_next,
-          ['<c-p>'] = actions_layout.toggle_preview,
+          ['<c-u>'] = actions.results_scrolling_up,
+          ['<c-d>'] = actions.results_scrolling_down,
+          ['<s-up>'] = actions.preview_scrolling_up,
+          ['<s-down>'] = actions.preview_scrolling_down,
         },
       },
     },
