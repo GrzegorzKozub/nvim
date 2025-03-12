@@ -27,6 +27,7 @@ local parsers = {
   'markdown',
   'markdown_inline',
   'nu',
+  'po',
   'powershell',
   'python',
   'query',
