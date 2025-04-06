@@ -1,15 +1,20 @@
 local M = {}
 
 local formatters = {
-  css = { 'prettier' },
-  html = { 'prettier' },
-  json = { 'prettier' },
-  jsonc = { 'prettier' },
+  css = { 'prettierd' },
+  go = { 'goimports', 'gofmt' },
+  html = { 'prettierd' },
+  javascript = { 'prettierd' },
+  json = { 'prettierd' },
+  jsonc = { 'prettierd' },
   lua = { 'stylua' },
   python = { 'isort', 'black' },
+  rust = { 'rustfmt' },
+  sh = { 'shfmt' },
   toml = { 'taplo' },
-  xml = { 'xmlformat' },
-  yaml = { 'prettier' },
+  xml = { 'xmlformatter' },
+  yaml = { 'prettierd' },
+  ['_'] = { 'trim_whitespace' },
 }
 
 function M.config()
@@ -19,12 +24,13 @@ function M.config()
   end
 
   conform.setup {
+    default_format_opts = { lsp_format = 'fallback' },
+    format_on_save = { timeout_ms = 1000 },
     formatters_by_ft = formatters,
-    formatters = { prettier = { prepend_args = { '--single-quote' } } },
   }
 
   require('cfg.util').nmap('<leader>f', function()
-    conform.format { async = true, lsp_fallback = true }
+    conform.format { async = true }
   end)
 end
 

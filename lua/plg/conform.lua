@@ -5,5 +5,6 @@ return {
   dependencies = {
     'williamboman/mason.nvim',
   },
+  event = { 'BufWritePre' },
   keys = { '<leader>f' },
 }

@@ -39,8 +39,10 @@ end
 
 local formatters = {
   'black',
+  'goimports',
   'isort',
-  'prettier',
+  'prettierd',
+  'shfmt',
   'stylua',
   'xmlformatter',
 }

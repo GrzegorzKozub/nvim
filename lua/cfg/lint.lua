@@ -7,6 +7,8 @@ local linters = {
   json = { 'jsonlint' },
   lua = { 'luacheck' },
   python = { 'pylint' },
+  -- rust = { 'clippy' }, -- handled by rust-analyzer
+  -- sh = { 'shellcheck' }, -- handled by bashls
   typescript = { 'eslint_d' },
   yaml = { 'yamllint' },
 }
