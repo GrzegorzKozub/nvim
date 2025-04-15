@@ -1,19 +1,19 @@
 local M = {}
 
 local formatters = {
-  css = { 'prettierd' },
+  css = { 'prettier' },
   go = { 'goimports', 'gofmt' },
-  html = { 'prettierd' },
-  javascript = { 'prettierd' },
-  json = { 'prettierd' },
-  jsonc = { 'prettierd' },
+  html = { 'prettier' },
+  javascript = { 'prettier' },
+  json = { 'prettier' },
+  jsonc = { 'prettier' },
   lua = { 'stylua' },
   python = { 'isort', 'black' },
   rust = { 'rustfmt' },
   sh = { 'shfmt' },
   toml = { 'taplo' },
   xml = { 'xmlformatter' },
-  yaml = { 'prettierd' },
+  yaml = { 'prettier' },
   ['_'] = { 'trim_whitespace' },
 }
 

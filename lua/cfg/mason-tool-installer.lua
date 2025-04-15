@@ -41,7 +41,7 @@ local formatters = {
   'black',
   'goimports',
   'isort',
-  'prettierd',
+  'prettier',
   'shfmt',
   'stylua',
   'xmlformatter',
@@ -53,7 +53,8 @@ add(tools, linters)
 add(tools, formatters)
 
 function M.config()
-  local mason_tool_installer_loaded, mason_tool_installer = pcall(require, 'mason-tool-installer')
+  local mason_tool_installer_loaded, mason_tool_installer =
+    pcall(require, 'mason-tool-installer')
   if not mason_tool_installer_loaded then
     return
   end
