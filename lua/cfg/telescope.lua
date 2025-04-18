@@ -64,6 +64,7 @@ function M.config()
       buffers = picker 'buffers',
       find_files = picker 'files',
       live_grep = picker 'grep',
+      lsp_workspace_symbols = picker 'workspace symbols',
       oldfiles = picker 'recent',
       -- vim
       command_history = picker 'command history',
@@ -84,7 +85,6 @@ function M.config()
       lsp_outgoing_calls = picker 'outgoing calls',
       lsp_references = picker 'references',
       lsp_type_definitions = picker 'type definitions',
-      lsp_workspace_symbols = picker 'workspace symbols',
       -- git
       git_bcommits = picker('git file log', true),
       git_commits = picker('git log', true),
@@ -99,6 +99,7 @@ function M.config()
   nmap('<c-g>', builtin.live_grep)
   nmap('<c-k>', builtin.oldfiles)
   nmap('<c-p>', builtin.find_files)
+  nmap('<c-t>', builtin.lsp_workspace_symbols)
 end
 
 return M
