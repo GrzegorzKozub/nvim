@@ -43,6 +43,17 @@ local function clipboard(options)
 end
 
 local function windows(options)
+  vim.keymap.set('n', '<c-w>r', ':vsplit<cr>', options)
+  vim.keymap.set('n', '<c-w>d', ':split<cr>', options)
+
+  -- vim.keymap.set('n', '<c-w><C-Left>', ':resize -16<cr>', options)
+  -- vim.keymap.set('n', '<c-w><C-Down>', ':resize -4<cr>', options)
+  -- vim.keymap.set('n', '<c-w><C-Up>', ':resize 4<cr>', options)
+  -- vim.keymap.set('n', '<c-w><C-Right>', ':resize 16<cr>', options)
+
+  vim.keymap.set('n', '<c-w>=', ':horizontal wincmd =<cr>:vertical wincmd =<cr>', options)
+  vim.keymap.set('n', '<c-w>z', ':only<cr>', options)
+
   vim.keymap.set('n', '<esc>', ':fclose<cr>', options) -- close topmost floating window
 end
 
