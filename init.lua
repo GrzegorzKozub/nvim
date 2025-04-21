@@ -9,6 +9,8 @@ require('cfg.file-types').config()
 require('cfg.json').config()
 require('cfg.markdown').config()
 
+require('cfg.nav').config()
 require('cfg.wt').config()
 
 require('cfg.lazy').config()
+
