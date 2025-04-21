@@ -16,8 +16,8 @@ local function nvim_cmd_mode()
   return vim.fn.getcmdwintype() ~= ''
 end
 
-local function nvim_change_window(direction, count)
-  return vim.api.nvim_command((count or 1) .. 'wincmd ' .. direction)
+local function nvim_change_window(direction)
+  return vim.api.nvim_command((vim.v.count or 1) .. 'wincmd ' .. direction)
 end
 
 local function tmux()
@@ -98,7 +98,7 @@ local function nav(direction)
   if (nvim_border(direction) or nvim_float()) and tmux_can_change_pane(direction) then
     tmux_change_pane(direction)
   elseif not nvim_cmd_mode() then
-    nvim_change_window(direction, vim.v.count)
+    nvim_change_window(direction)
   end
 end
 
