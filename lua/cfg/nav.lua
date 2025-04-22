@@ -103,6 +103,9 @@ local function nav(direction)
 end
 
 function M.config()
+  if vim.fn.has 'win32' == 1 then
+    return
+  end
   local nmap = require('cfg.util').nmap
   nmap('<a-left>', function()
     nav 'h'

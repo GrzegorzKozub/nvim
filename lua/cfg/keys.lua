@@ -43,27 +43,26 @@ local function clipboard(options)
 end
 
 local function windows(options)
-  -- <c-w>c closes active window
+  -- <c-o> - go back
+  -- <c-i> - go forward
+
+  -- <c-w>c - close active window
 
   vim.keymap.set('n', '<c-w>r', ':vsplit<cr>', options)
   vim.keymap.set('n', '<c-w>d', ':split<cr>', options)
 
-  -- <c-w>left|down|up|right change active window
+  -- <c-w>left|down|up|right - activate window
 
-  -- handled by nav
-  -- vim.keymap.set('n', '<a-left>', ':' .. vim.v.count .. 'wincmd h<cr>', options)
-  -- vim.keymap.set('n', '<a-down>', ':' .. vim.v.count .. 'wincmd j<cr>', options)
-  -- vim.keymap.set('n', '<a-up>', ':' .. vim.v.count .. 'wincmd k<cr>', options)
-  -- vim.keymap.set('n', '<a-right>', ':' .. vim.v.count .. 'wincmd l<cr>', options)
+  -- handled by nav on linux
+  if vim.fn.has 'win32' == 1 then
+    vim.keymap.set('n', '<a-left>', ':' .. vim.v.count .. 'wincmd h<cr>', options)
+    vim.keymap.set('n', '<a-down>', ':' .. vim.v.count .. 'wincmd j<cr>', options)
+    vim.keymap.set('n', '<a-up>', ':' .. vim.v.count .. 'wincmd k<cr>', options)
+    vim.keymap.set('n', '<a-right>', ':' .. vim.v.count .. 'wincmd l<cr>', options)
+  end
 
-  vim.keymap.set('n', '<c-w><c-left>', ':vertical resize -8<cr>', options)
-  vim.keymap.set('n', '<c-w><c-down>', ':resize -2<cr>', options)
-  vim.keymap.set('n', '<c-w><c-up>', ':resize +2<cr>', options)
-  vim.keymap.set('n', '<c-w><c-right>', ':vertical resize +8<cr>', options)
-
-  -- <c-w>= makes all window sizes equal
-
-  vim.keymap.set('n', '<c-w>j', ':only<cr>', options) -- same as <c-w>o
+  -- <c-w>= - make all window sizes equal
+  -- <c-w>o - close all other windows
 
   vim.keymap.set('n', '<esc>', ':fclose<cr>', options) -- close topmost floating window
 end

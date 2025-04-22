@@ -13,4 +13,3 @@ require('cfg.nav').config()
 require('cfg.wt').config()
 
 require('cfg.lazy').config()
-
