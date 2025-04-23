@@ -46,7 +46,10 @@ local function windows(options)
   -- <c-o> - go back
   -- <c-i> - go forward
 
-  -- <c-w>c - close active window
+  -- <c-w>c - close current window
+  -- <c-w>q - quit current window
+
+  vim.keymap.set('n', '<c-w><c-c>', ':quitall<cr>', options)
 
   vim.keymap.set('n', '<c-w>r', ':vsplit<cr>', options)
   vim.keymap.set('n', '<c-w>d', ':split<cr>', options)
