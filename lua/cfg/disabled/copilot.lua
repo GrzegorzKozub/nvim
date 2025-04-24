@@ -8,28 +8,14 @@ function M.config()
 
   copilot.setup {
     filetypes = {
-      cucumber = true,
-      cs = true,
-      dockerfile = true,
-      elixir = true,
-      go = true,
-      gomod = true,
-      html = true,
-      javascript = true,
-      json = true,
-      lua = true,
-      nu = true,
-      ps1 = true,
-      python = true,
-      rust = true,
-      sh = true,
-      sql = true,
-      toml = true,
-      typescript = true,
-      xml = true,
-      yaml = true,
-      zsh = true,
-      ['*'] = false,
+      ini = false,
+      pem = false,
+      sh = function()
+        return string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '.env') and false
+          or true
+      end,
+      text = false,
+      yaml = false,
     },
     panel = { enabled = false },
     suggestion = {
@@ -49,4 +35,3 @@ function M.config()
 end
 
 return M
-
