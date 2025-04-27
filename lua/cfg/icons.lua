@@ -49,7 +49,7 @@ function M.get()
     },
     fold = {
       closed = '', -- ▶
-      guides = { last = '╰╴' },
+      -- guides = { last = '╰╴' },
       open = '', -- ▼
     },
     gitsigns = { changed = '│', git = '󰊢', staged = '┃' },
@@ -63,7 +63,7 @@ function M.get()
     package = { disabled = '○', enabled = '●', pending = '▶' },
     telescope = { marker = '•', pointer = ' ● ', prompt = ' ●• ', search = '' },
     treesitter_context = { separator = '─' },
-    trouble = { list = '󱖫' },
+    -- trouble = { list = '󱖫' },
   }
 end
 

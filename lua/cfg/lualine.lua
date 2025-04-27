@@ -32,15 +32,15 @@ local function contains(table, item)
 end
 
 local function buffer_cond()
-  return not contains({ 'help', 'netrw', 'qf', 'trouble' }, vim.o.filetype)
+  return not contains({ 'help', 'netrw', 'qf' }, vim.o.filetype) -- trouble
 end
 
 local function filename_cond()
-  return not contains({ 'netrw', 'qf', 'checkhealth', 'trouble' }, vim.o.filetype)
+  return not contains({ 'netrw', 'qf', 'checkhealth' }, vim.o.filetype) -- trouble
 end
 
 local function encoding_and_fileformat_cond()
-  return not contains({ 'checkhealth', 'help', 'netrw', 'qf', 'trouble' }, vim.o.filetype)
+  return not contains({ 'checkhealth', 'help', 'netrw', 'qf' }, vim.o.filetype) -- trouble
     and not (vim.o.buftype ~= '' and vim.o.buftype == 'terminal')
 end
 
@@ -56,8 +56,8 @@ local function filetype_fmt(filetype)
   local name = vim.o.buftype == 'terminal' and 'term' or filetype:lower()
   if filetype == 'qf' then
     icon = icons.qf.list
-  elseif filetype == 'trouble' then
-    icon = icons.trouble.list
+    -- elseif filetype == 'trouble' then
+    --   icon = icons.trouble.list
   end
   return (icon == nil and '' or icon .. ' ') .. name
 end
@@ -79,9 +79,9 @@ local function tabs_fmt(name, context)
   elseif filetype == 'qf' then
     icon = icons.qf.list
     name = 'qf'
-  elseif filetype == 'trouble' then
-    icon = icons.trouble.list
-    name = 'trouble'
+    -- elseif filetype == 'trouble' then
+    --   icon = icons.trouble.list
+    --   name = 'trouble'
   elseif name == '[No Name]' then
     name = 'untitled'
   end

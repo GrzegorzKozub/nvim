@@ -42,8 +42,8 @@ local function keys(bufnr)
   nmap('gd', vim.lsp.buf.definition, bufnr)
   nmap('gD', vim.lsp.buf.declaration, bufnr)
   nmap('gi', vim.lsp.buf.implementation, bufnr)
-  -- nmap('gr', vim.lsp.buf.references, bufnr)
-  nmap('gr', '<cmd>Trouble lsp<cr>')
+  nmap('gr', vim.lsp.buf.references, bufnr)
+  -- nmap('gr', '<cmd>Trouble lsp<cr>')
   nmap('gt', vim.lsp.buf.type_definition, bufnr)
 
   if vim.lsp.inlay_hint then
@@ -64,17 +64,11 @@ local function keys(bufnr)
   nmap('<leader>dl', vim.diagnostic.setloclist, bufnr)
   nmap('<leader>dq', vim.diagnostic.setqflist, bufnr)
 
-  -- defaults since https://neovim.io/doc/user/news-0.10.html
-  -- nmap(']d', vim.diagnostic.goto_next, bufnr)
-  -- nmap('[d', vim.diagnostic.goto_prev, bufnr)
+  -- ]d & ]d navigate through diagnostics
 
-  nmap('<leader>tl', '<cmd>Trouble lsp toggle<cr>')
-  nmap('<leader>ts', '<cmd>Trouble symbols toggle<cr>')
-  nmap('<leader>td', '<cmd>Trouble diagnostics toggle<cr>')
-
-  -- nmap('<leader>f', function()
-  --   vim.lsp.buf.format { async = true, bufnr = bufnr }
-  -- end, bufnr)
+  -- nmap('<leader>tl', '<cmd>Trouble lsp toggle<cr>')
+  -- nmap('<leader>ts', '<cmd>Trouble symbols toggle<cr>')
+  -- nmap('<leader>td', '<cmd>Trouble diagnostics toggle<cr>')
 end
 
 local highlight_timers = {}
