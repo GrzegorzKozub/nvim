@@ -109,6 +109,12 @@ local function custom_colors()
       vim.fn[hi]('IncSearch', palette.bg0, palette.dim_orange)
       vim.fn[hi]('Search', palette.bg0, palette.dim_yellow)
 
+      vim.fn[hi]('QuickFixFileName', palette.grey0, palette.none)
+      vim.fn[hi]('QuickFixLineNr', palette.bg5, palette.none)
+      vim.fn[hi]('QuickFixSeparator', palette.bg3, palette.none)
+
+      vim.fn[hi]('QuickFixLine', palette.none, palette.bg3) -- match cmp
+
       vim.fn[hi]('StatusLine', palette.grey0, palette.none)
       vim.fn[hi]('StatusLineNC', palette.bg0, palette.none)
 

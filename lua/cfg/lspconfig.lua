@@ -64,7 +64,7 @@ local function keys(bufnr)
   nmap('<leader>dl', vim.diagnostic.setloclist, bufnr)
   nmap('<leader>dq', vim.diagnostic.setqflist, bufnr)
 
-  -- ]d & ]d navigate through diagnostics
+  -- [d & ]d navigate through diagnostics
 
   -- nmap('<leader>tl', '<cmd>Trouble lsp toggle<cr>')
   -- nmap('<leader>ts', '<cmd>Trouble symbols toggle<cr>')
