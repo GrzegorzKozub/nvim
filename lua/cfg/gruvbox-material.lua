@@ -236,6 +236,9 @@ local function custom_colors()
       vim.fn[hi]('TelescopeSelection', palette.grey1, palette.bg3) -- match cmp
       vim.fn[hi]('TelescopeSelectionCaret', palette.dim_purple, palette.bg3)
 
+      -- treesitter-context
+      vim.fn[hi]('TreesitterContextSeparator', palette.bg1, palette.none)
+
       -- trouble.nvim
       vim.fn[hi]('TroubleCode', palette.grey0, palette.none)
       vim.fn[hi]('TroubleCount', palette.bg5, palette.none)

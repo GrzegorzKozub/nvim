@@ -62,6 +62,7 @@ function M.get()
     qf = { list = '󱖫' },
     package = { disabled = '○', enabled = '●', pending = '▶' },
     telescope = { marker = '•', pointer = ' ● ', prompt = ' ●• ', search = '' },
+    treesitter_context = { separator = '─' },
     trouble = { list = '󱖫' },
   }
 end
