@@ -25,6 +25,7 @@ function M.config()
       tab = icons.listchars.tab,
       trail = icons.listchars.trail,
     },
+    messagesopt = 'history:1000,wait:3000',
     mouse = 'a',
     mousemodel = 'extend',
     number = true,
@@ -47,6 +48,7 @@ function M.config()
     -- updatetime = 3000, -- speed up CursorHold
     wildmode = { 'longest:full', 'full' },
     wildoptions = 'tagfile',
+    -- winborder = 'rounded',
     wrap = false,
   } do
     vim.opt[name] = value
@@ -58,6 +60,7 @@ function M.config()
   end
 
   vim.opt.backupdir:remove '.'
+  vim.opt.completeopt:append 'fuzzy'
   vim.opt.diffopt:append { 'algorithm:histogram', 'indent-heuristic', 'context:3' }
   vim.opt.shortmess:append 'I'
   vim.opt.whichwrap:append '<,>,[,]'

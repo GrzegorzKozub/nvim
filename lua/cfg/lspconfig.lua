@@ -41,10 +41,18 @@ local function keys(bufnr)
 
   nmap('gd', vim.lsp.buf.definition, bufnr)
   nmap('gD', vim.lsp.buf.declaration, bufnr)
-  nmap('gi', vim.lsp.buf.implementation, bufnr)
-  nmap('gr', vim.lsp.buf.references, bufnr)
+  nmap('gi', vim.lsp.buf.implementation, bufnr) -- default: gri
+  nmap('gr', vim.lsp.buf.references, bufnr) -- default: grr
   -- nmap('gr', '<cmd>Trouble lsp<cr>')
   nmap('gt', vim.lsp.buf.type_definition, bufnr)
+
+  nmap('<leader>lh', vim.lsp.buf.hover, bufnr) -- default: K
+  nmap('<leader>lr', vim.lsp.buf.rename, bufnr) -- default: grn
+  nmap('<leader>la', vim.lsp.buf.code_action, bufnr) -- default: gra
+
+  -- c-s - show signature help in insert mode
+
+  nmap('<leader>lo', vim.lsp.buf.document_symbol, bufnr) -- default: gO
 
   if vim.lsp.inlay_hint then
     nmap('<leader>li', function()
@@ -55,16 +63,11 @@ local function keys(bufnr)
     end, bufnr)
   end
 
-  nmap('<leader>lh', vim.lsp.buf.hover, bufnr)
-  nmap('<leader>ls', vim.lsp.buf.signature_help, bufnr)
-  nmap('<leader>lr', vim.lsp.buf.rename, bufnr)
-  nmap('<leader>la', vim.lsp.buf.code_action, bufnr)
-
   nmap('<leader>dh', vim.diagnostic.open_float, bufnr)
   nmap('<leader>dl', vim.diagnostic.setloclist, bufnr)
   nmap('<leader>dq', vim.diagnostic.setqflist, bufnr)
 
-  -- [d & ]d navigate through diagnostics
+  -- [d ]d - navigate through diagnostics
 
   -- nmap('<leader>tl', '<cmd>Trouble lsp toggle<cr>')
   -- nmap('<leader>ts', '<cmd>Trouble symbols toggle<cr>')
