@@ -25,7 +25,6 @@ function M.config()
       tab = icons.listchars.tab,
       trail = icons.listchars.trail,
     },
-    messagesopt = 'history:1000,wait:3000',
     mouse = 'a',
     mousemodel = 'extend',
     number = true,

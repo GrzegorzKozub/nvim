@@ -127,31 +127,26 @@ local function highlight(client, bufnr)
   highlight_on_key_start()
 end
 
-local function on_attach(client, bufnr)
-  keys(bufnr)
-  highlight(client, bufnr)
-  vim.bo[bufnr].formatexpr = "v:lua.require'conform'.formatexpr()"
-end
-
 function M.config()
-  local lspconfig_loaded, lspconfig = pcall(require, 'lspconfig')
-  if not lspconfig_loaded then
-    return
-  end
-
   floats()
 
-  for _, server in pairs(require 'cfg.servers') do
-    local options = {
-      capabilities = require('cfg.cmp-nvim-lsp').capabilities(),
-      on_attach = on_attach,
-    }
-    local server_options_loaded, server_options = pcall(require, 'cfg.' .. server)
-    if server_options_loaded then
-      options = vim.tbl_deep_extend('force', server_options, options)
-    end
-    lspconfig[server].setup(options)
-  end
+  vim.lsp.enable { 'lua_ls' }
+
+  vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if not client then
+        return
+      end
+      vim.bo[args.buf].formatexpr = "v:lua.require'conform'.formatexpr()"
+      keys(args.buf)
+      highlight(client, args.buf)
+      -- if client:supports_method 'textDocument/completion' then
+      --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+      -- end
+    end,
+    group = vim.api.nvim_create_augroup('Lsp', { clear = true }),
+  })
 end
 
 return M

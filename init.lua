@@ -1,5 +1,6 @@
 require('cfg.options').config()
 require('cfg.keys').config()
+require('cfg.lsp').config()
 
 require('cfg.yank-highlight').config()
 require('cfg.resume').config()
