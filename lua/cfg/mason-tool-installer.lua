@@ -3,10 +3,10 @@ local M = {}
 local add = require('cfg.util').add
 
 local servers = {
-  'csharp-language-server',
+  -- 'csharp-language-server',
   'docker-compose-language-service',
   'dockerfile-language-server',
-  'elixir-ls',
+  -- 'elixir-ls',
   'eslint-lsp',
   'gopls',
   'json-lsp',
