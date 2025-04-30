@@ -13,8 +13,9 @@ local function set_filetype(pattern, filetype)
 end
 
 function M.config()
-  set_filetype('config', 'confini')
   set_filetype('*.json', 'jsonc')
+  set_filetype('config', 'confini')
+  set_filetype('docker-compose*.y*ml', 'yaml.docker-compose')
 end
 
 return M

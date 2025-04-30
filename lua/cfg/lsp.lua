@@ -130,7 +130,7 @@ end
 function M.config()
   floats()
 
-  vim.lsp.enable { 'lua_ls' }
+  vim.lsp.enable(require 'cfg.servers')
 
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)

@@ -1,9 +1,10 @@
 return {
+  cmd = { 'gopls' },
+  filetypes = { 'go', 'gomod', 'gotmpl', 'gowork' },
+  root_markers = { '.git', 'go.mod', 'go.sum', 'go.work' },
   settings = {
     gopls = {
-      analyses = {
-        shadow = true,
-      },
+      analyses = { shadow = true },
       hints = {
         assignVariableTypes = true,
         compositeLiteralFields = true,
