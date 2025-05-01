@@ -115,6 +115,19 @@ local function custom_colors()
 
       vim.fn[hi]('QuickFixLine', palette.none, palette.bg3) -- match cmp
 
+      vim.fn[hi]('Pmenu', palette.grey1, palette.bg1)
+      vim.fn[hi]('PmenuExtra', palette.grey1, palette.bg1)
+      vim.fn[hi]('PmenuKind', palette.grey1, palette.bg1)
+      vim.fn[hi]('PmenuMatch', palette.yellow, palette.bg1, 'NONE')
+
+      vim.fn[hi]('PmenuSel', palette.grey1, palette.bg3)
+      vim.fn[hi]('PmenuExtraSel', palette.grey1, palette.bg3)
+      vim.fn[hi]('PmenuKindSel', palette.grey1, palette.bg3)
+      vim.fn[hi]('PmenuMatchSel', palette.yellow, palette.bg3, 'NONE')
+
+      vim.fn[hi]('PmenuSbar', palette.none, palette.bg1)
+      vim.fn[hi]('PmenuThumb', palette.none, palette.bg3)
+
       vim.fn[hi]('StatusLine', palette.grey0, palette.none)
       vim.fn[hi]('StatusLineNC', palette.bg0, palette.none)
 
