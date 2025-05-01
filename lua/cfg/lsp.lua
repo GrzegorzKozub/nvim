@@ -141,9 +141,6 @@ function M.config()
       vim.bo[args.buf].formatexpr = "v:lua.require'conform'.formatexpr()"
       keys(args.buf)
       highlight(client, args.buf)
-      -- if client:supports_method 'textDocument/completion' then
-      --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-      -- end
     end,
     group = vim.api.nvim_create_augroup('Lsp', { clear = true }),
   })
