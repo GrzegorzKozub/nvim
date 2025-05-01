@@ -85,6 +85,7 @@ function M.config()
       },
     },
     underline = true,
+    virtual_lines = { current_line = true, format = format },
     virtual_text = { format = format, prefix = '', spacing = 0 },
   }
 
