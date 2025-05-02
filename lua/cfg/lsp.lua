@@ -6,6 +6,7 @@ local function floats()
   -- https://neovim.io/doc/user/lsp.html#vim.lsp.util.open_floating_preview%28%29
   -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/util.lua
   local lsp = vim.lsp.util.open_floating_preview
+  ---@diagnostic disable-next-line: duplicate-set-field
   function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
     opts.border = opts.border or 'rounded'
@@ -21,6 +22,7 @@ local function floats()
 
   -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.open_float%28%29
   local diag = vim.diagnostic.open_float
+  ---@diagnostic disable-next-line: duplicate-set-field
   function vim.diagnostic.open_float(opts, ...)
     opts = opts or {}
     opts.border = opts.border or 'rounded'
