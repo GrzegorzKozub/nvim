@@ -1,7 +1,9 @@
 local M = {}
 
 local function floats()
-  -- https://neovim.io/doc/user/lsp.html#vim.lsp.util.open_floating_preview()
+  -- todo: see if opts can be passed directly to https://neovim.io/doc/user/lsp.html#vim.lsp.buf.hover%28%29
+
+  -- https://neovim.io/doc/user/lsp.html#vim.lsp.util.open_floating_preview%28%29
   -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/util.lua
   local lsp = vim.lsp.util.open_floating_preview
   function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -17,7 +19,7 @@ local function floats()
     return bufnr, winnr
   end
 
-  -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.open_float()
+  -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.open_float%28%29
   local diag = vim.diagnostic.open_float
   function vim.diagnostic.open_float(opts, ...)
     opts = opts or {}
@@ -119,14 +121,25 @@ end
 
 function M.config()
   floats()
+
   vim.lsp.enable(require 'cfg.servers')
+
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
       local client = vim.lsp.get_client_by_id(args.data.client_id)
       if not client then
         return
       end
+
       vim.bo[args.buf].formatexpr = "v:lua.require'conform'.formatexpr()"
+
+      if client:supports_method 'textDocument/foldingRange' then
+        local win = vim.api.nvim_get_current_win()
+        vim.opt.foldmethod = 'expr'
+        vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        vim.wo[win][0].foldtext = 'v:lua.vim.lsp.foldtext()'
+      end
+
       keys(args.buf)
       highlight(client, args.buf)
     end,

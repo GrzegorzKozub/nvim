@@ -59,11 +59,12 @@ function M.get()
       tab = '󰌒 ', -- →
       trail = '•', -- ·
     },
-    qf = { list = '󱖫' },
+    qf = '󱖫',
     package = { disabled = '○', enabled = '●', pending = '▶' },
     telescope = { marker = '•', pointer = ' ● ', prompt = ' ●• ', search = '' },
     treesitter_context = { separator = '─' },
-    -- trouble = { list = '󱖫' },
+    -- trouble = '󱖫',
+    truncated = '󰇘',
   }
 end
 

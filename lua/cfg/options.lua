@@ -13,6 +13,8 @@ function M.config()
       fold = ' ',
       foldclose = icons.fold.closed,
       foldopen = icons.fold.open,
+      trunc = icons.truncated,
+      truncrl = icons.truncated,
       vert = ' ',
     },
     foldenable = false,

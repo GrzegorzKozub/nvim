@@ -55,9 +55,9 @@ local function filetype_fmt(filetype)
   local icon = devicons.icon(0, filetype)
   local name = vim.o.buftype == 'terminal' and 'term' or filetype:lower()
   if filetype == 'qf' then
-    icon = icons.qf.list
+    icon = icons.qf
     -- elseif filetype == 'trouble' then
-    --   icon = icons.trouble.list
+    --   icon = icons.trouble
   end
   return (icon == nil and '' or icon .. ' ') .. name
 end
@@ -77,10 +77,10 @@ local function tabs_fmt(name, context)
   elseif filetype == 'checkhealth' then
     name = 'checkhealth'
   elseif filetype == 'qf' then
-    icon = icons.qf.list
+    icon = icons.qf
     name = 'qf'
     -- elseif filetype == 'trouble' then
-    --   icon = icons.trouble.list
+    --   icon = icons.trouble
     --   name = 'trouble'
   elseif name == '[No Name]' then
     name = 'untitled'
