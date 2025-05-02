@@ -57,8 +57,8 @@ function M.config()
       ['<c-space>'] = cmp.mapping.complete(),
       ['<cr>'] = cmp.mapping.confirm(),
       ['<c-e>'] = cmp.mapping.abort(),
-      ['<c-u>'] = cmp.mapping.scroll_docs(-3),
-      ['<c-d>'] = cmp.mapping.scroll_docs(3),
+      ['<s-up>'] = cmp.mapping.scroll_docs(-4),
+      ['<s-down>'] = cmp.mapping.scroll_docs(4),
       ['<tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
