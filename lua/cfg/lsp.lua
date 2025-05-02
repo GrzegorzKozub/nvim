@@ -1,21 +1,6 @@
 local M = {}
 
-local function cleanup(contents)
-  -- in future use https://github.com/neovim/neovim/issues/25718
-  local result = {}
-  for _, chunk in pairs(contents) do
-    if chunk:find '^---' then
-      chunk = ''
-    end
-    vim.list_extend(result, { chunk })
-  end
-  return result
-end
-
 local function floats()
-  -- https://github.com/neovim/nvim-lspconfig/wiki/ui-customization#borders
-  -- in future use https://github.com/neovim/neovim/pull/31074
-
   -- https://neovim.io/doc/user/lsp.html#vim.lsp.util.open_floating_preview()
   -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/util.lua
   local lsp = vim.lsp.util.open_floating_preview
@@ -24,7 +9,12 @@ local function floats()
     opts.border = opts.border or 'rounded'
     opts.max_height = opts.max_height or 20
     opts.max_width = opts.max_width or 80
-    return lsp(cleanup(contents), syntax, opts, ...)
+    local bufnr, winnr = lsp(contents, syntax, opts, ...)
+    local current = vim.api.nvim_get_current_win()
+    vim.api.nvim_set_current_win(winnr)
+    vim.api.nvim_command [[ syntax match markdownLspHorizontalLine '─' conceal ]]
+    vim.api.nvim_set_current_win(current)
+    return bufnr, winnr
   end
 
   -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.open_float()
@@ -118,9 +108,9 @@ local function highlight(client, bufnr)
   -- })
 
   vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-    group = 'LspHighlight',
     buffer = bufnr,
     callback = vim.lsp.buf.clear_references,
+    group = 'LspHighlight',
   })
 
   highlight_timers[bufnr] = highlight_timer_start(bufnr)
@@ -129,9 +119,7 @@ end
 
 function M.config()
   floats()
-
   vim.lsp.enable(require 'cfg.servers')
-
   vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
       local client = vim.lsp.get_client_by_id(args.data.client_id)

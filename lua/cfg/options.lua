@@ -47,7 +47,7 @@ function M.config()
     -- updatetime = 3000, -- speed up CursorHold
     wildmode = { 'longest:full', 'full' },
     wildoptions = 'tagfile',
-    -- winborder = 'rounded',
+    -- winborder = 'rounded', -- https://github.com/neovim/neovim/pull/31074
     wrap = false,
   } do
     vim.opt[name] = value
