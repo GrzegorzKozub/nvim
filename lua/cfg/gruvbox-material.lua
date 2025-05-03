@@ -174,6 +174,11 @@ local function custom_colors()
       vim.fn[hi]('VirtualTextInfo', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextWarning', palette.bg5, palette.none)
 
+      -- fzf-lua
+      vim.fn[hi]('FzfLuaBorder', palette.bg3, palette.none) -- or bg5
+      vim.fn[hi]('FzfLuaTitle', palette.bg3, palette.none) -- or bg5
+      vim.fn[hi]('FzfLuaFzfNormal', palette.grey1, palette.none)
+
       -- gitsigns
 
       vim.fn[hi]('GitSignsCurrentLineBlame', palette.bg5, palette.none)
