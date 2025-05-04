@@ -35,7 +35,7 @@ local function keys(bufnr)
 
   -- c-s - show signature help in insert mode
 
-  nmap('<leader>lo', vim.lsp.buf.document_symbol, bufnr) -- default: gO
+  -- nmap('<leader>lo', vim.lsp.buf.document_symbol, bufnr) -- default: gO
 
   if vim.lsp.inlay_hint then
     nmap('<leader>li', function()

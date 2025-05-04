@@ -179,6 +179,15 @@ local function custom_colors()
       vim.fn[hi]('FzfLuaBorder', palette.bg3, palette.none) -- or bg5
       vim.fn[hi]('FzfLuaTitle', palette.bg3, palette.none) -- or bg5
 
+      vim.fn[hi]('FzfLuaHeaderBind', palette.dim_purple, palette.none)
+      vim.fn[hi]('FzfLuaHeaderText', palette.grey1, palette.none)
+
+      vim.fn[hi]('FzfLuaBufFlagAlt', palette.dim_blue, palette.none)
+      vim.fn[hi]('FzfLuaBufFlagCur', palette.dim_blue, palette.none)
+      vim.fn[hi]('FzfLuaBufNr', palette.fg0, palette.none)
+      vim.fn[hi]('FzfLuaPathColNr', palette.bg5, palette.none)
+      vim.fn[hi]('FzfLuaPathLineNr', palette.bg5, palette.none)
+
       vim.fn[hi]('FzfLuaFzfBorder', palette.bg3, palette.none) -- or bg5
       vim.fn[hi]('FzfLuaFzfCursorLine', palette.grey1, palette.bg3) -- match cmp
       vim.fn[hi]('FzfLuaFzfMatch', palette.yellow, palette.none)

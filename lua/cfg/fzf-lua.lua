@@ -30,7 +30,6 @@ function M.config()
         ['<m-f>'] = 'toggle-fullscreen',
         ['<m-/>'] = 'toggle-help',
       },
-      fzf = {},
     },
     fzf_opts = {
       ['--info'] = false,
@@ -49,15 +48,19 @@ function M.config()
       ['pointer'] = { 'fg', 'FzfLuaFzfPrompt' },
       ['marker'] = { 'fg', 'FzfLuaFzfPrompt' },
     },
-    files = { color_icons = false, cwd_prompt = false },
+    defaults = { color_icons = false },
+    files = { cwd_prompt = false },
   }
 
   local nmap = require('cfg.util').nmap
 
-  nmap('<c-k>', fzf_lua.oldfiles)
   nmap('<c-p>', fzf_lua.files)
+  nmap('<c-k>', fzf_lua.oldfiles)
   nmap('<c-b>', fzf_lua.buffers)
+
   nmap('<c-t>', fzf_lua.lsp_live_workspace_symbols)
+  nmap('<leader>lo', fzf_lua.lsp_document_symbols)
+
   nmap('<leader><c-q>', fzf_lua.quickfix)
   nmap('<leader><c-l>', fzf_lua.loclist)
   nmap('<c-g>', fzf_lua.live_grep_resume) -- live_grep live_grep_native
