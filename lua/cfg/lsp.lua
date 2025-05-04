@@ -1,15 +1,13 @@
 local M = {}
 
 local function floats()
-  -- todo: see if opts can be passed directly to https://neovim.io/doc/user/lsp.html#vim.lsp.buf.hover%28%29
-
+  -- https://neovim.io/doc/user/lsp.html#vim.lsp.buf.hover%28%29
   -- https://neovim.io/doc/user/lsp.html#vim.lsp.util.open_floating_preview%28%29
   -- https://github.com/neovim/neovim/blob/master/runtime/lua/vim/lsp/util.lua
   local lsp = vim.lsp.util.open_floating_preview
   ---@diagnostic disable-next-line: duplicate-set-field
   function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
-    opts.border = opts.border or 'rounded'
     opts.max_height = opts.max_height or 20
     opts.max_width = opts.max_width or 80
     local bufnr, winnr = lsp(contents, syntax, opts, ...)
@@ -18,15 +16,6 @@ local function floats()
     vim.api.nvim_command [[ syntax match markdownLspHorizontalLine '─' conceal ]]
     vim.api.nvim_set_current_win(current)
     return bufnr, winnr
-  end
-
-  -- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.open_float%28%29
-  local diag = vim.diagnostic.open_float
-  ---@diagnostic disable-next-line: duplicate-set-field
-  function vim.diagnostic.open_float(opts, ...)
-    opts = opts or {}
-    opts.border = opts.border or 'rounded'
-    return diag(opts, ...)
   end
 end
 
