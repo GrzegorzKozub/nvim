@@ -70,10 +70,10 @@ local function tabs_fmt(name, context)
   local mod = vim.fn.getbufvar(bufnr, '&mod')
   if buftype == 'terminal' then
     name = 'term'
-  elseif filetype == 'TelescopePrompt' then
-    icon = icons.telescope.search
-    name = 'search'
-    mod = 0
+  -- elseif filetype == 'TelescopePrompt' then
+  --   icon = icons.telescope.search
+  --   name = 'search'
+  --   mod = 0
   elseif filetype == 'checkhealth' then
     name = 'checkhealth'
   elseif filetype == 'qf' then

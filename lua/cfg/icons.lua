@@ -61,7 +61,7 @@ function M.get()
     },
     qf = '󱖫',
     package = { disabled = '○', enabled = '●', pending = '▶' },
-    telescope = { marker = '•', pointer = ' ● ', prompt = ' ●• ', search = '' },
+    -- telescope = { marker = '•', pointer = ' ● ', prompt = ' ●• ', search = '' },
     treesitter_context = { separator = '─' },
     -- trouble = '󱖫',
     truncated = '󰇘',
