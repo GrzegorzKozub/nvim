@@ -190,6 +190,7 @@ local function custom_colors()
 
       vim.fn[hi]('FzfLuaFzfBorder', palette.bg3, palette.none) -- or bg5
       vim.fn[hi]('FzfLuaFzfCursorLine', palette.grey1, palette.bg3) -- match cmp
+      vim.fn[hi]('FzfLuaFzfInfo', palette.bg3, palette.none)
       vim.fn[hi]('FzfLuaFzfMatch', palette.yellow, palette.none)
       vim.fn[hi]('FzfLuaFzfNormal', palette.grey1, palette.none)
       vim.fn[hi]('FzfLuaFzfPrompt', palette.dim_purple, palette.none)

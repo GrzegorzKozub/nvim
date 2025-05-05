@@ -1,5 +1,27 @@
 local M = {}
 
+local function git_log()
+  return "git log --color \z
+    --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'"
+end
+
+local function git_icons()
+  local icons = require('cfg.icons').get().git
+  local added = { color = 'green', icon = icons.added }
+  local modified = { color = 'blue', icon = icons.modified }
+  local removed = { color = 'red', icon = icons.removed }
+  local untracked = { color = 'yellow', icon = icons.untracked }
+  return {
+    ['M'] = modified,
+    ['D'] = removed,
+    ['A'] = added,
+    ['R'] = modified,
+    ['C'] = modified,
+    ['T'] = modified,
+    ['?'] = untracked,
+  }
+end
+
 function M.config()
   local fzf_lua_loaded, fzf_lua = pcall(require, 'fzf-lua')
   if not fzf_lua_loaded then
@@ -30,6 +52,7 @@ function M.config()
         ['<m-f>'] = 'toggle-fullscreen',
         ['<m-/>'] = 'toggle-help',
       },
+      fzf = { ['alt-p'] = 'toggle-preview', ['alt-w'] = 'toggle-preview-wrap' },
     },
     fzf_opts = {
       ['--info'] = false,
@@ -47,9 +70,16 @@ function M.config()
       ['prompt'] = { 'fg', 'FzfLuaFzfPrompt' },
       ['pointer'] = { 'fg', 'FzfLuaFzfPrompt' },
       ['marker'] = { 'fg', 'FzfLuaFzfPrompt' },
+      ['info'] = { 'fg', 'FzfLuaFzfInfo' },
     },
     defaults = { color_icons = false },
-    files = { cwd_prompt = false },
+    files = { cwd_prompt = false, git_icons = true },
+    oldfiles = { include_current_session = true },
+    git = {
+      commits = { cmd = git_log() },
+      bcommits = { cmd = git_log() .. ' {file}' },
+      icons = git_icons(),
+    },
   }
 
   local nmap = require('cfg.util').nmap
@@ -58,21 +88,23 @@ function M.config()
   nmap('<c-k>', fzf_lua.oldfiles)
   nmap('<c-b>', fzf_lua.buffers)
 
+  nmap('<c-g>', fzf_lua.live_grep_resume) -- todo: colors
+
+  nmap('<leader>gs', fzf_lua.git_status)
+  nmap('<leader>gl', fzf_lua.git_commits)
+  nmap('<leader>gL', fzf_lua.git_bcommits)
+
+  -- todo
+
   nmap('<c-t>', fzf_lua.lsp_live_workspace_symbols)
   nmap('<leader>lo', fzf_lua.lsp_document_symbols)
 
   nmap('<leader><c-q>', fzf_lua.quickfix)
   nmap('<leader><c-l>', fzf_lua.loclist)
-  nmap('<c-g>', fzf_lua.live_grep_resume) -- live_grep live_grep_native
 
-  -- git_status git_commits
-  -- lsp_...
   -- spell_suggest
-  --
   -- builtin
-  --
   --command_history search_history
-
   -- nmap('<c-s-r>', fzf_lua.resume)
 end
 
