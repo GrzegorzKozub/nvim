@@ -73,7 +73,7 @@ function M.config()
       ['info'] = { 'fg', 'FzfLuaFzfInfo' },
     },
     defaults = { color_icons = false },
-    files = { cwd_prompt = false, git_icons = true },
+    files = { cwd_prompt = false },
     oldfiles = { include_current_session = true },
     git = {
       commits = { cmd = git_log() },
