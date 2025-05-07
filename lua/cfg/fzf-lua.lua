@@ -5,23 +5,6 @@ local function git_log()
     --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'"
 end
 
-local function git_icons()
-  local icons = require('cfg.icons').get().git
-  local added = { color = 'green', icon = icons.added }
-  local modified = { color = 'blue', icon = icons.modified }
-  local removed = { color = 'red', icon = icons.removed }
-  local untracked = { color = 'yellow', icon = icons.untracked }
-  return {
-    ['M'] = modified,
-    ['D'] = removed,
-    ['A'] = added,
-    ['R'] = modified,
-    ['C'] = modified,
-    ['T'] = modified,
-    ['?'] = untracked,
-  }
-end
-
 function M.config()
   local fzf_lua_loaded, fzf_lua = pcall(require, 'fzf-lua')
   if not fzf_lua_loaded then
@@ -78,7 +61,6 @@ function M.config()
     git = {
       commits = { cmd = git_log() },
       bcommits = { cmd = git_log() .. ' {file}' },
-      icons = git_icons(),
     },
   }
 
@@ -90,9 +72,8 @@ function M.config()
 
   nmap('<c-g>', fzf_lua.live_grep_resume) -- todo: colors
 
-  nmap('<leader>gs', fzf_lua.git_status)
-  nmap('<leader>gl', fzf_lua.git_commits)
-  nmap('<leader>gL', fzf_lua.git_bcommits)
+  nmap('<leader>gl', fzf_lua.git_bcommits)
+  nmap('<leader>gL', fzf_lua.git_commits)
 
   -- todo
 
