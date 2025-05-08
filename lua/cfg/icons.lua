@@ -62,7 +62,6 @@ function M.get()
     qf = '󱖫',
     package = { disabled = '○', enabled = '●', pending = '▶' },
     treesitter_context = { separator = '─' },
-    -- trouble = '󱖫',
     truncated = '󰇘',
   }
 end

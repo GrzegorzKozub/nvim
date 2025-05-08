@@ -26,7 +26,6 @@ local function keys(bufnr)
   nmap('gD', vim.lsp.buf.declaration, bufnr)
   nmap('gi', vim.lsp.buf.implementation, bufnr) -- default: gri
   nmap('gr', vim.lsp.buf.references, bufnr) -- default: grr
-  -- nmap('gr', '<cmd>Trouble lsp<cr>')
   nmap('gt', vim.lsp.buf.type_definition, bufnr)
 
   nmap('<leader>lh', vim.lsp.buf.hover, bufnr) -- default: K
@@ -51,10 +50,6 @@ local function keys(bufnr)
   nmap('<leader>dq', vim.diagnostic.setqflist, bufnr)
 
   -- [d ]d - navigate through diagnostics
-
-  -- nmap('<leader>tl', '<cmd>Trouble lsp toggle<cr>')
-  -- nmap('<leader>ts', '<cmd>Trouble symbols toggle<cr>')
-  -- nmap('<leader>td', '<cmd>Trouble diagnostics toggle<cr>')
 end
 
 local highlight_timers = {}
