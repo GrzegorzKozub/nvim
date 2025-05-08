@@ -20,7 +20,7 @@ local servers = {
 if vim.fn.has 'win32' == 0 then
   add(servers, { 'bashls' })
 else
-  add(servers, { 'ahk', 'powershell_es' })
+  add(servers, { 'powershell_es' })
 end
 
 return servers
