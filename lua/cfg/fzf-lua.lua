@@ -1,15 +1,32 @@
 local M = {}
 
-local function git_log()
-  return "git log --color \z
-    --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'"
-end
-
 function M.config()
   local fzf_lua_loaded, fzf_lua = pcall(require, 'fzf-lua')
   if not fzf_lua_loaded then
     return
   end
+
+  -- todo: cleanup and add more from rg config file
+  -- from telescope:
+  -- '--color=never',
+  -- '--no-heading',
+  -- '--with-filename',
+  -- '--line-number',
+  -- '--column',
+  -- '--smart-case',
+  -- '--trim',
+  -- '--context=0',
+  -- '--field-match-separator=:',
+  local rg_opts = '--column \z
+--line-number \z
+--no-heading \z
+--color=always \z
+--smart-case \z
+--max-columns=4096 \z
+-e'
+
+  local git_log = "git log --color \z
+--format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'"
 
   fzf_lua.setup {
     'hide',
@@ -58,9 +75,10 @@ function M.config()
     defaults = { color_icons = false },
     files = { cwd_prompt = false },
     oldfiles = { include_current_session = true },
+    grep = { hidden = true, rg_opts = rg_opts },
     git = {
-      commits = { cmd = git_log() },
-      bcommits = { cmd = git_log() .. ' {file}' },
+      commits = { cmd = git_log },
+      bcommits = { cmd = git_log .. ' {file}' },
     },
   }
 
@@ -70,10 +88,15 @@ function M.config()
   nmap('<c-k>', fzf_lua.oldfiles)
   nmap('<c-b>', fzf_lua.buffers)
 
-  nmap('<c-g>', fzf_lua.live_grep_resume) -- todo: colors
+  nmap('<c-g>', fzf_lua.live_grep_resume)
 
-  nmap('<leader>gl', fzf_lua.git_bcommits)
-  nmap('<leader>gL', fzf_lua.git_commits)
+  local show_preview = { winopts = { preview = { hidden = false } } }
+  nmap('<leader>gl', function()
+    fzf_lua.git_bcommits(show_preview)
+  end)
+  nmap('<leader>gL', function()
+    fzf_lua.git_commits(show_preview)
+  end)
 
   -- todo
 
@@ -87,17 +110,6 @@ function M.config()
   -- builtin
   --command_history search_history
   -- nmap('<c-s-r>', fzf_lua.resume)
-  --        'rg',
-  -- '--color=never',
-  -- '--no-heading',
-  -- '--with-filename',
-  -- '--line-number',
-  -- '--column',
-  -- '--smart-case',
-  -- '--trim',
-  -- -- reset options set in ripgreprc for telescope compatibility
-  -- '--context=0',
-  -- '--field-match-separator=:',
 end
 
 return M
