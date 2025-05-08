@@ -87,6 +87,17 @@ function M.config()
   -- builtin
   --command_history search_history
   -- nmap('<c-s-r>', fzf_lua.resume)
+  --        'rg',
+  -- '--color=never',
+  -- '--no-heading',
+  -- '--with-filename',
+  -- '--line-number',
+  -- '--column',
+  -- '--smart-case',
+  -- '--trim',
+  -- -- reset options set in ripgreprc for telescope compatibility
+  -- '--context=0',
+  -- '--field-match-separator=:',
 end
 
 return M

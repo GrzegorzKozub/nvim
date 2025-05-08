@@ -266,20 +266,6 @@ local function custom_colors()
       spell 'Local'
       spell 'Rare'
 
-      -- telescope
-      -- vim.fn[hi]('TelescopeBorder', palette.bg3, palette.none) -- or bg5
-      -- vim.fn[hi]('TelescopeMatching', palette.yellow, palette.none)
-      -- vim.fn[hi]('TelescopeMultiIcon', palette.dim_purple, palette.none)
-      -- vim.fn[hi]('TelescopeMultiSelection', palette.fg0, palette.none)
-      -- vim.fn[hi]('TelescopePromptPrefix', palette.dim_purple, palette.none)
-      -- vim.fn[hi]('TelescopeResultsDiffAdd', palette.dim_green, palette.none)
-      -- vim.fn[hi]('TelescopeResultsDiffChange', palette.dim_blue, palette.none)
-      -- vim.fn[hi]('TelescopeResultsDiffDelete', palette.dim_red, palette.none)
-      -- vim.fn[hi]('TelescopeResultsDiffUntracked', palette.grey2, palette.none)
-      -- vim.fn[hi]('TelescopeResultsNormal', palette.grey1, palette.none)
-      -- vim.fn[hi]('TelescopeSelection', palette.grey1, palette.bg3) -- match cmp
-      -- vim.fn[hi]('TelescopeSelectionCaret', palette.dim_purple, palette.bg3)
-
       -- treesitter-context
       vim.fn[hi]('TreesitterContextSeparator', palette.bg1, palette.none)
 
