@@ -76,6 +76,16 @@ local function get_palette()
   )
 end
 
+local function rgb(hex)
+  hex = hex:gsub('#', '')
+  return string.format(
+    '%i,%i,%i',
+    tonumber(hex:sub(1, 2), 16),
+    tonumber(hex:sub(3, 4), 16),
+    tonumber(hex:sub(5, 6), 16)
+  )
+end
+
 local function custom_colors()
   vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'gruvbox-material',
@@ -176,6 +186,8 @@ local function custom_colors()
 
       -- fzf-lua
 
+      vim.fn[hi]('FzfLuaNormal', palette.grey1, palette.none) -- also fuzzy matches
+
       vim.fn[hi]('FzfLuaBorder', palette.bg3, palette.none) -- or bg5
       vim.fn[hi]('FzfLuaTitle', palette.bg3, palette.none) -- or bg5
 
@@ -183,11 +195,10 @@ local function custom_colors()
       vim.fn[hi]('FzfLuaHeaderText', palette.grey1, palette.none)
 
       vim.fn[hi]('FzfLuaLivePrompt', palette.fg0, palette.none)
-      -- vim.fn[hi]('FzfLuaLiveSym', palette.yellow, palette.none)
 
       vim.fn[hi]('FzfLuaBufFlagAlt', palette.dim_blue, palette.none)
       vim.fn[hi]('FzfLuaBufFlagCur', palette.dim_blue, palette.none)
-      vim.fn[hi]('FzfLuaBufNr', palette.fg0, palette.none)
+      vim.fn[hi]('FzfLuaBufNr', palette.dim_blue, palette.none)
 
       vim.fn[hi]('FzfLuaPathColNr', palette.bg5, palette.none)
       vim.fn[hi]('FzfLuaPathLineNr', palette.bg5, palette.none)
@@ -349,6 +360,17 @@ end
 function M.default_icon_color()
   -- nvim-web-devicons
   return get_palette().fg0
+end
+
+function M.ripgrep()
+  -- fzf-lua
+  local palette = get_palette()
+  return {
+    column = rgb(palette.bg5[1]),
+    line = rgb(palette.bg5[1]),
+    match = rgb(palette.yellow[1]),
+    path = rgb(palette.grey1[1]),
+  }
 end
 
 -- override colors set by themes via $VIMRUNTIME/after/syntax

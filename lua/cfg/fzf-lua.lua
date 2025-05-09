@@ -6,24 +6,21 @@ function M.config()
     return
   end
 
-  -- todo: cleanup and add more from rg config file
-  -- from telescope:
-  -- '--color=never',
-  -- '--no-heading',
-  -- '--with-filename',
-  -- '--line-number',
-  -- '--column',
-  -- '--smart-case',
-  -- '--trim',
-  -- '--context=0',
-  -- '--field-match-separator=:',
-  local rg_opts = '--column \z
---line-number \z
---no-heading \z
+  --colors=line:style:intense \z
+  local rg_colors = require('cfg.gruvbox-material').ripgrep()
+  local rg_opts = string.format(
+    '\z
 --color=always \z
---smart-case \z
---max-columns=4096 \z
--e'
+--colors=column:fg:%s --colors=line:fg:%s --colors=match:fg:%s --colors=path:fg:%s \z
+--colors=match:style:nobold \z
+--column --line-number --no-heading --trim \z
+--glob=!**/.git/* --glob=!**/node_modules/* \z
+--smart-case',
+    rg_colors.column,
+    rg_colors.line,
+    rg_colors.match,
+    rg_colors.path
+  )
 
   local git_log = "git log --color \z
 --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'"
@@ -108,8 +105,6 @@ function M.config()
 
   -- spell_suggest
   -- builtin
-  --command_history search_history
-  -- nmap('<c-s-r>', fzf_lua.resume)
 end
 
 return M
