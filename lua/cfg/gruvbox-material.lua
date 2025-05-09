@@ -76,16 +76,6 @@ local function get_palette()
   )
 end
 
-local function rgb(hex)
-  hex = hex:gsub('#', '')
-  return string.format(
-    '%i,%i,%i',
-    tonumber(hex:sub(1, 2), 16),
-    tonumber(hex:sub(3, 4), 16),
-    tonumber(hex:sub(5, 6), 16)
-  )
-end
-
 local function custom_colors()
   vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'gruvbox-material',
@@ -366,10 +356,10 @@ function M.ripgrep()
   -- fzf-lua
   local palette = get_palette()
   return {
-    column = rgb(palette.bg5[1]),
-    line = rgb(palette.bg5[1]),
-    match = rgb(palette.yellow[1]),
-    path = rgb(palette.grey1[1]),
+    column = palette.bg5[1],
+    line = palette.bg5[1],
+    match = palette.yellow[1],
+    path = palette.grey1[1],
   }
 end
 

@@ -1,12 +1,21 @@
 local M = {}
 
+local function rgb(hex)
+  hex = hex:gsub('#', '')
+  return string.format(
+    '%i,%i,%i',
+    tonumber(hex:sub(1, 2), 16),
+    tonumber(hex:sub(3, 4), 16),
+    tonumber(hex:sub(5, 6), 16)
+  )
+end
+
 function M.config()
   local fzf_lua_loaded, fzf_lua = pcall(require, 'fzf-lua')
   if not fzf_lua_loaded then
     return
   end
 
-  --colors=line:style:intense \z
   local rg_colors = require('cfg.gruvbox-material').ripgrep()
   local rg_opts = string.format(
     '\z
@@ -16,10 +25,10 @@ function M.config()
 --column --line-number --no-heading --trim \z
 --glob=!**/.git/* --glob=!**/node_modules/* \z
 --smart-case',
-    rg_colors.column,
-    rg_colors.line,
-    rg_colors.match,
-    rg_colors.path
+    rgb(rg_colors.column),
+    rgb(rg_colors.line),
+    rgb(rg_colors.match),
+    rgb(rg_colors.path)
   )
 
   local git_log = "git log --color \z
@@ -95,16 +104,11 @@ function M.config()
     fzf_lua.git_commits(show_preview)
   end)
 
-  -- todo
+  nmap('<leader>S', function()
+    fzf_lua.spell_suggest { winopts = { height = 0.2, width = 0.4 } }
+  end)
 
-  nmap('<c-t>', fzf_lua.lsp_live_workspace_symbols)
-  nmap('<leader>lo', fzf_lua.lsp_document_symbols)
-
-  nmap('<leader><c-q>', fzf_lua.quickfix)
-  nmap('<leader><c-l>', fzf_lua.loclist)
-
-  -- spell_suggest
-  -- builtin
+  -- todo: quickfix, loclist, lsp_live_workspace_symbols, lsp_document_symbols, lsp...
 end
 
 return M
