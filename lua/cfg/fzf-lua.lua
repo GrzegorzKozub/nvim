@@ -1,5 +1,7 @@
 local M = {}
 
+local nmap = require('cfg.util').nmap
+
 local function rgb(hex)
   hex = hex:gsub('#', '')
   return string.format(
@@ -42,7 +44,6 @@ function M.config()
       backdrop = 0,
       border = 'none',
       preview = {
-        hidden = true,
         flip_columns = 80,
         horizontal = 'right:50%',
         vertical = 'down:50%',
@@ -88,7 +89,7 @@ function M.config()
     },
   }
 
-  local nmap = require('cfg.util').nmap
+  -- local hide_preview = { winopts = { preview = { hidden = true } } }
 
   nmap('<c-p>', fzf_lua.files)
   nmap('<c-k>', fzf_lua.oldfiles)
@@ -96,19 +97,34 @@ function M.config()
 
   nmap('<c-g>', fzf_lua.live_grep_resume)
 
-  local show_preview = { winopts = { preview = { hidden = false } } }
-  nmap('<leader>gl', function()
-    fzf_lua.git_bcommits(show_preview)
-  end)
-  nmap('<leader>gL', function()
-    fzf_lua.git_commits(show_preview)
-  end)
+  nmap('<leader>Q', fzf_lua.quickfix)
+  nmap('<leader>L', fzf_lua.loclist)
+
+  nmap('<leader>gl', fzf_lua.git_bcommits)
+  nmap('<leader>gL', fzf_lua.git_commits)
 
   nmap('<leader>S', function()
     fzf_lua.spell_suggest { winopts = { height = 0.2, width = 0.4 } }
   end)
+end
 
-  -- todo: quickfix, loclist, lsp_live_workspace_symbols, lsp_document_symbols, lsp...
+function M.lsp()
+  local fzf_lua = require 'fzf-lua'
+
+  nmap('gd', fzf_lua.lsp_definitions)
+  nmap('gD', fzf_lua.lsp_declarations)
+
+  nmap('gri', fzf_lua.lsp_implementations) -- overrides neovim default
+  nmap('grr', fzf_lua.lsp_references) -- overrides neovim default
+  nmap('grt', fzf_lua.lsp_typedefs)
+
+  nmap('gO', fzf_lua.lsp_document_symbols) -- overrides neovim default
+  nmap('<c-t>', fzf_lua.lsp_workspace_symbols)
+
+  nmap('<leader>d', fzf_lua.lsp_document_diagnostics)
+  nmap('<leader>D', fzf_lua.lsp_workspace_diagnostics)
+
+  nmap('gra', fzf_lua.lsp_code_actions) -- overrides neovim default
 end
 
 return M

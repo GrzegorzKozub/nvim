@@ -22,22 +22,17 @@ end
 local function keys(bufnr)
   local nmap = require('cfg.util').nmap
 
-  nmap('gd', vim.lsp.buf.definition, bufnr)
-  nmap('gD', vim.lsp.buf.declaration, bufnr)
-  nmap('gi', vim.lsp.buf.implementation, bufnr) -- default: gri
-  nmap('gr', vim.lsp.buf.references, bufnr) -- default: grr
-  nmap('gt', vim.lsp.buf.type_definition, bufnr)
-
-  nmap('<leader>lh', vim.lsp.buf.hover, bufnr) -- default: K
-  nmap('<leader>lr', vim.lsp.buf.rename, bufnr) -- default: grn
-  nmap('<leader>la', vim.lsp.buf.code_action, bufnr) -- default: gra
+  -- grn - rename symbol
 
   -- c-s - show signature help in insert mode
+  -- K - show hover
 
-  -- nmap('<leader>lo', vim.lsp.buf.document_symbol, bufnr) -- default: gO
+  nmap('H', vim.diagnostic.open_float, bufnr)
+
+  -- [d ]d - navigate through diagnostics
 
   if vim.lsp.inlay_hint then
-    nmap('<leader>li', function()
+    nmap('gi', function()
       vim.lsp.inlay_hint.enable(
         not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr },
         { bufnr = bufnr }
@@ -45,11 +40,7 @@ local function keys(bufnr)
     end, bufnr)
   end
 
-  nmap('<leader>dh', vim.diagnostic.open_float, bufnr)
-  nmap('<leader>dl', vim.diagnostic.setloclist, bufnr)
-  nmap('<leader>dq', vim.diagnostic.setqflist, bufnr)
-
-  -- [d ]d - navigate through diagnostics
+  require('cfg.fzf-lua').lsp()
 end
 
 local highlight_timers = {}

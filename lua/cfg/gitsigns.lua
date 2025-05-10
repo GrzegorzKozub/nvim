@@ -62,8 +62,6 @@ function M.config()
       nmap('<leader>hu', gs.undo_stage_hunk, bufnr)
       nmap('<leader>hr', gs.reset_hunk, bufnr)
 
-      nmap('<leader>gr', gs.reset_buffer_index, bufnr)
-
       nmap('<leader>gb', gs.toggle_current_line_blame, bufnr)
     end,
   }
