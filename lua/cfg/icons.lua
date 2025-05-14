@@ -13,6 +13,7 @@ function M.get()
       enum_member = '󱍶',
       event = '󰛕',
       field = '󰌖',
+      file = '󰈤',
       func = '󰊕',
       interface = '',
       keyword = '󰌆',

@@ -36,6 +36,36 @@ function M.config()
   local git_log = "git log --color \z
 --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'"
 
+  local icons = require('cfg.icons').get().dev
+  local symbol_icons = {
+    Array = icons.array,
+    Boolean = icons.boolean,
+    Class = icons.class,
+    Constant = icons.constant,
+    Constructor = icons.constructor,
+    Enum = icons.enum,
+    EnumMember = icons.enum_member,
+    Event = icons.event,
+    Field = icons.field,
+    File = icons.file,
+    Function = icons.func,
+    Interface = icons.interface,
+    Key = icons.keyword,
+    Method = icons.method,
+    Module = icons.module,
+    Namespace = icons.namespace,
+    Null = icons.null,
+    Number = icons.number,
+    Object = icons.object,
+    Operator = icons.operator,
+    Package = icons.package,
+    Property = icons.property,
+    String = icons.string,
+    Struct = icons.struct,
+    TypeParameter = icons.type_parameter,
+    Variable = icons.variable,
+  }
+
   fzf_lua.setup {
     'hide',
     winopts = {
@@ -90,6 +120,7 @@ function M.config()
     lsp = {
       symbols = {
         symbol_style = 2,
+        symbol_icons = symbol_icons,
         symbol_hl = false,
         symbol_fmt = function(s)
           return s
