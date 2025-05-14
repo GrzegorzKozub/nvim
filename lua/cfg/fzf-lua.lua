@@ -87,6 +87,15 @@ function M.config()
       commits = { cmd = git_log },
       bcommits = { cmd = git_log .. ' {file}' },
     },
+    lsp = {
+      symbols = {
+        symbol_style = 2,
+        symbol_hl = false,
+        symbol_fmt = function(s)
+          return s
+        end,
+      },
+    },
   }
 
   -- local hide_preview = { winopts = { preview = { hidden = true } } }

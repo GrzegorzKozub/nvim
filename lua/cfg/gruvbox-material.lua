@@ -185,6 +185,7 @@ local function custom_colors()
       vim.fn[hi]('FzfLuaHeaderText', palette.grey1, palette.none)
 
       vim.fn[hi]('FzfLuaLivePrompt', palette.fg0, palette.none)
+      vim.fn[hi]('FzfLuaLiveSym', palette.yellow, palette.none)
 
       vim.fn[hi]('FzfLuaBufFlagAlt', palette.dim_blue, palette.none)
       vim.fn[hi]('FzfLuaBufFlagCur', palette.dim_blue, palette.none)
