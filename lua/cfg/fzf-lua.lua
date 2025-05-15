@@ -126,8 +126,12 @@ function M.config()
           return s
         end,
       },
+      code_actions = { prompt = '●• ' },
     },
+    diagnostics = { fzf_opts = { ['--pointer'] = '▌' } },
   }
+
+  fzf_lua.register_ui_select() -- required when lazy-loaded
 
   -- local hide_preview = { winopts = { preview = { hidden = true } } }
 
@@ -136,6 +140,7 @@ function M.config()
   nmap('<c-b>', fzf_lua.buffers)
 
   nmap('<c-g>', fzf_lua.live_grep_resume)
+  nmap('<c-m>', fzf_lua.marks)
 
   nmap('<leader>Q', fzf_lua.quickfix)
   nmap('<leader>L', fzf_lua.loclist)

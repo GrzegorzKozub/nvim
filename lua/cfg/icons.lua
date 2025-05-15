@@ -36,21 +36,20 @@ function M.get()
       variable = '󰀫',
     },
     diag = {
-      error = '󰅙', -- ●
+      error = '', -- 󰅙 ●
       hint = '󰋼', -- ◆
       info = '󰋼', -- ◆
-      warning = '', -- ▲
+      warning = '', --  ▲
     },
     diff = { added = '+', modified = '~', removed = '-' },
     file = {
       dir = '󰉖',
       file = '󰈤',
-      modified = '●',
+      modified = '', -- ●
       readonly = '', -- ■
     },
     fold = {
       closed = '', -- ▶
-      -- guides = { last = '╰╴' },
       open = '', -- ▼
     },
     gitsigns = { changed = '│', git = '󰊢', staged = '┃' },
@@ -61,7 +60,7 @@ function M.get()
       trail = '•', -- ·
     },
     qf = '󱖫',
-    package = { disabled = '○', enabled = '●', pending = '▶' },
+    package = { disabled = '', enabled = '', pending = '▶' }, -- ○ 
     treesitter_context = { separator = '─' },
     truncated = '󰇘',
   }
