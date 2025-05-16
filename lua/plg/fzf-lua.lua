@@ -8,7 +8,7 @@ return {
     '<c-k>',
     '<c-b>',
     '<c-g>',
-    '<c-m>',
+    '<leader>m',
     '<leader>Q',
     '<leader>L',
     '<leader>gl',
