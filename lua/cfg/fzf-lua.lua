@@ -126,9 +126,8 @@ function M.config()
           return s
         end,
       },
-      code_actions = { prompt = '●• ' },
+      code_actions = { prompt = ' ' },
     },
-    diagnostics = { fzf_opts = { ['--pointer'] = '▌' } },
   }
 
   fzf_lua.register_ui_select() -- required when lazy-loaded
