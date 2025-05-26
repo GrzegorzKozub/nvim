@@ -1,6 +1,5 @@
 local M = {}
 
-local devicons = require 'cfg.web-devicons'
 local icons = require('cfg.icons').get()
 
 local function buffer()
@@ -52,21 +51,25 @@ local function filetype_fmt(filetype)
   if filetype == '' and vim.o.buftype ~= 'terminal' then
     return ''
   end
-  local icon = devicons.icon(0, filetype)
-  local name = vim.o.buftype == 'terminal' and 'term' or filetype:lower()
-  if filetype == 'qf' then
+  local icon = MiniIcons.get('filetype', filetype)
+  local name = filetype:lower()
+  if vim.o.buftype == 'terminal' then
+    icon = icons.terminal
+    name = 'term'
+  elseif filetype == 'qf' then
     icon = icons.qf
   end
-  return (icon == nil and '' or icon .. ' ') .. name
+  return icon .. ' ' .. name
 end
 
 local function tabs_fmt(name, context)
   local bufnr = vim.fn.tabpagebuflist(context.tabnr)[vim.fn.tabpagewinnr(context.tabnr)]
   local buftype = vim.fn.getbufvar(bufnr, '&buftype')
   local filetype = vim.fn.getbufvar(bufnr, '&filetype')
-  local icon = devicons.icon(bufnr, filetype)
+  local icon = MiniIcons.get('filetype', filetype)
   local mod = vim.fn.getbufvar(bufnr, '&mod')
   if buftype == 'terminal' then
+    icon = icons.terminal
     name = 'term'
   elseif filetype == 'checkhealth' then
     name = 'checkhealth'
@@ -74,6 +77,7 @@ local function tabs_fmt(name, context)
     icon = icons.qf
     name = 'qf'
   elseif name == '[No Name]' then
+    icon = MiniIcons.get('default', 'file')
     name = 'untitled'
   end
   return (icon == nil and '' or icon .. ' ')

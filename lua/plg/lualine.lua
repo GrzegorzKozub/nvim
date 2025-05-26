@@ -2,7 +2,7 @@ return {
   'nvim-lualine/lualine.nvim',
   config = require('cfg.lualine').config,
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
+    'echasnovski/mini.icons',
     'sainnhe/gruvbox-material',
   },
 }

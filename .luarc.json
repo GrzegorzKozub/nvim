@@ -1,7 +1,6 @@
 {
   "diagnostics": {
-    "globals": [
-      "vim"
-    ]
+    "globals": ["MiniIcons", "vim"]
   }
 }
+

@@ -109,7 +109,6 @@ function M.config()
       ['marker'] = { 'fg', 'FzfLuaFzfPrompt' },
       ['info'] = { 'fg', 'FzfLuaFzfInfo' },
     },
-    defaults = { file_icons = 'mini' }, -- possibly remove when nvim-web-devicons is uninstalled
     files = { cwd_prompt = false },
     oldfiles = { include_current_session = true },
     grep = { hidden = true, rg_opts = rg_opts },

@@ -239,6 +239,20 @@ local function custom_colors()
       vim.cmd.hi('link', '@markup.link.label', 'Purple')
       vim.cmd.hi('link', '@markup.link.text', 'Blue')
 
+      -- mini-icons
+
+      -- MiniIconsAzure
+      -- MiniIconsBlue
+      -- MiniIconsCyan
+      -- MiniIconsGreen
+      -- MiniIconsGrey
+      -- MiniIconsOrange
+      -- MiniIconsPurple
+      -- MiniIconsRed
+      -- MiniIconsYellow
+
+      vim.fn[hi]('MiniIconsFile', palette.fg0, palette.none) -- custom
+
       -- punctuation
 
       vim.fn[hi]('Delimiter', palette.grey2, palette.none)
@@ -346,11 +360,6 @@ function M.lualine_theme()
   end
 
   return theme
-end
-
-function M.default_icon_color()
-  -- nvim-web-devicons
-  return get_palette().fg0
 end
 
 function M.ripgrep()
