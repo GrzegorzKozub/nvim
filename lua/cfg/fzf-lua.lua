@@ -120,7 +120,7 @@ function M.config()
       symbols = {
         symbol_style = 2,
         symbol_icons = symbol_icons,
-        symbol_hl = false,
+        -- symbol_hl = false,
         symbol_fmt = function(s)
           return s
         end,
