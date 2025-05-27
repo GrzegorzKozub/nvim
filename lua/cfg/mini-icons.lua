@@ -6,11 +6,10 @@ function M.config()
     return
   end
 
-  local icon = require('cfg.icons').get().file.file
+  local default = { glyph = require('cfg.icons').get().file.file }
+
   mini_icons.setup {
-    default = {
-      file = { glyph = icon, hl = 'MiniIconsFile' },
-    },
+    default = { directory = default, extension = default, file = default, filetype = default },
   }
 end
 

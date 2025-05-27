@@ -3,7 +3,7 @@
 local M = {}
 
 function M.kinds()
-  local icons = require('cfg.icons').get().dev
+  local icons = require('cfg.icons').get().lsp
   return {
     Class = icons.class,
     Color = icons.color,
@@ -15,7 +15,7 @@ function M.kinds()
     Field = icons.field,
     File = icons.file,
     Folder = icons.file.dir,
-    Function = icons.func,
+    Function = icons['function'],
     Interface = icons.interface,
     Keyword = icons.keyword,
     Method = icons.method,

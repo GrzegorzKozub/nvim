@@ -241,17 +241,16 @@ local function custom_colors()
 
       -- mini-icons
 
-      -- MiniIconsAzure
-      -- MiniIconsBlue
-      -- MiniIconsCyan
-      -- MiniIconsGreen
-      -- MiniIconsGrey
-      -- MiniIconsOrange
-      -- MiniIconsPurple
-      -- MiniIconsRed
-      -- MiniIconsYellow
+      vim.fn[hi]('MiniIconsGrey', palette.grey2, palette.none)
 
-      vim.fn[hi]('MiniIconsFile', palette.fg0, palette.none) -- custom
+      vim.fn[hi]('MiniIconsAzure', palette.dim_blue, palette.none)
+      vim.fn[hi]('MiniIconsBlue', palette.dim_blue, palette.none)
+      vim.fn[hi]('MiniIconsCyan', palette.dim_aqua, palette.none)
+      vim.fn[hi]('MiniIconsGreen', palette.dim_green, palette.none)
+      vim.fn[hi]('MiniIconsOrange', palette.dim_orange, palette.none)
+      vim.fn[hi]('MiniIconsPurple', palette.dim_purple, palette.none)
+      vim.fn[hi]('MiniIconsRed', palette.dim_red, palette.none)
+      vim.fn[hi]('MiniIconsYellow', palette.dim_yellow, palette.none)
 
       -- punctuation
 

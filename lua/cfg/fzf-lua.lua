@@ -36,7 +36,7 @@ function M.config()
   local git_log = "git log --color \z
 --format=format:'%C(yellow)%h %C(auto)%s %C(cyan)%an %C(brightblack)%ar %C(auto)%D%C(reset)'"
 
-  local icons = require('cfg.icons').get().dev
+  local icons = require('cfg.icons').get().lsp
   local symbol_icons = {
     Array = icons.array,
     Boolean = icons.boolean,
@@ -48,9 +48,9 @@ function M.config()
     Event = icons.event,
     Field = icons.field,
     File = icons.file,
-    Function = icons.func,
+    Function = icons['function'],
     Interface = icons.interface,
-    Key = icons.keyword,
+    Key = icons.key,
     Method = icons.method,
     Module = icons.module,
     Namespace = icons.namespace,
