@@ -15,7 +15,7 @@ function M.config()
     -- TODO: words
     styles = {
       snacks_image = { border = 'none', row = 2, col = 2 },
-      input = { width = 0, relative = 'cursor', row = 2, col = 2 },
+      input = { width = 32, relative = 'cursor', row = 2, col = 2 },
     },
   }
 end
