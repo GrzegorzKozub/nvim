@@ -6,7 +6,18 @@ function M.config()
     return
   end
 
-  snacks.setup()
+  snacks.setup {
+    image = { doc = { inline = false, max_width = 64, max_height = 32 } },
+    input = { icon = '' },
+    -- TODO: notifier
+    -- TODO: picker
+    scroll = { enabled = true },
+    -- TODO: words
+    styles = {
+      snacks_image = { border = 'none', row = 2, col = 2 },
+      input = { width = 0, relative = 'cursor', row = 2, col = 2 },
+    },
+  }
 end
 
 return M
