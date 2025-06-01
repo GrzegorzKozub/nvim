@@ -127,6 +127,7 @@ function M.config()
       },
       code_actions = { prompt = ' ' },
     },
+    marks = { marks = '%a' },
   }
 
   fzf_lua.register_ui_select() -- required when lazy-loaded
