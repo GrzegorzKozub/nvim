@@ -270,12 +270,6 @@ local function custom_colors()
       vim.fn[hi]('RedSign', palette.dim_red, palette.none)
       vim.fn[hi]('YellowSign', palette.dim_yellow, palette.none)
 
-      -- snacks
-
-      vim.fn[hi]('SnacksInputBorder', palette.bg3, palette.none)
-      vim.fn[hi]('SnacksInputNormal', palette.fg0, palette.none)
-      vim.fn[hi]('SnacksInputTitle', palette.bg3, palette.none)
-
       -- spell
 
       local function spell(kind)
