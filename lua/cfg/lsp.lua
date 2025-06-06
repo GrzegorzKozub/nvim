@@ -96,6 +96,13 @@ local function highlight(client, bufnr)
   highlight_on_key_start()
 end
 
+function _G.my_lsp_foldtext()
+  return vim.opt.fillchars:get().foldclose
+    .. ' '
+    .. vim.fn.getline(vim.v.foldstart):gsub('^%s+', '')
+    .. ' ...'
+end
+
 function M.config()
   floats()
 
@@ -113,8 +120,8 @@ function M.config()
       if client:supports_method 'textDocument/foldingRange' then
         local win = vim.api.nvim_get_current_win()
         vim.opt.foldmethod = 'expr'
-        vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
-        vim.wo[win][0].foldtext = 'v:lua.vim.lsp.foldtext()'
+        vim.wo[win][0].foldexpr = 'nvim_treesitter#foldexpr()'
+        vim.wo[win][0].foldtext = 'v:lua.my_lsp_foldtext()' -- 'v:lua.vim.lsp.foldtext()'
       end
 
       keys(args.buf)
