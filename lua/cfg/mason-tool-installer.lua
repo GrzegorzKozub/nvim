@@ -9,6 +9,7 @@ local servers = {
   -- 'elixir-ls',
   'eslint-lsp',
   'gopls',
+  'harper-ls',
   'json-lsp',
   'lua-language-server',
   'pyright',
