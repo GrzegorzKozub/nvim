@@ -29,10 +29,11 @@ function M.config()
     formatters_by_ft = formatters,
   }
 
-  -- how to apply this only for jsonc?
-  -- require('conform').formatters.prettier = {
-  --   prepend_args = { '--trailing-comma', 'none' },
-  -- }
+  require('conform').formatters.prettier = {
+    prepend_args = function()
+      return vim.o.filetype == 'jsonc' and { '--trailing-comma', 'none' } or {}
+    end,
+  }
 
   require('cfg.util').nmap('<leader>f', function()
     conform.format { async = true }
