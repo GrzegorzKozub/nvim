@@ -140,15 +140,15 @@ local function custom_colors()
 
       -- cmp
 
-      vim.fn[hi]('CmpItemAbbr', palette.grey1, palette.none)
-      vim.fn[hi]('CmpItemAbbrDeprecated', palette.grey0, palette.none, 'strikethrough')
-      vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
-      vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.dim_yellow, palette.none)
-      vim.fn[hi]('CmpItemMenu', palette.grey1, palette.none)
-
-      for kind, _ in pairs(require('cfg.cmp').kinds()) do
-        vim.fn[hi]('CmpItemKind' .. kind, palette.bg5, palette.none)
-      end
+      -- vim.fn[hi]('CmpItemAbbr', palette.grey1, palette.none)
+      -- vim.fn[hi]('CmpItemAbbrDeprecated', palette.grey0, palette.none, 'strikethrough')
+      -- vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
+      -- vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.dim_yellow, palette.none)
+      -- vim.fn[hi]('CmpItemMenu', palette.grey1, palette.none)
+      --
+      -- for kind, _ in pairs(require('cfg.cmp').kinds()) do
+      --   vim.fn[hi]('CmpItemKind' .. kind, palette.bg5, palette.none)
+      -- end
 
       -- diagnostic
 
