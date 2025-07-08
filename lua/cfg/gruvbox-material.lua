@@ -126,7 +126,7 @@ local function custom_colors()
       vim.fn[hi]('PmenuMatchSel', palette.yellow, palette.bg3, 'NONE')
 
       vim.fn[hi]('PmenuSbar', palette.none, palette.bg1)
-      vim.fn[hi]('PmenuThumb', palette.none, palette.bg3)
+      vim.fn[hi]('PmenuThumb', palette.none, palette.bg3) -- or bg5
 
       vim.fn[hi]('StatusLine', palette.grey0, palette.none)
       vim.fn[hi]('StatusLineNC', palette.bg0, palette.none)
@@ -140,7 +140,10 @@ local function custom_colors()
 
       -- blink
 
+      vim.fn[hi]('BlinkCmpMenu', palette.grey1, palette.none)
       vim.fn[hi]('BlinkCmpMenuBorder', palette.bg3, palette.none) -- or bg5
+      vim.fn[hi]('BlinkCmpMenuSelection', palette.grey1, palette.bg3)
+      vim.fn[hi]('BlinkCmpLabelDeprecated', palette.grey1, palette.bg1, 'strikethrough')
 
       -- cmp
 
