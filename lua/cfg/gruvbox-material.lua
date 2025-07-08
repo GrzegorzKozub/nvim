@@ -138,6 +138,10 @@ local function custom_colors()
 
       vim.fn[hi]('WildMenu', palette.fg0, palette.none)
 
+      -- blink
+
+      vim.fn[hi]('BlinkCmpMenuBorder', palette.bg3, palette.none) -- or bg5
+
       -- cmp
 
       -- vim.fn[hi]('CmpItemAbbr', palette.grey1, palette.none)
