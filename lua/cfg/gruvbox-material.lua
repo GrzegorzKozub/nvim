@@ -142,8 +142,10 @@ local function custom_colors()
 
       vim.fn[hi]('BlinkCmpMenu', palette.grey1, palette.none)
       vim.fn[hi]('BlinkCmpMenuBorder', palette.bg3, palette.none) -- or bg5
-      vim.fn[hi]('BlinkCmpMenuSelection', palette.grey1, palette.bg3)
       vim.fn[hi]('BlinkCmpLabelDeprecated', palette.grey1, palette.bg1, 'strikethrough')
+      vim.fn[hi]('BlinkCmpLabelMatch', palette.yellow, palette.none)
+      vim.fn[hi]('BlinkCmpLabelDetail', palette.red, palette.none) -- flag
+      -- resume from kind
 
       -- cmp
 
