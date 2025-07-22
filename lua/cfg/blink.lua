@@ -15,8 +15,8 @@ function M.config()
         border = 'rounded',
         draw = {
           -- columns = {
-          -- { 'label', 'label_description', gap = 1 },
-          -- { 'kind_icon', 'kind' },
+          --   { 'source_name', 'label', 'label_description', gap = 1 },
+          --   { 'kind_icon', 'kind', gap = 1 },
           -- },
           components = {
             kind_icon = {
@@ -43,7 +43,7 @@ function M.config()
         auto_show_delay_ms = 500,
         window = { border = 'rounded' },
       },
-      ghost_text = { enabled = true },
+      -- ghost_text = { enabled = true },
     },
     -- signature = { window = { border = 'single' } },
     signature = { enabled = true },

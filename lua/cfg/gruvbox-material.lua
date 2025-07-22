@@ -142,10 +142,27 @@ local function custom_colors()
 
       vim.fn[hi]('BlinkCmpMenu', palette.grey1, palette.none)
       vim.fn[hi]('BlinkCmpMenuBorder', palette.bg3, palette.none) -- or bg5
+      vim.fn[hi]('BlinkCmpMenuSelection', palette.none, palette.bg3)
+
+      vim.fn[hi]('BlinkCmpScrollBarGutter', palette.red, palette.red) -- flag
+      vim.fn[hi]('BlinkCmpScrollBarThumb', palette.none, palette.bg3) -- or bg5
+
+      vim.fn[hi]('BlinkCmpLabel', palette.grey1, palette.none)
       vim.fn[hi]('BlinkCmpLabelDeprecated', palette.grey1, palette.bg1, 'strikethrough')
+      vim.fn[hi]('BlinkCmpLabelDescription', palette.grey0, palette.none)
+      vim.fn[hi]('BlinkCmpLabelDetail', palette.red, palette.red) -- flag
       vim.fn[hi]('BlinkCmpLabelMatch', palette.yellow, palette.none)
-      vim.fn[hi]('BlinkCmpLabelDetail', palette.red, palette.none) -- flag
-      -- resume from kind
+
+      vim.fn[hi]('BlinkCmpGhostText', palette.bg5, palette.none)
+
+      vim.fn[hi]('BlinkCmpDoc', palette.fg0, palette.none)
+      vim.fn[hi]('BlinkCmpDocBorder', palette.bg3, palette.none) -- or bg5
+      vim.fn[hi]('BlinkCmpDocCursorLine', palette.none, palette.red) -- flag
+      vim.fn[hi]('BlinkCmpDocSeparator', palette.bg3, palette.none) -- or bg5
+
+      vim.fn[hi]('BlinkCmpSignatureHelp', palette.fg0, palette.none)
+      vim.fn[hi]('BlinkCmpSignatureHelpActiveParameter', palette.none, palette.bg5) -- match LspSignatureActiveParameter
+      vim.fn[hi]('BlinkCmpSignatureHelpBorder', palette.bg3, palette.none) -- or bg5
 
       -- cmp
 
@@ -237,6 +254,8 @@ local function custom_colors()
       -- vim.fn[hi]('LspReferenceText', palette.none, palette.bg3)
 
       vim.fn[hi]('LspReferenceWrite', palette.none, palette.bg5)
+
+      vim.fn[hi]('LspSignatureActiveParameter', palette.none, palette.bg5)
 
       vim.fn[hi]('LspInfoBorder', palette.fg0, palette.none)
       vim.fn[hi]('LspInlayHint', palette.bg5, palette.none)
