@@ -6,10 +6,13 @@ function M.config()
     return
   end
 
-  -- resume from https://main.cmp.saghen.dev/configuration/appearance.html
   -- todo: enter & tab to accept, mini.icons cleanup, defaults removal
+  -- c-e cancels the preview - want escape do do that as well
   blink.setup {
-    -- keymap = { preset = 'default' },
+    keymap = {
+      preset = 'default',
+      ['<Esc>'] = { 'cancel', 'fallback' }
+    },
     completion = {
       menu = {
         border = 'rounded',

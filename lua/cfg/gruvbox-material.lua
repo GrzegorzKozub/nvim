@@ -144,14 +144,14 @@ local function custom_colors()
       vim.fn[hi]('BlinkCmpMenuBorder', palette.bg3, palette.none) -- or bg5
       vim.fn[hi]('BlinkCmpMenuSelection', palette.none, palette.bg3)
 
-      vim.fn[hi]('BlinkCmpScrollBarGutter', palette.red, palette.red) -- flag
-      vim.fn[hi]('BlinkCmpScrollBarThumb', palette.none, palette.bg3) -- or bg5
-
       vim.fn[hi]('BlinkCmpLabel', palette.grey1, palette.none)
       vim.fn[hi]('BlinkCmpLabelDeprecated', palette.grey1, palette.bg1, 'strikethrough')
       vim.fn[hi]('BlinkCmpLabelDescription', palette.grey0, palette.none)
       vim.fn[hi]('BlinkCmpLabelDetail', palette.red, palette.red) -- flag
       vim.fn[hi]('BlinkCmpLabelMatch', palette.yellow, palette.none)
+
+      vim.fn[hi]('BlinkCmpScrollBarGutter', palette.red, palette.red) -- flag
+      vim.fn[hi]('BlinkCmpScrollBarThumb', palette.none, palette.bg3) -- or bg5
 
       vim.fn[hi]('BlinkCmpGhostText', palette.bg5, palette.none)
 
