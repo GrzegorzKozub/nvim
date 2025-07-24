@@ -6,21 +6,26 @@ function M.config()
     return
   end
 
-  -- todo: enter & tab to accept, mini.icons cleanup, defaults removal
-  -- c-e cancels the preview - want escape do do that as well
+  -- todo: resume from sources, cleanup mini.icons, go through reference
+
+  -- https://cmp.saghen.dev/configuration/reference.html
   blink.setup {
     keymap = {
-      preset = 'default',
-      ['<Esc>'] = { 'cancel', 'fallback' }
+      preset = 'default', -- https://cmp.saghen.dev/configuration/keymap#presets
+      ['<esc>'] = { 'cancel', 'fallback' },
+      ['<cr>'] = { 'select_and_accept', 'fallback' },
+      ['<tab>'] = { 'select_and_accept', 'fallback' },
+      ['<s-tab>'] = false,
+      ['<s-up>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<s-down>'] = { 'scroll_documentation_down', 'fallback' },
+      ['<c-b>'] = false,
+      ['<c-f>'] = false,
+      ['<c-s>'] = { 'show_signature', 'hide_signature', 'fallback' }, -- overrides neovim default
+      ['<c-k>'] = false,
     },
     completion = {
       menu = {
-        border = 'rounded',
         draw = {
-          -- columns = {
-          --   { 'source_name', 'label', 'label_description', gap = 1 },
-          --   { 'kind_icon', 'kind', gap = 1 },
-          -- },
           components = {
             kind_icon = {
               text = function(ctx)
@@ -41,18 +46,9 @@ function M.config()
           },
         },
       },
-      documentation = {
-        auto_show = true,
-        auto_show_delay_ms = 500,
-        window = { border = 'rounded' },
-      },
-      -- ghost_text = { enabled = true },
+      documentation = { auto_show = true },
     },
-    -- signature = { window = { border = 'single' } },
     signature = { enabled = true },
-    -- sources = {
-    --       default = { 'lsp', 'path', 'snippets', 'buffer' },
-    --     },
     sources = {
       providers = {
         path = {
@@ -61,6 +57,32 @@ function M.config()
               return vim.fn.getcwd()
             end,
           },
+        },
+      },
+    },
+    cmdline = {
+      keymap = {
+        preset = 'cmdline',
+        ['<esc>'] = {
+          'cancel',
+          function()
+            vim.api.nvim_feedkeys(
+              vim.api.nvim_replace_termcodes('<c-c>', true, false, true),
+              'c',
+              false
+            )
+          end,
+        },
+        ['<tab>'] = { 'show', 'accept' },
+        ['<s-tab>'] = false,
+        ['<up>'] = { 'select_prev', 'fallback' },
+        ['<down>'] = { 'select_next', 'fallback' },
+      },
+      completion = {
+        menu = {
+          auto_show = function()
+            return vim.fn.getcmdtype() == ':'
+          end,
         },
       },
     },

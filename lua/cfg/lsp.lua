@@ -26,6 +26,7 @@ local function keys(bufnr)
 
   -- c-s - show signature help in insert mode
   -- K - show hover
+  -- KK - show hover and focus to allow scrolling
 
   nmap('H', vim.diagnostic.open_float, bufnr)
 
