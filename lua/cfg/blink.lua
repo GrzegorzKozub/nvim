@@ -6,7 +6,7 @@ function M.config()
     return
   end
 
-  -- todo: resume from sources, cleanup mini.icons, go through reference
+  -- todo: cleanup mini.icons, go through reference
 
   -- https://cmp.saghen.dev/configuration/reference.html
   blink.setup {
@@ -24,7 +24,9 @@ function M.config()
       ['<c-k>'] = false,
     },
     completion = {
+      list = { max_items = 256 },
       menu = {
+        max_height = 16,
         draw = {
           components = {
             kind_icon = {
@@ -37,18 +39,13 @@ function M.config()
                 return hl
               end,
             },
-            kind = {
-              highlight = function(ctx)
-                local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
-                return hl
-              end,
-            },
           },
         },
       },
-      documentation = { auto_show = true },
+      documentation = { auto_show = true, window = { max_width = 64, max_height = 16 } },
     },
-    signature = { enabled = true },
+    -- continue
+    signature = { enabled = true, window = {} },
     sources = {
       providers = {
         path = {
