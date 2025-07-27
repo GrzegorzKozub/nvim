@@ -113,7 +113,7 @@ local function custom_colors()
       vim.fn[hi]('QuickFixLineNr', palette.bg5, palette.none)
       vim.fn[hi]('QuickFixSeparator', palette.bg3, palette.none)
 
-      vim.fn[hi]('QuickFixLine', palette.none, palette.bg3) -- match cmp
+      vim.fn[hi]('QuickFixLine', palette.none, palette.bg3) -- match blink
 
       vim.fn[hi]('Pmenu', palette.grey1, palette.bg1)
       vim.fn[hi]('PmenuExtra', palette.grey1, palette.bg1)
@@ -164,18 +164,6 @@ local function custom_colors()
       vim.fn[hi]('BlinkCmpSignatureHelpActiveParameter', palette.none, palette.bg5) -- match LspSignatureActiveParameter
       vim.fn[hi]('BlinkCmpSignatureHelpBorder', palette.bg3, palette.none) -- or bg5
 
-      -- cmp
-
-      -- vim.fn[hi]('CmpItemAbbr', palette.grey1, palette.none)
-      -- vim.fn[hi]('CmpItemAbbrDeprecated', palette.grey0, palette.none, 'strikethrough')
-      -- vim.fn[hi]('CmpItemAbbrMatch', palette.yellow, palette.none)
-      -- vim.fn[hi]('CmpItemAbbrMatchFuzzy', palette.dim_yellow, palette.none)
-      -- vim.fn[hi]('CmpItemMenu', palette.grey1, palette.none)
-      --
-      -- for kind, _ in pairs(require('cfg.cmp').kinds()) do
-      --   vim.fn[hi]('CmpItemKind' .. kind, palette.bg5, palette.none)
-      -- end
-
       -- diagnostic
 
       local function diag(kind, color)
@@ -221,7 +209,7 @@ local function custom_colors()
       vim.fn[hi]('FzfLuaPathLineNr', palette.bg5, palette.none)
 
       vim.fn[hi]('FzfLuaFzfBorder', palette.bg3, palette.none) -- or bg5
-      vim.fn[hi]('FzfLuaFzfCursorLine', palette.grey1, palette.bg3) -- match cmp
+      vim.fn[hi]('FzfLuaFzfCursorLine', palette.grey1, palette.bg3) -- match blink
       vim.fn[hi]('FzfLuaFzfInfo', palette.bg3, palette.none)
       vim.fn[hi]('FzfLuaFzfMatch', palette.yellow, palette.none)
       vim.fn[hi]('FzfLuaFzfNormal', palette.grey1, palette.none)

@@ -6,58 +6,46 @@ function M.config()
     return
   end
 
-  -- todo: cleanup mini.icons, go through reference
+  local icons = require('cfg.icons').get().lsp
+  local kind_icons = {
+    Class = icons.class,
+    Color = icons.color,
+    Constant = icons.constant,
+    Constructor = icons.constructor,
+    Enum = icons.enum,
+    EnumMember = icons.enum_member,
+    Event = icons.event,
+    Field = icons.field,
+    File = icons.file,
+    Folder = icons.folder,
+    Function = icons['function'],
+    Interface = icons.interface,
+    Keyword = icons.keyword,
+    Method = icons.method,
+    Module = icons.module,
+    Operator = icons.operator,
+    Property = icons.property,
+    Reference = icons.reference,
+    Snippet = icons.snippet,
+    Struct = icons.struct,
+    Text = icons.text,
+    TypeParameter = icons.type_parameter,
+    Unit = icons.unit,
+    Value = icons.number,
+    Variable = icons.variable,
+  }
 
   -- https://cmp.saghen.dev/configuration/reference.html
   blink.setup {
-    keymap = {
-      preset = 'default', -- https://cmp.saghen.dev/configuration/keymap#presets
-      ['<esc>'] = { 'cancel', 'fallback' },
-      ['<cr>'] = { 'select_and_accept', 'fallback' },
-      ['<tab>'] = { 'select_and_accept', 'fallback' },
-      ['<s-tab>'] = false,
-      ['<s-up>'] = { 'scroll_documentation_up', 'fallback' },
-      ['<s-down>'] = { 'scroll_documentation_down', 'fallback' },
-      ['<c-b>'] = false,
-      ['<c-f>'] = false,
-      ['<c-s>'] = { 'show_signature', 'hide_signature', 'fallback' }, -- overrides neovim default
-      ['<c-k>'] = false,
-    },
-    completion = {
-      list = { max_items = 256 },
-      menu = {
-        max_height = 16,
-        draw = {
-          components = {
-            kind_icon = {
-              text = function(ctx)
-                local icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
-                return icon
-              end,
-              highlight = function(ctx)
-                local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
-                return hl
-              end,
-            },
-          },
-        },
-      },
-      documentation = { auto_show = true, window = { max_width = 64, max_height = 16 } },
-    },
-    -- continue
-    signature = { enabled = true, window = {} },
-    sources = {
-      providers = {
-        path = {
-          opts = {
-            get_cwd = function(_)
-              return vim.fn.getcwd()
-            end,
-          },
-        },
-      },
-    },
+    appearance = { kind_icons = kind_icons },
     cmdline = {
+      completion = {
+        menu = {
+          auto_show = function()
+            return vim.fn.getcmdtype() == ':'
+          end,
+        },
+      },
       keymap = {
         preset = 'cmdline',
         ['<esc>'] = {
@@ -75,11 +63,50 @@ function M.config()
         ['<up>'] = { 'select_prev', 'fallback' },
         ['<down>'] = { 'select_next', 'fallback' },
       },
-      completion = {
-        menu = {
-          auto_show = function()
-            return vim.fn.getcmdtype() == ':'
-          end,
+    },
+    completion = {
+      documentation = { auto_show = true, window = { max_height = 16, max_width = 64 } },
+      list = { max_items = 256 },
+      menu = {
+        draw = {
+          components = {
+            kind_icon = {
+              highlight = function(ctx)
+                local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+                return hl
+              end,
+              -- text = function(ctx)
+              --   local icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+              --   return icon
+              -- end,
+            },
+          },
+        },
+        max_height = 16,
+      },
+    },
+    keymap = {
+      preset = 'default', -- https://cmp.saghen.dev/configuration/keymap#presets
+      ['<esc>'] = { 'cancel', 'fallback' },
+      ['<cr>'] = { 'select_and_accept', 'fallback' },
+      ['<tab>'] = { 'select_and_accept', 'fallback' },
+      ['<s-tab>'] = false,
+      ['<s-up>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<s-down>'] = { 'scroll_documentation_down', 'fallback' },
+      ['<c-b>'] = false,
+      ['<c-f>'] = false,
+      ['<c-s>'] = { 'show_signature', 'hide_signature', 'fallback' }, -- overrides neovim default
+      ['<c-k>'] = false,
+    },
+    signature = { enabled = true, window = { max_height = 8, max_width = 64 } },
+    sources = {
+      providers = {
+        path = {
+          opts = {
+            get_cwd = function(_)
+              return vim.fn.getcwd()
+            end,
+          },
         },
       },
     },
