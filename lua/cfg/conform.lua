@@ -29,11 +29,12 @@ function M.config()
     formatters_by_ft = formatters,
   }
 
-  require('conform').formatters.prettier = {
-    prepend_args = function()
-      return vim.o.filetype == 'jsonc' and { '--trailing-comma', 'none' } or {}
-    end,
-  }
+  -- handled by .prettierrc
+  -- require('conform').formatters.prettier = {
+  --   prepend_args = function()
+  --     return vim.o.filetype == 'jsonc' and { '--trailing-comma', 'none' } or {}
+  --   end,
+  -- }
 
   require('cfg.util').nmap('<leader>f', function()
     conform.format { async = true }
