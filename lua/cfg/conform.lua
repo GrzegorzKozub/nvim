@@ -4,7 +4,7 @@ local formatters = {
   css = { 'prettier' },
   go = { 'goimports', 'gofmt' },
   html = { 'prettier' },
-  javascript = { 'prettier' },
+  javascript = { 'organize_imports', 'prettier' },
   json = { 'prettier' },
   jsonc = { 'prettier' },
   lua = { 'stylua' },
@@ -12,6 +12,7 @@ local formatters = {
   rust = { 'rustfmt' },
   sh = { 'shfmt' },
   toml = { 'taplo' },
+  typescript = { 'organize_imports', 'prettier' },
   xml = { 'xmlformatter' },
   yaml = { 'prettier' },
   ['_'] = { 'trim_whitespace' },
@@ -26,6 +27,17 @@ function M.config()
   conform.setup {
     default_format_opts = { lsp_format = 'fallback' },
     format_on_save = { timeout_ms = 1000 },
+    formatters = {
+      organize_imports = {
+        format = function(_self, _ctx, lines, callback)
+          vim.lsp.buf.code_action {
+            apply = true,
+            context = { only = { 'source.organizeImports' } },
+          }
+          callback(nil, lines)
+        end,
+      },
+    },
     formatters_by_ft = formatters,
   }
 
