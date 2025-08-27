@@ -1,6 +1,6 @@
 {
-  "diagnostics": {
-    "globals": ["MiniIcons", "vim"]
-  }
+  "diagnostics": { "globals": ["MiniIcons", "vim"] },
+  "hint.enable": true,
+  "hint.setType": true,
+  "runtime.version": "LuaJIT"
 }
-

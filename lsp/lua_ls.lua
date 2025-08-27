@@ -6,7 +6,7 @@ return {
     Lua = {
       hint = { enable = true, setType = true },
       runtime = { version = 'LuaJIT' },
-      workspace = { checkThirdParty = false },
+      -- workspace = { checkThirdParty = false },
     },
   },
 }
