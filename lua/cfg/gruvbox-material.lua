@@ -183,6 +183,8 @@ local function custom_colors()
       diag('Info', palette.dim_blue)
       diag('Hint', palette.dim_green)
 
+      vim.cmd.hi('link', 'DiagnosticSignHint', 'GreenSign')
+
       vim.fn[hi]('VirtualTextError', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextHint', palette.bg5, palette.none)
       vim.fn[hi]('VirtualTextInfo', palette.bg5, palette.none)
