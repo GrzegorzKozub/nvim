@@ -95,6 +95,7 @@ function M.config()
       ['<s-down>'] = { 'scroll_documentation_down', 'fallback' },
       ['<c-b>'] = false,
       ['<c-f>'] = false,
+      ['<c-i>'] = { 'show_signature', 'hide_signature', 'fallback' }, -- same as zed
       ['<c-s>'] = { 'show_signature', 'hide_signature', 'fallback' }, -- overrides neovim default
       ['<c-k>'] = false,
     },
