@@ -99,7 +99,8 @@ function M.config()
       ['<c-s>'] = { 'show_signature', 'hide_signature', 'fallback' }, -- overrides neovim default
       ['<c-k>'] = false,
     },
-    signature = { enabled = true, window = { max_height = 8, max_width = 64 } },
+    -- https://github.com/Saghen/blink.cmp/issues/2172
+    signature = { enabled = false, window = { max_height = 8, max_width = 64 } },
     sources = {
       providers = {
         path = {
