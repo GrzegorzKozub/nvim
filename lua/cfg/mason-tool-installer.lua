@@ -3,6 +3,7 @@ local M = {}
 local add = require('cfg.util').add
 
 local servers = {
+  'ansible-language-server',
   -- 'csharp-language-server',
   'docker-compose-language-service',
   'dockerfile-language-server',
@@ -26,6 +27,7 @@ else
 end
 
 local linters = {
+  'ansible-lint',
   'eslint_d',
   'golangci-lint',
   'hadolint',

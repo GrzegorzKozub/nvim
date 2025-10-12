@@ -15,6 +15,7 @@ end
 function M.config()
   set_filetype('*.json', 'jsonc')
   set_filetype('config', 'confini')
+  set_filetype('*.ansible.y*ml', 'yaml.ansible')
   set_filetype('docker-compose*.y*ml', 'yaml.docker-compose')
 end
 

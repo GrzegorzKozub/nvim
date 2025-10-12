@@ -11,6 +11,7 @@ local linters = {
   -- sh = { 'shellcheck' }, -- handled by bashls
   typescript = { 'eslint_d' },
   yaml = { 'yamllint' },
+  ['yaml.ansible'] = { 'ansible_lint' },
 }
 
 -- local function site_packages()

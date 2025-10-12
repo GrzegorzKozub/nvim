@@ -1,6 +1,7 @@
 local add = require('cfg.util').add
 
 local servers = {
+  'ansiblels',
   -- 'csharp_ls',
   'docker_compose_language_service',
   'dockerls',
