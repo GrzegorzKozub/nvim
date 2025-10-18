@@ -16,6 +16,7 @@ local servers = {
   'pyright',
   'rust-analyzer',
   'taplo', -- also a formatter
+  'texlab',
   'typescript-language-server',
   'yaml-language-server',
 }

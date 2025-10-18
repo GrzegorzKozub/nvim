@@ -23,6 +23,7 @@ local parsers = {
   'json',
   'jsonc',
   'kdl',
+  'latex',
   'lua',
   'markdown',
   'markdown_inline',
