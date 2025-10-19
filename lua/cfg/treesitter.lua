@@ -18,6 +18,7 @@ local parsers = {
   'html',
   'http',
   'ini',
+  'java',
   'javascript',
   'jq',
   'json',

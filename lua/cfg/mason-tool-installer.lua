@@ -11,11 +11,12 @@ local servers = {
   'eslint-lsp',
   'gopls',
   'harper-ls',
+  -- 'jdtls',
   'json-lsp',
   'lua-language-server',
   'pyright',
   'rust-analyzer',
-  'taplo', -- also a formatter
+  'taplo',
   'texlab',
   'typescript-language-server',
   'yaml-language-server',

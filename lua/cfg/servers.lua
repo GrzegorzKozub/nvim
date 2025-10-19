@@ -9,6 +9,7 @@ local servers = {
   'eslint',
   'gopls',
   'harper_ls',
+  -- 'jdtls',
   'jsonls',
   'lua_ls',
   'nushell',
