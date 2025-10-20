@@ -7,7 +7,7 @@ return {
     java = {
       configuration = {
         -- https://github.com/eclipse-jdtls/eclipse.jdt.ls/issues/3303
-        maven = { userSettings = vim.env.XDG_CONFIG_HOME .. '/maven/settings.xml' },
+        -- maven = { userSettings = vim.env.XDG_CONFIG_HOME .. '/maven/settings.xml' },
       },
     },
   },
