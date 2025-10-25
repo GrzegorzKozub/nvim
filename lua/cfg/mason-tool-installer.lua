@@ -15,6 +15,7 @@ local servers = {
   'json-lsp',
   'lua-language-server',
   'pyright',
+  'qmlls',
   'rust-analyzer',
   'taplo',
   'texlab',

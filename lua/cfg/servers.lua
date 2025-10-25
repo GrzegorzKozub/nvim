@@ -14,6 +14,7 @@ local servers = {
   'lua_ls',
   'nushell',
   'pyright',
+  'qmlls',
   'rust_analyzer',
   'taplo',
   'texlab',
