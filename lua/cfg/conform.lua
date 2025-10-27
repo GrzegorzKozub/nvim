@@ -10,13 +10,16 @@ local formatters = {
   lua = { 'stylua' },
   python = { 'isort', 'black' },
   rust = { 'rustfmt' },
-  sh = { 'shfmt' },
   toml = { 'taplo' },
   typescript = { 'organize_imports', 'prettier' },
   xml = { 'xmlformatter' },
   yaml = { 'prettier' },
   ['_'] = { 'trim_whitespace' },
 }
+
+if vim.fn.has 'win32' == 0 then
+  formatters.sh = { 'shfmt' }
+end
 
 function M.config()
   local conform_loaded, conform = pcall(require, 'conform')

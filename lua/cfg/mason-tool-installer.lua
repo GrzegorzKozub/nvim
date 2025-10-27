@@ -3,44 +3,45 @@ local M = {}
 local add = require('cfg.util').add
 
 local servers = {
-  'ansible-language-server',
-  -- 'csharp-language-server',
-  'docker-compose-language-service',
-  'dockerfile-language-server',
-  -- 'elixir-ls',
   'eslint-lsp',
   'gopls',
   'harper-ls',
-  -- 'jdtls',
   'json-lsp',
   'lua-language-server',
   'pyright',
-  'qmlls',
   'rust-analyzer',
   'taplo',
-  'texlab',
   'typescript-language-server',
   'yaml-language-server',
-}
+} -- csharp-language-server elixir-ls jdtls
 
 if vim.fn.has 'win32' == 0 then
-  add(servers, { 'bash-language-server' })
+  add(servers, {
+    'ansible-language-server',
+    'bash-language-server',
+    'docker-compose-language-service',
+    'dockerfile-language-server',
+    'qmlls',
+    'texlab',
+  })
 else
   add(servers, { 'powershell-editor-services' })
 end
 
 local linters = {
-  'ansible-lint',
   'eslint_d',
   'golangci-lint',
-  'hadolint',
   'jsonlint',
   'pylint',
   'yamllint',
 }
 
 if vim.fn.has 'win32' == 0 then
-  add(linters, { 'luacheck' }) -- installed manually on windows
+  add(linters, {
+    'ansible-lint',
+    'hadolint',
+    'luacheck', -- installed manually on windows
+  })
 end
 
 local formatters = {
@@ -48,10 +49,13 @@ local formatters = {
   'goimports',
   'isort',
   'prettier',
-  'shfmt',
   'stylua',
   'xmlformatter',
 }
+
+if vim.fn.has 'win32' == 0 then
+  add(formatters, { 'shfmt' })
+end
 
 local tools = {}
 add(tools, servers)

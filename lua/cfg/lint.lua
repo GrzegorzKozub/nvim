@@ -1,7 +1,6 @@
 local M = {}
 
 local linters = {
-  dockerfile = { 'hadolint' },
   go = { 'golangcilint' },
   javascript = { 'eslint_d' },
   json = { 'jsonlint' },
@@ -11,8 +10,12 @@ local linters = {
   -- sh = { 'shellcheck' }, -- handled by bashls
   typescript = { 'eslint_d' },
   yaml = { 'yamllint' },
-  ['yaml.ansible'] = { 'ansible_lint' },
 }
+
+if vim.fn.has 'win32' == 0 then
+  linters.dockerfile = { 'hadolint' }
+  linters['yaml.ansible'] = { 'ansible_lint' }
+end
 
 -- local function site_packages()
 --   if vim.fn.has 'win32' == 0 then
