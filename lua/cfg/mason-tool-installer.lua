@@ -3,12 +3,12 @@ local M = {}
 local add = require('cfg.util').add
 
 local servers = {
+  'basedpyright',
   'eslint-lsp',
   'gopls',
   'harper-ls',
   'json-lsp',
   'lua-language-server',
-  'pyright',
   'rust-analyzer',
   'taplo',
   'typescript-language-server',
@@ -32,7 +32,7 @@ local linters = {
   'eslint_d',
   'golangci-lint',
   'jsonlint',
-  'pylint',
+  'ruff',
   'yamllint',
 }
 
@@ -45,10 +45,9 @@ if vim.fn.has 'win32' == 0 then
 end
 
 local formatters = {
-  'black',
   'goimports',
-  'isort',
   'prettier',
+  'ruff',
   'stylua',
   'xmlformatter',
 }

@@ -1,13 +1,13 @@
 local add = require('cfg.util').add
 
 local servers = {
+  'basedpyright',
   'eslint',
   'gopls',
   'harper_ls',
   'jsonls',
   'lua_ls',
   'nushell',
-  'pyright',
   'rust_analyzer',
   'taplo',
   'ts_ls',
