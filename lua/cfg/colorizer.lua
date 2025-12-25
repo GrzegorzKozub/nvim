@@ -8,7 +8,11 @@ function M.config()
 
   colorizer.setup {
     lazy_load = true,
-    user_default_options = { mode = 'virtualtext', names = false },
+    user_default_options = {
+      mode = 'virtualtext',
+      virtualtext = require('cfg.icons').get().colorizer.virtualtext,
+      names = false,
+    },
   }
 end
 

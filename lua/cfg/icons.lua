@@ -55,6 +55,7 @@ function M.get()
       closed = '', -- ▶
       open = '', -- ▼
     },
+    colorizer = { virtualtext = '' },
     gitsigns = { changed = '│', git = '󰊢', staged = '┃' },
     lazy = { cmd = '', config = '', vim = '' },
     listchars = {

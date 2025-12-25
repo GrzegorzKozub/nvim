@@ -97,6 +97,12 @@ local function highlight(client, bufnr)
   highlight_on_key_start()
 end
 
+local function document_color(bufnr)
+  -- https://neovim.io/doc/user/lsp.html#lsp-document_color
+  -- currently supported by lua-language-server but we're using nvim-colorizer.lua instead
+  vim.lsp.document_color.enable(false, bufnr, { style = 'virtual' })
+end
+
 function _G.my_lsp_foldtext()
   return vim.opt.fillchars:get().foldclose
     .. ' '
@@ -127,6 +133,7 @@ function M.config()
 
       keys(args.buf)
       highlight(client, args.buf)
+      document_color(args.buf)
     end,
     group = vim.api.nvim_create_augroup('Lsp', { clear = true }),
   })
