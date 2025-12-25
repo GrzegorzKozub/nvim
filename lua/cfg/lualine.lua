@@ -85,11 +85,26 @@ local function tabs_fmt(name, context)
     .. (mod == 1 and ' ' .. icons.file.modified or '')
 end
 
+local function bubble(component)
+  local separator = icons.lualine.separator
+  component.padding = 0
+  component.separator = { left = separator.left, right = separator.right }
+  return component
+end
+
 function M.config()
   local lualine_loaded, lualine = pcall(require, 'lualine')
   if not lualine_loaded then
     return
   end
+
+  local space = {
+    function()
+      return ' '
+    end,
+    color = { fg = 'NONE', bg = 'NONE' },
+    padding = 0,
+  }
 
   local filename = {
     'filename',
@@ -112,8 +127,8 @@ function M.config()
       always_show_tabline = false,
     },
     sections = {
-      lualine_a = { { 'mode', fmt = mode_fmt } },
-      lualine_b = { { buffer, cond = buffer_cond } },
+      lualine_a = { bubble { 'mode', fmt = mode_fmt }, space },
+      lualine_b = { bubble { buffer, cond = buffer_cond } },
       lualine_c = { filename },
       lualine_x = {
         {
@@ -137,10 +152,8 @@ function M.config()
         },
         filetype,
       },
-      lualine_y = {
-        { encoding_and_fileformat, cond = encoding_and_fileformat_cond },
-      },
-      lualine_z = { progress_and_location },
+      lualine_y = { bubble { encoding_and_fileformat, cond = encoding_and_fileformat_cond } },
+      lualine_z = { space, bubble { progress_and_location } },
     },
     inactive_sections = {
       lualine_a = {},

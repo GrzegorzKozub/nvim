@@ -62,6 +62,7 @@ function M.get()
       tab = '󰌒 ', -- →
       trail = '•', -- ·
     },
+    lualine = { separator = { left = '', right = '' } },
     qf = '󱖫',
     package = { disabled = '', enabled = '', pending = '▶' }, -- ○ 
     terminal = '',
