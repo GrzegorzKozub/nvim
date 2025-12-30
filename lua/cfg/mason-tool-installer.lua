@@ -47,7 +47,7 @@ end
 local formatters = {
   'goimports',
   'prettier',
-  'ruff',
+  -- 'ruff', -- ensure_installed must be unique or MasonToolsUpdateCompleted doesn't fire
   'stylua',
   'xmlformatter',
 }
