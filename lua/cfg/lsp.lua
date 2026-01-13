@@ -103,22 +103,6 @@ local function document_color(bufnr)
   vim.lsp.document_color.enable(false, bufnr, { style = 'virtual' })
 end
 
-local function ps1_bug_workaround(client)
-  -- https://github.com/neovim/neovim/issues/37238
-  if client.name == 'powershell_es' then
-    client.dynamic_capabilities = nil
-    client._dynamic_registrations = {}
-    local orig = client.supports_method
-    client.supports_method = function(self, method)
-      local ok, res = pcall(orig, self, method)
-      if not ok then
-        return false
-      end
-      return res
-    end
-  end
-end
-
 function _G.my_lsp_foldtext()
   return vim.opt.fillchars:get().foldclose
     .. ' '
@@ -150,7 +134,6 @@ function M.config()
       keys(args.buf)
       highlight(client, args.buf)
       document_color(args.buf)
-      ps1_bug_workaround(client)
     end,
     group = vim.api.nvim_create_augroup('Lsp', { clear = true }),
   })
