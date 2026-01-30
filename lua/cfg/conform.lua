@@ -10,6 +10,7 @@ local formatters = {
   lua = { 'stylua' },
   python = { 'ruff_format', 'ruff_organize_imports' },
   rust = { 'rustfmt' },
+  terraform = { 'terraform_fmt' },
   toml = { 'taplo' },
   typescript = { 'organize_imports', 'prettier' },
   xml = { 'xmlformatter' },

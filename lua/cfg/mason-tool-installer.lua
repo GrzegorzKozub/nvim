@@ -22,6 +22,7 @@ if vim.fn.has 'win32' == 0 then
     'docker-compose-language-service',
     'dockerfile-language-server',
     'qmlls',
+    'terraform-ls',
     'texlab',
   })
 else
@@ -41,6 +42,7 @@ if vim.fn.has 'win32' == 0 then
     'ansible-lint',
     'hadolint',
     'luacheck', -- installed manually on windows
+    'tflint',
   })
 end
 

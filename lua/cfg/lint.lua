@@ -14,6 +14,7 @@ local linters = {
 
 if vim.fn.has 'win32' == 0 then
   linters.dockerfile = { 'hadolint' }
+  linters.terraform = { 'tflint' }
   linters['yaml.ansible'] = { 'ansible_lint' }
 end
 

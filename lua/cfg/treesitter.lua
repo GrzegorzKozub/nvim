@@ -39,6 +39,7 @@ local parsers = {
   'scss',
   'sql',
   'ssh_config',
+  'terraform',
   'tmux',
   'toml',
   'typescript',

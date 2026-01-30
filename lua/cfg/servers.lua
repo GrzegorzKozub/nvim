@@ -21,6 +21,7 @@ if vim.fn.has 'win32' == 0 then
     'docker_compose_language_service',
     'dockerls',
     'qmlls',
+    'terraform_ls',
     'texlab',
   })
 else
