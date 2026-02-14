@@ -217,6 +217,8 @@ local function custom_colors()
       vim.fn[hi]('FzfLuaFzfNormal', palette.grey1, palette.none)
       vim.fn[hi]('FzfLuaFzfPrompt', palette.dim_purple, palette.none)
 
+      vim.fn[hi]('FzfLuaSearch', palette.yellow, palette.none)
+
       -- gitsigns
 
       vim.fn[hi]('GitSignsCurrentLineBlame', palette.bg5, palette.none)

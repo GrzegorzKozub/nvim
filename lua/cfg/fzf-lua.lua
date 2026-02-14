@@ -138,7 +138,9 @@ function M.config()
   nmap('<c-k>', fzf_lua.oldfiles)
   nmap('<c-b>', fzf_lua.buffers)
 
-  nmap('<c-g>', fzf_lua.live_grep)
+  nmap('<c-g>', function()
+    fzf_lua.live_grep { resume = true }
+  end)
 
   nmap('<leader>m', fzf_lua.marks)
 
