@@ -108,6 +108,7 @@ function M.config()
       ['pointer'] = { 'fg', 'FzfLuaFzfPrompt' },
       ['marker'] = { 'fg', 'FzfLuaFzfPrompt' },
       ['info'] = { 'fg', 'FzfLuaFzfInfo' },
+      ['spinner'] = { 'fg', 'FzfLuaFzfInfo' },
     },
     files = { cwd_prompt = false },
     oldfiles = { include_current_session = true },
