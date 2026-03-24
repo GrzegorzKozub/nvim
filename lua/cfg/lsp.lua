@@ -100,7 +100,7 @@ end
 local function document_color(bufnr)
   -- https://neovim.io/doc/user/lsp.html#lsp-document_color
   -- currently supported by lua-language-server but we're using nvim-colorizer.lua instead
-  vim.lsp.document_color.enable(false, bufnr, { style = 'virtual' })
+  vim.lsp.document_color.enable(false, { bufnr = bufnr }, { style = 'virtual' })
 end
 
 function _G.my_lsp_foldtext()
