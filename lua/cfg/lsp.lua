@@ -126,9 +126,9 @@ function M.config()
 
       if client:supports_method 'textDocument/foldingRange' then
         local win = vim.api.nvim_get_current_win()
-        vim.opt.foldmethod = 'expr'
-        vim.wo[win][0].foldexpr = 'nvim_treesitter#foldexpr()'
-        vim.wo[win][0].foldtext = 'v:lua.my_lsp_foldtext()' -- 'v:lua.vim.lsp.foldtext()'
+        vim.wo[win][0].foldmethod = 'expr'
+        vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        vim.wo[win][0].foldtext = 'v:lua.my_lsp_foldtext()'
       end
 
       keys(args.buf)

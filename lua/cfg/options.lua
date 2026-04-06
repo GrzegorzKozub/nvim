@@ -62,7 +62,7 @@ function M.config()
 
   vim.opt.backupdir:remove '.'
   vim.opt.completeopt:append 'fuzzy'
-  vim.opt.diffopt:append { 'algorithm:histogram', 'indent-heuristic', 'context:3' }
+  vim.opt.diffopt:append { 'algorithm:histogram', 'context:3' }
   vim.opt.shortmess:append 'I'
   vim.opt.whichwrap:append '<,>,[,]'
 

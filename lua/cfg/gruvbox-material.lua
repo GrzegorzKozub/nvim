@@ -98,6 +98,7 @@ local function custom_colors()
       vim.fn[hi]('ErrorMsg', palette.dim_red, palette.none)
       vim.fn[hi]('ModeMsg', palette.grey0, palette.none)
       vim.fn[hi]('MoreMsg', palette.dim_blue, palette.none)
+      vim.fn[hi]('OkMsg', palette.dim_blue, palette.none)
       vim.fn[hi]('Question', palette.dim_green, palette.none)
       vim.fn[hi]('WarningMsg', palette.dim_yellow, palette.none)
 
@@ -302,6 +303,7 @@ local function custom_colors()
       spell 'Rare'
 
       -- treesitter-context
+      vim.fn[hi]('TreesitterContext', palette.none, palette.none)
       vim.fn[hi]('TreesitterContextSeparator', palette.bg1, palette.none)
 
       -- zsh
