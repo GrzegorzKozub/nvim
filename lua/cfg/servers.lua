@@ -4,7 +4,6 @@ local servers = {
   'basedpyright',
   'eslint',
   'gopls',
-  'harper_ls',
   'jsonls',
   'lua_ls',
   'nushell',
@@ -12,7 +11,7 @@ local servers = {
   'taplo',
   'ts_ls',
   'yamlls',
-} -- csharp_ls elixirls jdtls
+} -- csharp_ls elixirls harper_ls jdtls
 
 if vim.fn.has 'win32' == 0 then
   add(servers, {
