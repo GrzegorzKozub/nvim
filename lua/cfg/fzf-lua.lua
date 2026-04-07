@@ -74,6 +74,7 @@ function M.config()
       backdrop = 0,
       border = 'none',
       preview = {
+        border = 'rounded',
         flip_columns = 80,
         horizontal = 'right:50%',
         vertical = 'down:50%',
