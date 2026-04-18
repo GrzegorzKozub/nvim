@@ -1,10 +1,10 @@
 return {
   'stevearc/conform.nvim',
-  cmd = { 'ConformInfo' },
+  cmd = { 'ConformInfo', 'FormatToggle' },
   config = require('cfg.conform').config,
   dependencies = {
     'williamboman/mason.nvim',
   },
   event = { 'BufWritePre' },
-  keys = { '<leader>f' },
+  keys = { '<leader>f', '<leader>F' },
 }
