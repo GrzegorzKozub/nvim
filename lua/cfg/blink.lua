@@ -58,7 +58,7 @@ function M.config()
             )
           end,
         },
-        ['<tab>'] = { 'show', 'accept' },
+        ['<tab>'] = { 'show', 'select_and_accept' },
         ['<s-tab>'] = false,
         ['<up>'] = { 'select_prev', 'fallback' },
         ['<down>'] = { 'select_next', 'fallback' },
