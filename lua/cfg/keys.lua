@@ -76,10 +76,16 @@ local function tabs(options)
 end
 
 local function toggles(options)
-  vim.api.nvim_create_user_command('HlsearchOff', 'nohlsearch', {})
-  vim.keymap.set('n', '<leader>h', ':HlsearchOff<cr>', options)
+  vim.api.nvim_create_user_command('HlsearchToggle', function()
+    vim.cmd 'set hlsearch!'
+    vim.notify('search highlight ' .. (vim.o.hlsearch and 'enabled' or 'disabled'))
+  end, {})
+  vim.keymap.set('n', '<leader>h', ':HlsearchToggle<cr>', options)
 
-  vim.api.nvim_create_user_command('ListToggle', 'set list!', {})
+  vim.api.nvim_create_user_command('ListToggle', function()
+    vim.cmd 'set list!'
+    vim.notify('list mode ' .. (vim.o.list and 'enabled' or 'disabled'))
+  end, {})
   vim.keymap.set('n', '<leader>i', ':ListToggle<cr>', options)
 
   vim.api.nvim_create_user_command('LocationListToggle', function()
@@ -92,13 +98,22 @@ local function toggles(options)
   end, {})
   vim.keymap.set('n', '<leader>q', ':QuickFixToggle<cr>', options)
 
-  vim.api.nvim_create_user_command('RelativeNumberToggle', 'set relativenumber!', {})
+  vim.api.nvim_create_user_command('RelativeNumberToggle', function()
+    vim.cmd 'set relativenumber!'
+    vim.notify('relative line numbers ' .. (vim.o.relativenumber and 'enabled' or 'disabled'))
+  end, {})
   vim.keymap.set('n', '<leader>r', ':RelativeNumberToggle<cr>', options)
 
-  vim.api.nvim_create_user_command('SpellToggle', 'set spell!', {})
+  vim.api.nvim_create_user_command('SpellToggle', function()
+    vim.cmd 'set spell!'
+    vim.notify('spell check ' .. (vim.o.spell and 'enabled' or 'disabled'))
+  end, {})
   vim.keymap.set('n', '<leader>s', ':SpellToggle<cr>', options)
 
-  vim.api.nvim_create_user_command('WrapToggle ', 'set wrap! linebreak! nolist', {})
+  vim.api.nvim_create_user_command('WrapToggle', function()
+    vim.cmd 'set wrap! linebreak! nolist'
+    vim.notify('line wrap ' .. (vim.o.wrap and 'enabled' or 'disabled'))
+  end, {})
   vim.keymap.set('n', '<leader>w', ':WrapToggle<cr>', options)
 end
 
