@@ -11,7 +11,7 @@ local servers = {
   'taplo',
   'ts_ls',
   'yamlls',
-} -- csharp_ls elixirls harper_ls jdtls
+} -- csharp_ls elixirls jdtls
 
 if vim.fn.has 'win32' == 0 then
   add(servers, {

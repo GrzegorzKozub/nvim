@@ -12,7 +12,7 @@ local servers = {
   'taplo',
   'typescript-language-server',
   'yaml-language-server',
-} -- csharp-language-server elixir-ls harper-ls jdtls
+} -- csharp-language-server elixir-ls jdtls
 
 if vim.fn.has 'win32' == 0 then
   add(servers, {
