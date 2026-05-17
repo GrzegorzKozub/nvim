@@ -32,14 +32,8 @@ local function clipboard(options)
 
   vim.keymap.set('x', 'p', 'P', options) -- P doesn't replace register content
 
-  vim.keymap.set({ 'x', 'n' }, '<c-v>', '"+gP', options)
-  vim.keymap.set(
-    'i',
-    '<c-v>',
-    '<esc>:set paste<cr>a<c-r>+<esc>:set nopaste<cr>a',
-    { noremap = true }
-  )
-  vim.keymap.set('c', '<c-v>', '<c-r>+', { noremap = true })
+  vim.keymap.set({ 'n', 'x' }, '<c-v>', '"+gP', options)
+  vim.keymap.set({ 'c', 'i' }, '<c-v>', '<c-r>+', { noremap = true })
 end
 
 local function windows(options)
