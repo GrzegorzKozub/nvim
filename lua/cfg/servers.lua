@@ -6,12 +6,11 @@ local servers = {
   'gopls',
   'jsonls',
   'lua_ls',
-  'nushell',
   'rust_analyzer',
   'taplo',
   'ts_ls',
   'yamlls',
-} -- csharp_ls elixirls jdtls
+} -- csharp_ls elixirls jdtls nushell
 
 if vim.fn.has 'win32' == 0 then
   add(servers, {
