@@ -95,6 +95,16 @@ function M.config()
   vim.g.netrw_banner = 0
   vim.g.netrw_home = vim.fn.stdpath 'data' .. '/state/netrw'
   vim.g.netrw_localcopycmd = 'copy'
+
+  -- npm root --global still resolves to $env:APPDATA\npm\node_modules when installed via mise
+  if vim.fn.has 'win32' == 1 then
+    local node_host = vim.fn.glob(
+      vim.fn.expand '$LOCALAPPDATA/mise/installs/npm-neovim/*/node_modules/neovim/bin/cli.js'
+    )
+    if node_host ~= '' then
+      vim.g.node_host_prog = vim.split(node_host, '\n')[1]
+    end
+  end
 end
 
 return M
