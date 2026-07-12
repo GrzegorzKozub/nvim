@@ -2,7 +2,7 @@ return {
   'ibhagwan/fzf-lua',
   cmd = { 'FzfLua' },
   config = require('cfg.fzf-lua').config,
-  dependencies = { 'echasnovski/mini.icons' },
+  dependencies = { 'nvim-mini/mini.icons' },
   keys = {
     '<c-p>',
     '<c-k>',

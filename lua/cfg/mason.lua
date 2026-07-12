@@ -9,6 +9,7 @@ function M.config()
   local icons = require('cfg.icons').get()
 
   mason.setup {
+    firewall = { enable = true },
     ui = {
       border = 'rounded',
       width = 0.8,
@@ -23,4 +24,3 @@ function M.config()
 end
 
 return M
-
