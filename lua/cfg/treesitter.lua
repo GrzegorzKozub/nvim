@@ -28,6 +28,7 @@ local parsers = {
   'markdown',
   'markdown_inline',
   'nix',
+  'nu',
   'po',
   'powershell',
   'python',
@@ -45,7 +46,7 @@ local parsers = {
   'vimdoc',
   'xml',
   'yaml',
-} -- nu
+}
 
 function M.config()
   local treesitter_loaded, treesitter = pcall(require, 'nvim-treesitter')
