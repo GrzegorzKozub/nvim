@@ -17,9 +17,7 @@ function M.config()
       truncrl = icons.truncated,
       vert = ' ',
     },
-    foldenable = false,
     foldlevelstart = 99,
-    foldmethod = 'syntax',
     ignorecase = true,
     infercase = true,
     listchars = {
@@ -62,7 +60,7 @@ function M.config()
 
   vim.opt.backupdir:remove '.'
   vim.opt.completeopt:append 'fuzzy'
-  vim.opt.diffopt:append { 'algorithm:histogram', 'context:3' }
+  vim.opt.diffopt:append { 'algorithm:histogram', 'context:3' } -- 'foldcolumn:0'
   vim.opt.shortmess:append 'I'
   vim.opt.whichwrap:append '<,>,[,]'
 

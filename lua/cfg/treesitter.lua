@@ -22,7 +22,6 @@ local parsers = {
   'javascript',
   'jq',
   'json',
-  'jsonc',
   'kdl',
   'latex',
   'lua',
@@ -49,21 +48,25 @@ local parsers = {
 } -- nu
 
 function M.config()
-  local treesitter_loaded, treesitter = pcall(require, 'nvim-treesitter.configs')
+  local treesitter_loaded, treesitter = pcall(require, 'nvim-treesitter')
   if not treesitter_loaded then
     return
   end
 
-  treesitter.setup {
-    auto_install = true,
-    ensure_installed = parsers,
-    highlight = { enable = true },
-    incremental_selection = { enable = true },
-    sync_install = #vim.api.nvim_list_uis() == 0, -- headless
-  }
+  treesitter.install(parsers)
 
-  vim.opt.foldmethod = 'expr'
-  vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+  vim.treesitter.language.register('json', 'jsonc')
+
+  vim.api.nvim_create_autocmd('FileType', {
+    callback = function(args)
+      if not pcall(vim.treesitter.start, args.buf) or vim.wo[0].diff then
+        return
+      end
+      vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo[0][0].foldmethod = 'expr'
+    end,
+    group = vim.api.nvim_create_augroup('Treesitter', { clear = true }),
+  })
 end
 
 return M

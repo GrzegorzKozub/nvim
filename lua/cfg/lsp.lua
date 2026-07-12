@@ -124,8 +124,8 @@ function M.config()
 
       vim.bo[args.buf].formatexpr = "v:lua.require'conform'.formatexpr()"
 
-      if client:supports_method 'textDocument/foldingRange' then
-        local win = vim.api.nvim_get_current_win()
+      local win = vim.api.nvim_get_current_win()
+      if client:supports_method 'textDocument/foldingRange' and not vim.wo[win].diff then
         vim.wo[win][0].foldmethod = 'expr'
         vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
         vim.wo[win][0].foldtext = 'v:lua.my_lsp_foldtext()'
