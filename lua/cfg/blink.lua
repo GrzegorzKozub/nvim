@@ -66,7 +66,7 @@ function M.config()
     },
     completion = {
       documentation = { auto_show = true, window = { max_height = 16, max_width = 64 } },
-      list = { max_items = 256 },
+      list = { max_items = 256, selection = { preselect = false } },
       menu = {
         draw = {
           components = {
@@ -88,7 +88,7 @@ function M.config()
     keymap = {
       preset = 'default', -- https://cmp.saghen.dev/configuration/keymap#presets
       ['<esc>'] = { 'cancel', 'fallback' },
-      ['<cr>'] = { 'select_and_accept', 'fallback' },
+      ['<cr>'] = { 'accept', 'fallback' },
       ['<tab>'] = { 'select_and_accept', 'fallback' },
       ['<s-tab>'] = false,
       ['<s-up>'] = { 'scroll_documentation_up', 'fallback' },
