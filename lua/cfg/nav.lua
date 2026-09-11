@@ -44,30 +44,43 @@ local function tmux_pane()
   return os.getenv 'TMUX_PANE'
 end
 
-local function tmux_pane_id()
-  return tonumber(tmux_pane():sub(2))
-end
-
-local function tmux_window_and_pane()
-  local layout = tmux_exec "display-message -p '#{window_layout}'"
-  local pane_id = tmux_pane_id()
-  for pane in layout:gmatch '(%d+x%d+,%d+,%d+,%d+)' do
-    if tonumber(pane:match '%d+x%d+,%d+,%d+,(%d+)') == pane_id then
-      return {
-        width = tonumber(layout:match '^%w+,(%d+)x%d+'),
-        height = tonumber(layout:match '^%w+,%d+x(%d+)'),
-      }, {
-        x = tonumber(pane:match '%d+x%d+,(%d+),%d+,%d+'),
-        y = tonumber(pane:match '%d+x%d+,%d+,(%d+),%d+'),
-        width = tonumber(pane:match '(%d+)x%d+'),
-        height = tonumber(pane:match '%d+x(%d+)'),
-      }
+local function tmux_find_pane(L, pane_id)
+  if L.t == 'p' then
+    if L.I == pane_id then
+      return L
+    end
+    return nil
+  end
+  for _, child in ipairs(L.c or {}) do
+    local pane = tmux_find_pane(child, pane_id)
+    if pane then
+      return pane
     end
   end
 end
 
+local function tmux_window_and_pane()
+  local ok, layout = pcall(vim.json.decode, tmux_exec "display-message -p '#{window_layout}'")
+  if not ok or not layout.L then
+    return
+  end
+  local pane = tmux_find_pane(layout.L, tmux_pane())
+  if not pane then
+    return
+  end
+  return { width = layout.L.w, height = layout.L.h }, {
+    x = pane.x,
+    y = pane.y,
+    width = pane.w,
+    height = pane.h,
+  }
+end
+
 local function tmux_border(direction)
   local window, pane = tmux_window_and_pane()
+  if not window or not pane then
+    return true
+  end
   if direction == 'h' then
     return pane.x == 0
   elseif direction == 'j' then
