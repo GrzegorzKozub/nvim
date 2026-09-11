@@ -155,6 +155,10 @@ function M.config()
   nmap('<leader>S', function()
     fzf_lua.spell_suggest { winopts = { height = 0.2, width = 0.4 } }
   end)
+
+  -- linters populate diagnostics even without lsp
+  nmap('<leader>d', fzf_lua.lsp_document_diagnostics)
+  nmap('<leader>D', fzf_lua.lsp_workspace_diagnostics)
 end
 
 function M.lsp()
@@ -169,9 +173,6 @@ function M.lsp()
 
   nmap('gO', fzf_lua.lsp_document_symbols) -- overrides neovim default
   nmap('<c-t>', fzf_lua.lsp_workspace_symbols)
-
-  nmap('<leader>d', fzf_lua.lsp_document_diagnostics)
-  nmap('<leader>D', fzf_lua.lsp_workspace_diagnostics)
 
   nmap('gra', fzf_lua.lsp_code_actions) -- overrides neovim default
 end
