@@ -29,32 +29,53 @@ local function zsh_lint(lint)
     info = vim.diagnostic.severity.INFO,
     hint = vim.diagnostic.severity.HINT,
   }
-  lint.linters['zsh-lint'] = {
-    cmd = 'zsh-lint',
-    args = { '--format=json' },
-    stdin = false,
-    ignore_exitcode = true,
-    parser = function(output)
-      local diagnostics = {}
-      local ok, decoded = pcall(vim.json.decode, output)
-      if not ok or not decoded.diagnostics then
+  local function find_config()
+    local bufname = vim.api.nvim_buf_get_name(0)
+    if bufname == '' then
+      return nil
+    end
+    local found = vim.fs.find('zsh-lint.json', {
+      path = vim.fs.dirname(bufname),
+      stop = vim.uv.os_homedir(),
+      upward = true,
+    })[1]
+    return found
+  end
+  -- find_config & linters['zsh-lint'] as function instead of table are needed while
+  -- https://github.com/z-shell/zsh-lint/issues/198 is fixed
+  lint.linters['zsh-lint'] = function()
+    local args = { '--format=json' }
+    local config = find_config()
+    if config then
+      vim.list_extend(args, { '--config', config })
+    end
+    return {
+      cmd = 'zsh-lint',
+      args = args,
+      stdin = false,
+      ignore_exitcode = true,
+      parser = function(output)
+        local diagnostics = {}
+        local ok, decoded = pcall(vim.json.decode, output)
+        if not ok or not decoded.diagnostics then
+          return diagnostics
+        end
+        for _, d in ipairs(decoded.diagnostics) do
+          table.insert(diagnostics, {
+            severity = severity[d.severity],
+            source = 'zsh-lint',
+            lnum = d.range.start.line - 1,
+            col = d.range.start.column - 1,
+            end_lnum = d.range['end'].line - 1,
+            end_col = d.range['end'].column - 1,
+            message = d.message,
+            code = d.rule,
+          })
+        end
         return diagnostics
-      end
-      for _, d in ipairs(decoded.diagnostics) do
-        table.insert(diagnostics, {
-          severity = severity[d.severity],
-          source = 'zsh-lint',
-          lnum = d.range.start.line - 1,
-          col = d.range.start.column - 1,
-          end_lnum = d.range['end'].line - 1,
-          end_col = d.range['end'].column - 1,
-          message = d.message,
-          code = d.rule,
-        })
-      end
-      return diagnostics
-    end,
-  }
+      end,
+    }
+  end
 end
 
 function M.config()
