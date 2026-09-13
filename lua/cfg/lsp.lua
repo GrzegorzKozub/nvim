@@ -28,10 +28,6 @@ local function keys(bufnr)
   -- K - show hover
   -- KK - show hover and focus to allow scrolling
 
-  nmap('H', vim.diagnostic.open_float, bufnr)
-
-  -- [d ]d - navigate through diagnostics
-
   if vim.lsp.inlay_hint then
     nmap('gi', function()
       vim.lsp.inlay_hint.enable(

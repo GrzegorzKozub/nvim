@@ -69,6 +69,11 @@ local function tabs(options)
   vim.keymap.set('n', ']t', ':tabnext<cr>', options)
 end
 
+local function diagnostics(options)
+  vim.keymap.set('n', 'H', vim.diagnostic.open_float, options)
+  -- [d ]d - navigate through diagnostics
+end
+
 local function toggles(options)
   vim.api.nvim_create_user_command('HlsearchToggle', function()
     vim.cmd 'set hlsearch!'
@@ -118,6 +123,7 @@ function M.config()
   clipboard(options)
   windows(options)
   tabs(options)
+  diagnostics(options)
   toggles(options)
 end
 
