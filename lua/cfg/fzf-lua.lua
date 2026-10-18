@@ -66,6 +66,9 @@ function M.config()
     Variable = icons.variable,
   }
 
+  -- https://github.com/ibhagwan/fzf-lua/issues/2805
+  local fzf_opts = vim.fn.has 'win32' == 1 and { ['--nth'] = '2..' } or nil
+
   fzf_lua.setup {
     'hide',
     winopts = {
@@ -111,8 +114,8 @@ function M.config()
       ['info'] = { 'fg', 'FzfLuaFzfInfo' },
       ['spinner'] = { 'fg', 'FzfLuaFzfInfo' },
     },
-    files = { cwd_prompt = false },
-    oldfiles = { include_current_session = true },
+    files = { cwd_prompt = false, fzf_opts = fzf_opts },
+    oldfiles = { include_current_session = true, fzf_opts = fzf_opts },
     grep = { hidden = true, rg_opts = rg_opts },
     git = {
       commits = { cmd = git_log },
