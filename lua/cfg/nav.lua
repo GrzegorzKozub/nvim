@@ -119,19 +119,28 @@ function M.config()
   if vim.fn.has 'win32' == 1 then
     return
   end
-  local nmap = require('cfg.util').nmap
-  nmap('<a-left>', function()
-    nav 'h'
-  end)
-  nmap('<a-down>', function()
-    nav 'j'
-  end)
-  nmap('<a-up>', function()
-    nav 'k'
-  end)
-  nmap('<a-right>', function()
-    nav 'l'
-  end)
+  local util = require 'cfg.util'
+  local keys = {
+    ['<a-left>'] = 'h',
+    ['<a-down>'] = 'j',
+    ['<a-up>'] = 'k',
+    ['<a-right>'] = 'l',
+  }
+  for key, direction in pairs(keys) do
+    util.nmap(key, function()
+      nav(direction)
+    end)
+  end
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'fzf',
+    callback = function(args)
+      for key, direction in pairs(keys) do
+        util.tmap(key, function()
+          nav(direction)
+        end, args.buf)
+      end
+    end,
+  })
 end
 
 return M

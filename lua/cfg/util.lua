@@ -6,12 +6,20 @@ function M.add(target, source)
   end
 end
 
-function M.nmap(keys, action, buffer)
+local function map(mode, keys, action, buffer)
   local options = { noremap = true, silent = true }
   if buffer ~= nil then
     options.buffer = buffer
   end
-  vim.keymap.set('n', keys, action, options)
+  vim.keymap.set(mode, keys, action, options)
+end
+
+function M.nmap(keys, action, buffer)
+  map('n', keys, action, buffer)
+end
+
+function M.tmap(keys, action, buffer)
+  map('t', keys, action, buffer)
 end
 
 return M
