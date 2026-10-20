@@ -16,6 +16,7 @@ return {
   settings = {
     powershell = {
       codeFormatting = { Preset = 'OTBS' },
+      rename = { acceptDisclaimer = true },
     },
   },
 }
