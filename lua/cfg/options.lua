@@ -59,6 +59,34 @@ function M.config()
   end
 
   vim.opt.backupdir:remove '.'
+
+  local secrets = {
+    '*.*env',
+    '*.cert',
+    '*.crt',
+    '*.env',
+    '*.key',
+    '*.ovpn',
+    '*.pem',
+    '*.secret',
+    '*/.secrets/*',
+    '*/.ssh/*',
+    '*/keys/*',
+    '*/pass/*',
+    '*credentials',
+    '*settings.xml',
+  }
+
+  vim.opt.backupskip:append(secrets)
+
+  vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
+    pattern = secrets,
+    callback = function()
+      vim.opt_local.undofile = false
+    end,
+    group = vim.api.nvim_create_augroup('Secrets', { clear = true }),
+  })
+
   vim.opt.completeopt:append 'fuzzy'
   vim.opt.diffopt:append { 'algorithm:histogram', 'context:3' } -- 'foldcolumn:0'
   vim.opt.shortmess:append 'I'
