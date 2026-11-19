@@ -100,6 +100,7 @@ function M.config()
     },
     signature = { enabled = true, window = { max_height = 8, max_width = 64 } },
     sources = {
+      per_filetype = { ghostty = { inherit_defaults = true, 'omni' } },
       providers = {
         path = {
           opts = {
